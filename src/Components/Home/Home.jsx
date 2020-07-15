@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Menu from "../Menu/Menu";
-import Logo from "../Menu/Logo";
+import Menu from "../LogoMenu/Menu";
+import Logo from "../LogoMenu/Logo";
 
 class Home extends Component {
   render() {

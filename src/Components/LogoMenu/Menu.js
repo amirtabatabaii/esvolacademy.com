@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 
 import Media from "react-media";
 
-import "../Menu/Menu.css";
+import "./Menu.css";
 import PopupMenu from "./PopupMenu";
 
 class Menu extends Component {
