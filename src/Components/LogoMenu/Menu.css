@@ -65,13 +65,3 @@
 .menu li:hover {
   color: #ff0000;
 }
-
-/* Menu rectangle */
-.menu-rectangle {
-  /* width: 411px;
-  height: 918px;
-  border-radius: 29px;
-  background: #f2f3f7;
-  box-shadow: 10px 15px15px #c0c5d8;
-  box-shadow: -10px -15px15px #ffffff; */
-}

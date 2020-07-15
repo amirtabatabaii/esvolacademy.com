@@ -30,7 +30,7 @@ class Menu extends Component {
       height: "95%",
       borderRadius: "29px",
       background: "#f2f3f7",
-      boxShadow: "10px 15px 15px #c0c5d8, -5px -5px 5px #ffffff",
+      boxShadow: "10px 15px 15px #c0c5d8, -10px -15px 15px #ffffff",
     };
 
     return (

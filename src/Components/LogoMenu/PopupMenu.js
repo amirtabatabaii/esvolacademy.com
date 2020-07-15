@@ -8,7 +8,7 @@ function PopupMenu(props) {
   return (
     <Popup
       modal
-      overlayStyle={{ background: "rgba(255,255,255,0.7" }}
+      overlayStyle={{ background: "rgba(230,230,230,0.7" }}
       contentStyle={props.contentStyle}
       closeOnDocumentClick={false}
       trigger={(open) => <BurgerIcon open={open} />}
