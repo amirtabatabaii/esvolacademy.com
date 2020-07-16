@@ -15,17 +15,17 @@ function Logo() {
       {(matches) => (
         <Fragment>
           {matches.small && (
-            <div className='pl-3 pt-4'>
+            <div className=''>
               <Image src={EsvolLogo} alt='esvol' />
             </div>
           )}
           {matches.medium && (
-            <div className='pl-5 pt-4'>
+            <div className=''>
               <Image src={EsvolLogo} alt='esvol' />
             </div>
           )}
           {matches.large && (
-            <div className='pl-5 pt-4'>
+            <div className=''>
               <Image src={EsvolLogo} alt='esvol' />
             </div>
           )}

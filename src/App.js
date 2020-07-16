@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import Home from "./Components/Home/Home";
+import "./Components/Translate/i18n";
 
 function App() {
   return (
-    <div>
+    <Suspense fallback={null}>
       <Home />
-    </div>
+    </Suspense>
   );
 }
 

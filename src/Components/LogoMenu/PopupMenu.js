@@ -12,11 +12,6 @@ function PopupMenu(props) {
       contentStyle={props.contentStyle}
       closeOnDocumentClick={false}
       trigger={(open) => <BurgerIcon open={open} />}
-      // trigger={(open) => (
-      //   <button className='button' open={open}>
-      //     Open Modal
-      //   </button>
-      // )}
     >
       {(close) => <MenuItems close={close} />}
     </Popup>
