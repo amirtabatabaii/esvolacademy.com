@@ -15,7 +15,7 @@ class Home extends Component {
             <Navbar.Brand href='#home'>
               <Logo />
             </Navbar.Brand>
-            <Navbar.Toggle />
+
             <Navbar.Collapse className='justify-content-end p-4'>
               <span className='pr-3'>
                 <LanguageSelector />

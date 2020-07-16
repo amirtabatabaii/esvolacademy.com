@@ -8,7 +8,8 @@ import PopupMenu from "./PopupMenu";
 class Menu extends Component {
   render() {
     const smallContentStyle = {
-      width: "300px",
+      width: "250px",
+      left: "14%",
       height: "95%",
       borderRadius: "29px",
       background: "#f2f3f7",
@@ -16,8 +17,8 @@ class Menu extends Component {
     };
 
     const MediumContentStyle = {
-      width: "300px",
-      left: "28%",
+      width: "250px",
+      left: "33%",
       height: "95%",
       borderRadius: "29px",
       background: "#f2f3f7",
@@ -25,8 +26,8 @@ class Menu extends Component {
     };
 
     const BigContentStyle = {
-      width: "300px",
-      left: "38%",
+      width: "250px",
+      left: "40%",
       height: "95%",
       borderRadius: "29px",
       background: "#f2f3f7",
