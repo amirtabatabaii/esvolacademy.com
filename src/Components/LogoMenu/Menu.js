@@ -10,7 +10,8 @@ class Menu extends Component {
     const smallContentStyle = {
       width: "250px",
       left: "14%",
-      height: "95%",
+      top: "-15%",
+      height: "65%",
       borderRadius: "29px",
       background: "#f2f3f7",
       boxShadow: "10px 15px 15px #c0c5d8, -5px -5px 5px #ffffff",
@@ -19,7 +20,8 @@ class Menu extends Component {
     const MediumContentStyle = {
       width: "250px",
       left: "33%",
-      height: "95%",
+      top: "-15%",
+      height: "65%",
       borderRadius: "29px",
       background: "#f2f3f7",
       boxShadow: "10px 15px 15px #c0c5d8, -5px -5px 5px #ffffff",
@@ -28,7 +30,8 @@ class Menu extends Component {
     const BigContentStyle = {
       width: "250px",
       left: "40%",
-      height: "95%",
+      top: "-15%",
+      height: "65%",
       borderRadius: "29px",
       background: "#f2f3f7",
       boxShadow: "10px 15px 15px #c0c5d8, -10px -15px 15px #ffffff",

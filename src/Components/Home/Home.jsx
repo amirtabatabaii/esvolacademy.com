@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-
 import { Navbar } from "react-bootstrap";
 
 import Menu from "../LogoMenu/Menu";
 import Logo from "../LogoMenu/Logo";
 import LanguageSelector from "../Translate/LanguageSelector";
+import Section1 from "./Section1";
 
 class Home extends Component {
   render() {
@@ -12,7 +12,7 @@ class Home extends Component {
       <>
         <div className='height main-bg-color'>
           <Navbar className='p-3'>
-            <Navbar.Brand href='#home'>
+            <Navbar.Brand href='/'>
               <Logo />
             </Navbar.Brand>
 
@@ -20,11 +20,13 @@ class Home extends Component {
               <span className='pr-3'>
                 <LanguageSelector />
               </span>
-              {/* <span className='pr-3'> */}
               <Menu />
-              {/* </span> */}
             </Navbar.Collapse>
           </Navbar>
+
+          <div>
+            <Section1 />
+          </div>
         </div>
       </>
     );
