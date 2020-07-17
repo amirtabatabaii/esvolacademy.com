@@ -1,8 +1,6 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
 
-import TrEsvol from "../../assets/img/tr-home.png";
-import EnEsvol from "../../assets/img/en-home.png";
 import "./Section1.css";
 import ImageLanguage from "../Translate/Home/ImageLanguage";
 
