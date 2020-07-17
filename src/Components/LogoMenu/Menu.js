@@ -15,6 +15,7 @@ class Menu extends Component {
       borderRadius: "29px",
       background: "#f2f3f7",
       boxShadow: "10px 15px 15px #c0c5d8, -5px -5px 5px #ffffff",
+      border: "none",
     };
 
     const MediumContentStyle = {
@@ -25,6 +26,7 @@ class Menu extends Component {
       borderRadius: "29px",
       background: "#f2f3f7",
       boxShadow: "10px 15px 15px #c0c5d8, -5px -5px 5px #ffffff",
+      border: "none",
     };
 
     const BigContentStyle = {
@@ -35,6 +37,7 @@ class Menu extends Component {
       borderRadius: "29px",
       background: "#f2f3f7",
       boxShadow: "10px 15px 15px #c0c5d8, -10px -15px 15px #ffffff",
+      border: "none",
     };
 
     return (
