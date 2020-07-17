@@ -21,6 +21,7 @@
     "react-fontawesome": "^1.7.1",
     "react-i18next": "^11.7.0",
     "react-media": "^1.10.0",
+    "react-page-scroller": "^2.0.7-beta",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",

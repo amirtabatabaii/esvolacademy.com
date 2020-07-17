@@ -1,17 +1,7 @@
-.head-txt {
+.note-txt {
   color: #525252;
-  /* font-family: "Open Sans"; */
-  /* font-size: 100px; */
-  line-height: 4vw;
-}
-
-.head-txt-1 {
-  font-size: 7vw;
-  font-weight: 700;
-}
-
-.head-txt-2 {
-  font-size: 5vw;
-  font-weight: 600;
-  letter-spacing: 0.3vw;
+  font-size: 2vw;
+  font-weight: 300;
+  text-align: justify !important;
+  text-justify: auto !important;
 }

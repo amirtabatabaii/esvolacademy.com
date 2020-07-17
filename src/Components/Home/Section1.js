@@ -3,21 +3,33 @@ import { Row, Col, Image } from "react-bootstrap";
 
 import "./Section1.css";
 import ImageLanguage from "../Translate/Home/ImageLanguage";
+import Section11 from "../Translate/Home/Section11";
+import Esvol from "../../assets/img/home.png";
 
 function Section1() {
   return (
-    <div>
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        position: "relative",
+      }}
+    >
       <Row className='w-100 text-center'>
+        {/* lg={6} md={12} sm={12} */}
         <Col>
-          <div className='m-3'>
+          <p className='m-5'>
             <ImageLanguage />
-          </div>
-          {/* <p className='head-txt'>
-            <p className='head-txt-1'>ESVOL</p>
-            <p className='head-txt-2'>ile Geliş</p>
-          </p> */}
+          </p>
+
+          <p className='note-txt m-5'>
+            <Section11 />
+          </p>
         </Col>
-        <Col>2 of 2</Col>
+        {/* lg={6} md={12} sm={12} */}
+        <Col>
+          <Image src={Esvol} alt='esvol' fluid width='30%' />
+        </Col>
       </Row>
     </div>
   );
