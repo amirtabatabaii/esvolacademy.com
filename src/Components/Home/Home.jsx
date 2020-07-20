@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Navbar } from "react-bootstrap";
 // import ReactPageScroller from "react-page-scroller";
+import { Animated } from "react-animated-css";
 
 import Menu from "../LogoMenu/Menu";
 import Logo from "../LogoMenu/Logo";
@@ -33,7 +34,9 @@ class Home extends Component {
           </div>
 
           <div className='pb-5'>
-            <HomeCard />
+            <Animated animationIn='zoomIn' animationInDuration={1500}>
+              <HomeCard />
+            </Animated>
           </div>
 
           <div className='pb-5 pr-5'>

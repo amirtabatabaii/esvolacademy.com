@@ -8,7 +8,7 @@ function HomeCards() {
     <Row className='w-100 mt-4'>
       <Col lg={6} md={6} sm={6} xs={6}>
         <CardBody
-          txt={"Left-card-text"}
+          txt='Left-card-text'
           ImageSrc={Esvol}
           alt='esvol'
           width='50%'
@@ -17,7 +17,7 @@ function HomeCards() {
 
       <Col lg={6} md={6} sm={6} xs={6}>
         <CardBody
-          txt={"right-card-text"}
+          txt='right-card-text'
           ImageSrc={Esvol}
           alt='esvol'
           width='50%'
