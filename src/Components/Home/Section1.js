@@ -38,7 +38,7 @@ function Section1() {
 
         <Col lg={6} md={6} sm={6} xs={6} className='m-auto'>
           <Animated animationIn='fadeInLeft' animationInDuration={1000}>
-            <Image src={Esvol} alt='esvol' width='38%' />{" "}
+            <Image src={Esvol} alt='esvol' width='38%' />
           </Animated>
         </Col>
       </Row>

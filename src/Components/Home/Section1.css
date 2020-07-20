@@ -31,14 +31,16 @@
 }
 
 .button {
+  font-weight: 700;
+  line-height: 48px;
+  /*  */
   width: 250px;
   height: 60px;
   font-size: 20px;
   letter-spacing: 2.5px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  font-weight: 500;
-  color: #000;
+  color: #525252;
   background-color: #f2f3f7;
   border: none;
   border-radius: 45px;
@@ -58,6 +60,9 @@
 
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
   .button {
+    font-weight: 600;
+    line-height: 45px;
+    /*  */
     width: 170px; /* 200 */
     height: 40px; /* 50 */
     font-size: 15px; /* 15 */
@@ -67,6 +72,9 @@
 
 @media only screen and (max-width: 599px) {
   .button {
+    font-weight: 700;
+    line-height: 35px;
+    /*  */
     width: 150px; /* 200 */
     height: 30px; /* 50 */
     font-size: 10px; /* 15 */
