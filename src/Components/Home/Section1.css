@@ -52,8 +52,8 @@
 }
 
 .button:hover {
-  background-color: #2ee59d;
-  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  background-color: #19427c;
+  box-shadow: 0px 15px 20px rgb(25, 66, 124, 0.4);
   color: #fff;
   transform: translateY(-7px);
 }
@@ -91,7 +91,7 @@
 
 .home-card:hover {
   border: none !important;
-  background-color: #e6e9f5 !important;
+  background-color: #eceef5 !important;
   box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.4) !important;
   transform: translateY(+5px);
 }

@@ -4,8 +4,9 @@
   "MenuItem-GirisYap": "Login",
   "MenuItem-Iletisim": "Contact us",
   "MenuItem-Esvol": "Esvol",
-  "Home-Section1-1": "(30Word) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales vestibulum quam, quis sodales odio posuere at. Proin dictum dui sed interdum tempus. Vestibulum feugiat scelerisque arcu quis gravida.",
+  "Home-Section1-text": "(30Word) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales vestibulum quam, quis sodales odio posuere at. Proin dictum dui sed interdum tempus. Vestibulum feugiat scelerisque arcu quis gravida.",
   "Start-Button": "Start Now",
   "Left-card-text": "(15Word) Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit neque accumsan platea magna. Sed facilisi.",
-  "right-card-text": "(15Word) Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit neque accumsan platea magna. Sed facilisi."
+  "right-card-text": "(15Word) Lorem ipsum odor amet, consectetuer adipiscing elit. Suscipit neque accumsan platea magna. Sed facilisi.",
+  "Home-Section2-text": "(30Word) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales vestibulum quam, quis sodales odio posuere at. Proin dictum dui sed interdum tempus. Vestibulum feugiat scelerisque arcu quis gravida."
 }

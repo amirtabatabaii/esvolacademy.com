@@ -5,7 +5,7 @@ import { Animated } from "react-animated-css";
 function StartButton() {
   return (
     <Animated animationIn='shake' animationInDuration={1500}>
-      <div class='wrap'>
+      <div className='wrap'>
         <button className='button'>
           <StartBtn />
         </button>

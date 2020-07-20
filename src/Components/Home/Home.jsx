@@ -6,6 +6,7 @@ import Menu from "../LogoMenu/Menu";
 import Logo from "../LogoMenu/Logo";
 import LanguageSelector from "../Translate/LanguageSelector";
 import Section1 from "./Section1";
+import Section2 from "./Section2";
 import HomeCard from "./HomeCards";
 
 class Home extends Component {
@@ -34,6 +35,18 @@ class Home extends Component {
           <div className='pb-5'>
             <HomeCard />
           </div>
+
+          <div className='pb-5 pr-5'>
+            <Section2 />
+          </div>
+
+          <div
+            className='p-5 text-center'
+            style={{ backgroundColor: "rgb(25, 66, 124)", color: "white" }}
+          >
+            Footer
+          </div>
+
           {/* </ReactPageScroller> */}
         </div>
       </div>

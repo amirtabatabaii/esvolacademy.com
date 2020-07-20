@@ -51,21 +51,11 @@ class Menu extends Component {
         >
           {(matches) => (
             <Fragment>
-              {matches.small && (
-                <>
-                  <PopupMenu contentStyle={smallContentStyle} />
-                </>
-              )}
+              {matches.small && <PopupMenu contentStyle={smallContentStyle} />}
               {matches.medium && (
-                <>
-                  <PopupMenu contentStyle={MediumContentStyle} />
-                </>
+                <PopupMenu contentStyle={MediumContentStyle} />
               )}
-              {matches.large && (
-                <>
-                  <PopupMenu contentStyle={BigContentStyle} />
-                </>
-              )}
+              {matches.large && <PopupMenu contentStyle={BigContentStyle} />}
             </Fragment>
           )}
         </Media>
