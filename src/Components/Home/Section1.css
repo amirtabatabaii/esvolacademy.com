@@ -1,18 +1,27 @@
 .note-txt {
   color: #525252;
-  font-size: 2vw;
+  /* font-size: 2vw; */
+  font-size: 30px;
   font-weight: 300;
   text-align: justify !important;
   text-justify: auto !important;
 }
 
-/*.start-btn {
-  width: 313px;
-  height: 74px;
-  border-radius: 29px;
-  background-color: #f2f3f7;
-  box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
-} */
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
+  .note-txt {
+    font-size: 20px;
+    font-weight: 300;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .note-txt {
+    font-size: 15px;
+    font-weight: 300;
+  }
+}
+
+/*  */
 
 .wrap {
   height: 100%;
