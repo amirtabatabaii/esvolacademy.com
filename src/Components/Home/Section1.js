@@ -5,6 +5,7 @@ import "./Section1.css";
 import ImageLanguage from "../Translate/Home/ImageLanguage";
 import Section11 from "../Translate/Home/Section11";
 import Esvol from "../../assets/img/home.png";
+import StartButton from "./StartButton";
 
 function Section1() {
   return (
@@ -16,19 +17,19 @@ function Section1() {
       }}
     >
       <Row className='w-100 text-center'>
-        {/* lg={6} md={12} sm={12} */}
-        <Col>
-          <p className='m-5'>
+        <Col lg={6} md={6} sm={6} xs={6}>
+          <p className='m-auto pt-3 pb-3'>
             <ImageLanguage />
           </p>
 
-          <p className='note-txt m-5'>
+          <p className='note-txt m-auto pl-3'>
             <Section11 />
+            <StartButton />
           </p>
         </Col>
-        {/* lg={6} md={12} sm={12} */}
-        <Col>
-          <Image src={Esvol} alt='esvol' fluid width='30%' />
+
+        <Col lg={6} md={6} sm={6} xs={6} className='m-auto'>
+          <Image src={Esvol} alt='esvol' width='38%' />
         </Col>
       </Row>
     </div>

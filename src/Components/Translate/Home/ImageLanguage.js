@@ -11,9 +11,9 @@ const ImageLanguage = () => {
   return (
     <>
       {t("language") === "tr" ? (
-        <Image src={TrEsvol} alt='esvol' fluid width='40%' />
+        <Image src={TrEsvol} alt='esvol' width='50%' />
       ) : (
-        <Image src={EnEsvol} alt='esvol' fluid width='40%' />
+        <Image src={EnEsvol} alt='esvol' width='50%' />
       )}
     </>
   );

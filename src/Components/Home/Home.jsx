@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar } from "react-bootstrap";
-import ReactPageScroller from "react-page-scroller";
+// import ReactPageScroller from "react-page-scroller";
 
 import Menu from "../LogoMenu/Menu";
 import Logo from "../LogoMenu/Logo";
@@ -30,14 +30,8 @@ class Home extends Component {
             <Section1 />
           </div>
 
-          <div
-            style={{
-              height: "100%",
-              width: "100%",
-              position: "relative",
-            }}
-          >
-            sssssss
+          <div>
+            <p>sssssssssssss</p>
           </div>
           {/* </ReactPageScroller> */}
         </div>
