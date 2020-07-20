@@ -81,9 +81,19 @@
 }
 
 .home-card {
+  border: none !important;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
   border-radius: 29px !important;
   background: #f2f3f7 !important;
   box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff !important;
+}
+
+.home-card:hover {
+  border: none !important;
+  background-color: #e6e9f5 !important;
+  box-shadow: 5px 3px 15px rgba(0, 0, 0, 0.4) !important;
+  transform: translateY(+5px);
 }
 
 /*  */
