@@ -2,16 +2,16 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Animated } from "react-animated-css";
 
-const Section11 = () => {
+const CardText = (props) => {
   const { t } = useTranslation();
 
   return (
     <>
       <Animated animationIn='fadeIn' animationInDuration={1500}>
-        {t("Home-Section1-1")}
+        {t(props.text)}
       </Animated>
     </>
   );
 };
 
-export default Section11;
+export default CardText;

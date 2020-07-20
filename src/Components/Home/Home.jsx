@@ -6,6 +6,7 @@ import Menu from "../LogoMenu/Menu";
 import Logo from "../LogoMenu/Logo";
 import LanguageSelector from "../Translate/LanguageSelector";
 import Section1 from "./Section1";
+import HomeCard from "./HomeCards";
 
 class Home extends Component {
   render() {
@@ -30,8 +31,8 @@ class Home extends Component {
             <Section1 />
           </div>
 
-          <div>
-            <p>sssssssssssss</p>
+          <div className='pb-5'>
+            <HomeCard />
           </div>
           {/* </ReactPageScroller> */}
         </div>

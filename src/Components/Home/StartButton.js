@@ -1,15 +1,16 @@
 import React from "react";
 import StartBtn from "../Translate/Home/StartBtn";
+import { Animated } from "react-animated-css";
 
 function StartButton() {
   return (
-    <div>
+    <Animated animationIn='shake' animationInDuration={1500}>
       <div class='wrap'>
-        <button class='button'>
+        <button className='button'>
           <StartBtn />
         </button>
       </div>
-    </div>
+    </Animated>
   );
 }
 
