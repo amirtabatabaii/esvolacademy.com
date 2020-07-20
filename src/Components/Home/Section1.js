@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Image } from "react-bootstrap";
+import { Animated } from "react-animated-css";
 
 import "./Section1.css";
 import ImageLanguage from "../Translate/Home/ImageLanguage";
@@ -19,17 +20,26 @@ function Section1() {
       <Row className='w-100 text-center'>
         <Col lg={6} md={6} sm={6} xs={6}>
           <p className='m-auto pt-3 pb-3'>
-            <ImageLanguage />
+            <Animated animationIn='fadeInDown' animationInDuration={1000}>
+              <ImageLanguage />
+            </Animated>
           </p>
 
           <p className='note-txt m-auto pl-3'>
-            <Section11 />
-            <StartButton />
+            <Animated animationIn='fadeIn' animationInDuration={1500}>
+              <Section11 />
+            </Animated>
+
+            <Animated animationIn='shake' animationInDuration={1500}>
+              <StartButton />
+            </Animated>
           </p>
         </Col>
 
         <Col lg={6} md={6} sm={6} xs={6} className='m-auto'>
-          <Image src={Esvol} alt='esvol' width='38%' />
+          <Animated animationIn='fadeInLeft' animationInDuration={1000}>
+            <Image src={Esvol} alt='esvol' width='38%' />{" "}
+          </Animated>
         </Col>
       </Row>
     </div>
