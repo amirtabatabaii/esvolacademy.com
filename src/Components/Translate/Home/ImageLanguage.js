@@ -10,7 +10,7 @@ const ImageLanguage = () => {
   const { t } = useTranslation();
 
   return (
-    <Animated animationIn='fadeInDown' animationInDuration={1000}>
+    <Animated animationIn='fadeInUp' animationInDuration={1000}>
       {t("language") === "tr" ? (
         <Image src={TrEsvol} alt='esvol' width='50%' />
       ) : (

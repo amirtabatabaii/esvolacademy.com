@@ -17,7 +17,11 @@ class Home extends Component {
         <div id='page-wrap' className='App'>
           {/* <ReactPageScroller> */}
           <div className='App-header'>
-            <Navbar className='p-3'>
+            <Navbar
+              // className='p-3'
+              fixed='top'
+              style={{ backgroundColor: "#f2f3f7" }}
+            >
               <Navbar.Brand href='/'>
                 <Logo />
               </Navbar.Brand>
@@ -29,7 +33,9 @@ class Home extends Component {
                 <Menu />
               </Navbar.Collapse>
             </Navbar>
+          </div>
 
+          <div style={{ paddingTop: "130px" }}>
             <Section1 />
           </div>
 
