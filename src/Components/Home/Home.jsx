@@ -20,7 +20,7 @@ class Home extends Component {
           <div className='App-header'>
             <Navbar
               // className='p-3'
-              fixed='top'
+              // fixed='top'
               style={{ backgroundColor: "#f2f3f7" }}
             >
               <Navbar.Brand href='/'>
