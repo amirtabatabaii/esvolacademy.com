@@ -41,10 +41,10 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   color: #525252;
-  background-color: #f2f3f7;
+  background-color: #ffff;
   border: none;
   border-radius: 45px;
-  box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
+  box-shadow: 5px 3px 15px #90939e, -5px -3px 15px #ffffff;
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
