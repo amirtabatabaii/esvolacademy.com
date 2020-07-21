@@ -27,35 +27,35 @@ function Footer() {
           <Col md={3} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Linkler' />
             <ul className='list-group'>
-              <Li FooterItemText='Footer-Linkler-1' />
-              <Li FooterItemText='Footer-Linkler-2' />
-              <Li FooterItemText='Footer-Linkler-3' />
+              <Li href='/' target='' FooterItemText='Footer-Linkler-1' />
+              <Li href='/' target='' FooterItemText='Footer-Linkler-2' />
+              <Li href='/' target='' FooterItemText='Footer-Linkler-3' />
             </ul>
           </Col>
 
           <Col md={3} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Tipler' />
             <ul className='list-group'>
-              <Li FooterItemText='Footer-Tipler-1' />
-              <Li FooterItemText='Footer-Tipler-2' />
-              <Li FooterItemText='Footer-Tipler-3' />
+              <Li href='/' target='' FooterItemText='Footer-Tipler-1' />
+              <Li href='/' target='' FooterItemText='Footer-Tipler-2' />
+              <Li href='/' target='' FooterItemText='Footer-Tipler-3' />
             </ul>
           </Col>
 
           <Col md={3} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Kategoriler' />
             <ul className='list-group'>
-              <Li FooterItemText='Footer-Kategoriler-1' />
-              <Li FooterItemText='Footer-Kategoriler-2' />
+              <Li href='/' target='' FooterItemText='Footer-Kategoriler-1' />
+              <Li href='/' target='' FooterItemText='Footer-Kategoriler-2' />
             </ul>
           </Col>
 
           <Col md={3} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Iletisim' />
             <ul className='list-group'>
-              <Li FooterItemText='info@esvol.com' />
-              <Li FooterItemText='www.sgd.com' />
-              <Li FooterItemText='Footer-Iletisim-1' />
+              <Li href='/' target='' FooterItemText='info@esvol.com' />
+              <Li href='/' target='' FooterItemText='www.sgd.com' />
+              <Li href='/' target='' FooterItemText='Footer-Iletisim-1' />
               <div className='text-center'>
                 <FontAwesomeIcon
                   className='m-2'
