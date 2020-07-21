@@ -9,6 +9,7 @@ import LanguageSelector from "../Translate/LanguageSelector";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import HomeCard from "./HomeCards";
+import Footer from "../Footer/Footer";
 
 class Home extends Component {
   render() {
@@ -49,12 +50,7 @@ class Home extends Component {
             <Section2 />
           </div>
 
-          <div
-            className='p-5 text-center'
-            style={{ backgroundColor: "rgb(25, 66, 124)", color: "white" }}
-          >
-            Footer
-          </div>
+          {/* <Footer /> */}
 
           {/* </ReactPageScroller> */}
         </div>
