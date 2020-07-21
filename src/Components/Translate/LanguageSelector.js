@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
+// import "react-dropdown/style.css";
 import "./LanguageSelector.css";
 
 const LanguageSelector = () => {
