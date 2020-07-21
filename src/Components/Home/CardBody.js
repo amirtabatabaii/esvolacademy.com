@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
-import HomeImage from "../../Utility/Home/HomeImage";
-import CardText from "../../Translate/Home/CardText";
+import HomeImage from "../Utility/HomeImage";
+import CardText from "../Translate/Home/CardText";
 
 function CardBody(props) {
   return (

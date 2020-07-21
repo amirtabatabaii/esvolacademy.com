@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import Esvol from "../../assets/img/home.png";
-import CardBody from "../Utility/Home/CardBody";
+import CardBody from "../Home/CardBody";
 
 function HomeCards() {
   return (

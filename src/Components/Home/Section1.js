@@ -5,7 +5,7 @@ import "./Home.css";
 import ImageLanguage from "../Translate/Home/ImageLanguage";
 import Esvol from "../../assets/img/home.png";
 import StartButton from "./StartButton";
-import HomeImage from "../Utility/Home/HomeImage";
+import HomeImage from "../Utility/HomeImage";
 import SectionText from "../Translate/Home/SectionText";
 
 function Section1() {

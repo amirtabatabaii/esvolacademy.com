@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 
 import "./Home.css";
 import Esvol from "../../assets/img/home.png";
-import HomeImage from "../Utility/Home/HomeImage";
+import HomeImage from "../Utility/HomeImage";
 import SectionText from "../Translate/Home/SectionText";
 
 function Section2() {

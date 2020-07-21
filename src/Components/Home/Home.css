@@ -9,14 +9,14 @@
 
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
   .note-txt {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 300;
   }
 }
 
 @media only screen and (max-width: 599px) {
   .note-txt {
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 300;
   }
 }
@@ -110,7 +110,7 @@
 
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
   .card-txt {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 300;
     margin: 1vw;
   }
@@ -118,7 +118,7 @@
 
 @media only screen and (max-width: 599px) {
   .card-txt {
-    font-size: 15px;
+    font-size: 25px;
     font-weight: 300;
     margin: 0vw;
   }
