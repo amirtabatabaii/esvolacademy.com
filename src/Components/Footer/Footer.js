@@ -3,16 +3,22 @@ import FooterImg from "../../assets/img/footer.png";
 import { Image, Row, Col } from "react-bootstrap";
 
 import "./Footer.css";
-import FooterItem from "../Translate/Footer/FooterItem";
 import Li from "./Li";
 import SectionTitle from "./SectionTitle";
+
+import {
+  faLinkedin,
+  faInstagram,
+  faFacebookSquare,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ColStyle = "p-0 float-left text-center mb-sm-2 mt-sm-5 mb-2 mt-5";
 
 function Footer() {
   return (
     <footer className='pt-5 pb-5'>
-      <Row className='row w-100'>
+      <Row className='w-100'>
         <Col md={3} sm={12} className='text-center m-auto'>
           <Image src={FooterImg} alt='esvol' fluid />
         </Col>
@@ -50,6 +56,29 @@ function Footer() {
               <Li FooterItemText='info@esvol.com' />
               <Li FooterItemText='www.sgd.com' />
               <Li FooterItemText='Footer-Iletisim-1' />
+              <div className='text-center'>
+                <FontAwesomeIcon
+                  className='m-2'
+                  icon={faLinkedin}
+                  style={{ color: "#f2f3f7" }}
+                  transform='down-5 grow-15'
+                  fixedWidth
+                />
+                <FontAwesomeIcon
+                  className='m-2'
+                  icon={faInstagram}
+                  style={{ color: "#f2f3f7" }}
+                  transform='down-5 grow-15'
+                  fixedWidth
+                />
+                <FontAwesomeIcon
+                  className='m-2'
+                  icon={faFacebookSquare}
+                  style={{ color: "#f2f3f7" }}
+                  transform='down-5 grow-15'
+                  fixedWidth
+                />
+              </div>
             </ul>
           </Col>
         </Col>
@@ -57,4 +86,5 @@ function Footer() {
     </footer>
   );
 }
+
 export default Footer;
