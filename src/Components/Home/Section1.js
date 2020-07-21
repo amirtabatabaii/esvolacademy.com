@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 
-import "./Section1.css";
+import "./Home.css";
 import ImageLanguage from "../Translate/Home/ImageLanguage";
 import Esvol from "../../assets/img/home.png";
 import StartButton from "./StartButton";

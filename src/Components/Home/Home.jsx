@@ -50,7 +50,7 @@ class Home extends Component {
             <Section2 />
           </div>
 
-          {/* <Footer /> */}
+          <Footer />
 
           {/* </ReactPageScroller> */}
         </div>
