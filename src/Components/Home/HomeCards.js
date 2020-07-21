@@ -6,7 +6,7 @@ import CardBody from "../Utility/Home/CardBody";
 function HomeCards() {
   return (
     <Row className='w-100 mt-4'>
-      <Col lg={6} md={6} sm={6} xs={6}>
+      <Col lg={6} md={6} sm={6} xs={12}>
         <CardBody
           txt='Left-card-text'
           ImageSrc={Esvol}
@@ -15,7 +15,7 @@ function HomeCards() {
         />
       </Col>
 
-      <Col lg={6} md={6} sm={6} xs={6}>
+      <Col lg={6} md={6} sm={6} xs={12}>
         <CardBody
           txt='right-card-text'
           ImageSrc={Esvol}

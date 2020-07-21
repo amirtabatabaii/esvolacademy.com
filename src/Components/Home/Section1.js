@@ -11,8 +11,8 @@ import SectionText from "../Translate/Home/SectionText";
 function Section1() {
   return (
     <Row className='w-100 text-center'>
-      <Col lg={6} md={6} sm={6} xs={6}>
-        <div className='m-auto pt-3 pb-3'>
+      <Col lg={7} md={7} sm={7} xs={12}>
+        <div className='m-auto pt-3 pb-3 m-auto'>
           <ImageLanguage />
         </div>
 
@@ -22,7 +22,7 @@ function Section1() {
         </div>
       </Col>
 
-      <Col lg={6} md={6} sm={6} xs={6} className='m-auto'>
+      <Col lg={5} md={5} sm={5} xs={12} className='m-auto'>
         <HomeImage
           animationIn='fadeInLeft'
           animationInDuration={1000}

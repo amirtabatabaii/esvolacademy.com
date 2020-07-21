@@ -45,7 +45,7 @@ class Home extends Component {
             </Animated>
           </div>
 
-          <div className='pb-5 pr-5'>
+          <div className='pb-5'>
             <Section2 />
           </div>
 
