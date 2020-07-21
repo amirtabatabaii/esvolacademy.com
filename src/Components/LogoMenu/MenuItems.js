@@ -1,26 +1,23 @@
 import React from "react";
-import Hakkimizda from "../Translate/MenuBar/Hakkimizda";
-import GirisYap from "../Translate/MenuBar/GirisYap";
-import Iletisim from "../Translate/MenuBar/Iletisim";
-import Esvol from "../Translate/MenuBar/Esvol";
+import MenuItem from "../Translate/MenuBar/MenuItem";
 
 export default ({ close }) => (
   <div className='menu'>
     <ul>
       <li className='m-auto' onClick={close}>
-        <Hakkimizda />
+        <MenuItem MenuItemText='MenuItem-Hakkimizda' />
       </li>
 
       <li className='m-auto' onClick={close}>
-        <GirisYap />
+        <MenuItem MenuItemText='MenuItem-GirisYap' />
       </li>
 
       <li className='m-auto' onClick={close}>
-        <Iletisim />
+        <MenuItem MenuItemText='MenuItem-Iletisim' />
       </li>
 
       <li className='m-auto' onClick={close}>
-        <Esvol />
+        <MenuItem MenuItemText='MenuItem-Esvol' />
       </li>
     </ul>
   </div>

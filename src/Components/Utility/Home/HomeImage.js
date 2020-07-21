@@ -8,7 +8,7 @@ function HomeImage(props) {
       animationIn={props.animationIn}
       animationInDuration={props.animationInDuration}
     >
-      <Image src={props.ImageSrc} alt={props.alt} width={props.width} />
+      <Image src={props.ImageSrc} alt={props.alt} fluid width={props.width} />
     </Animated>
   );
 }

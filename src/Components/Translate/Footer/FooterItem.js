@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const Esvol = () => {
+const FooterItem = (props) => {
   const { t } = useTranslation();
 
-  return <>{t("MenuItem-Esvol")}</>;
+  return <>{t(props.FooterItemText)}</>;
 };
 
-export default Esvol;
+export default FooterItem;

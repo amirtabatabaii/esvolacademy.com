@@ -12,9 +12,9 @@ const ImageLanguage = () => {
   return (
     <Animated animationIn='fadeInUp' animationInDuration={1000}>
       {t("language") === "tr" ? (
-        <Image src={TrEsvol} alt='esvol' width='50%' />
+        <Image src={TrEsvol} alt='esvol' fluid width='50%' />
       ) : (
-        <Image src={EnEsvol} alt='esvol' width='50%' />
+        <Image src={EnEsvol} alt='esvol' fluid width='50%' />
       )}
     </Animated>
   );
