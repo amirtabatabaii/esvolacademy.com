@@ -7,9 +7,20 @@ import PopupMenu from "./PopupMenu";
 
 class Menu extends Component {
   render() {
+    const ExtraSmallContentStyle = {
+      width: "250px",
+      left: "6%",
+      top: "-16%",
+      height: "65%",
+      borderRadius: "29px",
+      background: "#f2f3f7",
+      boxShadow: "10px 15px 15px #c0c5d8, -5px -5px 5px #ffffff",
+      border: "none",
+    };
+
     const smallContentStyle = {
       width: "250px",
-      left: "14%",
+      left: "12%",
       top: "-15%",
       height: "65%",
       borderRadius: "29px",
@@ -44,13 +55,17 @@ class Menu extends Component {
       <div>
         <Media
           queries={{
-            small: "(max-width: 599px)",
+            Xsmall: "(max-width: 349px)",
+            small: "(min-width: 350px) and (max-width: 599px)",
             medium: "(min-width: 600px) and (max-width: 1199px)",
             large: "(min-width: 1200px)",
           }}
         >
           {(matches) => (
             <Fragment>
+              {matches.Xsmall && (
+                <PopupMenu contentStyle={ExtraSmallContentStyle} />
+              )}
               {matches.small && <PopupMenu contentStyle={smallContentStyle} />}
               {matches.medium && (
                 <PopupMenu contentStyle={MediumContentStyle} />
