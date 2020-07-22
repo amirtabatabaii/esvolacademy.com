@@ -1,15 +1,11 @@
-import React, { Component } from "react";
-import { Navbar } from "react-bootstrap";
-// import ReactPageScroller from "react-page-scroller";
+import React, { Component } from "react"; // import ReactPageScroller from "react-page-scroller";
 import { Animated } from "react-animated-css";
 
-import Menu from "../LogoMenu/Menu";
-import Logo from "../LogoMenu/Logo";
-import LanguageSelector from "../Translate/LanguageSelector";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import HomeCard from "./HomeCards";
 import Footer from "../Footer/Footer";
+import NavBar from "./NavBar";
 
 class Home extends Component {
   render() {
@@ -18,18 +14,13 @@ class Home extends Component {
         <div id='page-wrap' className='App'>
           {/* <ReactPageScroller> */}
           <div className='App-header'>
-            <Navbar fixed='top' style={{ backgroundColor: "#f2f3f7" }}>
-              <Navbar.Brand href='/'>
-                <Logo />
-              </Navbar.Brand>
-
-              <Navbar.Collapse className='justify-content-end p-4'>
-                <span className='pr-3'>
-                  <LanguageSelector />
-                </span>
-                <Menu />
-              </Navbar.Collapse>
-            </Navbar>
+            <NavBar
+              bgColor='main-bg-color'
+              MenuItem1='MenuItem-Hakkimizda'
+              MenuItem2='MenuItem-GirisYap'
+              MenuItem3='MenuItem-Iletisim'
+              MenuItem4='MenuItem-Esvol'
+            />
           </div>
 
           <div style={{ paddingTop: "130px" }}>

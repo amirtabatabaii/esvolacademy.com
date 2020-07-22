@@ -64,13 +64,41 @@ class Menu extends Component {
           {(matches) => (
             <Fragment>
               {matches.Xsmall && (
-                <PopupMenu contentStyle={ExtraSmallContentStyle} />
+                <PopupMenu
+                  contentStyle={ExtraSmallContentStyle}
+                  MenuItem1={this.props.MenuItem1}
+                  MenuItem2={this.props.MenuItem2}
+                  MenuItem3={this.props.MenuItem3}
+                  MenuItem4={this.props.MenuItem4}
+                />
               )}
-              {matches.small && <PopupMenu contentStyle={smallContentStyle} />}
+              {matches.small && (
+                <PopupMenu
+                  contentStyle={smallContentStyle}
+                  MenuItem1={this.props.MenuItem1}
+                  MenuItem2={this.props.MenuItem2}
+                  MenuItem3={this.props.MenuItem3}
+                  MenuItem4={this.props.MenuItem4}
+                />
+              )}
               {matches.medium && (
-                <PopupMenu contentStyle={MediumContentStyle} />
+                <PopupMenu
+                  contentStyle={MediumContentStyle}
+                  MenuItem1={this.props.MenuItem1}
+                  MenuItem2={this.props.MenuItem2}
+                  MenuItem3={this.props.MenuItem3}
+                  MenuItem4={this.props.MenuItem4}
+                />
               )}
-              {matches.large && <PopupMenu contentStyle={BigContentStyle} />}
+              {matches.large && (
+                <PopupMenu
+                  contentStyle={BigContentStyle}
+                  MenuItem1={this.props.MenuItem1}
+                  MenuItem2={this.props.MenuItem2}
+                  MenuItem3={this.props.MenuItem3}
+                  MenuItem4={this.props.MenuItem4}
+                />
+              )}
             </Fragment>
           )}
         </Media>

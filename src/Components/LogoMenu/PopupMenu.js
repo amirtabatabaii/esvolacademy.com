@@ -13,7 +13,15 @@ function PopupMenu(props) {
       closeOnDocumentClick={false}
       trigger={(open) => <BurgerIcon open={open} />}
     >
-      {(close) => <MenuItems close={close} />}
+      {(close) => (
+        <MenuItems
+          close={close}
+          MenuItem1={props.MenuItem1}
+          MenuItem2={props.MenuItem2}
+          MenuItem3={props.MenuItem3}
+          MenuItem4={props.MenuItem4}
+        />
+      )}
     </Popup>
   );
 }
