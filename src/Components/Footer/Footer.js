@@ -53,9 +53,9 @@ function Footer() {
           <Col md={3} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Iletisim' />
             <ul className='list-group'>
-              <Li href='/' target='' FooterItemText='info@esvol.com' />
-              <Li href='/' target='' FooterItemText='www.sgd.com' />
               <Li href='/' target='' FooterItemText='Footer-Iletisim-1' />
+              <Li href='/' target='' FooterItemText='Footer-Iletisim-2' />
+              <Li href='/' target='' FooterItemText='Footer-Iletisim-3' />
               <div className='text-center'>
                 <FontAwesomeIcon
                   className='m-2'
