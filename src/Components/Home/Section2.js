@@ -1,10 +1,11 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
+import { Animated } from "react-animated-css";
 
 import "./Home.css";
 import Esvol from "../../assets/img/home.png";
 import HomeImage from "../Utility/HomeImage";
-import SectionText from "../Translate/Home/SectionText";
+import TranslateText from "../Translate/TranslateText";
 
 function Section2() {
   return (
@@ -22,7 +23,9 @@ function Section2() {
 
         <Col lg={7} md={7} sm={7} xs={12}>
           <div className='note-txt m-auto p-3'>
-            <SectionText HomeSectionText={"Home-Section2-text"} />
+            <Animated animationIn='fadeIn' animationInDuration={1500}>
+              <TranslateText txt='Home-Section2-text' />
+            </Animated>
           </div>
         </Col>
       </Row>

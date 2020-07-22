@@ -18,11 +18,7 @@ class Home extends Component {
         <div id='page-wrap' className='App'>
           {/* <ReactPageScroller> */}
           <div className='App-header'>
-            <Navbar
-              // className='p-3'
-              fixed='top'
-              style={{ backgroundColor: "#f2f3f7" }}
-            >
+            <Navbar fixed='top' style={{ backgroundColor: "#f2f3f7" }}>
               <Navbar.Brand href='/'>
                 <Logo />
               </Navbar.Brand>

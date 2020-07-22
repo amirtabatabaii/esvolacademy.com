@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import HomeImage from "../Utility/HomeImage";
-import CardText from "../Translate/Home/CardText";
+import TranslateText from "../Translate/TranslateText";
 
 function CardBody(props) {
   return (
@@ -10,7 +10,7 @@ function CardBody(props) {
         <Col lg={8} md={8}>
           <Card.Body className='h-100'>
             <Card.Text className='card-txt'>
-              <CardText txt={props.txt} />
+              <TranslateText txt={props.txt} />
             </Card.Text>
           </Card.Body>
         </Col>
