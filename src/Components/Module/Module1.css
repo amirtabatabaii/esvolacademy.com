@@ -1,0 +1,8 @@
+.left-side {
+  width: 250px;
+  height: 77vh;
+  margin-left: 10px;
+  border-radius: 29px;
+  background: linear-gradient(136deg, #ff8859, #f47f53);
+  box-shadow: -5px -5px 8px #ff9a64, 5px 5px 8px #c16442;
+}
