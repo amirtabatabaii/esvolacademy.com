@@ -19,11 +19,11 @@ function Footer() {
   return (
     <footer className='pt-5 pb-5'>
       <Row className='w-100'>
-        <Col md={3} sm={12} className='text-center m-auto'>
+        <Col md={4} sm={12} className='text-center m-auto p-3'>
           <Image src={FooterImg} alt='esvol' fluid />
         </Col>
 
-        <Col md={9} sm={12} xs={12}>
+        <Col md={8} sm={12} xs={12}>
           <Col md={3} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Linkler' />
             <ul className='list-group'>
