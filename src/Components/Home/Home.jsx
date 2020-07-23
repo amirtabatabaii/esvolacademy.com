@@ -15,6 +15,7 @@ class Home extends Component {
           {/* <ReactPageScroller> */}
           <div className='App-header'>
             <NavBar
+              bgColor='main-bg-color'
               MenuItem1='MenuItem-Hakkimizda'
               MenuItem2='MenuItem-GirisYap'
               MenuItem3='MenuItem-Iletisim'
