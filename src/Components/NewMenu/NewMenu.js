@@ -14,29 +14,29 @@ function NewMenu(props) {
         <span></span>
 
         <ul id='menu'>
-          <a href='/'>
-            <li>
+          <li>
+            <a href='/'>
               <TranslateText txt={props.MenuItem1} />
-            </li>
-          </a>
+            </a>
+          </li>
 
-          <a href='/'>
-            <li>
+          <li>
+            <a href='/'>
               <TranslateText txt={props.MenuItem2} />
-            </li>
-          </a>
+            </a>
+          </li>
 
-          <a href='/'>
-            <li>
+          <li>
+            <a href='/'>
               <TranslateText txt={props.MenuItem3} />
-            </li>
-          </a>
+            </a>
+          </li>
 
-          <a href='/'>
-            <li>
+          <li>
+            <a href='/'>
               <TranslateText txt={props.MenuItem4} />
-            </li>
-          </a>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
