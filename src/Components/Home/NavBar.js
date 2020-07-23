@@ -1,16 +1,18 @@
 import React from "react";
 
 import { Navbar } from "react-bootstrap";
-import Menu from "../LogoMenu/Menu";
-import Logo from "../LogoMenu/Logo";
+import NewMenu from "../NewMenu/NewMenu";
 import LanguageSelector from "../Translate/LanguageSelector";
+
+import { Image } from "react-bootstrap";
+import EsvolLogo from "../../assets/img/logo.png";
 
 function NavBar(props) {
   return (
     <div>
       <Navbar fixed='top' className={props.bgColor}>
         <Navbar.Brand href='/'>
-          <Logo />
+          <Image src={EsvolLogo} alt='esvol' />
         </Navbar.Brand>
 
         <Navbar.Collapse className='justify-content-end p-4'>
@@ -18,7 +20,7 @@ function NavBar(props) {
             <LanguageSelector />
           </span>
 
-          <Menu
+          <NewMenu
             MenuItem1={props.MenuItem1}
             MenuItem2={props.MenuItem2}
             MenuItem3={props.MenuItem3}
