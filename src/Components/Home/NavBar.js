@@ -9,26 +9,24 @@ import EsvolLogo from "../../assets/img/logo.png";
 
 function NavBar(props) {
   return (
-    <div>
-      <Navbar fixed='top' className={props.bgColor}>
-        <Navbar.Brand href='/'>
-          <Image src={EsvolLogo} alt='esvol' />
-        </Navbar.Brand>
+    <Navbar fixed='top' className={props.bgColor}>
+      <Navbar.Brand href='/'>
+        <Image src={EsvolLogo} alt='esvol' />
+      </Navbar.Brand>
 
-        <Navbar.Collapse className='justify-content-end p-4'>
-          <span className='pr-3'>
-            <LanguageSelector />
-          </span>
+      <Navbar.Collapse className='justify-content-end p-4'>
+        <span className='pr-3'>
+          <LanguageSelector />
+        </span>
 
-          <NewMenu
-            MenuItem1={props.MenuItem1}
-            MenuItem2={props.MenuItem2}
-            MenuItem3={props.MenuItem3}
-            MenuItem4={props.MenuItem4}
-          />
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
+        <NewMenu
+          MenuItem1={props.MenuItem1}
+          MenuItem2={props.MenuItem2}
+          MenuItem3={props.MenuItem3}
+          MenuItem4={props.MenuItem4}
+        />
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
