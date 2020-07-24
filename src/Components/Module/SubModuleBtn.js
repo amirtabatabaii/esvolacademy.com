@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
 // import styled from "./Module1.css";
-import { Row, Image } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 import Module1sub1a from "../../assets/img/m1sub1a.png";
 import Module1sub1 from "../../assets/img/m1sub1.png";

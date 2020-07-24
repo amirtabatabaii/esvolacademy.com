@@ -10,7 +10,7 @@ import SubModuleBtn from "./SubModuleBtn";
 class ModuleHome extends Component {
   state = {
     activeModule: "Module1",
-    activeSubModule: "sub3",
+    activeSubModule: "sub1",
   };
 
   render() {
