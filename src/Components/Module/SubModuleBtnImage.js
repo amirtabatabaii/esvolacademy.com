@@ -10,12 +10,11 @@ function SubModuleBtnImage(props) {
           : props.normalImage
       }
       fluid
-      // width='20%'
-      width='70px'
+      width='60px'
       className={`${
         props.activeSubModule === props.subName
-          ? `${props.activeModule}-ActiveSubStyle p-1 m-1`
-          : `${props.activeModule}-NormalSubStyle p-1 m-1`
+          ? `${props.activeModule}-ActiveSubStyle`
+          : `${props.activeModule}-NormalSubStyle`
       }`}
     />
   );

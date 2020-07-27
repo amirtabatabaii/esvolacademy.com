@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import styled from "styled-components";
 // import styled from "./Module1.css";
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 import Module1sub1a from "../../assets/img/m1sub1a.png";
 import Module1sub1 from "../../assets/img/m1sub1.png";
@@ -26,76 +26,74 @@ class SubModuleBtn extends Component {
     const { activeSubModule, activeModule } = this.props;
 
     return (
-      <div className='d-none d-lg-block'>
-        <Row className='w-10'>
-          <SubModuleBtnImage
-            activeSubModule={activeSubModule}
-            activeModule={activeModule}
-            activeImage={Module1sub1a}
-            normalImage={Module1sub1}
-            subName='sub1'
-          />
+      <div className='d-none d-lg-block '>
+        <Row className='w-100'>
+          <Col>
+            <SubModuleBtnImage
+              activeSubModule={activeSubModule}
+              activeModule={activeModule}
+              activeImage={Module1sub1a}
+              normalImage={Module1sub1}
+              subName='sub1'
+            />
+          </Col>
+          <Col>
+            <SubModuleBtnImage
+              activeSubModule={activeSubModule}
+              activeModule={activeModule}
+              activeImage={Module1sub2a}
+              normalImage={Module1sub2}
+              subName='sub2'
+            />
+          </Col>
+          <Col>
+            <SubModuleBtnImage
+              activeSubModule={activeSubModule}
+              activeModule={activeModule}
+              activeImage={Module1sub3a}
+              normalImage={Module1sub3}
+              subName='sub3'
+            />
+          </Col>
+          <Col>
+            <SubModuleBtnImage
+              activeSubModule={activeSubModule}
+              activeModule={activeModule}
+              activeImage={Module1sub4a}
+              normalImage={Module1sub4}
+              subName='sub4'
+            />
+          </Col>
+          <Col>
+            <SubModuleBtnImage
+              activeSubModule={activeSubModule}
+              activeModule={activeModule}
+              activeImage={Module1sub5a}
+              normalImage={Module1sub5}
+              subName='sub5'
+            />
+          </Col>
+          <Col>
+            <SubModuleBtnImage
+              activeSubModule={activeSubModule}
+              activeModule={activeModule}
+              activeImage={Module1sub6a}
+              normalImage={Module1sub6}
+              subName='sub6'
+            />
+          </Col>
+          <Col>
+            <SubModuleBtnImage
+              activeSubModule={activeSubModule}
+              activeModule={activeModule}
+              activeImage={Module1sub7a}
+              normalImage={Module1sub7}
+              subName='sub7'
+            />
+          </Col>
         </Row>
 
-        <Row className='w-10'>
-          <SubModuleBtnImage
-            activeSubModule={activeSubModule}
-            activeModule={activeModule}
-            activeImage={Module1sub2a}
-            normalImage={Module1sub2}
-            subName='sub2'
-          />
-        </Row>
-
-        <Row className='w-10'>
-          <SubModuleBtnImage
-            activeSubModule={activeSubModule}
-            activeModule={activeModule}
-            activeImage={Module1sub3a}
-            normalImage={Module1sub3}
-            subName='sub3'
-          />
-        </Row>
-
-        <Row className='w-10'>
-          <SubModuleBtnImage
-            activeSubModule={activeSubModule}
-            activeModule={activeModule}
-            activeImage={Module1sub4a}
-            normalImage={Module1sub4}
-            subName='sub4'
-          />
-        </Row>
-
-        <Row className='w-10'>
-          <SubModuleBtnImage
-            activeSubModule={activeSubModule}
-            activeModule={activeModule}
-            activeImage={Module1sub5a}
-            normalImage={Module1sub5}
-            subName='sub5'
-          />
-        </Row>
-
-        <Row className='w-10'>
-          <SubModuleBtnImage
-            activeSubModule={activeSubModule}
-            activeModule={activeModule}
-            activeImage={Module1sub6a}
-            normalImage={Module1sub6}
-            subName='sub6'
-          />
-        </Row>
-
-        <Row className='w-10'>
-          <SubModuleBtnImage
-            activeSubModule={activeSubModule}
-            activeModule={activeModule}
-            activeImage={Module1sub7a}
-            normalImage={Module1sub7}
-            subName='sub7'
-          />
-        </Row>
+        {/* <Row className='w-10'></Row> */}
       </div>
     );
   }

@@ -3,17 +3,21 @@
   color: #f2f3f7;
   font-size: 28px;
   font-weight: 600;
-  line-height: 48px;
+  /* line-height: 48px; */
+  line-height: 9vh;
   text-align: center;
-  padding-top: 45px;
+  /* padding-top: 45px; */
+  padding-top: 9vh;
   cursor: pointer;
 }
 
 .module-text-active {
   font-weight: 600;
-  line-height: 48px;
+  /* line-height: 48px; */
+  line-height: 9vh;
   text-align: center;
-  padding-top: 35px;
+  /* padding-top: 35px; */
+  padding-top: 9vh;
   cursor: default;
   font-size: 32px;
 }
@@ -37,6 +41,7 @@
 }
 
 .Module1-panel {
+  height: 100vh;
   border-radius: 19px;
   background: linear-gradient(136deg, #ff8859, #f47f53) !important;
   box-shadow: -5px -5px 8px #ff9a64, 5px 5px 8px #c16442 !important;
@@ -51,6 +56,15 @@
   box-shadow: -5px -5px 8px #ff9a64, 5px 5px 8px #c16442 !important;
   border-radius: 10px;
 }
+
+.Module1-sub-panel {
+  width: 160vh;
+  height: 80vh;
+  border-radius: 19px;
+  background: linear-gradient(136deg, #ff8859, #f47f53) !important;
+  box-shadow: -5px -5px 8px #ff9a64, 5px 5px 8px #c16442 !important;
+}
+
 /* ----------------------------------------------- */
 
 /* Module 2 */
@@ -65,6 +79,7 @@
 }
 
 .Module2-panel {
+  height: 100vh;
   border-radius: 19px;
   background: linear-gradient(136deg, #c7b257, #a79549) !important;
   box-shadow: -5px -5px 8px #e1c962, 5px 5px 8px #938340 !important;

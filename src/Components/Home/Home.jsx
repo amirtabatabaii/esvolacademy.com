@@ -1,4 +1,5 @@
-import React, { Component } from "react"; // import ReactPageScroller from "react-page-scroller";
+import React, { Component } from "react";
+// import ReactPageScroller from "react-page-scroller";
 import { Animated } from "react-animated-css";
 
 import Section1 from "./Section1";

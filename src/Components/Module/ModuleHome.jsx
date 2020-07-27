@@ -7,10 +7,12 @@ import EsvolLogo from "../../assets/img/logo.png";
 import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
 
+// import ReactPageScroller from "react-page-scroller";
+
 class ModuleHome extends Component {
   state = {
     activeModule: "Module1",
-    activeSubModule: "sub1",
+    activeSubModule: "sub3",
   };
 
   render() {
@@ -34,7 +36,7 @@ class ModuleHome extends Component {
 
         <Row style={{ paddingTop: "130px" }} className='w-100'>
           <Col lg={2}>
-            <div className={`${activeModule}-panel d-none d-lg-block ml-3`}>
+            <div className={`${activeModule}-panel d-none d-lg-block ml-4 `}>
               <h3
                 className={`${
                   activeModule === "Module1"
@@ -92,6 +94,20 @@ class ModuleHome extends Component {
               activeSubModule={activeSubModule}
               activeModule={activeModule}
             />
+
+            <Col
+              lg={9}
+              // className='w-100'
+              // style={{
+              //   width: "200%",
+              //   height: "100vh",
+              //   overflow: "scroll",
+              // }}
+            >
+              <div className={`${activeModule}-sub-panel mt-5`}>
+                <h1 className='m-5 p-5'>Content</h1>
+              </div>
+            </Col>
           </Col>
         </Row>
       </div>
