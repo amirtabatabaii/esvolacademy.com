@@ -1,0 +1,5 @@
+.sub1-video {
+  /* border-radius: 19px; */
+  border-radius: 19px 19px 0 0;
+  overflow: hidden;
+}

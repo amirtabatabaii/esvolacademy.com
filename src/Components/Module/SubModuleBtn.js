@@ -92,8 +92,6 @@ class SubModuleBtn extends Component {
             />
           </Col>
         </Row>
-
-        {/* <Row className='w-10'></Row> */}
       </div>
     );
   }
