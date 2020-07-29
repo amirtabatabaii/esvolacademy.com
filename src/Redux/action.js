@@ -1,19 +1,13 @@
-import { HOME_MOTTO } from "./types";
+import { TEST } from "./types";
 
-///// Change HOME_MOTTO
-export const changeHomeMotto = (HomeMottoLine1, HomeMottoLine2) => (
-  dispatch
-) => {
+// register Active Module
+export const registerActiveModule = (
+  activeModule,
+  activeSubModule,
+  subModuleComplationRatio
+) => (dispatch) => {
   dispatch({
-    type: HOME_MOTTO,
-    payload: { HomeMottoLine1, HomeMottoLine2 },
+    type: TEST,
+    payload: { activeModule, activeSubModule, subModuleComplationRatio },
   });
 };
-
-///// register show teklif al modal
-// export const showTeklifAlModal = (showModal) => (dispatch) => {
-//   dispatch({
-//     type: SHOW_MODAL,
-//     payload: { showModal },
-//   });
-// };

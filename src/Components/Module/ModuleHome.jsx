@@ -8,16 +8,29 @@ import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
 import SubModule1 from "../SubModules/SubModule1";
 
+import { withRouter } from "react-router-dom";
+import { registerActiveModule } from "../../Redux/action";
+import { connect } from "react-redux";
+
 // import ReactPageScroller from "react-page-scroller";
 
 class ModuleHome extends Component {
   state = {
-    activeModule: "Module1",
-    activeSubModule: "sub1",
+    activeModule: "",
+    activeSubModule: "",
+    subModuleComplationRatio: "",
   };
 
+  componentWillMount() {
+    this.props.registerActiveModule("Module1", "sub1", "80");
+  }
+
   render() {
-    const { activeModule, activeSubModule } = this.state;
+    const {
+      activeModule,
+      activeSubModule,
+      subModuleComplationRatio,
+    } = this.props;
 
     return (
       <div className={`${activeModule}-bg-color pb-5`}>
@@ -97,7 +110,10 @@ class ModuleHome extends Component {
             />
 
             <Col>
-              <SubModule1 activeModule={activeModule} />
+              <SubModule1
+                activeModule={activeModule}
+                subModuleComplationRatio={subModuleComplationRatio}
+              />
             </Col>
           </Col>
         </Row>
@@ -106,4 +122,12 @@ class ModuleHome extends Component {
   }
 }
 
-export default ModuleHome;
+const mapStateToProps = (state) => ({
+  activeModule: state.activeModule,
+  activeSubModule: state.activeSubModule,
+  subModuleComplationRatio: state.subModuleComplationRatio,
+});
+
+export default connect(mapStateToProps, {
+  registerActiveModule,
+})(withRouter(ModuleHome));

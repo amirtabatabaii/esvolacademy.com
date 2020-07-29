@@ -1,24 +1,24 @@
-import { HOME_MOTTO } from "./types";
+import { TEST } from "./types";
 
 const initialState = {
-  test: "Hi",
+  activeModule: "",
+  activeSubModule: "",
+  subModuleComplationRatio: "",
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case HOME_MOTTO:
+    case TEST:
       return {
         ...state,
-        HomeMottoLine1: action.payload.HomeMottoLine1,
-        HomeMottoLine2: action.payload.HomeMottoLine2,
+        activeModule: action.payload.activeModule,
+        activeSubModule: action.payload.activeSubModule,
+        subModuleComplationRatio: action.payload.subModuleComplationRatio,
       };
-    //   case SHOW_MODAL:
-    //     return {
-    //       ...state,
-    //       showModal: action.payload.showModal,
-    //       // hideModal: action.payload.hideModal,
-    //     };
+
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 }

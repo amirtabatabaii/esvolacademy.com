@@ -55,7 +55,11 @@ class SubModule1 extends Component {
           <Button
             className='m-3'
             size='lg'
-            disabled={played.toFixed(2) * 100 > 80 ? false : true}
+            disabled={
+              played.toFixed(2) * 100 > this.props.subModuleComplationRatio
+                ? false
+                : true
+            }
           >
             next
           </Button>
