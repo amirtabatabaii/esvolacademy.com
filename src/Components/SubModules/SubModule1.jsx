@@ -16,7 +16,6 @@ class SubModule1 extends Component {
   };
 
   handleProgress = (state) => {
-    console.log("onProgress", state);
     if (!this.state.seeking) {
       this.setState(state);
     }
@@ -41,17 +40,6 @@ class SubModule1 extends Component {
             />
           </div>
         </section>
-        {/* <div className='sub1-video'>
-          <ReactPlayer
-            // width='100%'
-            // height='100%'
-            url='https://www.youtube.com/watch?v=4OkiH2yD-eQ'
-            // url='https://www.kastanjetextile.com/video/kastanje-en.mp4'
-            controls='true'
-            onDuration={this.handleDuration}
-            onProgress={this.handleProgress}
-          />
-        </div> */}
 
         <ProgressBar
           animated

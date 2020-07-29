@@ -7,7 +7,7 @@ function NewMenu(props) {
   return (
     <nav role='navigation'>
       <div id='menuToggle'>
-        <input type='checkbox' />
+        <input type='checkbox' name='esvol' />
 
         <span></span>
         <span style={{ width: "70%", left: "30%" }}></span>

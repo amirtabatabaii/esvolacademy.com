@@ -11,6 +11,7 @@ function SubModuleBtnImage(props) {
       }
       fluid
       width='60px'
+      alt=''
       className={`${
         props.activeSubModule === props.subName
           ? `${props.activeModule}-ActiveSubStyle`
