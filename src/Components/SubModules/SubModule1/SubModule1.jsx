@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
-import { Button, Row, ProgressBar } from "react-bootstrap";
+import { Row, ProgressBar } from "react-bootstrap";
 
-import "../Module/ModuleHome.css";
-import "./SubModule.css";
+import "../../Module/ModuleHome.css";
+import "../SubModule.css";
+import Sub1Button from "./Sub1Button";
 
 class SubModule1 extends Component {
   state = {
@@ -51,18 +52,25 @@ class SubModule1 extends Component {
         />
 
         <Row className='w-100 d-flex justify-content-around'>
-          <Button className='m-3'>previous</Button>
-          <Button
+          <Sub1Button
             className='m-3'
             size='lg'
-            disabled={
+            ifCondition={this.props.activeSubModule === "sub1"}
+            IfAction={true}
+            elseAction={false}
+            text='Previous'
+          />
+
+          <Sub1Button
+            className='m-3'
+            size='lg'
+            ifCondition={
               played.toFixed(2) * 100 > this.props.subModuleComplationRatio
-                ? false
-                : true
             }
-          >
-            next
-          </Button>
+            IfAction={false}
+            elseAction={true}
+            text='Next'
+          />
         </Row>
       </div>
     );

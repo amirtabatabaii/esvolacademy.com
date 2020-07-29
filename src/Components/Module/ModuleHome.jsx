@@ -6,7 +6,7 @@ import EsvolLogo from "../../assets/img/logo.png";
 
 import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
-import SubModule1 from "../SubModules/SubModule1";
+import SubModule1 from "../SubModules/SubModule1/SubModule1";
 
 import { withRouter } from "react-router-dom";
 import { registerActiveModule } from "../../Redux/action";
@@ -112,6 +112,7 @@ class ModuleHome extends Component {
             <Col>
               <SubModule1
                 activeModule={activeModule}
+                activeSubModule={activeSubModule}
                 subModuleComplationRatio={subModuleComplationRatio}
               />
             </Col>
