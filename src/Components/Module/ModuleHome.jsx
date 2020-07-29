@@ -37,11 +37,11 @@ class ModuleHome extends Component {
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub3");
+    this.props.UserActiveModuleSubModule("Module1", "sub1");
     this.props.SubModuleDetail(
       "SubModule_1_Video",
       "https://www.youtube.com/watch?v=4OkiH2yD-eQ",
-      // "https://www.kastanjetextile.com/video/kastanje-en.mp4",
+      //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
       "80"
     );
   }

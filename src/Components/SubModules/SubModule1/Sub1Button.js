@@ -6,7 +6,7 @@ function Sub1Button(props) {
     <Button
       className={props.className}
       size={props.size}
-      disabled={props.ifCondition ? props.IfAction : props.elseAction}
+      // disabled={props.ifCondition ? props.IfAction : props.elseAction}
       onClick={() => props.onClick("sub2")}
     >
       {props.text}

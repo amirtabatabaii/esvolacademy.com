@@ -47,14 +47,14 @@ class SubModule1 extends Component {
           </div>
         </section>
 
-        <ProgressBar
+        {/* <ProgressBar
           animated
           max={1}
           now={played}
           label={`${played.toFixed(2) * 100}%`}
           variant={`${userActiveModule}-bg-color`}
           className='m-3'
-        />
+        /> */}
 
         <Row className='w-100 d-flex justify-content-around'>
           {/* <Sub1Button
@@ -67,11 +67,16 @@ class SubModule1 extends Component {
           /> */}
 
           <Sub1Button
-            className='m-3'
+            // className='m-3'
+            className={
+              played.toFixed(2) * 100 > SubModuleRatio
+                ? "visible m-3"
+                : "invisible m-3"
+            }
             size='lg'
-            ifCondition={played.toFixed(2) * 100 > SubModuleRatio}
-            IfAction={false}
-            elseAction={true}
+            // ifCondition={played.toFixed(2) * 100 > SubModuleRatio}
+            // IfAction={false}
+            // elseAction={true}
             text='Next'
             onClick={onClick}
           />
