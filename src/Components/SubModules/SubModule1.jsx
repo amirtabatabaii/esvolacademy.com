@@ -26,17 +26,32 @@ class SubModule1 extends Component {
     const { played } = this.state;
 
     return (
-      <div className={`${this.props.activeModule}-sub-panel mt-4`}>
-        <div className='sub1-video'>
+      <div className={`${this.props.activeModule}-sub-panel mt-4 app`}>
+        <section className='section'>
+          <div className='player-wrapper'>
+            <ReactPlayer
+              url='https://www.youtube.com/watch?v=4OkiH2yD-eQ'
+              // url='https://www.kastanjetextile.com/video/kastanje-en.mp4'
+              className='react-player'
+              width='100%'
+              height='100%'
+              controls='true'
+              onDuration={this.handleDuration}
+              onProgress={this.handleProgress}
+            />
+          </div>
+        </section>
+        {/* <div className='sub1-video'>
           <ReactPlayer
-            width='100%'
-            height='100vh'
+            // width='100%'
+            // height='100%'
             url='https://www.youtube.com/watch?v=4OkiH2yD-eQ'
+            // url='https://www.kastanjetextile.com/video/kastanje-en.mp4'
             controls='true'
             onDuration={this.handleDuration}
             onProgress={this.handleProgress}
           />
-        </div>
+        </div> */}
 
         <ProgressBar
           animated

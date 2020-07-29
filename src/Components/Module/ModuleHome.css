@@ -58,7 +58,7 @@
 }
 
 .Module1-sub-panel {
-  width: 100%;
+  width: 100% !important;
   height: 100% !important;
   border-radius: 19px;
   background: linear-gradient(136deg, #ff8859, #f47f53) !important;
