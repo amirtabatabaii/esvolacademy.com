@@ -1,19 +1,39 @@
-import { TEST } from "./types";
+import {
+  USER_ACTIVE_MODULE_SUBMODULE,
+  SELECTED_SUBMODULE,
+  SUBMODULE_DETAIL,
+} from "./types";
 
 const initialState = {
-  activeModule: "",
-  activeSubModule: "",
-  subModuleComplationRatio: "",
+  userActiveModule: "",
+  userActiveSubModule: "",
+  //
+  SubModuleTitle: "",
+  SubModuleUrl: "",
+  SubModuleRatio: "",
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case TEST:
+    case USER_ACTIVE_MODULE_SUBMODULE:
       return {
         ...state,
-        activeModule: action.payload.activeModule,
-        activeSubModule: action.payload.activeSubModule,
-        subModuleComplationRatio: action.payload.subModuleComplationRatio,
+        userActiveModule: action.payload.userActiveModule,
+        userActiveSubModule: action.payload.userActiveSubModule,
+      };
+
+    case SELECTED_SUBMODULE:
+      return {
+        ...state,
+        userActiveSubModule: action.payload.userActiveSubModule,
+      };
+
+    case SUBMODULE_DETAIL:
+      return {
+        ...state,
+        SubModuleTitle: action.payload.SubModuleTitle,
+        SubModuleUrl: action.payload.SubModuleUrl,
+        SubModuleRatio: action.payload.SubModuleRatio,
       };
 
     default:

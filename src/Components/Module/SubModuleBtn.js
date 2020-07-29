@@ -23,72 +23,85 @@ import "./ModuleHome.css";
 
 class SubModuleBtn extends Component {
   render() {
-    const { activeSubModule, activeModule } = this.props;
+    const { userActiveSubModule, userActiveModule, onClick } = this.props;
 
     return (
       <div className='d-none d-lg-block '>
         <Row className='w-100'>
           <Col>
             <SubModuleBtnImage
-              activeSubModule={activeSubModule}
-              activeModule={activeModule}
+              userActiveSubModule={userActiveSubModule}
+              userActiveModule={userActiveModule}
               activeImage={Module1sub1a}
               normalImage={Module1sub1}
               subName='sub1'
+              onClick={onClick}
             />
           </Col>
+
           <Col>
             <SubModuleBtnImage
-              activeSubModule={activeSubModule}
-              activeModule={activeModule}
+              userActiveSubModule={userActiveSubModule}
+              userActiveModule={userActiveModule}
               activeImage={Module1sub2a}
               normalImage={Module1sub2}
               subName='sub2'
+              onClick={onClick}
             />
           </Col>
+
           <Col>
             <SubModuleBtnImage
-              activeSubModule={activeSubModule}
-              activeModule={activeModule}
+              userActiveSubModule={userActiveSubModule}
+              userActiveModule={userActiveModule}
               activeImage={Module1sub3a}
               normalImage={Module1sub3}
               subName='sub3'
+              onClick={onClick}
             />
           </Col>
+
           <Col>
             <SubModuleBtnImage
-              activeSubModule={activeSubModule}
-              activeModule={activeModule}
+              userActiveSubModule={userActiveSubModule}
+              userActiveModule={userActiveModule}
               activeImage={Module1sub4a}
               normalImage={Module1sub4}
               subName='sub4'
+              onClick={onClick}
             />
           </Col>
+
           <Col>
             <SubModuleBtnImage
-              activeSubModule={activeSubModule}
-              activeModule={activeModule}
+              userActiveSubModule={userActiveSubModule}
+              userActiveModule={userActiveModule}
               activeImage={Module1sub5a}
               normalImage={Module1sub5}
               subName='sub5'
+              onClick={onClick}
             />
           </Col>
+
           <Col>
             <SubModuleBtnImage
-              activeSubModule={activeSubModule}
-              activeModule={activeModule}
+              userActiveSubModule={userActiveSubModule}
+              userActiveModule={userActiveModule}
               activeImage={Module1sub6a}
               normalImage={Module1sub6}
               subName='sub6'
+              onClick={onClick}
             />
           </Col>
+
           <Col>
             <SubModuleBtnImage
-              activeSubModule={activeSubModule}
-              activeModule={activeModule}
+              userActiveSubModule={userActiveSubModule}
+              userActiveModule={userActiveModule}
               activeImage={Module1sub7a}
               normalImage={Module1sub7}
               subName='sub7'
+              onClick={onClick}
             />
           </Col>
         </Row>

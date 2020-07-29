@@ -1,13 +1,36 @@
-import { TEST } from "./types";
+import {
+  USER_ACTIVE_MODULE_SUBMODULE,
+  SELECTED_SUBMODULE,
+  SUBMODULE_DETAIL,
+} from "./types";
 
-// register Active Module
-export const registerActiveModule = (
-  activeModule,
-  activeSubModule,
-  subModuleComplationRatio
+// User Active Module SubModule
+export const UserActiveModuleSubModule = (
+  userActiveModule,
+  userActiveSubModule
 ) => (dispatch) => {
   dispatch({
-    type: TEST,
-    payload: { activeModule, activeSubModule, subModuleComplationRatio },
+    type: USER_ACTIVE_MODULE_SUBMODULE,
+    payload: { userActiveModule, userActiveSubModule },
+  });
+};
+
+// Selected SubModule
+export const SelectedSubModule = (userActiveSubModule) => (dispatch) => {
+  dispatch({
+    type: SELECTED_SUBMODULE,
+    payload: { userActiveSubModule },
+  });
+};
+
+// SubModule Detail
+export const SubModuleDetail = (
+  SubModuleTitle,
+  SubModuleUrl,
+  SubModuleRatio
+) => (dispatch) => {
+  dispatch({
+    type: SUBMODULE_DETAIL,
+    payload: { SubModuleTitle, SubModuleUrl, SubModuleRatio },
   });
 };

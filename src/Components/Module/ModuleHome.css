@@ -8,7 +8,7 @@
   text-align: center;
   /* padding-top: 45px; */
   padding-top: 9vh;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .module-text-active {
@@ -50,11 +50,13 @@
 .Module1-ActiveSubStyle {
   box-shadow: inset 5px 5px 8px #c16442, inset -5px -5px 8px #ff9a64 !important;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .Module1-NormalSubStyle {
   box-shadow: -5px -5px 8px #ff9a64, 5px 5px 8px #c16442 !important;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .Module1-sub-panel {

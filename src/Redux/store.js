@@ -3,9 +3,12 @@ import thunk from "redux-thunk";
 import Reducer from "./reducer";
 
 const initialState = {
-  activeModule: "",
-  activeSubModule: "",
-  subModuleComplationRatio: "",
+  userActiveModule: "",
+  userActiveSubModule: "",
+  //
+  SubModuleTitle: "",
+  SubModuleUrl: "",
+  SubModuleRatio: "",
 };
 
 const middleware = [thunk];

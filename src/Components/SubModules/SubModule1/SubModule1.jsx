@@ -24,18 +24,23 @@ class SubModule1 extends Component {
 
   render() {
     const { played } = this.state;
+    const {
+      userActiveModule,
+      SubModuleUrl,
+      SubModuleRatio,
+      onClick,
+    } = this.props;
 
     return (
-      <div className={`${this.props.activeModule}-sub-panel mt-4 app`}>
+      <div className={`${userActiveModule}-sub-panel mt-4 app`}>
         <section className='section'>
           <div className='player-wrapper'>
             <ReactPlayer
-              url='https://www.youtube.com/watch?v=4OkiH2yD-eQ'
-              // url='https://www.kastanjetextile.com/video/kastanje-en.mp4'
+              url={SubModuleUrl}
               className='react-player'
               width='100%'
               height='100%'
-              controls='true'
+              controls={true}
               onDuration={this.handleDuration}
               onProgress={this.handleProgress}
             />
@@ -47,29 +52,28 @@ class SubModule1 extends Component {
           max={1}
           now={played}
           label={`${played.toFixed(2) * 100}%`}
-          variant={`${this.props.activeModule}-bg-color`}
+          variant={`${userActiveModule}-bg-color`}
           className='m-3'
         />
 
         <Row className='w-100 d-flex justify-content-around'>
-          <Sub1Button
+          {/* <Sub1Button
             className='m-3'
             size='lg'
-            ifCondition={this.props.activeSubModule === "sub1"}
+            ifCondition={activeSubModule === "sub1"}
             IfAction={true}
             elseAction={false}
             text='Previous'
-          />
+          /> */}
 
           <Sub1Button
             className='m-3'
             size='lg'
-            ifCondition={
-              played.toFixed(2) * 100 > this.props.subModuleComplationRatio
-            }
+            ifCondition={played.toFixed(2) * 100 > SubModuleRatio}
             IfAction={false}
             elseAction={true}
             text='Next'
+            onClick={onClick}
           />
         </Row>
       </div>

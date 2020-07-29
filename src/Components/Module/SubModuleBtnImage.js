@@ -2,10 +2,14 @@ import React from "react";
 import { Image } from "react-bootstrap";
 
 function SubModuleBtnImage(props) {
+  // const handleOnClick = (ActiveSubName) => {
+  //   console.log("ActiveSubName : ", ActiveSubName);
+  // };
+
   return (
     <Image
       src={
-        props.activeSubModule === props.subName
+        props.userActiveSubModule === props.subName
           ? props.activeImage
           : props.normalImage
       }
@@ -13,10 +17,11 @@ function SubModuleBtnImage(props) {
       width='60px'
       alt=''
       className={`${
-        props.activeSubModule === props.subName
-          ? `${props.activeModule}-ActiveSubStyle`
-          : `${props.activeModule}-NormalSubStyle`
+        props.userActiveSubModule === props.subName
+          ? `${props.userActiveModule}-ActiveSubStyle`
+          : `${props.userActiveModule}-NormalSubStyle`
       }`}
+      onClick={() => props.onClick(props.subName)}
     />
   );
 }
