@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -14,11 +14,6 @@
 }
 
 .App-header {
-  /* style={{
-    height: "100%",
-    width: "100%",
-    position: "relative",
-  }} */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,4 +34,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

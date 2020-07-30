@@ -5,9 +5,9 @@ import { Row } from "react-bootstrap";
 
 import "../../Module/ModuleHome.css";
 import "../SubModule.css";
-import Sub1Button from "./Sub1Button";
+import Sub2Button from "./Sub2Button";
 
-class SubModule1 extends Component {
+class SubModule2 extends Component {
   state = {
     played: 0,
     duration: 0,
@@ -47,6 +47,7 @@ class SubModule1 extends Component {
             />
           </div>
         </section>
+
         {/* <ProgressBar
           animated
           max={1}
@@ -55,6 +56,7 @@ class SubModule1 extends Component {
           variant={`${userActiveModule}-bg-color`}
           className='m-3'
         /> */}
+
         <Row className='w-100 d-flex justify-content-around'>
           {/* <Sub1Button
             className='m-3'
@@ -65,7 +67,7 @@ class SubModule1 extends Component {
             text='Previous'
           /> */}
 
-          <Sub1Button
+          <Sub2Button
             // className='m-3'
             className={
               played.toFixed(2) * 100 > SubModuleRatio
@@ -84,4 +86,4 @@ class SubModule1 extends Component {
     );
   }
 }
-export default SubModule1;
+export default SubModule2;

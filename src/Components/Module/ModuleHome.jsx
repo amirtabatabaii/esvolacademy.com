@@ -7,6 +7,7 @@ import EsvolLogo from "../../assets/img/logo.png";
 import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
 import SubModule1 from "../SubModules/SubModule1/SubModule1";
+import SubModule2 from "../SubModules/SubModule2/SubModule2";
 
 import { withRouter } from "react-router-dom";
 import {
@@ -16,8 +17,6 @@ import {
   SubModule2Detail,
 } from "../../Redux/action";
 import { connect } from "react-redux";
-
-// import ReactPageScroller from "react-page-scroller";
 
 class ModuleHome extends Component {
   constructor(props) {
@@ -35,17 +34,13 @@ class ModuleHome extends Component {
       SubModule2Ratio: "",
     };
 
-    this.handleOnClickSubModule1Next = this.handleOnClickSubModule1Next.bind(
-      this
-    );
-    this.handleOnClickSubModule2Next = this.handleOnClickSubModule2Next.bind(
-      this
-    );
+    this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
     this.handleOnClickSubModule = this.handleOnClickSubModule.bind(this);
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub3");
+
     this.props.SubModule1Detail(
       "SubModule_1_Video",
       "https://www.youtube.com/watch?v=4OkiH2yD-eQ",
@@ -55,21 +50,22 @@ class ModuleHome extends Component {
 
     this.props.SubModule2Detail(
       "SubModule_2_Video",
-      //"https://www.youtube.com/watch?v=4OkiH2yD-eQ",
-      "https://www.kastanjetextile.com/video/kastanje-en.mp4",
-      "50"
+      "https://youtu.be/vcmRk0Mxevk",
+      //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
+      "60"
     );
   }
 
   handleOnClickSubModule(ActiveSubName) {
-    this.props.SelectedSubModule(ActiveSubName);
+    const UserActiveSubNumber = this.props.userActiveSubModule.substring(3);
+    const UserSelectedSubNumber = ActiveSubName.substring(3);
+
+    if (UserSelectedSubNumber > UserActiveSubNumber)
+      alert("NOOOOOOOOOOOOOOOOO");
+    else this.props.SelectedSubModule(ActiveSubName);
   }
 
-  handleOnClickSubModule1Next(ActiveSubName) {
-    this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
-  }
-
-  handleOnClickSubModule2Next(ActiveSubName) {
+  handleClickSubModuleNext(ActiveSubName) {
     this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
   }
 
@@ -171,16 +167,20 @@ class ModuleHome extends Component {
                   userActiveSubModule={userActiveSubModule}
                   SubModuleUrl={SubModule1Url}
                   SubModuleRatio={SubModule1Ratio}
-                  onClick={this.handleOnClickSubModule1Next}
+                  onClick={this.handleClickSubModuleNext}
                 />
               </Col>
             ) : null}
 
             {userActiveSubModule === "sub2" ? (
               <Col>
-                <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5 p-5'>SubModule 2</h1>
-                </div>
+                <SubModule2
+                  userActiveModule={userActiveModule}
+                  userActiveSubModule={userActiveSubModule}
+                  SubModuleUrl={SubModule2Url}
+                  SubModuleRatio={SubModule2Ratio}
+                  onClick={this.handleClickSubModuleNext}
+                />
               </Col>
             ) : null}
 
