@@ -181,8 +181,8 @@ class ModuleHome extends Component {
 
               {userActiveSubModule === "sub3" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='p-5'>SubModule 3</h1>
-                  <h1 className='p-5'>Interactive Tool</h1>
+                  <h1 className='m-5'>SubModule 3</h1>
+                  <h1 className='m-5'>Interactive Tool</h1>
                   <Button
                     className='m-3'
                     size='lg'
@@ -195,7 +195,7 @@ class ModuleHome extends Component {
 
               {userActiveSubModule === "sub4" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='p-5'>SubModule 4</h1>
+                  <h1 className='m-5'>SubModule 4</h1>
                   <h1 className='m-5'>Expert Video 1</h1>
                   <h1 className='m-5'>Expert Video 2</h1>
                   <Button
@@ -210,8 +210,8 @@ class ModuleHome extends Component {
 
               {userActiveSubModule === "sub5" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='p-5'>SubModule 5</h1>
-                  <h1 className='p-5'>Reading</h1>
+                  <h1 className='m-5'>SubModule 5</h1>
+                  <h1 className='m-5'>Reading</h1>
                   <Button
                     className='m-3'
                     size='lg'
@@ -224,8 +224,8 @@ class ModuleHome extends Component {
 
               {userActiveSubModule === "sub6" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='p-5'>SubModule 6</h1>
-                  <h1 className='p-5'>Case Study</h1>
+                  <h1 className='m-5'>SubModule 6</h1>
+                  <h1 className='m-5'>Case Study</h1>
                   <Button
                     className='m-3'
                     size='lg'
@@ -238,8 +238,8 @@ class ModuleHome extends Component {
 
               {userActiveSubModule === "sub7" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='p-5'>SubModule 7</h1>
-                  <h1 className='p-5'>Quiz</h1>
+                  <h1 className='m-5'>SubModule 7</h1>
+                  <h1 className='m-5'>Quiz</h1>
                   <Button
                     className='m-3'
                     size='lg'
