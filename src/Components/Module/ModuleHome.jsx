@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Navbar, Image, Row, Col } from "react-bootstrap";
+import { Navbar, Image, Row, Col, Button } from "react-bootstrap";
 import NewMenu from "../NewMenu/NewMenu";
 import LanguageSelector from "../Translate/LanguageSelector";
 import EsvolLogo from "../../assets/img/logo.png";
@@ -59,10 +59,9 @@ class ModuleHome extends Component {
   handleOnClickSubModule(ActiveSubName) {
     const UserActiveSubNumber = this.props.userActiveSubModule.substring(3);
     const UserSelectedSubNumber = ActiveSubName.substring(3);
-
-    if (UserSelectedSubNumber > UserActiveSubNumber)
-      alert("NOOOOOOOOOOOOOOOOO");
-    else this.props.SelectedSubModule(ActiveSubName);
+    if (UserSelectedSubNumber < UserActiveSubNumber)
+      this.props.SelectedSubModule(ActiveSubName);
+    else alert("YOU CAN NOT ENTER THIS SUBMODULE !!!!!! :-)");
   }
 
   handleClickSubModuleNext(ActiveSubName) {
@@ -157,7 +156,6 @@ class ModuleHome extends Component {
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               onClick={this.handleOnClickSubModule}
-              ActiveSubModule
             />
 
             {userActiveSubModule === "sub1" ? (
@@ -187,7 +185,15 @@ class ModuleHome extends Component {
             {userActiveSubModule === "sub3" ? (
               <Col>
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5 p-5'>SubModule 3</h1>
+                  <h1 className='p-5'>SubModule 3</h1>
+                  <h1 className='p-5'>Interactive Tool</h1>
+                  <Button
+                    className='m-3'
+                    size='lg'
+                    onClick={() => this.handleClickSubModuleNext("sub4")}
+                  >
+                    Next SubModule
+                  </Button>
                 </div>
               </Col>
             ) : null}
@@ -195,7 +201,16 @@ class ModuleHome extends Component {
             {userActiveSubModule === "sub4" ? (
               <Col>
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5 p-5'>SubModule 4</h1>
+                  <h1 className='p-5'>SubModule 4</h1>
+                  <h1 className='m-5'>Expert Video 1</h1>
+                  <h1 className='m-5'>Expert Video 2</h1>
+                  <Button
+                    className='m-3'
+                    size='lg'
+                    onClick={() => this.handleClickSubModuleNext("sub5")}
+                  >
+                    Next SubModule
+                  </Button>
                 </div>
               </Col>
             ) : null}
@@ -203,7 +218,15 @@ class ModuleHome extends Component {
             {userActiveSubModule === "sub5" ? (
               <Col>
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5 p-5'>SubModule 5</h1>
+                  <h1 className='p-5'>SubModule 5</h1>
+                  <h1 className='p-5'>Reading</h1>
+                  <Button
+                    className='m-3'
+                    size='lg'
+                    onClick={() => this.handleClickSubModuleNext("sub6")}
+                  >
+                    Next SubModule
+                  </Button>
                 </div>
               </Col>
             ) : null}
@@ -211,7 +234,15 @@ class ModuleHome extends Component {
             {userActiveSubModule === "sub6" ? (
               <Col>
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5 p-5'>SubModule 6</h1>
+                  <h1 className='p-5'>SubModule 6</h1>
+                  <h1 className='p-5'>Case Study</h1>
+                  <Button
+                    className='m-3'
+                    size='lg'
+                    onClick={() => this.handleClickSubModuleNext("sub7")}
+                  >
+                    Next SubModule
+                  </Button>
                 </div>
               </Col>
             ) : null}
@@ -219,7 +250,20 @@ class ModuleHome extends Component {
             {userActiveSubModule === "sub7" ? (
               <Col>
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5 p-5'>SubModule 7</h1>
+                  <h1 className='p-5'>SubModule 7</h1>
+                  <h1 className='p-5'>Quiz</h1>
+                  <Button
+                    className='m-3'
+                    size='lg'
+                    onClick={() =>
+                      this.props.UserActiveModuleSubModule(
+                        `Module${parseInt(userActiveModule.substring(6)) + 1}`,
+                        "sub1"
+                      )
+                    }
+                  >
+                    Next Module
+                  </Button>
                 </div>
               </Col>
             ) : null}
