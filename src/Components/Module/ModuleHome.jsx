@@ -158,8 +158,8 @@ class ModuleHome extends Component {
               onClick={this.handleOnClickSubModule}
             />
 
-            {userActiveSubModule === "sub1" ? (
-              <Col>
+            <Col>
+              {userActiveSubModule === "sub1" ? (
                 <SubModule1
                   userActiveModule={userActiveModule}
                   userActiveSubModule={userActiveSubModule}
@@ -167,11 +167,9 @@ class ModuleHome extends Component {
                   SubModuleRatio={SubModule1Ratio}
                   onClick={this.handleClickSubModuleNext}
                 />
-              </Col>
-            ) : null}
+              ) : null}
 
-            {userActiveSubModule === "sub2" ? (
-              <Col>
+              {userActiveSubModule === "sub2" ? (
                 <SubModule2
                   userActiveModule={userActiveModule}
                   userActiveSubModule={userActiveSubModule}
@@ -179,11 +177,9 @@ class ModuleHome extends Component {
                   SubModuleRatio={SubModule2Ratio}
                   onClick={this.handleClickSubModuleNext}
                 />
-              </Col>
-            ) : null}
+              ) : null}
 
-            {userActiveSubModule === "sub3" ? (
-              <Col>
+              {userActiveSubModule === "sub3" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='p-5'>SubModule 3</h1>
                   <h1 className='p-5'>Interactive Tool</h1>
@@ -195,11 +191,9 @@ class ModuleHome extends Component {
                     Next SubModule
                   </Button>
                 </div>
-              </Col>
-            ) : null}
+              ) : null}
 
-            {userActiveSubModule === "sub4" ? (
-              <Col>
+              {userActiveSubModule === "sub4" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='p-5'>SubModule 4</h1>
                   <h1 className='m-5'>Expert Video 1</h1>
@@ -212,11 +206,9 @@ class ModuleHome extends Component {
                     Next SubModule
                   </Button>
                 </div>
-              </Col>
-            ) : null}
+              ) : null}
 
-            {userActiveSubModule === "sub5" ? (
-              <Col>
+              {userActiveSubModule === "sub5" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='p-5'>SubModule 5</h1>
                   <h1 className='p-5'>Reading</h1>
@@ -228,11 +220,9 @@ class ModuleHome extends Component {
                     Next SubModule
                   </Button>
                 </div>
-              </Col>
-            ) : null}
+              ) : null}
 
-            {userActiveSubModule === "sub6" ? (
-              <Col>
+              {userActiveSubModule === "sub6" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='p-5'>SubModule 6</h1>
                   <h1 className='p-5'>Case Study</h1>
@@ -244,11 +234,9 @@ class ModuleHome extends Component {
                     Next SubModule
                   </Button>
                 </div>
-              </Col>
-            ) : null}
+              ) : null}
 
-            {userActiveSubModule === "sub7" ? (
-              <Col>
+              {userActiveSubModule === "sub7" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='p-5'>SubModule 7</h1>
                   <h1 className='p-5'>Quiz</h1>
@@ -265,8 +253,8 @@ class ModuleHome extends Component {
                     Next Module
                   </Button>
                 </div>
-              </Col>
-            ) : null}
+              ) : null}
+            </Col>
           </Col>
         </Row>
       </div>
