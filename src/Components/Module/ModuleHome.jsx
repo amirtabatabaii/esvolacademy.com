@@ -12,7 +12,8 @@ import { withRouter } from "react-router-dom";
 import {
   SelectedSubModule,
   UserActiveModuleSubModule,
-  SubModuleDetail,
+  SubModule1Detail,
+  SubModule2Detail,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 
@@ -25,12 +26,19 @@ class ModuleHome extends Component {
       userActiveModule: "",
       userActiveSubModule: "",
       //
-      SubModuleTitle: "",
-      SubModuleUrl: "",
-      SubModuleRatio: "",
+      SubModule1Title: "",
+      SubModule1Url: "",
+      SubModule1Ratio: "",
+      //
+      SubModule2Title: "",
+      SubModule2Url: "",
+      SubModule2Ratio: "",
     };
 
     this.handleOnClickSubModule1Next = this.handleOnClickSubModule1Next.bind(
+      this
+    );
+    this.handleOnClickSubModule2Next = this.handleOnClickSubModule2Next.bind(
       this
     );
     this.handleOnClickSubModule = this.handleOnClickSubModule.bind(this);
@@ -38,11 +46,18 @@ class ModuleHome extends Component {
 
   componentDidMount() {
     this.props.UserActiveModuleSubModule("Module1", "sub1");
-    this.props.SubModuleDetail(
+    this.props.SubModule1Detail(
       "SubModule_1_Video",
       "https://www.youtube.com/watch?v=4OkiH2yD-eQ",
       //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
       "80"
+    );
+
+    this.props.SubModule2Detail(
+      "SubModule_2_Video",
+      //"https://www.youtube.com/watch?v=4OkiH2yD-eQ",
+      "https://www.kastanjetextile.com/video/kastanje-en.mp4",
+      "50"
     );
   }
 
@@ -54,12 +69,18 @@ class ModuleHome extends Component {
     this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
   }
 
+  handleOnClickSubModule2Next(ActiveSubName) {
+    this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
+  }
+
   render() {
     const {
       userActiveModule,
       userActiveSubModule,
-      SubModuleUrl,
-      SubModuleRatio,
+      SubModule1Url,
+      SubModule1Ratio,
+      SubModule2Url,
+      SubModule2Ratio,
     } = this.props;
 
     return (
@@ -148,8 +169,8 @@ class ModuleHome extends Component {
                 <SubModule1
                   userActiveModule={userActiveModule}
                   userActiveSubModule={userActiveSubModule}
-                  SubModuleUrl={SubModuleUrl}
-                  SubModuleRatio={SubModuleRatio}
+                  SubModuleUrl={SubModule1Url}
+                  SubModuleRatio={SubModule1Ratio}
                   onClick={this.handleOnClickSubModule1Next}
                 />
               </Col>
@@ -213,13 +234,18 @@ const mapStateToProps = (state) => ({
   userActiveModule: state.userActiveModule,
   userActiveSubModule: state.userActiveSubModule,
   //
-  SubModuleTitle: state.SubModuleTitle,
-  SubModuleUrl: state.SubModuleUrl,
-  SubModuleRatio: state.SubModuleRatio,
+  SubModule1Title: state.SubModule1Title,
+  SubModule1Url: state.SubModule1Url,
+  SubModule1Ratio: state.SubModule1Ratio,
+  //
+  SubModule2Title: state.SubModule2Title,
+  SubModule2Url: state.SubModule2Url,
+  SubModule2Ratio: state.SubModule2Ratio,
 });
 
 export default connect(mapStateToProps, {
   SelectedSubModule,
   UserActiveModuleSubModule,
-  SubModuleDetail,
+  SubModule1Detail,
+  SubModule2Detail,
 })(withRouter(ModuleHome));

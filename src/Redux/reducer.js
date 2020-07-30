@@ -1,16 +1,21 @@
 import {
   USER_ACTIVE_MODULE_SUBMODULE,
   SELECTED_SUBMODULE,
-  SUBMODULE_DETAIL,
+  SUBMODULE_1_DETAIL,
+  SUBMODULE_2_DETAIL,
 } from "./types";
 
 const initialState = {
   userActiveModule: "",
   userActiveSubModule: "",
   //
-  SubModuleTitle: "",
-  SubModuleUrl: "",
-  SubModuleRatio: "",
+  SubModule1Title: "",
+  SubModule1Url: "",
+  SubModule1Ratio: "",
+  //
+  SubModule2Title: "",
+  SubModule2Url: "",
+  SubModule2Ratio: "",
 };
 
 export default function (state = initialState, action) {
@@ -28,12 +33,20 @@ export default function (state = initialState, action) {
         userActiveSubModule: action.payload.userActiveSubModule,
       };
 
-    case SUBMODULE_DETAIL:
+    case SUBMODULE_1_DETAIL:
       return {
         ...state,
-        SubModuleTitle: action.payload.SubModuleTitle,
-        SubModuleUrl: action.payload.SubModuleUrl,
-        SubModuleRatio: action.payload.SubModuleRatio,
+        SubModule1Title: action.payload.SubModule1Title,
+        SubModule1Url: action.payload.SubModule1Url,
+        SubModule1Ratio: action.payload.SubModule1Ratio,
+      };
+
+    case SUBMODULE_2_DETAIL:
+      return {
+        ...state,
+        SubModule2Title: action.payload.SubModule2Title,
+        SubModule2Url: action.payload.SubModule2Url,
+        SubModule2Ratio: action.payload.SubModule2Ratio,
       };
 
     default:

@@ -6,9 +6,13 @@ const initialState = {
   userActiveModule: "",
   userActiveSubModule: "",
   //
-  SubModuleTitle: "",
-  SubModuleUrl: "",
-  SubModuleRatio: "",
+  SubModule1Title: "",
+  SubModule1Url: "",
+  SubModule1Ratio: "",
+  //
+  SubModule2Title: "",
+  SubModule2Url: "",
+  SubModule2Ratio: "",
 };
 
 const middleware = [thunk];
