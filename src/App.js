@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import module from "./Components/Module/ModuleHome";
 import "./Components/Translate/i18n";
+import AdminLogin from "./Components/AdminSection/Login/AdminLogin";
+import AdminMain from "./Components/AdminSection/AdminMain/AdminMain";
+import PrivateRoute from "./Components/AdminSection/Utility/PrivateRoute";
 
 function App() {
   return (
@@ -18,6 +21,20 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/module1"}
             component={module}
+          />
+
+          {/* Admin Login */}
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/site/admin-page"}
+            component={AdminLogin}
+          />
+
+          {/* Admin Page */}
+          <PrivateRoute
+            exact
+            path={process.env.PUBLIC_URL + "/site/admin-page/main"}
+            component={AdminMain}
           />
         </Switch>
       </Router>
