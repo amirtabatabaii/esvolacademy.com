@@ -59,7 +59,7 @@ class ModuleHome extends Component {
   handleOnClickSubModule(ActiveSubName) {
     const UserActiveSubNumber = this.props.userActiveSubModule.substring(3);
     const UserSelectedSubNumber = ActiveSubName.substring(3);
-    if (UserSelectedSubNumber < UserActiveSubNumber)
+    if (UserSelectedSubNumber <= UserActiveSubNumber)
       this.props.SelectedSubModule(ActiveSubName);
     else alert("YOU CAN NOT ENTER THIS SUBMODULE !!!!!! :-)");
   }
