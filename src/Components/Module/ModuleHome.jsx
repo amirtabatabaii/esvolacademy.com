@@ -43,14 +43,16 @@ class ModuleHome extends Component {
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
-      "https://www.youtube.com/watch?v=4OkiH2yD-eQ",
+      "https://www.youtube.com/watch?v=UBMk30rjy0o",
+      // "https://www.youtube.com/watch?v=4OkiH2yD-eQ",
       //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
       "80"
     );
 
     this.props.SubModule2Detail(
       "SubModule_2_Video",
-      "https://youtu.be/vcmRk0Mxevk",
+      "https://www.youtube.com/watch?v=6VFLKdfxA24",
+      // "https://youtu.be/vcmRk0Mxevk",
       //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
       "60"
     );
