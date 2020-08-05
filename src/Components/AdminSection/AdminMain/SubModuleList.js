@@ -8,7 +8,7 @@ import { AdminActiveModuleSubModule } from "../../../Redux/action";
 import { connect } from "react-redux";
 
 import "./AdminMain.css";
-import MenuItem from "./MenuItem";
+import MenuItem from "../Utility/MenuItem";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
