@@ -4,7 +4,10 @@ class CaseStudy extends Component {
   render() {
     return (
       <div>
-        <h3 className='bg-secondary p-5'>{this.props.adminActiveSubModule}</h3>
+        <h3 className='bg-secondary p-5'>
+          {this.props.adminActiveSubModule}
+          {" Component"}
+        </h3>
       </div>
     );
   }
