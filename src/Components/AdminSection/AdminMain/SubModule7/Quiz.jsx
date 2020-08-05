@@ -6,6 +6,7 @@ class Quiz extends Component {
       <div>
         <h3 className='text-light bg-dark p-5'>
           {this.props.adminActiveSubModule}
+          {" Component"}
         </h3>
       </div>
     );
