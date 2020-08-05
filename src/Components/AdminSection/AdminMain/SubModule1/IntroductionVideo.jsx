@@ -4,7 +4,10 @@ class IntroductionVideo extends Component {
   render() {
     return (
       <div>
-        <h3 className='bg-info p-5'>{this.props.adminActiveSubModule}</h3>
+        <h3 className='bg-info p-5'>
+          {this.props.adminActiveSubModule}
+          {" Component"}
+        </h3>
       </div>
     );
   }
