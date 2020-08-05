@@ -1,4 +1,5 @@
 import {
+  ADMIN_ACTIVE_MODULE_SUBMODULE,
   USER_ACTIVE_MODULE_SUBMODULE,
   SELECTED_SUBMODULE,
   SUBMODULE_1_DETAIL,
@@ -6,6 +7,21 @@ import {
 } from "./types";
 
 const initialState = {
+  adminActiveModule: "",
+  adminActiveSubModule: "",
+  Module1Name: "Module 1",
+  Module2Name: "Module 2",
+  Module3Name: "Module 3",
+  Module4Name: "Module 4",
+  Module5Name: "Module 5",
+  SubModule1Name: "Introduction Video",
+  SubModule2Name: "Course Video",
+  SubModule3Name: "Interactive Tool",
+  SubModule4Name: "Expert Video",
+  SubModule5Name: "Reading",
+  SubModule6Name: "Case Study",
+  SubModule7Name: "Quiz",
+  //
   userActiveModule: "",
   userActiveSubModule: "",
   //
@@ -20,6 +36,13 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case ADMIN_ACTIVE_MODULE_SUBMODULE:
+      return {
+        ...state,
+        adminActiveModule: action.payload.adminActiveModule,
+        adminActiveSubModule: action.payload.adminActiveSubModule,
+      };
+
     case USER_ACTIVE_MODULE_SUBMODULE:
       return {
         ...state,

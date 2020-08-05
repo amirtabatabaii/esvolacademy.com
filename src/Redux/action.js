@@ -1,9 +1,21 @@
 import {
+  ADMIN_ACTIVE_MODULE_SUBMODULE,
   USER_ACTIVE_MODULE_SUBMODULE,
   SELECTED_SUBMODULE,
   SUBMODULE_1_DETAIL,
   SUBMODULE_2_DETAIL,
 } from "./types";
+
+// Admin Active Module SubModule
+export const AdminActiveModuleSubModule = (
+  adminActiveModule,
+  adminActiveSubModule
+) => (dispatch) => {
+  dispatch({
+    type: ADMIN_ACTIVE_MODULE_SUBMODULE,
+    payload: { adminActiveModule, adminActiveSubModule },
+  });
+};
 
 // User Active Module SubModule
 export const UserActiveModuleSubModule = (

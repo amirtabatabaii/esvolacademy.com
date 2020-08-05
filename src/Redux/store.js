@@ -3,6 +3,21 @@ import thunk from "redux-thunk";
 import Reducer from "./reducer";
 
 const initialState = {
+  adminActiveModule: "",
+  adminActiveSubModule: "",
+  Module1Name: "Module 1",
+  Module2Name: "Module 2",
+  Module3Name: "Module 3",
+  Module4Name: "Module 4",
+  Module5Name: "Module 5",
+  SubModule1Name: "Introduction Video",
+  SubModule2Name: "Course Video",
+  SubModule3Name: "Interactive Tool",
+  SubModule4Name: "Expert Video",
+  SubModule5Name: "Reading",
+  SubModule6Name: "Case Study",
+  SubModule7Name: "Quiz",
+  //
   userActiveModule: "",
   userActiveSubModule: "",
   //
