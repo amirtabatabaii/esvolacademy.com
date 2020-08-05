@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { Layout, Breadcrumb } from "antd";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-
-// import { Menu } from "antd";
-// import { FolderOutlined } from "@ant-design/icons";
-
-import "./AdminMain.css";
 import SubModuleList from "./SubModuleList";
 import IntroductionVideo from "./SubModule1/IntroductionVideo";
 import CourseVideo from "./SubModule2/CourseVideo";
@@ -16,9 +11,9 @@ import Reading from "./SubModule5/Reading";
 import CaseStudy from "./SubModule6/CaseStudy";
 import Quiz from "./SubModule7/Quiz";
 
+import "./AdminMain.css";
+
 const { Header, Content } = Layout;
-// const { Sider } = Layout;
-// const { SubMenu } = Menu;
 
 class AdminMain extends Component {
   state = {
@@ -28,7 +23,6 @@ class AdminMain extends Component {
   };
 
   onCollapse = (collapsed) => {
-    // console.log(collapsed);
     this.setState({ collapsed });
   };
 
@@ -104,9 +98,6 @@ class AdminMain extends Component {
               ) : null}
             </div>
           </Content>
-          {/* <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer> */}
         </Layout>
       </Layout>
     );
