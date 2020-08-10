@@ -1,5 +1,5 @@
 import React from "react";
-import FooterImg from "../../assets/img/footer.png";
+import FooterImg from "../../assets/img/esvol.png";
 import { Image, Row, Col } from "react-bootstrap";
 
 import "./Footer.css";
