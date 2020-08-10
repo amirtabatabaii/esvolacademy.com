@@ -1,10 +1,10 @@
 .note-txt {
   color: #525252;
   /* font-size: 2vw; */
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 300;
-  text-align: justify !important;
-  text-justify: auto !important;
+  text-align: left !important;
+  /* text-justify: auto !important; */
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
@@ -100,10 +100,11 @@
 
 .card-txt {
   color: #525252;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 300;
-  line-height: 30px;
-  margin: 2.5vw;
+  line-height: 35px;
+  /* margin: 2.5vw; */
+  margin: 2%;
   text-align: center !important;
   text-justify: auto !important;
 }
