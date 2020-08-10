@@ -12,12 +12,12 @@ import TranslateText from "../Translate/TranslateText";
 function Section1() {
   return (
     <Row className='w-100 text-center'>
-      <Col lg={7} md={7} sm={7} xs={12}>
+      <Col lg={7} md={7} sm={12} xs={12}>
         <div className='m-auto pt-3 pb-3 m-auto'>
           <ImageLanguage />
         </div>
 
-        <div className='note-txt  pl-5'>
+        <div className='note-txt pl-5'>
           <Animated animationIn='fadeIn' animationInDuration={1500}>
             <TranslateText txt='Home-Section1-text' />
           </Animated>
@@ -26,7 +26,7 @@ function Section1() {
         </div>
       </Col>
 
-      <Col lg={5} md={5} sm={5} xs={12} className='m-auto'>
+      <Col lg={5} md={5} sm={12} xs={12} className='m-auto'>
         <HomeImage
           animationIn='fadeInLeft'
           animationInDuration={1000}
