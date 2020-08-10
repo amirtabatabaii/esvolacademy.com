@@ -10,7 +10,7 @@ import EsvolLogo from "../../assets/img/logo.png";
 function NavBar(props) {
   return (
     <Navbar fixed='top' className={props.bgColor}>
-      <Navbar.Brand href='/'>
+      <Navbar.Brand href='/' className='pl-5'>
         <Image src={EsvolLogo} alt='esvol' />
       </Navbar.Brand>
 
