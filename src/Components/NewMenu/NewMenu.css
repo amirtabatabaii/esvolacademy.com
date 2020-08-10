@@ -70,6 +70,8 @@ body {
   margin-bottom: 5px;
   position: relative;
 
+  /* box-shadow: -5px -5px 8px #ff9a64, 5px 5px 8px #c16442; */
+
   background: #f20000 !important;
   border-radius: 8px;
 
