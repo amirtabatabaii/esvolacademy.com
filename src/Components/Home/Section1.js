@@ -17,7 +17,7 @@ function Section1() {
           <ImageLanguage />
         </div>
 
-        <div className='note-txt m-auto pl-3'>
+        <div className='note-txt  pl-5'>
           <Animated animationIn='fadeIn' animationInDuration={1500}>
             <TranslateText txt='Home-Section1-text' />
           </Animated>
