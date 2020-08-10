@@ -5,13 +5,13 @@ import NewMenu from "../NewMenu/NewMenu";
 import LanguageSelector from "../Translate/LanguageSelector";
 
 import { Image } from "react-bootstrap";
-import EsvolLogo from "../../assets/img/esvol.png";
+import EsvolLogo from "../../assets/img/esvol_black.png";
 
 function NavBar(props) {
   return (
     <Navbar fixed='top' className={props.bgColor}>
-      <Navbar.Brand href='/' className='pl-5'>
-        <Image src={EsvolLogo} alt='esvol' width='70%' />
+      <Navbar.Brand href='/' className='pl-2'>
+        <Image src={EsvolLogo} alt='esvol' width='40%' />
       </Navbar.Brand>
 
       <Navbar.Collapse className='justify-content-end p-4'>
