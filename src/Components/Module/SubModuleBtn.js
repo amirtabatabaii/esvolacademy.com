@@ -26,7 +26,7 @@ class SubModuleBtn extends Component {
     const { userActiveSubModule, userActiveModule, onClick } = this.props;
 
     return (
-      <div className='d-none d-lg-block '>
+      <div className='d-none d-lg-block'>
         <Row className='w-100'>
           <Col>
             <SubModuleBtnImage
