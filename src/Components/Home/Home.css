@@ -16,7 +16,7 @@
   width: 100%;
   color: #3b3c3c;
   font-family: "Montserrat", sans-serif !important;
-  font-size: 65px;
+  font-size: 60px;
   font-weight: 900;
   line-height: 60px;
   text-align: left !important;
@@ -30,9 +30,9 @@
   /* height: 275px; */
   color: #3b3c3c;
   font-family: "Open Sans", sans-serif;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 40px;
+  /* line-height: 40px; */
   text-align: left !important;
 }
 
