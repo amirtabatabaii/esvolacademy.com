@@ -32,7 +32,7 @@
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  /* line-height: 40px; */
+  line-height: 40px;
   text-align: left !important;
 }
 
@@ -61,24 +61,27 @@
 }
 
 .button {
+  width: 342px;
+  height: 69px;
+  border-radius: 12px;
+  background: #f2f3f7;
+  box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
+  /* -- */
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  line-height: 33px;
+  /* -- */
+  /*  */
   font-weight: 700;
-  line-height: 48px;
-  width: 280px;
-  height: 60px;
-  font-size: 20px;
   letter-spacing: 2.5px;
   /*  */
   font-family: "Open Sans", sans-serif;
-  text-transform: uppercase;
   color: #525252;
-  background-color: #ffff;
   border: none;
-  border-radius: 45px;
-  box-shadow: 5px 3px 15px #90939e, -5px -3px 15px #ffffff;
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .button:hover {
