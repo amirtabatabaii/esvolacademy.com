@@ -6,8 +6,12 @@ import Section1 from "./Section1";
 import Section2 from "./Section2";
 import HomeCard from "./HomeCards";
 import Footer from "../Footer/Footer";
-import NavBar from "./NavBar";
-import { Container } from "react-bootstrap";
+import EsvolLogo from "../../assets/img/esvol_black.png";
+import { Container, Navbar, Nav, Image } from "react-bootstrap";
+import LanguageSelector from "../Translate/LanguageSelector";
+import TranslateText from "../Translate/TranslateText";
+
+import "./Home.css";
 
 class Home extends Component {
   render() {
@@ -15,30 +19,47 @@ class Home extends Component {
       <div className='main-bg-color'>
         <div id='page-wrap' className='App'>
           <Container>
-            {/* <ReactPageScroller> */}
-            <div className='App-header'>
-              <NavBar
-                bgColor='main-bg-color'
-                MenuItem1='MenuItem-Hakkimizda'
-                MenuItem2='MenuItem-GirisYap'
-                MenuItem3='MenuItem-Iletisim'
-                MenuItem4='MenuItem-Esvol'
-              />
-            </div>
+            <Navbar
+              style={{ backgroundColor: "#f2f3f7" }}
+              expand='sm'
+              // className='fixed-top pb-0'
+            >
+              <Navbar.Brand href='/'>
+                <Image
+                  src={EsvolLogo}
+                  width='120'
+                  // height='50'
+                  className='d-inline-block align-top'
+                  alt='esvol'
+                />
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls='basic-navbar-nav' />{" "}
+              <Navbar.Collapse id='basic-navbar-nav'>
+                <Nav className='ml-auto'>
+                  <Nav.Link className='Menu-text' href='/'>
+                    <TranslateText txt='MenuItem-Kayit' />
+                  </Nav.Link>
 
-            <div style={{ paddingTop: "130px" }}>
-              <Section1 />
-            </div>
+                  <Nav.Link className='Menu-text' href='/'>
+                    <TranslateText txt='MenuItem-Giris' />
+                  </Nav.Link>
+
+                  <Nav.Link className='ml-3'>
+                    <LanguageSelector />
+                  </Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+
+            <Section1 />
 
             <div className='pb-5'>
               <Animated animationIn='zoomIn' animationInDuration={1500}>
-                <HomeCard />
+                {/* <HomeCard /> */}
               </Animated>
             </div>
 
-            <div className='pb-5'>
-              <Section2 />
-            </div>
+            <div className='pb-5'>{/* <Section2 /> */}</div>
           </Container>
           <Footer />
 

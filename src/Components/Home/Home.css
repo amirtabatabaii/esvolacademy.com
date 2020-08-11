@@ -1,10 +1,39 @@
-.note-txt {
-  color: #525252;
-  /* font-size: 2vw; */
-  font-size: 32px;
-  font-weight: 300;
+.Menu-text {
+  width: 135px;
+  color: #fe7635 !important;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Menu-text:hover {
+  color: #fa5305 !important;
+}
+
+/*  */
+
+.note-txt-header {
+  width: 100%;
+  color: #3b3c3c;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 68px;
   text-align: left !important;
-  /* text-justify: auto !important; */
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.note-txt {
+  width: 100%;
+  /* width: 549px; */
+  /* height: 275px; */
+  color: #3b3c3c;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: left !important;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
@@ -26,19 +55,20 @@
 .wrap {
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  background-color: lawngreen;
 }
 
 .button {
   font-weight: 700;
   line-height: 48px;
-  width: 250px;
+  width: 280px;
   height: 60px;
   font-size: 20px;
   letter-spacing: 2.5px;
   /*  */
-  font-family: "Roboto", sans-serif;
+  font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   color: #525252;
   background-color: #ffff;
@@ -79,6 +109,8 @@
     letter-spacing: 2px;
   }
 }
+
+/*  */
 
 .home-card {
   border: none !important;

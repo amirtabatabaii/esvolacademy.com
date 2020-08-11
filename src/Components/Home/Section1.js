@@ -13,16 +13,24 @@ function Section1() {
   return (
     <Row className='w-100 text-center'>
       <Col lg={7} md={7} sm={12} xs={12}>
-        <div className='m-auto pt-3 pb-3 m-auto'>
-          <ImageLanguage />
-        </div>
-
-        <div className='note-txt pl-5'>
+        <div>
           <Animated animationIn='fadeIn' animationInDuration={1500}>
-            <TranslateText txt='Home-Section1-text' />
+            <div className='note-txt-header'>
+              <TranslateText txt='Home-Section1-HeadText' />
+            </div>
+            <div className='note-txt'>
+              <TranslateText txt='Home-Section1-text' />
+            </div>
           </Animated>
 
-          <StartButton />
+          {/* <div className='wrap'> */}
+          <div className='d-flex justify-content-start'>
+            <Animated animationIn='shake' animationInDuration={1500}>
+              <button className='button'>
+                <TranslateText txt='Start-Button' />
+              </button>
+            </Animated>
+          </div>
         </div>
       </Col>
 
@@ -32,7 +40,7 @@ function Section1() {
           animationInDuration={1000}
           ImageSrc={Esvol}
           alt='esvol'
-          width='38%'
+          width='40%'
         />
       </Col>
     </Row>

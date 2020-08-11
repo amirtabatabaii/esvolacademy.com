@@ -1,9 +1,8 @@
 {
   "language": "tr",
-  "MenuItem-Hakkimizda": "Hakkımızda",
-  "MenuItem-GirisYap": "Giriş Yap",
-  "MenuItem-Iletisim": "İletişim",
-  "MenuItem-Esvol": "Esvol",
+  "MenuItem-Giris": "Giriş",
+  "MenuItem-Kayit": "Kayıt",
+  "Home-Section1-HeadText": "Esvol ile geliş",
   "Home-Section1-text": "(30Keleme-1) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sodales vestibulum quam, quis sodales odio posuere at. Proin dictum dui sed interdum tempus. Vestibulum feugiat scelerisque arcu quis gravida.",
   "Start-Button": "Hemen Başla",
   "Left-card-text": "(12Keleme) Lorem ipsum odor amet, consectetuer. neque accumsan platea magna. Sed facilisi.",
