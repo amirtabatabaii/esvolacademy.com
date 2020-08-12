@@ -1,5 +1,5 @@
 import React from "react";
-import FooterImg from "../../assets/img/esvol.png";
+import FooterImg from "../../assets/img/esvol_black.png";
 import { Image, Row, Col } from "react-bootstrap";
 
 import "./Footer.css";
@@ -19,17 +19,17 @@ function Footer() {
   return (
     <footer className='pt-5 pb-5'>
       <Row className='w-100'>
-        <Col lg={3} md={3} sm={12} className='text-center m-auto p-4'>
-          <Image src={FooterImg} alt='esvol' fluid />
+        <Col lg={4} md={12} sm={12} className='text-center m-auto p-4'>
+          <Image src={FooterImg} alt='esvol' fluid width='200' />
         </Col>
 
-        <Col lg={9} md={9} sm={12} xs={12}>
+        <Col lg={8} md={12} sm={12} xs={12}>
           <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Linkler' />
             <ul className='list-group'>
               <Li href='/' target='' FooterItemText='Footer-Linkler-1' />
               <Li href='/' target='' FooterItemText='Footer-Linkler-2' />
-              <Li href='/' target='' FooterItemText='Footer-Linkler-6' />
+              <Li href='/' target='' FooterItemText='Footer-Linkler-3' />
             </ul>
           </Col>
 
@@ -38,7 +38,7 @@ function Footer() {
             <ul className='list-group'>
               <Li href='/' target='' FooterItemText='Footer-Tipler-1' />
               <Li href='/' target='' FooterItemText='Footer-Tipler-2' />
-              <Li href='/' target='' FooterItemText='Footer-Tipler-6' />
+              <Li href='/' target='' FooterItemText='Footer-Tipler-3' />
             </ul>
           </Col>
 
