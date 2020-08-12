@@ -1,24 +1,26 @@
-h5 {
-  color: #f2f3f7;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 40px !important;
+.footer-header {
+  color: #3b3c3c !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 22px !important;
+  font-family: "Open Sans", sans-serif;
 }
 
-a {
-  color: #e0e0e0 !important;
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 50px !important;
+.footer-a {
+  color: #3b3c3c !important;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px !important;
+  font-weight: 300 !important;
+  line-height: 16px !important;
 }
 
-a:hover {
-  color: #89bff8 !important;
+.footer-a:hover {
+  color: #141414 !important;
   text-decoration: none !important;
   cursor: pointer;
 }
 
 footer {
-  background-color: rgb(25, 66, 124);
+  background: linear-gradient(180deg, #f2f3f7, #ff7331);
   color: white;
 }
