@@ -1,30 +1,43 @@
 import React from "react";
 
-import { Navbar } from "react-bootstrap";
-import NewMenu from "../NewMenu/NewMenu";
+import { Navbar, Image, Nav, Container } from "react-bootstrap";
 import LanguageSelector from "../Translate/LanguageSelector";
+import TranslateText from "../Translate/TranslateText";
 
-import { Image } from "react-bootstrap";
 import EsvolLogo from "../../assets/img/esvol_black.png";
 
 function NavBar(props) {
   return (
-    <Navbar fixed='top' className={props.bgColor}>
-      <Navbar.Brand href='/' className='pl-2'>
-        <Image src={EsvolLogo} alt='esvol' width='40%' />
+    <Navbar
+      style={{ backgroundColor: "#f2f3f7" }}
+      expand='sm'
+      className='fixed-top pb-0'
+    >
+      <Navbar.Brand href='/'>
+        <Image
+          src={EsvolLogo}
+          width='150'
+          // height='50'
+          className='d-inline-block align-top'
+          alt='esvol'
+        />
       </Navbar.Brand>
 
-      <Navbar.Collapse className='justify-content-end p-4'>
-        <span className='pr-3'>
-          <LanguageSelector />
-        </span>
+      <Navbar.Toggle aria-controls='basic-navbar-nav' />
+      <Navbar.Collapse id='basic-navbar-nav' className='text-center'>
+        <Nav className='ml-auto'>
+          <Nav.Link className='Menu-text ml-4' href='/'>
+            <TranslateText txt='MenuItem-Kayit' />
+          </Nav.Link>
 
-        <NewMenu
-          MenuItem1={props.MenuItem1}
-          MenuItem2={props.MenuItem2}
-          MenuItem3={props.MenuItem3}
-          MenuItem4={props.MenuItem4}
-        />
+          <Nav.Link className='Menu-text ml-4' href='/'>
+            <TranslateText txt='MenuItem-Giris' />
+          </Nav.Link>
+
+          <Nav.Link className='ml-4'>
+            <LanguageSelector />
+          </Nav.Link>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
