@@ -34,7 +34,7 @@ function Section1() {
         </div>
       </Col>
 
-      <Col lg={5} md={5} sm={12} xs={12} className='m-auto'>
+      <Col lg={5} md={5} sm={12} xs={12} className='my-auto'>
         <HomeImage
           animationIn='fadeInLeft'
           animationInDuration={1000}
