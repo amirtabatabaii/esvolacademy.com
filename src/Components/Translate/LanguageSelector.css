@@ -26,7 +26,7 @@
   /* cursor: default; */
   cursor: pointer;
   outline: none;
-  padding: 0px 35px 0px 15px;
+  padding: 10px 35px 10px 15px;
   transition: all 200ms ease;
 }
 
@@ -44,8 +44,7 @@
   margin-top: -ceil(2.5);
   position: absolute;
   right: 10px;
-  /* top: 14px; */
-  top: 21px;
+  top: 19px;
   width: 0;
 }
 
@@ -86,7 +85,7 @@
   color: rgba(51, 51, 51, 0.8);
   cursor: pointer;
   display: block;
-  padding: 0 13px;
+  padding: 10px 13px;
 }
 
 .Dropdown-option:last-child {
@@ -101,7 +100,7 @@
 
 .Dropdown-option.is-selected {
   background-color: #f2f9fc;
-  color: #333;
+  color: #33a3;
 }
 
 .Dropdown-noresults {
