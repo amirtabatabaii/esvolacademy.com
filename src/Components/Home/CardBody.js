@@ -5,17 +5,17 @@ import TranslateText from "../Translate/TranslateText";
 
 function CardBody(props) {
   return (
-    <Card className='m-3 home-card'>
+    <Card className='m-2 home-card'>
       <Row>
         <Col lg={8} md={8}>
-          <Card.Body className='h-100'>
+          <Card.Body className='my-auto'>
             <Card.Text className='card-txt'>
               <TranslateText txt={props.txt} />
             </Card.Text>
           </Card.Body>
         </Col>
 
-        <Col className='text-center m-auto p-3'>
+        <Col className='m-auto p-3'>
           <HomeImage
             ImageSrc={props.ImageSrc}
             alt={props.alt}
