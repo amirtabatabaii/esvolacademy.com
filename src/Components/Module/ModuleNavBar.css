@@ -1,0 +1,23 @@
+.Module1-menu-text {
+  color: #fe7635 !important;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Module1-menu-text:hover {
+  color: #fa5305 !important;
+}
+
+/*  */
+
+.Module2-menu-text {
+  color: #d61f23 !important;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Module2-menu-text:hover {
+  color: #aa1518 !important;
+}
