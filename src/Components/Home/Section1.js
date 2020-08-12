@@ -3,9 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { Animated } from "react-animated-css";
 
 import "./Home.css";
-import ImageLanguage from "../Translate/ImageLanguage";
-import Esvol from "../../assets/img/home.png";
-import StartButton from "./StartButton";
+import Esvol from "../../assets/img/home-3.png";
 import HomeImage from "../Utility/HomeImage";
 import TranslateText from "../Translate/TranslateText";
 
@@ -40,7 +38,7 @@ function Section1() {
           animationInDuration={1000}
           ImageSrc={Esvol}
           alt='esvol'
-          width='40%'
+          width='100%'
         />
       </Col>
     </Row>

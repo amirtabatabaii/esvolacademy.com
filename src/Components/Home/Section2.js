@@ -3,33 +3,36 @@ import { Row, Col } from "react-bootstrap";
 import { Animated } from "react-animated-css";
 
 import "./Home.css";
-import Esvol from "../../assets/img/home.png";
+import Esvol from "../../assets/img/home-3.png";
 import HomeImage from "../Utility/HomeImage";
 import TranslateText from "../Translate/TranslateText";
 
 function Section2() {
   return (
-    <div>
-      <Row className='w-100 text-center m-auto'>
-        <Col lg={5} md={5} sm={12} xs={12} className='m-auto'>
-          <HomeImage
-            animationIn='fadeInRight'
-            animationInDuration={1000}
-            ImageSrc={Esvol}
-            alt='esvol'
-            width='28%'
-          />
-        </Col>
+    <Row className='w-100 text-center'>
+      <Col lg={5} md={5} sm={12} xs={12} className='my-auto'>
+        <HomeImage
+          animationIn='fadeInLeft'
+          animationInDuration={1000}
+          ImageSrc={Esvol}
+          alt='esvol'
+          width='100%'
+        />
+      </Col>
 
-        <Col lg={7} md={7} sm={12} xs={12}>
-          <div className='note-txt m-auto p-3'>
-            <Animated animationIn='fadeIn' animationInDuration={1500}>
+      <Col lg={7} md={7} sm={12} xs={12}>
+        <div>
+          <Animated animationIn='fadeIn' animationInDuration={1500}>
+            <div className='note-txt-header'>
+              <TranslateText txt='Home-Section2-HeadText' />
+            </div>
+            <div className='note-txt'>
               <TranslateText txt='Home-Section2-text' />
-            </Animated>
-          </div>
-        </Col>
-      </Row>
-    </div>
+            </div>
+          </Animated>
+        </div>
+      </Col>
+    </Row>
   );
 }
 
