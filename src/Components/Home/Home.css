@@ -1,5 +1,5 @@
 .Menu-text {
-  width: 135px;
+  /* width: 135px; */
   color: #fe7635 !important;
   font-size: 21px;
   font-weight: 700;
@@ -134,28 +134,21 @@
 /*  */
 
 .card-txt {
-  color: #525252;
-  font-size: 30px;
+  color: #525252 !important;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px !important;
   font-weight: 300;
-  line-height: 35px;
-  /* margin: 2.5vw; */
-  margin: 2%;
-  text-align: center !important;
-  text-justify: auto !important;
+  line-height: 25px;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1199px) {
   .card-txt {
-    font-size: 25px;
-    font-weight: 300;
-    margin: 1vw;
+    font-size: 18px;
   }
 }
 
 @media only screen and (max-width: 599px) {
   .card-txt {
-    font-size: 25px;
-    font-weight: 300;
-    margin: 0vw;
+    font-size: 15px;
   }
 }
