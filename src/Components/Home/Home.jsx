@@ -27,7 +27,7 @@ class Home extends Component {
               <Navbar.Brand href='/'>
                 <Image
                   src={EsvolLogo}
-                  width='120'
+                  width='150'
                   // height='50'
                   className='d-inline-block align-top'
                   alt='esvol'
