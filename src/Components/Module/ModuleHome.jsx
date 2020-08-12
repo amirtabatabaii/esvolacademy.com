@@ -38,7 +38,7 @@ class ModuleHome extends Component {
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module2", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub1");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -86,7 +86,7 @@ class ModuleHome extends Component {
         <Container>
           <Row style={{ paddingTop: "130px" }} className='w-100'>
             {/* Module panel */}
-            <Col lg={3}>
+            <Col lg={2} className='d-flex justify-content-end'>
               <div
                 className={`${userActiveModule} Module-panel d-none d-lg-block`}
               >
@@ -142,16 +142,18 @@ class ModuleHome extends Component {
               </div>
             </Col>
 
-            {/* <Col lg={9}>
-               SubModule panel  
-              <SubModuleBtn
-                userActiveSubModule={userActiveSubModule}
-                userActiveModule={userActiveModule}
-                onClick={this.handleOnClickSubModule}
-              />
+            <Col lg={10}>
+              <div className='d-flex justify-content-start'>
+                {/* SubModule panel */}
+                <SubModuleBtn
+                  userActiveSubModule={userActiveSubModule}
+                  userActiveModule={userActiveModule}
+                  onClick={this.handleOnClickSubModule}
+                />
+              </div>
 
-                SubModule Section  
-              {userActiveSubModule === "sub1" ? (
+              {/* SubModule Section   */}
+              {/* {userActiveSubModule === "sub1" ? (
                 <SubModule1
                   userActiveModule={userActiveModule}
                   userActiveSubModule={userActiveSubModule}
@@ -160,7 +162,6 @@ class ModuleHome extends Component {
                   onClick={this.handleClickSubModuleNext}
                 />
               ) : null}
-
               {userActiveSubModule === "sub2" ? (
                 <SubModule2
                   userActiveModule={userActiveModule}
@@ -170,7 +171,6 @@ class ModuleHome extends Component {
                   onClick={this.handleClickSubModuleNext}
                 />
               ) : null}
-
               {userActiveSubModule === "sub3" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='m-5'>SubModule 3</h1>
@@ -184,7 +184,6 @@ class ModuleHome extends Component {
                   </Button>
                 </div>
               ) : null}
-
               {userActiveSubModule === "sub4" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='m-5'>SubModule 4</h1>
@@ -199,7 +198,6 @@ class ModuleHome extends Component {
                   </Button>
                 </div>
               ) : null}
-
               {userActiveSubModule === "sub5" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='m-5'>SubModule 5</h1>
@@ -213,7 +211,6 @@ class ModuleHome extends Component {
                   </Button>
                 </div>
               ) : null}
-
               {userActiveSubModule === "sub6" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='m-5'>SubModule 6</h1>
@@ -227,7 +224,6 @@ class ModuleHome extends Component {
                   </Button>
                 </div>
               ) : null}
-
               {userActiveSubModule === "sub7" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='m-5'>SubModule 7</h1>
@@ -245,8 +241,8 @@ class ModuleHome extends Component {
                     Next Module
                   </Button>
                 </div>
-              ) : null}
-            </Col> */}
+              ) : null}*/}
+            </Col>
           </Row>
         </Container>
 

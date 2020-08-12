@@ -48,6 +48,15 @@
     -5px -5px 24px rgba(254, 120, 57, 0.25);
 }
 
+.SubModule1-panel {
+  width: 900px;
+  /* height: 80px; */
+  border-radius: 23px;
+  background: #f2f3f7;
+  box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
+    -5px -5px 24px rgba(254, 120, 57, 0.25);
+}
+
 /* .Module1-ActiveSubStyle {
   box-shadow: inset 5px 5px 8px #c16442, inset -5px -5px 8px #ff9a64 !important;
   border-radius: 10px;
@@ -77,6 +86,15 @@
 }
 
 .Module2 {
+  box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
+    -5px -5px 24px rgba(214, 31, 35, 0.26);
+}
+
+.SubModule2-panel {
+  width: 900px;
+  /* height: 80px; */
+  border-radius: 23px;
+  background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(214, 31, 35, 0.26);
 }
