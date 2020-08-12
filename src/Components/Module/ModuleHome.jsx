@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { Navbar, Image, Row, Col, Button, Container } from "react-bootstrap";
-import NewMenu from "../NewMenu/NewMenu";
-import LanguageSelector from "../Translate/LanguageSelector";
-import EsvolLogo from "../../assets/img/logo.png";
+import { Row, Col, Button, Container } from "react-bootstrap";
 
 import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
 import SubModule1 from "../SubModules/SubModule1/SubModule1";
 import SubModule2 from "../SubModules/SubModule2/SubModule2";
+import ModuleNavBar from "./ModuleNavBar";
 
 import { withRouter } from "react-router-dom";
 import {
@@ -82,16 +80,18 @@ class ModuleHome extends Component {
 
     return (
       <div className='main-bg-color'>
+        <ModuleNavBar />
+
         <Container>
           <Row style={{ paddingTop: "130px" }} className='w-100'>
             {/* Module panel */}
             <Col lg={3}>
-              <div className={`${userActiveModule}-panel d-none d-lg-block`}>
+              <div className='Module-panel Module1 d-none d-lg-block'>
                 <h3
                   className={`${
                     userActiveModule === "Module1"
-                      ? "module-text-active Module1-text-active"
-                      : "module-text"
+                      ? "Module-text-active Module1-text-active"
+                      : "Module-text"
                   }`}
                 >
                   Stage 1
@@ -101,7 +101,7 @@ class ModuleHome extends Component {
                   className={`${
                     userActiveModule === "Module2"
                       ? "module-text-active Module2-text-active"
-                      : "module-text"
+                      : "Module-text"
                   }`}
                 >
                   Stage 2
@@ -111,7 +111,7 @@ class ModuleHome extends Component {
                   className={`${
                     userActiveModule === "Module3"
                       ? "module-text-active"
-                      : "module-text"
+                      : "Module-text"
                   }`}
                 >
                   Stage 3
@@ -121,7 +121,7 @@ class ModuleHome extends Component {
                   className={`${
                     userActiveModule === "Module4"
                       ? "module-text-active"
-                      : "module-text"
+                      : "Module-text"
                   }`}
                 >
                   Stage 4
@@ -131,7 +131,7 @@ class ModuleHome extends Component {
                   className={`${
                     userActiveModule === "Module5"
                       ? "module-text-active"
-                      : "module-text"
+                      : "Module-text"
                   } pb-5`}
                 >
                   Stage 5
@@ -139,15 +139,15 @@ class ModuleHome extends Component {
               </div>
             </Col>
 
-            <Col lg={9}>
-              {/* SubModule panel */}
+            {/* <Col lg={9}>
+               SubModule panel  
               <SubModuleBtn
                 userActiveSubModule={userActiveSubModule}
                 userActiveModule={userActiveModule}
                 onClick={this.handleOnClickSubModule}
               />
 
-              {/* SubModule Section */}
+                SubModule Section  
               {userActiveSubModule === "sub1" ? (
                 <SubModule1
                   userActiveModule={userActiveModule}
@@ -243,7 +243,7 @@ class ModuleHome extends Component {
                   </Button>
                 </div>
               ) : null}
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </div>
