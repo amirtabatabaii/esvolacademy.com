@@ -6,6 +6,7 @@ import "./Home.css";
 import Esvol from "../../assets/img/home-3.png";
 import HomeImage from "../Utility/HomeImage";
 import TranslateText from "../Translate/TranslateText";
+import { Link } from "react-router-dom";
 
 function Section1() {
   return (
@@ -24,9 +25,11 @@ function Section1() {
           {/* <div className='wrap'> */}
           <div className='d-flex justify-content-start'>
             <Animated animationIn='shake' animationInDuration={1500}>
-              <button className='button'>
-                <TranslateText txt='Start-Button' />
-              </button>
+              <Link to='/modules'>
+                <button className='button'>
+                  <TranslateText txt='Start-Button' />
+                </button>
+              </Link>
             </Animated>
           </div>
         </div>

@@ -19,7 +19,7 @@ function App() {
           {/* Module */}
           <Route
             exact
-            path={process.env.PUBLIC_URL + "/module1"}
+            path={process.env.PUBLIC_URL + "/modules"}
             component={module}
           />
 
