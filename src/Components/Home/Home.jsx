@@ -30,7 +30,7 @@ class Home extends Component {
             </div>
           </Container>
 
-          <Footer />
+          <Footer userActiveModule={"Main"} />
         </div>
       </div>
     );
