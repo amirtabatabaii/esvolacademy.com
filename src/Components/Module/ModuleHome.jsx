@@ -81,24 +81,7 @@ class ModuleHome extends Component {
     } = this.props;
 
     return (
-      <div className={`${userActiveModule}-bg-color pb-5`}>
-        <Navbar fixed='top' className={`${userActiveModule}-bg-color`}>
-          <Navbar.Brand href='/'>
-            <Image src={EsvolLogo} alt='esvol' />
-          </Navbar.Brand>
-
-          <Navbar.Collapse className='justify-content-end p-4'>
-            <span className='pr-3'>
-              <LanguageSelector />
-            </span>
-
-            <NewMenu
-              MenuItem1='MenuItem-Logout'
-              userActiveModule={userActiveModule}
-            />
-          </Navbar.Collapse>
-        </Navbar>
-
+      <div className='main-bg-color'>
         <Container>
           <Row style={{ paddingTop: "130px" }} className='w-100'>
             {/* Module panel */}

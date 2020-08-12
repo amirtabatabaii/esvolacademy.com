@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import HomeCard from "./HomeCards";
-import NavBar from "./NavBar";
+import NavBar from "./HomeNavBar";
 import Footer from "../Footer/Footer";
 import { Container } from "react-bootstrap";
 
