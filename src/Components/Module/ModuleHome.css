@@ -1,25 +1,32 @@
-.module-text {
-  text-shadow: 0px 1px 2px #d3d7e4, 0px -1px rgba(255, 255, 255, 0.5) !important;
-  color: #f2f3f7;
-  font-size: 28px;
-  font-weight: 600;
-  /* line-height: 48px; */
-  line-height: 9vh;
-  text-align: center;
-  /* padding-top: 45px; */
-  padding-top: 9vh;
-  /* cursor: pointer; */
+.Module-panel {
+  width: 135px;
+  border-radius: 23px;
+  background: #f2f3f7;
 }
 
-.module-text-active {
-  font-weight: 600;
-  /* line-height: 48px; */
-  line-height: 9vh;
-  text-align: center;
-  /* padding-top: 35px; */
+.Module-text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+  text-align: center !important;
   padding-top: 9vh;
-  cursor: default;
-  font-size: 32px;
+  background: #f2f3f7;
+  color: transparent;
+  text-shadow: 0px 1px 2px #d3d7e4, 0px -1px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+
+.Module-text-active {
+  color: #f2f3f7;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+  text-align: center !important;
+  padding-top: 6vh;
 }
 
 .w-10 {
@@ -31,20 +38,14 @@
 
 /* Module 1 */
 
-.Module1-bg-color {
-  background-color: #f47f53 !important;
-}
-
 .Module1-text-active {
-  text-shadow: -1px -1px 1px #fdba96, 1px 1px 1px rgba(88, 40, 22, 0.58) !important;
-  color: #fc8657;
+  text-shadow: -2px -2px 6px rgba(254, 118, 53, 0.23);
+  color: #fe7635;
 }
 
-.Module1-panel {
-  height: 100%;
-  border-radius: 19px;
-  background: linear-gradient(136deg, #ff8859, #f47f53) !important;
-  box-shadow: -5px -5px 8px #ff9a64, 5px 5px 8px #c16442 !important;
+.Module1 {
+  box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
+    -5px -5px 24px rgba(254, 120, 57, 0.25);
 }
 
 .Module1-ActiveSubStyle {
@@ -71,31 +72,4 @@
 
 /* Module 2 */
 
-.Module2-bg-color {
-  background-color: #baa651 !important;
-}
-
-.Module2-text-active {
-  text-shadow: -1px -1px 1px #baa651, 1px 1px 1px #938340 !important;
-  color: #baa651;
-}
-
-.Module2-panel {
-  height: 100vh;
-  border-radius: 19px;
-  background: linear-gradient(136deg, #c7b257, #a79549) !important;
-  box-shadow: -5px -5px 8px #e1c962, 5px 5px 8px #938340 !important;
-}
-
-.Module2-ActiveSubStyle {
-  box-shadow: inset 5px 5px 8px #e1c962, inset -5px -5px 8px #938340 !important;
-  border-radius: 10px;
-}
-
-.Module2-NormalSubStyle {
-  box-shadow: -5px -5px 8px #e1c962, 5px 5px 8px #938340 !important;
-  border-radius: 10px;
-}
 /* ----------------------------------------------- */
-
-/* Module 3 */
