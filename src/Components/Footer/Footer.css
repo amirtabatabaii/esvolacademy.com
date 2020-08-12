@@ -20,7 +20,32 @@
   cursor: pointer;
 }
 
-footer {
+.Main-footer {
   background: linear-gradient(180deg, #f2f3f7, #ff7331);
   color: white;
+}
+
+.Module1-footer {
+  background: linear-gradient(180deg, #f2f3f7, #ff7331);
+  color: white;
+}
+
+.Module2-footer {
+  background: linear-gradient(180deg, #f2f3f7, #d61f23);
+  color: white;
+}
+
+.Module3-footer {
+  /* background: linear-gradient(180deg, #f2f3f7, #d61f23);
+  color: white; */
+}
+
+.Module4-footer {
+  /* background: linear-gradient(180deg, #f2f3f7, #d61f23);
+  color: white; */
+}
+
+.Module5-footer {
+  /* background: linear-gradient(180deg, #f2f3f7, #d61f23);
+  color: white; */
 }
