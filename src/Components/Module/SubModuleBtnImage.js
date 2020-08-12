@@ -14,8 +14,8 @@ function SubModuleBtnImage(props) {
           : props.normalImage
       }
       fluid
-      width='60px'
-      alt=''
+      width='40px'
+      alt='esvol'
       className={`${
         props.userActiveSubModule === props.subName
           ? `${props.userActiveModule}-ActiveSubStyle`
