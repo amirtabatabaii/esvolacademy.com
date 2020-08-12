@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Navbar, Image, Nav, Container } from "react-bootstrap";
+import { Navbar, Image, Nav } from "react-bootstrap";
 import LanguageSelector from "../Translate/LanguageSelector";
 import TranslateText from "../Translate/TranslateText";
 
