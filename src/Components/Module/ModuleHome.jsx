@@ -15,6 +15,7 @@ import {
   SubModule2Detail,
 } from "../../Redux/action";
 import { connect } from "react-redux";
+import Footer from "../Footer/Footer";
 
 class ModuleHome extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class ModuleHome extends Component {
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module2", "sub1");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -80,13 +81,15 @@ class ModuleHome extends Component {
 
     return (
       <div className='main-bg-color'>
-        <ModuleNavBar />
+        <ModuleNavBar userActiveModule={userActiveModule} />
 
         <Container>
           <Row style={{ paddingTop: "130px" }} className='w-100'>
             {/* Module panel */}
             <Col lg={3}>
-              <div className='Module-panel Module1 d-none d-lg-block'>
+              <div
+                className={`${userActiveModule} Module-panel d-none d-lg-block`}
+              >
                 <h3
                   className={`${
                     userActiveModule === "Module1"
@@ -100,7 +103,7 @@ class ModuleHome extends Component {
                 <h3
                   className={`${
                     userActiveModule === "Module2"
-                      ? "module-text-active Module2-text-active"
+                      ? "Module-text-active Module2-text-active"
                       : "Module-text"
                   }`}
                 >
@@ -110,7 +113,7 @@ class ModuleHome extends Component {
                 <h3
                   className={`${
                     userActiveModule === "Module3"
-                      ? "module-text-active"
+                      ? "Module-text-active Module3-text-active"
                       : "Module-text"
                   }`}
                 >
@@ -120,7 +123,7 @@ class ModuleHome extends Component {
                 <h3
                   className={`${
                     userActiveModule === "Module4"
-                      ? "module-text-active"
+                      ? "Module-text-active Module4-text-active"
                       : "Module-text"
                   }`}
                 >
@@ -130,7 +133,7 @@ class ModuleHome extends Component {
                 <h3
                   className={`${
                     userActiveModule === "Module5"
-                      ? "module-text-active"
+                      ? "Module-text-active Module5-text-active"
                       : "Module-text"
                   } pb-5`}
                 >
@@ -246,6 +249,8 @@ class ModuleHome extends Component {
             </Col> */}
           </Row>
         </Container>
+
+        <Footer userActiveModule={userActiveModule} />
       </div>
     );
   }
