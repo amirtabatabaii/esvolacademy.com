@@ -18,6 +18,8 @@ import Module1sub6 from "../../assets/img/m1sub6.png";
 import Module1sub7a from "../../assets/img/m1sub7a.png";
 import Module1sub7 from "../../assets/img/m1sub7.png";
 
+import defaultLogo from "../../assets/img/default.png";
+
 import SubModuleBtnImage from "./SubModuleBtnImage";
 import "./ModuleHome.css";
 
@@ -32,8 +34,10 @@ class SubModuleBtn extends Component {
             <SubModuleBtnImage
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
-              activeImage={Module1sub1a}
-              normalImage={Module1sub1}
+              activeImage={defaultLogo}
+              normalImage={defaultLogo}
+              // activeImage={Module1sub1a}
+              // normalImage={Module1sub1}
               subName='sub1'
               onClick={onClick}
             />
@@ -43,8 +47,10 @@ class SubModuleBtn extends Component {
             <SubModuleBtnImage
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
-              activeImage={Module1sub2a}
-              normalImage={Module1sub2}
+              activeImage={defaultLogo}
+              normalImage={defaultLogo}
+              // activeImage={Module1sub2a}
+              // normalImage={Module1sub2}
               subName='sub2'
               onClick={onClick}
             />
@@ -54,8 +60,10 @@ class SubModuleBtn extends Component {
             <SubModuleBtnImage
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
-              activeImage={Module1sub3a}
-              normalImage={Module1sub3}
+              activeImage={defaultLogo}
+              normalImage={defaultLogo}
+              // activeImage={Module1sub3a}
+              // normalImage={Module1sub3}
               subName='sub3'
               onClick={onClick}
             />
@@ -65,8 +73,10 @@ class SubModuleBtn extends Component {
             <SubModuleBtnImage
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
-              activeImage={Module1sub4a}
-              normalImage={Module1sub4}
+              activeImage={defaultLogo}
+              normalImage={defaultLogo}
+              // activeImage={Module1sub4a}
+              // normalImage={Module1sub4}
               subName='sub4'
               onClick={onClick}
             />
@@ -76,8 +86,10 @@ class SubModuleBtn extends Component {
             <SubModuleBtnImage
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
-              activeImage={Module1sub5a}
-              normalImage={Module1sub5}
+              activeImage={defaultLogo}
+              normalImage={defaultLogo}
+              // activeImage={Module1sub5a}
+              // normalImage={Module1sub5}
               subName='sub5'
               onClick={onClick}
             />
@@ -87,8 +99,10 @@ class SubModuleBtn extends Component {
             <SubModuleBtnImage
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
-              activeImage={Module1sub6a}
-              normalImage={Module1sub6}
+              activeImage={defaultLogo}
+              normalImage={defaultLogo}
+              // activeImage={Module1sub6a}
+              // normalImage={Module1sub6}
               subName='sub6'
               onClick={onClick}
             />
@@ -98,8 +112,10 @@ class SubModuleBtn extends Component {
             <SubModuleBtnImage
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
-              activeImage={Module1sub7a}
-              normalImage={Module1sub7}
+              activeImage={defaultLogo}
+              normalImage={defaultLogo}
+              // activeImage={Module1sub7a}
+              // normalImage={Module1sub7}
               subName='sub7'
               onClick={onClick}
             />
