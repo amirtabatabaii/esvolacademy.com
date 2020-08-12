@@ -16,6 +16,7 @@ import {
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
+import TranslateText from "../Translate/TranslateText";
 
 class ModuleHome extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class ModuleHome extends Component {
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub2");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -152,6 +153,9 @@ class ModuleHome extends Component {
                 />
               </div>
 
+              <p className='Module-note m-3'>
+                <TranslateText txt='Module-note' />
+              </p>
               {/* SubModule Section   */}
               {/* {userActiveSubModule === "sub1" ? (
                 <SubModule1
