@@ -15,9 +15,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ColStyle = "p-0 float-left text-center mb-sm-2 mt-sm-5 mb-2 mt-5";
 
-function Footer() {
+function Footer(props) {
   return (
-    <footer className='pt-5 pb-5'>
+    <footer className={`${props.userActiveModule}-footer pt-5 pb-5`}>
       <Row className='w-100'>
         <Col lg={4} md={12} sm={12} className='text-center m-auto p-4'>
           <Image src={FooterImg} alt='esvol' fluid width='200' />
