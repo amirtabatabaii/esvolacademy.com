@@ -1,16 +1,17 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import TranslateText from "../../Translate/TranslateText";
+// import { Button } from "react-bootstrap";
 
 function Sub1Button(props) {
   return (
-    <Button
+    <button
       className={props.className}
-      size={props.size}
+      // size={props.size}
       // disabled={props.ifCondition ? props.IfAction : props.elseAction}
       onClick={() => props.onClick("sub2")}
     >
-      {props.text}
-    </Button>
+      <TranslateText txt={props.txt} />
+    </button>
   );
 }
 

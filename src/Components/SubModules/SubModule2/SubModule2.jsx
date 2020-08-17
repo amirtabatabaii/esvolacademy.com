@@ -33,7 +33,7 @@ class SubModule2 extends Component {
     } = this.props;
 
     return (
-      <div className={`${userActiveModule}-sub-panel mt-4 app`}>
+      <div className={`${userActiveModule}-sub-panel mt-4 mb-5 app`}>
         <section className='section'>
           <div className='player-wrapper'>
             <ReactPlayer
@@ -47,7 +47,6 @@ class SubModule2 extends Component {
             />
           </div>
         </section>
-
         {/* <ProgressBar
           animated
           max={1}
@@ -56,29 +55,15 @@ class SubModule2 extends Component {
           variant={`${userActiveModule}-bg-color`}
           className='m-3'
         /> */}
-
         <Row className='w-100 d-flex justify-content-around'>
-          {/* <Sub1Button
-            className='m-3'
-            size='lg'
-            ifCondition={activeSubModule === "sub1"}
-            IfAction={true}
-            elseAction={false}
-            text='Previous'
-          /> */}
-
           <Sub2Button
-            // className='m-3'
             className={
               played.toFixed(2) * 100 > SubModuleRatio
-                ? "visible m-3"
-                : "invisible m-3"
+                ? "visible m-3 Module-next-btn"
+                : "invisible m-3 Module-next-btn"
             }
-            size='lg'
-            // ifCondition={played.toFixed(2) * 100 > SubModuleRatio}
-            // IfAction={false}
-            // elseAction={true}
-            text='Next'
+            // size='lg'
+            txt='SubModule2-Continue'
             onClick={onClick}
           />
         </Row>

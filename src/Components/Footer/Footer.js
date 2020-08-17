@@ -18,7 +18,10 @@ const ColStyle =
 
 function Footer(props) {
   return (
-    <footer className={`${props.userActiveModule}-footer pt-5 pb-2`}>
+    <footer
+      className={`${props.userActiveModule}-footer pb-2`}
+      style={{ marginTop: "100px" }}
+    >
       <Row className='w-100'>
         <Col lg={2} md={12} sm={12} className='text-center m-auto p-4'>
           <Image src={FooterImg} alt='esvol' fluid width='150' />

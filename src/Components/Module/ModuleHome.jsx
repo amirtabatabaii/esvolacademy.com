@@ -85,7 +85,10 @@ class ModuleHome extends Component {
         <ModuleNavBar userActiveModule={userActiveModule} />
 
         <Container>
-          <Row style={{ paddingTop: "130px" }} className='w-100'>
+          <Row
+            // style={{ paddingTop: "130px" }}
+            className='w-100 pt-5 pb-5'
+          >
             {/* Module panel */}
             <Col lg={2} className='d-flex justify-content-end'>
               <div
@@ -98,7 +101,7 @@ class ModuleHome extends Component {
                       : "Module-text"
                   }`}
                 >
-                  Stage 1
+                  <TranslateText txt='Module1-text' />
                 </h3>
 
                 <h3
@@ -108,7 +111,7 @@ class ModuleHome extends Component {
                       : "Module-text"
                   }`}
                 >
-                  Stage 2
+                  <TranslateText txt='Module2-text' />
                 </h3>
 
                 <h3
@@ -118,7 +121,7 @@ class ModuleHome extends Component {
                       : "Module-text"
                   }`}
                 >
-                  Stage 3
+                  <TranslateText txt='Module3-text' />
                 </h3>
 
                 <h3
@@ -128,7 +131,7 @@ class ModuleHome extends Component {
                       : "Module-text"
                   }`}
                 >
-                  Stage 4
+                  <TranslateText txt='Module4-text' />
                 </h3>
 
                 <h3
@@ -138,7 +141,7 @@ class ModuleHome extends Component {
                       : "Module-text"
                   } pb-5`}
                 >
-                  Stage 5
+                  <TranslateText txt='Module5-text' />
                 </h3>
               </div>
             </Col>
@@ -154,10 +157,37 @@ class ModuleHome extends Component {
               </div>
 
               <p className='Module-note m-3'>
-                <TranslateText txt='Module-note' />
+                {userActiveSubModule === "sub1" ? (
+                  <TranslateText txt='SubModule1-note' />
+                ) : null}
+
+                {userActiveSubModule === "sub2" ? (
+                  <TranslateText txt='SubModule2-note' />
+                ) : null}
+
+                {userActiveSubModule === "sub3" ? (
+                  <TranslateText txt='SubModule3-note' />
+                ) : null}
+
+                {userActiveSubModule === "sub4" ? (
+                  <TranslateText txt='SubModule4-note' />
+                ) : null}
+
+                {userActiveSubModule === "sub5" ? (
+                  <TranslateText txt='SubModule5-note' />
+                ) : null}
+
+                {userActiveSubModule === "sub6" ? (
+                  <TranslateText txt='SubModule6-note' />
+                ) : null}
+
+                {userActiveSubModule === "sub7" ? (
+                  <TranslateText txt='SubModule7-note' />
+                ) : null}
               </p>
+
               {/* SubModule Section   */}
-              {/* {userActiveSubModule === "sub1" ? (
+              {userActiveSubModule === "sub1" ? (
                 <SubModule1
                   userActiveModule={userActiveModule}
                   userActiveSubModule={userActiveSubModule}
@@ -245,7 +275,7 @@ class ModuleHome extends Component {
                     Next Module
                   </Button>
                 </div>
-              ) : null}*/}
+              ) : null}
             </Col>
           </Row>
         </Container>
