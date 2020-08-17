@@ -14,10 +14,10 @@ class Home extends Component {
     return (
       <div className='main-bg-color'>
         <div id='page-wrap' className='App'>
+          <HomeNavBar />
           <Container>
-            <HomeNavBar />
-
-            <div className='pb-5' style={{ paddingTop: "80px" }}>
+            <div className='pb-5'>
+              {/* style={{ paddingTop: "80px" }}> */}
               <Section1 />
             </div>
 
@@ -25,7 +25,7 @@ class Home extends Component {
               <HomeCard />
             </div>
 
-            <div className='pb-5'>
+            <div className='pb-5 pt-5'>
               <Section2 />
             </div>
           </Container>

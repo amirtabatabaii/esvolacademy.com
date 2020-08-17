@@ -9,8 +9,8 @@
 .footer-a {
   color: #3b3c3c !important;
   font-family: "Open Sans", sans-serif;
-  font-size: 16px !important;
-  font-weight: 300 !important;
+  font-size: 14px !important;
+  font-weight: 100 !important;
   line-height: 16px !important;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .Main-footer {
-  background: linear-gradient(180deg, #f2f3f7, #ff7331);
+  background: linear-gradient(180deg, #f2f3f7 30%, #ff7331);
   color: white;
 }
 

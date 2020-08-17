@@ -13,17 +13,18 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ColStyle = "p-0 float-left text-center mb-sm-2 mt-sm-5 mb-2 mt-5";
+const ColStyle =
+  "p-3 float-lg-left text-lg-left float-sm-left text-sm-center float-left text-center m-auto";
 
 function Footer(props) {
   return (
-    <footer className={`${props.userActiveModule}-footer pt-5 pb-5`}>
+    <footer className={`${props.userActiveModule}-footer pt-5 pb-2`}>
       <Row className='w-100'>
-        <Col lg={4} md={12} sm={12} className='text-center m-auto p-4'>
-          <Image src={FooterImg} alt='esvol' fluid width='200' />
+        <Col lg={2} md={12} sm={12} className='text-center m-auto p-4'>
+          <Image src={FooterImg} alt='esvol' fluid width='150' />
         </Col>
 
-        <Col lg={8} md={12} sm={12} xs={12}>
+        <Col lg={10} md={12} sm={12} xs={12} className='m-auto'>
           <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
             <SectionTitle FooterItemText='Footer-Linkler' />
             <ul className='list-group'>
@@ -56,30 +57,32 @@ function Footer(props) {
               <Li href='/' target='' FooterItemText='Footer-Iletisim-1' />
               <Li href='/' target='' FooterItemText='Footer-Iletisim-2' />
               <Li href='/' target='' FooterItemText='Footer-Iletisim-3' />
-              <div className='text-center'>
-                <FontAwesomeIcon
-                  className='m-2'
-                  icon={faLinkedin}
-                  style={{ color: "#f2f3f7" }}
-                  transform='down-5 grow-15'
-                  fixedWidth
-                />
-                <FontAwesomeIcon
-                  className='m-2'
-                  icon={faInstagram}
-                  style={{ color: "#f2f3f7" }}
-                  transform='down-5 grow-15'
-                  fixedWidth
-                />
-                <FontAwesomeIcon
-                  className='m-2'
-                  icon={faFacebookSquare}
-                  style={{ color: "#f2f3f7" }}
-                  transform='down-5 grow-15'
-                  fixedWidth
-                />
-              </div>
             </ul>
+            <div className=' text-lg-left text-sm-center text-center'>
+              <FontAwesomeIcon
+                className='m-2'
+                icon={faLinkedin}
+                style={{ color: "#3b3c3c" }}
+                transform='down-5 grow-15'
+                fixedWidth
+              />
+
+              <FontAwesomeIcon
+                className='m-2'
+                icon={faInstagram}
+                style={{ color: "#3b3c3c" }}
+                transform='down-5 grow-15'
+                fixedWidth
+              />
+
+              <FontAwesomeIcon
+                className='m-2'
+                icon={faFacebookSquare}
+                style={{ color: "#3b3c3c" }}
+                transform='down-5 grow-15'
+                fixedWidth
+              />
+            </div>
           </Col>
         </Col>
       </Row>

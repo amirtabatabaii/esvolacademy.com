@@ -9,6 +9,7 @@
 
 .Dropdown-root {
   position: relative;
+  top: -5px;
 }
 
 .Dropdown-control {
@@ -19,7 +20,7 @@
   /*  */
   position: relative;
   overflow: hidden;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 15px;
   box-sizing: border-box;
   color: #333;
