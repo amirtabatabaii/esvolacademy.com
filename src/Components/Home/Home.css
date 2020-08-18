@@ -117,7 +117,7 @@
 .home-card {
   border: none !important;
   transition: all 0.3s ease 0s;
-  cursor: pointer;
+  /* cursor: pointer; */
   border-radius: 29px !important;
   background: #f2f3f7 !important;
   box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff !important;
