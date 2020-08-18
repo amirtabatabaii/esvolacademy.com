@@ -9,7 +9,7 @@ function CardBody(props) {
       <Row>
         <Col lg={8} md={8}>
           <Card.Body className='my-auto'>
-            <Card.Text className='card-txt'>
+            <Card.Text className='card-txt m-3'>
               <TranslateText txt={props.txt} />
             </Card.Text>
           </Card.Body>
