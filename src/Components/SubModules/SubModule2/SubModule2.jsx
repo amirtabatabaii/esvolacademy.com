@@ -58,6 +58,17 @@ class SubModule2 extends Component {
         <Row className='w-100 d-flex justify-content-around'>
           <Sub2Button
             className={
+              "m-3 Module-next-btn"
+              // ? "visible m-3 Module-next-btn"
+              // : "invisible m-3 Module-next-btn"
+            }
+            disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
+            // size='lg'
+            txt='SubModule2-Continue'
+            onClick={onClick}
+          />
+          {/* <Sub2Button
+            className={
               played.toFixed(2) * 100 > SubModuleRatio
                 ? "visible m-3 Module-next-btn"
                 : "invisible m-3 Module-next-btn"
@@ -65,7 +76,7 @@ class SubModule2 extends Component {
             // size='lg'
             txt='SubModule2-Continue'
             onClick={onClick}
-          />
+          /> */}
         </Row>
       </div>
     );

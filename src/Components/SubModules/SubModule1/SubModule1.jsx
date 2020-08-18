@@ -58,10 +58,11 @@ class SubModule1 extends Component {
         <Row className='w-100 d-flex justify-content-around'>
           <Sub1Button
             className={
-              played.toFixed(2) * 100 > SubModuleRatio
-                ? "visible m-3 Module-next-btn"
-                : "invisible m-3 Module-next-btn"
+              "m-3 Module-next-btn"
+              // ? "visible m-3 Module-next-btn"
+              // : "invisible m-3 Module-next-btn"
             }
+            disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
             // size='lg'
             txt='SubModule1-Continue'
             onClick={onClick}

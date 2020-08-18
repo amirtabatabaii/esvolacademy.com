@@ -6,6 +6,7 @@ function Sub2Button(props) {
   return (
     <button
       className={props.className}
+      disabled={props.disabled}
       // size={props.size}
       // disabled={props.ifCondition ? props.IfAction : props.elseAction}
       onClick={() => props.onClick("sub3")}
