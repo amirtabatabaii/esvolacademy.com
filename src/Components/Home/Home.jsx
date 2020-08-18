@@ -15,7 +15,7 @@ class Home extends Component {
       <div className='main-bg-color'>
         <div id='page-wrap' className='App'>
           <HomeNavBar />
-          <Container>
+          <div style={{ marginLeft: "5%", marginRight: "5%" }}>
             <div className='pb-5'>
               {/* style={{ paddingTop: "80px" }}> */}
               <Section1 />
@@ -28,7 +28,7 @@ class Home extends Component {
             <div className='pb-5 pt-5'>
               <Section2 />
             </div>
-          </Container>
+          </div>
 
           <Footer userActiveModule={"Main"} />
         </div>

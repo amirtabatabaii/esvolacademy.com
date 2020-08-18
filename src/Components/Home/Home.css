@@ -25,7 +25,7 @@
 }
 
 .note-txt {
-  width: 100%;
+  width: 60%;
   /* width: 549px; */
   /* height: 275px; */
   color: #3b3c3c;
@@ -137,6 +137,15 @@
   font-size: 14px !important;
   font-weight: 300;
   line-height: 20px;
+}
+
+@media (min-width: 1800px) {
+  .card-txt {
+    font-size: 25px !important;
+    font-weight: 300;
+    line-height: 40px;
+    padding: 35px;
+  }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1199px) {

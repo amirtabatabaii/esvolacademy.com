@@ -8,7 +8,7 @@ import EsvolLogo from "../../assets/img/esvol_black.png";
 
 function NavBar() {
   return (
-    <div style={{ marginLeft: "10%", marginRight: "10%" }}>
+    <div style={{ marginLeft: "3%", marginRight: "3%" }}>
       <Navbar
         style={{ backgroundColor: "#f2f3f7" }}
         expand='sm'
