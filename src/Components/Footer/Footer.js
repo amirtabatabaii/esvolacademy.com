@@ -22,73 +22,75 @@ function Footer(props) {
       className={`${props.userActiveModule}-footer pb-2`}
       style={{ marginTop: "100px" }}
     >
-      <Row className='w-100'>
-        <Col lg={2} md={12} sm={12} className='text-center m-auto p-4'>
-          <Image src={FooterImg} alt='esvol' fluid width='150' />
-        </Col>
-
-        <Col lg={10} md={12} sm={12} xs={12} className='m-auto'>
-          <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
-            <SectionTitle FooterItemText='Footer-Linkler' />
-            <ul className='list-group'>
-              <Li href='/' target='' FooterItemText='Footer-Linkler-1' />
-              <Li href='/' target='' FooterItemText='Footer-Linkler-2' />
-              <Li href='/' target='' FooterItemText='Footer-Linkler-3' />
-            </ul>
+      <div style={{ marginLeft: "3%", marginRight: "3%" }}>
+        <Row className='w-100'>
+          <Col lg={2} md={12} sm={12} className='text-center m-auto p-4'>
+            <Image src={FooterImg} alt='esvol' fluid width='150' />
           </Col>
 
-          <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
-            <SectionTitle FooterItemText='Footer-Tipler' />
-            <ul className='list-group'>
-              <Li href='/' target='' FooterItemText='Footer-Tipler-1' />
-              <Li href='/' target='' FooterItemText='Footer-Tipler-2' />
-              <Li href='/' target='' FooterItemText='Footer-Tipler-3' />
-            </ul>
+          <Col lg={10} md={12} sm={12} xs={12} className='m-auto'>
+            <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
+              <SectionTitle FooterItemText='Footer-Linkler' />
+              <ul className='list-group'>
+                <Li href='/' target='' FooterItemText='Footer-Linkler-1' />
+                <Li href='/' target='' FooterItemText='Footer-Linkler-2' />
+                <Li href='/' target='' FooterItemText='Footer-Linkler-3' />
+              </ul>
+            </Col>
+
+            <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
+              <SectionTitle FooterItemText='Footer-Tipler' />
+              <ul className='list-group'>
+                <Li href='/' target='' FooterItemText='Footer-Tipler-1' />
+                <Li href='/' target='' FooterItemText='Footer-Tipler-2' />
+                <Li href='/' target='' FooterItemText='Footer-Tipler-3' />
+              </ul>
+            </Col>
+
+            <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
+              <SectionTitle FooterItemText='Footer-Kategoriler' />
+              <ul className='list-group'>
+                <Li href='/' target='' FooterItemText='Footer-Kategoriler-1' />
+                <Li href='/' target='' FooterItemText='Footer-Kategoriler-2' />
+              </ul>
+            </Col>
+
+            <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
+              <SectionTitle FooterItemText='Footer-Iletisim' />
+              <ul className='list-group'>
+                <Li href='/' target='' FooterItemText='Footer-Iletisim-1' />
+                <Li href='/' target='' FooterItemText='Footer-Iletisim-2' />
+                <Li href='/' target='' FooterItemText='Footer-Iletisim-3' />
+              </ul>
+              <div className=' text-lg-left text-sm-center text-center'>
+                <FontAwesomeIcon
+                  className='m-2'
+                  icon={faLinkedin}
+                  style={{ color: "#3b3c3c" }}
+                  transform='down-5 grow-15'
+                  fixedWidth
+                />
+
+                <FontAwesomeIcon
+                  className='m-2'
+                  icon={faInstagram}
+                  style={{ color: "#3b3c3c" }}
+                  transform='down-5 grow-15'
+                  fixedWidth
+                />
+
+                <FontAwesomeIcon
+                  className='m-2'
+                  icon={faFacebookSquare}
+                  style={{ color: "#3b3c3c" }}
+                  transform='down-5 grow-15'
+                  fixedWidth
+                />
+              </div>
+            </Col>
           </Col>
-
-          <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
-            <SectionTitle FooterItemText='Footer-Kategoriler' />
-            <ul className='list-group'>
-              <Li href='/' target='' FooterItemText='Footer-Kategoriler-1' />
-              <Li href='/' target='' FooterItemText='Footer-Kategoriler-2' />
-            </ul>
-          </Col>
-
-          <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
-            <SectionTitle FooterItemText='Footer-Iletisim' />
-            <ul className='list-group'>
-              <Li href='/' target='' FooterItemText='Footer-Iletisim-1' />
-              <Li href='/' target='' FooterItemText='Footer-Iletisim-2' />
-              <Li href='/' target='' FooterItemText='Footer-Iletisim-3' />
-            </ul>
-            <div className=' text-lg-left text-sm-center text-center'>
-              <FontAwesomeIcon
-                className='m-2'
-                icon={faLinkedin}
-                style={{ color: "#3b3c3c" }}
-                transform='down-5 grow-15'
-                fixedWidth
-              />
-
-              <FontAwesomeIcon
-                className='m-2'
-                icon={faInstagram}
-                style={{ color: "#3b3c3c" }}
-                transform='down-5 grow-15'
-                fixedWidth
-              />
-
-              <FontAwesomeIcon
-                className='m-2'
-                icon={faFacebookSquare}
-                style={{ color: "#3b3c3c" }}
-                transform='down-5 grow-15'
-                fixedWidth
-              />
-            </div>
-          </Col>
-        </Col>
-      </Row>
+        </Row>
+      </div>
     </footer>
   );
 }

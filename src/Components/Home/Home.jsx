@@ -15,6 +15,7 @@ class Home extends Component {
       <div className='main-bg-color'>
         <div id='page-wrap' className='App'>
           <HomeNavBar />
+
           <div style={{ marginLeft: "5%", marginRight: "5%" }}>
             <div className='pb-5'>
               {/* style={{ paddingTop: "80px" }}> */}
