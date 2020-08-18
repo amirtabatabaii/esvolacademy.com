@@ -24,7 +24,7 @@ function Footer(props) {
     >
       <div style={{ marginLeft: "3%", marginRight: "3%" }}>
         <Row className='w-100'>
-          <Col lg={2} md={12} sm={12} className='text-center m-auto p-4'>
+          <Col lg={2} md={12} sm={12} className='text-center mt-4 p-3'>
             <Image src={FooterImg} alt='esvol' fluid width='150' />
           </Col>
 
