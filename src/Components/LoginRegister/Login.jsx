@@ -4,11 +4,20 @@ import TextField from "@material-ui/core/TextField";
 import HomeNavBar from "../Home/HomeNavBar";
 import Footer from "../Footer/Footer";
 
-import "../LoginRegister/login.css";
+import "./login.css";
 import TranslateText from "../Translate/TranslateText";
 import { Form } from "react-bootstrap";
 
 class Login extends Component {
+  handleSubmit = (event) => {
+    localStorage.setItem("UserToken", "Test_User_Token");
+    this.props.history.push(`/user`);
+  };
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div className='main-bg-color'>
@@ -21,7 +30,7 @@ class Login extends Component {
           <Form
             className='text-center mt-5 mb-5'
             id='InsertForm'
-            // onSubmit={this.handleSubmit}
+            onSubmit={this.handleSubmit}
           >
             <Form.Group className='mt-3 mb-3'>
               <div className='m-auto'>
@@ -45,6 +54,7 @@ class Login extends Component {
                   // variant='outlined'
                   label={<TranslateText txt='Login-password' />}
                   name='password'
+                  type='password'
                   //   onChange={this.handleEmailChange}
                   required
                   error={false}
@@ -54,20 +64,13 @@ class Login extends Component {
             </Form.Group>
 
             <div className='m-auto'>
-              <button className='login-Btn'>
+              <button className='login-Btn' type='submit'>
                 <TranslateText txt='Login-BtnText' />
               </button>
-              {/* <Button
-                type='submit'
-                className='mt-5 ContactFrom-btn'
-                style={{ backgroundColor: "#b06346" }}
-                //   onClick={this.state.isInsert === true ? { success } : { error }}
-              >
-                {this.props.ContactButtonText}
-              </Button> */}
             </div>
           </Form>
         </div>
+
         <Footer userActiveModule={"Main"} />
       </div>
     );
