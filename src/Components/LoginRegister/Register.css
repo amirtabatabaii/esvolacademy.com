@@ -1,0 +1,37 @@
+.register-head {
+  color: #3b3c3c;
+  /* font-family: "Montserrat", sans-serif; */
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 73px;
+  margin-top: 55px !important;
+  /*  */
+  /* width: 275px; */
+  /* height: 69px; */
+}
+
+.register-textField {
+  margin-top: 35px !important;
+  width: 300px;
+  /* height: 5px; */
+  /* background: #fc8557; */
+}
+
+.register-Btn {
+  width: 300px;
+  height: 69px;
+  border-radius: 12px;
+  background: #f2f3f7;
+  margin-top: 55px !important;
+  margin-bottom: 55px !important;
+  border: none;
+  box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
+  /*  */
+  text-shadow: inset 0px -1px 2px #ff9a64,
+    inset 0px 1px rgba(193, 100, 66, 0.58);
+  color: #fc8657;
+  font-family: "Open Sans";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+}

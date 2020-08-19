@@ -7,6 +7,8 @@ import "./Components/Translate/i18n";
 import AdminLogin from "./Components/AdminSection/Login/AdminLogin";
 import AdminMain from "./Components/AdminSection/AdminMain/AdminMain";
 import PrivateRoute from "./Components/AdminSection/Utility/PrivateRoute";
+import Register from "./Components/LoginRegister/Register";
+import Login from "./Components/LoginRegister/Login";
 
 function App() {
   return (
@@ -21,6 +23,20 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/modules"}
             component={module}
+          />
+
+          {/* Register */}
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/register"}
+            component={Register}
+          />
+
+          {/* Login */}
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/login"}
+            component={Login}
           />
 
           {/* Admin Login */}

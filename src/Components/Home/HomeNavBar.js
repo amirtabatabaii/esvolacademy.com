@@ -5,6 +5,7 @@ import LanguageSelector from "../Translate/LanguageSelector";
 import TranslateText from "../Translate/TranslateText";
 
 import EsvolLogo from "../../assets/img/esvol_black.png";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -28,12 +29,28 @@ function NavBar() {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav' className='text-center'>
           <Nav className='ml-auto'>
-            <Nav.Link className='Menu-text ml-4' href='/'>
-              <TranslateText txt='MenuItem-Kayit' />
+            <Nav.Link>
+              <Link to='/' className='Menu-text ml-4 text-decoration-none'>
+                <TranslateText txt='MenuItem-Ludus' />
+              </Link>
             </Nav.Link>
 
-            <Nav.Link className='Menu-text ml-4' href='/'>
-              <TranslateText txt='MenuItem-Giris' />
+            <Nav.Link>
+              <Link
+                to='/register'
+                className='Menu-text ml-4 text-decoration-none'
+              >
+                <TranslateText txt='MenuItem-Kayit' />
+              </Link>
+            </Nav.Link>
+
+            <Nav.Link>
+              <Link
+                to='/login'
+                className=' Menu-text ml-4 text-decoration-none'
+              >
+                <TranslateText txt='MenuItem-Giris' />
+              </Link>
             </Nav.Link>
 
             <Nav.Link className='ml-4'>
