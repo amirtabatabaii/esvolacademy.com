@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import TranslateText from "../Translate/TranslateText";
 import { Form } from "react-bootstrap";
 
-import "./register.css";
+import "../LoginRegister/register.css";
 
 class Register extends Component {
   componentDidMount() {
