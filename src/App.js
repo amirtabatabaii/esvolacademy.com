@@ -9,6 +9,8 @@ import AdminMain from "./Components/AdminSection/AdminMain/AdminMain";
 import PrivateRoute from "./Components/AdminSection/Utility/PrivateRoute";
 import Register from "./Components/LoginRegister/Register";
 import Login from "./Components/LoginRegister/Login";
+import UserHome from "./Components/UserHome/UserHome";
+import UserPrivateRoute from "./Components/UserHome/UserPrivateRoute";
 
 function App() {
   return (
@@ -37,6 +39,13 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/login"}
             component={Login}
+          />
+
+          {/* User Home */}
+          <UserPrivateRoute
+            exact
+            path={process.env.PUBLIC_URL + "/user"}
+            component={UserHome}
           />
 
           {/* Admin Login */}

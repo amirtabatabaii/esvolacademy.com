@@ -25,7 +25,7 @@ function Section1() {
           {/* <div className='wrap'> */}
           <div className='d-flex justify-content-start'>
             <Animated animationIn='shake' animationInDuration={1500}>
-              <Link to='/modules'>
+              <Link to='/login'>
                 <button className='button'>
                   <TranslateText txt='Start-Button' />
                 </button>
