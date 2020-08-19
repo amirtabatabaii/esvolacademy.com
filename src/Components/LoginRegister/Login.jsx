@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import HomeNavBar from "../Home/HomeNavBar";
 import Footer from "../Footer/Footer";
 
-import "./login.css";
+import "./loginRegister.css";
 import TranslateText from "../Translate/TranslateText";
 import { Form } from "react-bootstrap";
 
