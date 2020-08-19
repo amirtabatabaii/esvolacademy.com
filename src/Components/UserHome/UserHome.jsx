@@ -31,16 +31,22 @@ class UserHome extends Component {
             <Col lg={6} md={12} sm={12} className='p-3'>
               <div className='box text-center'>
                 <Row className='w-100 m-auto'>
-                  <Col lg={4} md={12} sm={12} className='p-3'>
+                  <Col lg={4} md={12} sm={12} className='p-3 m-auto'>
                     <Image className='avatar-box' src={avatar} />
                   </Col>
-                  <Col lg={8} md={12} sm={12} className='p-3'>
+                  <Col lg={8} md={12} sm={12} className='p-3 m-auto'>
                     <p className='user-info-head'>
                       <TranslateText txt='User-personal-info-Header' />
                     </p>
                     <p className='info-text'>Melis</p>
                     <p className='info-text'>Çaycı</p>
                     <p className='info-text'>melis@gmail.com</p>
+
+                    {/* <Link to='/edit'> */}
+                    <button className='continue-Btn' type='submit'>
+                      <TranslateText txt='User-Edit-Btn' />
+                    </button>
+                    {/* </Link> */}
                   </Col>
                 </Row>
               </div>
@@ -49,7 +55,7 @@ class UserHome extends Component {
             <Col lg={6} md={12} sm={12} className='p-3'>
               <div className='box text-center'>
                 <Row className='w-100 m-auto'>
-                  <Col lg={4} md={12} sm={12} className='p-3'>
+                  <Col lg={4} md={12} sm={12} className='p-3 m-auto'>
                     <Progress
                       width='25vh'
                       type='circle'
@@ -60,7 +66,7 @@ class UserHome extends Component {
                       percent={40}
                     />
                   </Col>
-                  <Col lg={8} md={12} sm={12} className='p-3'>
+                  <Col lg={8} md={12} sm={12} className='p-3 m-auto'>
                     <p className='user-info-head'>
                       <TranslateText txt='User-education-info-Header' />
                     </p>
@@ -69,7 +75,9 @@ class UserHome extends Component {
                     <p className='info-text'>Score : 200</p>
 
                     <Link to='/modules'>
-                      <button>continue</button>
+                      <button className='continue-Btn' type='submit'>
+                        <TranslateText txt='User-Continue-Btn' />
+                      </button>
                     </Link>
                   </Col>
                 </Row>
