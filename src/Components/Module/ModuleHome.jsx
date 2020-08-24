@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import { Row, Col, Button, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
-import SubModule1 from "../SubModules/SubModule1/SubModule1";
-import SubModule2 from "../SubModules/SubModule2/SubModule2";
-import SubModule3 from "../SubModules/SubModule3/SubModule3";
 import ModuleNavBar from "./ModuleNavBar";
 
 import { withRouter } from "react-router-dom";
@@ -22,6 +19,7 @@ import TranslateText from "../Translate/TranslateText";
 import SubModule4 from "../SubModules/SubModule4/SubModule4";
 import SubModule5 from "../SubModules/SubModule5/SubModule5";
 import SubModule6 from "../SubModules/SubModule6/SubModule6";
+import SubModule from "../SubModules/SubModule";
 
 class ModuleHome extends Component {
   constructor(props) {
@@ -45,6 +43,7 @@ class ModuleHome extends Component {
 
     this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
     this.handleOnClickSubModule = this.handleOnClickSubModule.bind(this);
+    this.handleClickModuleNext = this.handleClickModuleNext.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +81,10 @@ class ModuleHome extends Component {
 
   handleClickSubModuleNext(ActiveSubName) {
     this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
+  }
+
+  handleClickModuleNext(ActiveModuleName, ActiveSubName) {
+    this.props.UserActiveModuleSubModule(ActiveModuleName, ActiveSubName);
   }
 
   render() {
@@ -174,107 +177,82 @@ class ModuleHome extends Component {
 
               <p className='Module-note m-3'>
                 {userActiveSubModule === "sub1" ? (
-                  <TranslateText txt='SubModule1-note' />
+                  <>
+                    <h4 className='font-weight-bold'>
+                      <TranslateText txt='SubModule1-header' />
+                    </h4>
+                    <TranslateText txt='SubModule1-note' />
+                  </>
                 ) : null}
 
                 {userActiveSubModule === "sub2" ? (
-                  <TranslateText txt='SubModule2-note' />
+                  <>
+                    <h4 className='font-weight-bold'>
+                      <TranslateText txt='SubModule2-header' />
+                    </h4>
+                    <TranslateText txt='SubModule2-note' />
+                  </>
                 ) : null}
 
                 {userActiveSubModule === "sub3" ? (
-                  <TranslateText txt='SubModule3-note' />
+                  <>
+                    <h4 className='font-weight-bold'>
+                      <TranslateText txt='SubModule3-header' />
+                    </h4>
+                    <TranslateText txt='SubModule3-note' />
+                  </>
                 ) : null}
 
                 {userActiveSubModule === "sub4" ? (
-                  <TranslateText txt='SubModule4-note' />
+                  <>
+                    <h4 className='font-weight-bold'>
+                      <TranslateText txt='SubModule4-header' />
+                    </h4>
+                    <TranslateText txt='SubModule4-note' />
+                  </>
                 ) : null}
 
                 {userActiveSubModule === "sub5" ? (
-                  <TranslateText txt='SubModule5-note' />
+                  <>
+                    <h4 className='font-weight-bold'>
+                      <TranslateText txt='SubModule5-header' />
+                    </h4>
+                    <TranslateText txt='SubModule5-note' />
+                  </>
                 ) : null}
 
                 {userActiveSubModule === "sub6" ? (
-                  <TranslateText txt='SubModule6-note' />
+                  <>
+                    <h4 className='font-weight-bold'>
+                      <TranslateText txt='SubModule6-header' />
+                    </h4>
+                    <TranslateText txt='SubModule6-note' />
+                  </>
                 ) : null}
 
                 {userActiveSubModule === "sub7" ? (
-                  <TranslateText txt='SubModule7-note' />
+                  <>
+                    <h4 className='font-weight-bold'>
+                      <TranslateText txt='SubModule7-header' />
+                    </h4>
+                    <TranslateText txt='SubModule7-note' />
+                  </>
                 ) : null}
               </p>
 
               {/* SubModule Section   */}
-              {userActiveSubModule === "sub1" ? (
-                <SubModule1
-                  userActiveModule={userActiveModule}
-                  userActiveSubModule={userActiveSubModule}
-                  SubModuleUrl={SubModule1Url}
-                  SubModuleRatio={SubModule1Ratio}
-                  onClick={this.handleClickSubModuleNext}
-                />
-              ) : null}
-
-              {userActiveSubModule === "sub2" ? (
-                <SubModule2
-                  userActiveModule={userActiveModule}
-                  userActiveSubModule={userActiveSubModule}
-                  SubModuleUrl={SubModule2Url}
-                  SubModuleRatio={SubModule2Ratio}
-                  onClick={this.handleClickSubModuleNext}
-                />
-              ) : null}
-
-              {userActiveSubModule === "sub3" ? (
-                <SubModule3
-                  userActiveModule={userActiveModule}
-                  userActiveSubModule={userActiveSubModule}
-                  onClick={this.handleClickSubModuleNext}
-                />
-              ) : null}
-
-              {userActiveSubModule === "sub4" ? (
-                <SubModule4
-                  userActiveModule={userActiveModule}
-                  userActiveSubModule={userActiveSubModule}
-                  onClick={this.handleClickSubModuleNext}
-                />
-              ) : null}
-
-              {userActiveSubModule === "sub5" ? (
-                <SubModule5
-                  userActiveModule={userActiveModule}
-                  userActiveSubModule={userActiveSubModule}
-                  onClick={this.handleClickSubModuleNext}
-                />
-              ) : null}
-
-              {userActiveSubModule === "sub6" ? (
-                <SubModule6
-                  userActiveModule={userActiveModule}
-                  userActiveSubModule={userActiveSubModule}
-                  SubModuleUrl={SubModule6Url}
-                  SubModuleRatio={SubModule6Ratio}
-                  onClick={this.handleClickSubModuleNext}
-                />
-              ) : null}
-
-              {userActiveSubModule === "sub7" ? (
-                <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5'>SubModule 7</h1>
-                  <h1 className='m-5'>Quiz</h1>
-                  <Button
-                    className='m-3'
-                    size='lg'
-                    onClick={() =>
-                      this.props.UserActiveModuleSubModule(
-                        `Module${parseInt(userActiveModule.substring(6)) + 1}`,
-                        "sub1"
-                      )
-                    }
-                  >
-                    Next Module
-                  </Button>
-                </div>
-              ) : null}
+              <SubModule
+                userActiveModule={userActiveModule}
+                userActiveSubModule={userActiveSubModule}
+                SubModule1Url={SubModule1Url}
+                SubModule1Ratio={SubModule1Ratio}
+                SubModule2Url={SubModule2Url}
+                SubModule2Ratio={SubModule2Ratio}
+                SubModule6Url={SubModule6Url}
+                SubModule6Ratio={SubModule6Ratio}
+                onClick={this.handleClickSubModuleNext}
+                onClickNextModule={this.handleClickModuleNext}
+              />
             </Col>
           </Row>
         </Container>

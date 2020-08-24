@@ -13,9 +13,9 @@ const initialState = {
   SubModule1Name: "Introduction Video",
   SubModule2Name: "Course Video",
   SubModule3Name: "Interactive Tool",
-  SubModule4Name: "Expert Video",
-  SubModule5Name: "Reading",
-  SubModule6Name: "Case Study",
+  SubModule4Name: "Reading",
+  SubModule5Name: "Case Study",
+  SubModule6Name: "Expert Video",
   SubModule7Name: "Quiz",
   //
   userActiveModule: "",
