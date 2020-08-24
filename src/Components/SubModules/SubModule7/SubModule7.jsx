@@ -16,14 +16,14 @@ class SubModule7 extends Component {
           <Button
             className='m-3'
             size='lg'
-            onClick={() =>
-              this.props.onClickNextModule(
-                `Module${
-                  parseInt(this.props.userActiveModule.substring(6)) + 1
-                }`,
-                "sub1"
-              )
-            }
+            // onClick={() =>
+            //   this.props.onClickNextModule(
+            //     `Module${
+            //       parseInt(this.props.userActiveModule.substring(6)) + 1
+            //     }`,
+            //     "sub1"
+            //   )
+            // }
           >
             Next Module
           </Button>
