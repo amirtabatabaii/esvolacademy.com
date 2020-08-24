@@ -9,7 +9,7 @@ class Reading5 extends Component {
           {this.props.note}
         </div>
 
-        <a target='_blank' href={this.props.Link}>
+        <a target='_blank' href={this.props.Link} rel='noopener noreferrer'>
           <button className='mt-4 video-link-btn'>
             {this.props.type === "website" ? "Open Website" : null}
             {this.props.type === "pdf" ? "Read pdf" : null}
