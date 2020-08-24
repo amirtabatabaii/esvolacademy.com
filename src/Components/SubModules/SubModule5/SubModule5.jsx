@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import Scroll from "../../Utility/Scroll";
 // import "./SubModule4.css";
-import Reading5 from "./Reading5";
 import Sub5Button from "./Sub5Button";
 
 class SubModule5 extends Component {

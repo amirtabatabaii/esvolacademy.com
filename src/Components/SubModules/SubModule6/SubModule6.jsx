@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
 import { Row } from "react-bootstrap";
 
 import "../../Module/ModuleHome.css";
@@ -23,11 +23,11 @@ class SubModule6 extends Component {
   };
 
   render() {
-    const { played } = this.state;
+    // const { played } = this.state;
     const {
       userActiveModule,
-      SubModuleUrl,
-      SubModuleRatio,
+      // SubModuleUrl,
+      // SubModuleRatio,
       onClick,
     } = this.props;
 

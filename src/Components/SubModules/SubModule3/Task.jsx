@@ -7,7 +7,7 @@ class Task extends Component {
       <div className='p-3 text-left'>
         <div className='task-note font-weight-bold'>{this.props.note}</div>
 
-        <a target='_blank' href={this.props.Link}>
+        <a target='_blank' href={this.props.Link} rel='noopener noreferrer'>
           <button className='mt-4 video-link-btn'>
             {this.props.type === "video" ? "Watch Video" : null}
             {this.props.type === "pdf" ? "Read pdf" : null}

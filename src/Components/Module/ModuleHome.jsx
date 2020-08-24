@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
 import SubModule from "../SubModules/SubModule";
 import ModuleStagesName from "./ModuleStagesName";
-import SubModuleNote from "./SubModuleNote";
+import SubModuleNote from "../SubModules/SubModuleNote";
 
 class ModuleHome extends Component {
   constructor(props) {
