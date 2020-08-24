@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ReactPlayer from "react-player";
+import ReactPlayer from "react-player";
 import { Row } from "react-bootstrap";
 
 import "../../Module/ModuleHome.css";
@@ -23,17 +23,17 @@ class SubModule6 extends Component {
   };
 
   render() {
-    // const { played } = this.state;
+    const { played } = this.state;
     const {
       userActiveModule,
-      // SubModuleUrl,
-      // SubModuleRatio,
+      SubModuleUrl,
+      SubModuleRatio,
       onClick,
     } = this.props;
 
     return (
       <div className={`${userActiveModule}-sub-panel mt-4 mb-5 app`}>
-        {/* <section className='section'>
+        <section className='section'>
           <div className='player-wrapper'>
             <ReactPlayer
               url={SubModuleUrl}
@@ -45,12 +45,12 @@ class SubModule6 extends Component {
               onProgress={this.handleProgress}
             />
           </div>
-        </section> */}
+        </section>
 
         <Row className='w-100 d-flex justify-content-around'>
           <Sub6Button
             className={"m-3 Module-next-btn"}
-            // disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
+            disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
             txt='SubModule6-Continue'
             onClick={onClick}
           />
