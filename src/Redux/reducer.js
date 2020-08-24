@@ -4,6 +4,7 @@ import {
   SELECTED_SUBMODULE,
   SUBMODULE_1_DETAIL,
   SUBMODULE_2_DETAIL,
+  SUBMODULE_6_DETAIL,
 } from "./types";
 
 const initialState = {
@@ -32,6 +33,10 @@ const initialState = {
   SubModule2Title: "",
   SubModule2Url: "",
   SubModule2Ratio: "",
+  //
+  SubModule6Title: "",
+  SubModule6Url: "",
+  SubModule6Ratio: "",
 };
 
 export default function (state = initialState, action) {
@@ -70,6 +75,14 @@ export default function (state = initialState, action) {
         SubModule2Title: action.payload.SubModule2Title,
         SubModule2Url: action.payload.SubModule2Url,
         SubModule2Ratio: action.payload.SubModule2Ratio,
+      };
+
+    case SUBMODULE_6_DETAIL:
+      return {
+        ...state,
+        SubModule6Title: action.payload.SubModule6Title,
+        SubModule6Url: action.payload.SubModule6Url,
+        SubModule6Ratio: action.payload.SubModule6Ratio,
       };
 
     default:

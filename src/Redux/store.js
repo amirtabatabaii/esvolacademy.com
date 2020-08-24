@@ -28,6 +28,10 @@ const initialState = {
   SubModule2Title: "",
   SubModule2Url: "",
   SubModule2Ratio: "",
+  //
+  SubModule6Title: "",
+  SubModule6Url: "",
+  SubModule6Ratio: "",
 };
 
 const middleware = [thunk];
@@ -36,9 +40,8 @@ const store = createStore(
   Reducer,
   initialState,
   compose(
-    applyMiddleware(...middleware)
-    // ,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

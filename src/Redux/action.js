@@ -4,6 +4,7 @@ import {
   SELECTED_SUBMODULE,
   SUBMODULE_1_DETAIL,
   SUBMODULE_2_DETAIL,
+  SUBMODULE_6_DETAIL,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -57,5 +58,17 @@ export const SubModule2Detail = (
   dispatch({
     type: SUBMODULE_2_DETAIL,
     payload: { SubModule2Title, SubModule2Url, SubModule2Ratio },
+  });
+};
+
+// SubModule 6 Detail
+export const SubModule6Detail = (
+  SubModule6Title,
+  SubModule6Url,
+  SubModule6Ratio
+) => (dispatch) => {
+  dispatch({
+    type: SUBMODULE_6_DETAIL,
+    payload: { SubModule6Title, SubModule6Url, SubModule6Ratio },
   });
 };

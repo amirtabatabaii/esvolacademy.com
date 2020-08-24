@@ -14,11 +14,14 @@ import {
   UserActiveModuleSubModule,
   SubModule1Detail,
   SubModule2Detail,
+  SubModule6Detail,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
 import TranslateText from "../Translate/TranslateText";
 import SubModule4 from "../SubModules/SubModule4/SubModule4";
+import SubModule5 from "../SubModules/SubModule5/SubModule5";
+import SubModule6 from "../SubModules/SubModule6/SubModule6";
 
 class ModuleHome extends Component {
   constructor(props) {
@@ -34,6 +37,10 @@ class ModuleHome extends Component {
       SubModule2Title: "",
       SubModule2Url: "",
       SubModule2Ratio: "",
+      //
+      SubModule6Title: "",
+      SubModule6Url: "",
+      SubModule6Ratio: "",
     };
 
     this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
@@ -41,21 +48,26 @@ class ModuleHome extends Component {
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub3");
+    this.props.UserActiveModuleSubModule("Module1", "sub1");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
-      "https://www.youtube.com/watch?v=UBMk30rjy0o",
-      // "https://www.youtube.com/watch?v=4OkiH2yD-eQ",
+      "https://www.youtube.com/watch?v=A2pM6u-d-MM",
       //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
       "80"
     );
 
     this.props.SubModule2Detail(
       "SubModule_2_Video",
-      "https://www.youtube.com/watch?v=6VFLKdfxA24",
+      "https://www.youtube.com/watch?v=_npPA9ydDTs",
       // "https://youtu.be/vcmRk0Mxevk",
       //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
+      "70"
+    );
+
+    this.props.SubModule6Detail(
+      "SubModule_6_Video",
+      "https://www.youtube.com/watch?v=3_JsyidKdaI",
       "60"
     );
   }
@@ -80,6 +92,8 @@ class ModuleHome extends Component {
       SubModule1Ratio,
       SubModule2Url,
       SubModule2Ratio,
+      SubModule6Url,
+      SubModule6Ratio,
     } = this.props;
 
     return (
@@ -226,31 +240,23 @@ class ModuleHome extends Component {
               ) : null}
 
               {userActiveSubModule === "sub5" ? (
-                <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5'>SubModule 5</h1>
-                  <h1 className='m-5'>Reading</h1>
-                  <Button
-                    className='m-3'
-                    size='lg'
-                    onClick={() => this.handleClickSubModuleNext("sub6")}
-                  >
-                    Next SubModule
-                  </Button>
-                </div>
+                <SubModule5
+                  userActiveModule={userActiveModule}
+                  userActiveSubModule={userActiveSubModule}
+                  onClick={this.handleClickSubModuleNext}
+                />
               ) : null}
+
               {userActiveSubModule === "sub6" ? (
-                <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5'>SubModule 6</h1>
-                  <h1 className='m-5'>Case Study</h1>
-                  <Button
-                    className='m-3'
-                    size='lg'
-                    onClick={() => this.handleClickSubModuleNext("sub7")}
-                  >
-                    Next SubModule
-                  </Button>
-                </div>
+                <SubModule6
+                  userActiveModule={userActiveModule}
+                  userActiveSubModule={userActiveSubModule}
+                  SubModuleUrl={SubModule6Url}
+                  SubModuleRatio={SubModule6Ratio}
+                  onClick={this.handleClickSubModuleNext}
+                />
               ) : null}
+
               {userActiveSubModule === "sub7" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='m-5'>SubModule 7</h1>
@@ -290,6 +296,10 @@ const mapStateToProps = (state) => ({
   SubModule2Title: state.SubModule2Title,
   SubModule2Url: state.SubModule2Url,
   SubModule2Ratio: state.SubModule2Ratio,
+  //
+  SubModule6Title: state.SubModule6Title,
+  SubModule6Url: state.SubModule6Url,
+  SubModule6Ratio: state.SubModule6Ratio,
 });
 
 export default connect(mapStateToProps, {
@@ -297,4 +307,5 @@ export default connect(mapStateToProps, {
   UserActiveModuleSubModule,
   SubModule1Detail,
   SubModule2Detail,
+  SubModule6Detail,
 })(withRouter(ModuleHome));
