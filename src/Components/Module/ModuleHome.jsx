@@ -5,6 +5,7 @@ import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
 import SubModule1 from "../SubModules/SubModule1/SubModule1";
 import SubModule2 from "../SubModules/SubModule2/SubModule2";
+import SubModule3 from "../SubModules/SubModule3/SubModule3";
 import ModuleNavBar from "./ModuleNavBar";
 
 import { withRouter } from "react-router-dom";
@@ -17,6 +18,7 @@ import {
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
 import TranslateText from "../Translate/TranslateText";
+import SubModule4 from "../SubModules/SubModule4/SubModule4";
 
 class ModuleHome extends Component {
   constructor(props) {
@@ -39,7 +41,7 @@ class ModuleHome extends Component {
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub3");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -196,6 +198,7 @@ class ModuleHome extends Component {
                   onClick={this.handleClickSubModuleNext}
                 />
               ) : null}
+
               {userActiveSubModule === "sub2" ? (
                 <SubModule2
                   userActiveModule={userActiveModule}
@@ -205,33 +208,23 @@ class ModuleHome extends Component {
                   onClick={this.handleClickSubModuleNext}
                 />
               ) : null}
+
               {userActiveSubModule === "sub3" ? (
-                <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5'>SubModule 3</h1>
-                  <h1 className='m-5'>Interactive Tool</h1>
-                  <Button
-                    className='m-3'
-                    size='lg'
-                    onClick={() => this.handleClickSubModuleNext("sub4")}
-                  >
-                    Next SubModule
-                  </Button>
-                </div>
+                <SubModule3
+                  userActiveModule={userActiveModule}
+                  userActiveSubModule={userActiveSubModule}
+                  onClick={this.handleClickSubModuleNext}
+                />
               ) : null}
+
               {userActiveSubModule === "sub4" ? (
-                <div className={`${userActiveModule}-sub-panel mt-4 app`}>
-                  <h1 className='m-5'>SubModule 4</h1>
-                  <h1 className='m-5'>Expert Video 1</h1>
-                  <h1 className='m-5'>Expert Video 2</h1>
-                  <Button
-                    className='m-3'
-                    size='lg'
-                    onClick={() => this.handleClickSubModuleNext("sub5")}
-                  >
-                    Next SubModule
-                  </Button>
-                </div>
+                <SubModule4
+                  userActiveModule={userActiveModule}
+                  userActiveSubModule={userActiveSubModule}
+                  onClick={this.handleClickSubModuleNext}
+                />
               ) : null}
+
               {userActiveSubModule === "sub5" ? (
                 <div className={`${userActiveModule}-sub-panel mt-4 app`}>
                   <h1 className='m-5'>SubModule 5</h1>
