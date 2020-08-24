@@ -10,7 +10,7 @@ class SubModule5 extends Component {
     return (
       <div className={`${this.props.userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
-          {/* <Reading5
+          <Reading5
             header='Bulgaria:'
             note='Young Leaders Seminar provides food for thought in Sofia:'
             type='website'
@@ -50,7 +50,7 @@ class SubModule5 extends Component {
             note='London Olympics: How volunteers made the Games:'
             type='website'
             Link='https://www.bbc.com/news/uk-19201329'
-          /> */}
+          />
 
           <Sub5Button
             className={"m-3 Module-next-btn"}
