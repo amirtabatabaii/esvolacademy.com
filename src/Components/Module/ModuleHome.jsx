@@ -15,11 +15,9 @@ import {
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
-import TranslateText from "../Translate/TranslateText";
-import SubModule4 from "../SubModules/SubModule4/SubModule4";
-import SubModule5 from "../SubModules/SubModule5/SubModule5";
-import SubModule6 from "../SubModules/SubModule6/SubModule6";
 import SubModule from "../SubModules/SubModule";
+import ModuleStagesName from "./ModuleStagesName";
+import SubModuleNote from "./SubModuleNote";
 
 class ModuleHome extends Component {
   constructor(props) {
@@ -110,59 +108,7 @@ class ModuleHome extends Component {
           >
             {/* Module panel */}
             <Col lg={2} className='d-flex justify-content-end'>
-              <div
-                className={`${userActiveModule} Module-panel d-none d-lg-block`}
-              >
-                <h3
-                  className={`${
-                    userActiveModule === "Module1"
-                      ? "Module-text-active Module1-text-active"
-                      : "Module-text"
-                  }`}
-                >
-                  <TranslateText txt='Module1-text' />
-                </h3>
-
-                <h3
-                  className={`${
-                    userActiveModule === "Module2"
-                      ? "Module-text-active Module2-text-active"
-                      : "Module-text"
-                  }`}
-                >
-                  <TranslateText txt='Module2-text' />
-                </h3>
-
-                <h3
-                  className={`${
-                    userActiveModule === "Module3"
-                      ? "Module-text-active Module3-text-active"
-                      : "Module-text"
-                  }`}
-                >
-                  <TranslateText txt='Module3-text' />
-                </h3>
-
-                <h3
-                  className={`${
-                    userActiveModule === "Module4"
-                      ? "Module-text-active Module4-text-active"
-                      : "Module-text"
-                  }`}
-                >
-                  <TranslateText txt='Module4-text' />
-                </h3>
-
-                <h3
-                  className={`${
-                    userActiveModule === "Module5"
-                      ? "Module-text-active Module5-text-active"
-                      : "Module-text"
-                  } pb-5`}
-                >
-                  <TranslateText txt='Module5-text' />
-                </h3>
-              </div>
+              <ModuleStagesName userActiveModule={userActiveModule} />
             </Col>
 
             <Col lg={10}>
@@ -175,72 +121,10 @@ class ModuleHome extends Component {
                 />
               </div>
 
-              <p className='Module-note m-3'>
-                {userActiveSubModule === "sub1" ? (
-                  <>
-                    <h4 className='font-weight-bold'>
-                      <TranslateText txt='SubModule1-header' />
-                    </h4>
-                    <TranslateText txt='SubModule1-note' />
-                  </>
-                ) : null}
+              {/* SubModule Note Section */}
+              <SubModuleNote userActiveSubModule={userActiveSubModule} />
 
-                {userActiveSubModule === "sub2" ? (
-                  <>
-                    <h4 className='font-weight-bold'>
-                      <TranslateText txt='SubModule2-header' />
-                    </h4>
-                    <TranslateText txt='SubModule2-note' />
-                  </>
-                ) : null}
-
-                {userActiveSubModule === "sub3" ? (
-                  <>
-                    <h4 className='font-weight-bold'>
-                      <TranslateText txt='SubModule3-header' />
-                    </h4>
-                    <TranslateText txt='SubModule3-note' />
-                  </>
-                ) : null}
-
-                {userActiveSubModule === "sub4" ? (
-                  <>
-                    <h4 className='font-weight-bold'>
-                      <TranslateText txt='SubModule4-header' />
-                    </h4>
-                    <TranslateText txt='SubModule4-note' />
-                  </>
-                ) : null}
-
-                {userActiveSubModule === "sub5" ? (
-                  <>
-                    <h4 className='font-weight-bold'>
-                      <TranslateText txt='SubModule5-header' />
-                    </h4>
-                    <TranslateText txt='SubModule5-note' />
-                  </>
-                ) : null}
-
-                {userActiveSubModule === "sub6" ? (
-                  <>
-                    <h4 className='font-weight-bold'>
-                      <TranslateText txt='SubModule6-header' />
-                    </h4>
-                    <TranslateText txt='SubModule6-note' />
-                  </>
-                ) : null}
-
-                {userActiveSubModule === "sub7" ? (
-                  <>
-                    <h4 className='font-weight-bold'>
-                      <TranslateText txt='SubModule7-header' />
-                    </h4>
-                    <TranslateText txt='SubModule7-note' />
-                  </>
-                ) : null}
-              </p>
-
-              {/* SubModule Section   */}
+              {/* SubModule Section */}
               <SubModule
                 userActiveModule={userActiveModule}
                 userActiveSubModule={userActiveSubModule}
