@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { UserActiveModuleSubModule } from "../../../Redux/action";
 import { Button } from "react-bootstrap";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
 import Scroll from "../../Utility/Scroll";
 
 class SubModule7 extends Component {
@@ -16,14 +13,14 @@ class SubModule7 extends Component {
           <Button
             className='m-3'
             size='lg'
-            // onClick={() =>
-            //   this.props.onClickNextModule(
-            //     `Module${
-            //       parseInt(this.props.userActiveModule.substring(6)) + 1
-            //     }`,
-            //     "sub1"
-            //   )
-            // }
+            onClick={() =>
+              this.props.onClickNextModule(
+                `Module${
+                  parseInt(this.props.userActiveModule.substring(6)) + 1
+                }`,
+                "sub1"
+              )
+            }
           >
             Next Module
           </Button>
