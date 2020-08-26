@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import axios from "axios";
 
 import "./ModuleHome.css";
 import SubModuleBtn from "./SubModuleBtn";
@@ -12,6 +13,7 @@ import {
   SubModule1Detail,
   SubModule2Detail,
   SubModule6Detail,
+  SubModule1Quiz,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -37,6 +39,8 @@ class ModuleHome extends Component {
       SubModule6Title: "",
       SubModule6Url: "",
       SubModule6Ratio: "",
+      //
+      SubModule1QuizQuestion: [],
     };
 
     this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
@@ -44,8 +48,22 @@ class ModuleHome extends Component {
     this.handleClickModuleNext = this.handleClickModuleNext.bind(this);
   }
 
-  componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub3");
+  async componentDidMount() {
+    //Get Module 1 questions
+    await axios
+      .get(
+        `https://run.mocky.io/v3/c8fd0d94-2a99-4280-b78c-5e988e9869a0`
+        //  {
+        //   headers: {
+        //     Authorization: localStorage.getItem("jwtToken"),
+        //   },
+        // }
+      )
+      .then((Response) => {
+        this.props.SubModule1Quiz(Response.data.results);
+      });
+
+    this.props.UserActiveModuleSubModule("Module1", "sub7");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -57,8 +75,6 @@ class ModuleHome extends Component {
     this.props.SubModule2Detail(
       "SubModule_2_Video",
       "https://www.youtube.com/watch?v=_npPA9ydDTs",
-      // "https://youtu.be/vcmRk0Mxevk",
-      //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
       "70"
     );
 
@@ -74,7 +90,7 @@ class ModuleHome extends Component {
     const UserSelectedSubNumber = ActiveSubName.substring(3);
     if (UserSelectedSubNumber <= UserActiveSubNumber)
       this.props.SelectedSubModule(ActiveSubName);
-    else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
+    //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
   }
 
   handleClickSubModuleNext(ActiveSubName) {
@@ -95,6 +111,7 @@ class ModuleHome extends Component {
       SubModule2Ratio,
       SubModule6Url,
       SubModule6Ratio,
+      SubModule1QuizQuestion,
     } = this.props;
 
     return (
@@ -134,6 +151,7 @@ class ModuleHome extends Component {
                 SubModule2Ratio={SubModule2Ratio}
                 SubModule6Url={SubModule6Url}
                 SubModule6Ratio={SubModule6Ratio}
+                SubModule1QuizQuestion={SubModule1QuizQuestion}
                 onClick={this.handleClickSubModuleNext}
                 onClickNextModule={this.handleClickModuleNext}
               />
@@ -162,6 +180,8 @@ const mapStateToProps = (state) => ({
   SubModule6Title: state.SubModule6Title,
   SubModule6Url: state.SubModule6Url,
   SubModule6Ratio: state.SubModule6Ratio,
+  //
+  SubModule1QuizQuestion: state.SubModule1QuizQuestion,
 });
 
 export default connect(mapStateToProps, {
@@ -170,4 +190,5 @@ export default connect(mapStateToProps, {
   SubModule1Detail,
   SubModule2Detail,
   SubModule6Detail,
+  SubModule1Quiz,
 })(withRouter(ModuleHome));

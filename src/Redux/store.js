@@ -32,6 +32,8 @@ const initialState = {
   SubModule6Title: "",
   SubModule6Url: "",
   SubModule6Ratio: "",
+  //
+  SubModule1QuizQuestion: [],
 };
 
 const middleware = [thunk];

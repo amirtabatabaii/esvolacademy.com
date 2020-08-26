@@ -22,6 +22,7 @@ class SubModule extends Component {
       SubModule6Ratio,
       onClick,
       onClickNextModule,
+      SubModule1QuizQuestion,
     } = this.props;
 
     return (
@@ -84,6 +85,7 @@ class SubModule extends Component {
           <SubModule7
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
+            SubModule1QuizQuestion={SubModule1QuizQuestion}
             onClickNextModule={onClickNextModule}
           />
         ) : null}

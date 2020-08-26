@@ -7,7 +7,9 @@ class SubModule7 extends Component {
     return (
       <div className={`${this.props.userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
-          <h1 className='m-5'>SubModule 7</h1>
+          <h1 className='m-5'>
+            {this.props.SubModule1QuizQuestion[0].question}
+          </h1>
           <h1 className='m-5'>Quiz</h1>
 
           <Button

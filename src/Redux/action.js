@@ -5,6 +5,7 @@ import {
   SUBMODULE_1_DETAIL,
   SUBMODULE_2_DETAIL,
   SUBMODULE_6_DETAIL,
+  SUBMODULE_1_QUIZ,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -46,6 +47,14 @@ export const SubModule1Detail = (
   dispatch({
     type: SUBMODULE_1_DETAIL,
     payload: { SubModule1Title, SubModule1Url, SubModule1Ratio },
+  });
+};
+
+// SubModule 1 QUIZ Questions
+export const SubModule1Quiz = (SubModule1QuizQuestion) => (dispatch) => {
+  dispatch({
+    type: SUBMODULE_1_QUIZ,
+    payload: { SubModule1QuizQuestion },
   });
 };
 
