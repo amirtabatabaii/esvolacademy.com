@@ -45,7 +45,7 @@ class ModuleHome extends Component {
   }
 
   componentDidMount() {
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub3");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
