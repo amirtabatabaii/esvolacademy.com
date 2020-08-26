@@ -9,20 +9,24 @@
 
 .box {
   width: 100%;
-  /* height: 500px; */
+  height: 100%;
+  margin: auto;
   background: #f1f1f1;
   box-shadow: 30px 30px 80px rgba(55, 84, 170, 0.1), -30px -30px 80px #ffffff,
     inset 4px 4px 20px rgba(255, 255, 255, 0.5);
 }
 
 .avatar-box {
-  width: 25vh;
-  /* height: 100%; */
+  width: 20vh;
   background: #f1f1f1;
   box-shadow: 30px 30px 80px rgba(55, 84, 170, 0.1), -30px -30px 80px #ffffff,
     inset 4px 4px 20px rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   /* display: inline-block; */
+}
+
+.chart-box {
+  width: 30vh;
 }
 
 .user-info-head {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Col, Image } from "react-bootstrap";
-import { Progress } from "antd";
 
 import ModuleNavBar from "../Module/ModuleNavBar";
 import Footer from "../Footer/Footer";
@@ -10,6 +9,8 @@ import "./userHome.css";
 
 import avatar from "../../assets/img/img_avatar.png";
 import { Link } from "react-router-dom";
+
+import Progress1 from "../../assets/img/progress_chart/progress1.png";
 
 class UserHome extends Component {
   componentDidMount() {
@@ -28,13 +29,13 @@ class UserHome extends Component {
           </p>
 
           <Row className='w-100 p-5'>
-            <Col lg={6} md={12} sm={12} className='p-3'>
+            <Col lg={6} md={12} sm={12} className='p-2'>
               <div className='box text-center'>
                 <Row className='w-100 m-auto'>
-                  <Col lg={4} md={12} sm={12} className='p-3 m-auto'>
-                    <Image className='avatar-box' src={avatar} />
+                  <Col lg={5} md={12} sm={12} className='p-3 m-auto'>
+                    <Image src={avatar} alt='esvol' className='avatar-box' />
                   </Col>
-                  <Col lg={8} md={12} sm={12} className='p-3 m-auto'>
+                  <Col lg={7} md={12} sm={12} className='p-3 m-auto'>
                     <p className='user-info-head'>
                       <TranslateText txt='User-personal-info-Header' />
                     </p>
@@ -52,21 +53,13 @@ class UserHome extends Component {
               </div>
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3'>
+            <Col lg={6} md={12} sm={12} className='p-2'>
               <div className='box text-center'>
                 <Row className='w-100 m-auto'>
-                  <Col lg={4} md={12} sm={12} className='p-3 m-auto'>
-                    <Progress
-                      width='25vh'
-                      type='circle'
-                      strokeColor={{
-                        "0%": "#fe7635",
-                        "100%": "#e71980",
-                      }}
-                      percent={40}
-                    />
+                  <Col lg={5} md={12} sm={12} className='p-3 m-auto'>
+                    <Image src={Progress1} alt='esvol' className='chart-box' />
                   </Col>
-                  <Col lg={8} md={12} sm={12} className='p-3 m-auto'>
+                  <Col lg={7} md={12} sm={12} className='p-3 m-auto'>
                     <p className='user-info-head'>
                       <TranslateText txt='User-education-info-Header' />
                     </p>
