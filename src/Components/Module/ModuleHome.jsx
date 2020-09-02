@@ -71,7 +71,7 @@ class ModuleHome extends Component {
         this.props.SubModule1Quiz(Response.data.results);
       });
 
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub7");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",

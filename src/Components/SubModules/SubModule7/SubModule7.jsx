@@ -27,6 +27,7 @@ class SubModule7 extends Component {
       correctAnswerCount,
       takeQuiz,
       HandleRetakeQuiz,
+      onClickNextModule,
     } = this.props;
 
     return (
@@ -37,6 +38,7 @@ class SubModule7 extends Component {
               questionCount={questionCount}
               correctAnswerCount={correctAnswerCount}
               HandleRetakeQuiz={HandleRetakeQuiz}
+              onClickNextModule={onClickNextModule}
             />
           ) : takeQuiz ? (
             <Question

@@ -2,7 +2,12 @@ import React, { Component } from "react";
 
 class ShowResult extends Component {
   render() {
-    const { correctAnswerCount, questionCount, HandleRetakeQuiz } = this.props;
+    const {
+      correctAnswerCount,
+      questionCount,
+      HandleRetakeQuiz,
+      onClickNextModule,
+    } = this.props;
 
     return (
       <div>
@@ -24,7 +29,7 @@ class ShowResult extends Component {
 
               <button
                 className='Module-next-btn m-4'
-                // onClick={HandleQuestionResult}
+                onClick={() => onClickNextModule("Module2", "sub1")}
               >
                 Next Module
               </button>

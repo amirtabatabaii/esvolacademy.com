@@ -105,12 +105,12 @@ class SubModule extends Component {
             userAnswer={userAnswer}
             correctAnswerCount={correctAnswerCount}
             takeQuiz={takeQuiz}
-            onClickNextModule={onClickNextModule}
             getRandomAnswer={getRandomAnswer}
             HandleQuestionAnswerChange={HandleQuestionAnswerChange}
             HandleNextQuestion={HandleNextQuestion}
             HandleQuestionResult={HandleQuestionResult}
             HandleRetakeQuiz={HandleRetakeQuiz}
+            onClickNextModule={onClickNextModule}
           />
         ) : null}
       </div>
