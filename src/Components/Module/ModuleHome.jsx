@@ -41,11 +41,17 @@ class ModuleHome extends Component {
       SubModule6Ratio: "",
       //
       SubModule1QuizQuestion: [],
+      randomAnswers: [],
+      userAnswer: "",
+      questionCount: 0,
+      questionIndex: 0,
+      correctAnswerCount: 0,
     };
 
     this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
     this.handleOnClickSubModule = this.handleOnClickSubModule.bind(this);
     this.handleClickModuleNext = this.handleClickModuleNext.bind(this);
+    this.getRandomAnswer = this.getRandomAnswer.bind(this);
   }
 
   async componentDidMount() {
@@ -63,7 +69,7 @@ class ModuleHome extends Component {
         this.props.SubModule1Quiz(Response.data.results);
       });
 
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub7");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -83,6 +89,14 @@ class ModuleHome extends Component {
       "https://www.youtube.com/watch?v=3_JsyidKdaI",
       "60"
     );
+
+    this.getRandomAnswer(
+      this.props.SubModule1QuizQuestion[this.state.questionIndex]
+    );
+
+    this.setState({
+      questionCount: this.props.SubModule1QuizQuestion.length - 1,
+    });
   }
 
   handleOnClickSubModule(ActiveSubName) {
@@ -101,6 +115,66 @@ class ModuleHome extends Component {
     this.props.UserActiveModuleSubModule(ActiveModuleName, ActiveSubName);
   }
 
+  getRandomAnswer = (QuizQuestion) => {
+    const correctAns = QuizQuestion.correct_answer;
+    const incorrectAns = QuizQuestion.incorrect_answers;
+
+    incorrectAns.push(correctAns);
+
+    let i = incorrectAns.length - 1;
+    for (; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = incorrectAns[i];
+      incorrectAns[i] = incorrectAns[j];
+      incorrectAns[j] = temp;
+    }
+
+    this.setState({
+      randomAnswers: incorrectAns,
+    });
+  };
+
+  HandleQuestionAnswerChange = (e) => {
+    const userAnswer = e.target.value;
+    this.setState({
+      userAnswer: userAnswer,
+    });
+  };
+
+  HandleNextQuestion = () => {
+    if (
+      this.props.SubModule1QuizQuestion[this.state.questionIndex]
+        .correct_answer === this.state.userAnswer
+    ) {
+      this.setState({
+        correctAnswerCount: this.state.correctAnswerCount + 1,
+      });
+    }
+
+    this.setState(
+      {
+        questionIndex: this.state.questionIndex + 1,
+        userAnswer: "",
+      },
+      () => {
+        this.getRandomAnswer(
+          this.props.SubModule1QuizQuestion[this.state.questionIndex]
+        );
+      }
+    );
+  };
+
+  HandleQuestionResult = () => {
+    if (
+      this.props.SubModule1QuizQuestion[this.state.questionIndex]
+        .correct_answer === this.state.userAnswer
+    ) {
+      this.setState({
+        correctAnswerCount: this.state.correctAnswerCount + 1,
+      });
+    }
+  };
+
   render() {
     const {
       userActiveModule,
@@ -113,6 +187,8 @@ class ModuleHome extends Component {
       SubModule6Ratio,
       SubModule1QuizQuestion,
     } = this.props;
+
+    const { randomAnswers } = this.state;
 
     return (
       <div className='main-bg-color'>
@@ -152,8 +228,15 @@ class ModuleHome extends Component {
                 SubModule6Url={SubModule6Url}
                 SubModule6Ratio={SubModule6Ratio}
                 SubModule1QuizQuestion={SubModule1QuizQuestion}
+                questionIndex={this.state.questionIndex}
+                questionCount={this.state.questionCount}
+                userAnswer={this.state.userAnswer}
+                randomAnswers={randomAnswers}
                 onClick={this.handleClickSubModuleNext}
                 onClickNextModule={this.handleClickModuleNext}
+                HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
+                HandleNextQuestion={this.HandleNextQuestion}
+                HandleQuestionResult={this.HandleQuestionResult}
               />
             </Col>
           </Row>

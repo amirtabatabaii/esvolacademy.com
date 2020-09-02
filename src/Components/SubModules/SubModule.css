@@ -31,4 +31,44 @@
   text-align: center;
 }
 
-/* SubModule 2 */
+/* SubModule 7 */
+.question {
+  color: #525252;
+  font-family: "Open Sans";
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.answers {
+  color: #525252;
+  font-family: "Open Sans";
+  font-size: 17px !important;
+  line-height: 30px;
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: #525252 !important ;
+}
+
+.ant-radio-checked .ant-radio-inner:after {
+  background-color: #525252 !important ;
+}
+
+.ant-radio:hover .ant-radio-inner {
+  border-color: #525252 !important;
+}
+
+.ant-radio-checked .ant-radio-inner:focus {
+  border-color: #525252 !important;
+}
+
+/*  */
+
+.ant-radio-checked {
+  color: #525252;
+  font-family: "Open Sans";
+  font-size: 50px !important;
+  line-height: 30px !important;
+  font-weight: bolder !important;
+  font-size: 50px !important;
+}

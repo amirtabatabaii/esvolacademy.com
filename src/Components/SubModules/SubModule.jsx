@@ -23,6 +23,13 @@ class SubModule extends Component {
       onClick,
       onClickNextModule,
       SubModule1QuizQuestion,
+      randomAnswers,
+      questionIndex,
+      questionCount,
+      userAnswer,
+      HandleNextQuestion,
+      HandleQuestionAnswerChange,
+      HandleQuestionResult,
     } = this.props;
 
     return (
@@ -86,7 +93,14 @@ class SubModule extends Component {
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             SubModule1QuizQuestion={SubModule1QuizQuestion}
+            randomAnswers={randomAnswers}
+            questionIndex={questionIndex}
+            questionCount={questionCount}
+            userAnswer={userAnswer}
             onClickNextModule={onClickNextModule}
+            HandleQuestionAnswerChange={HandleQuestionAnswerChange}
+            HandleNextQuestion={HandleNextQuestion}
+            HandleQuestionResult={HandleQuestionResult}
           />
         ) : null}
       </div>

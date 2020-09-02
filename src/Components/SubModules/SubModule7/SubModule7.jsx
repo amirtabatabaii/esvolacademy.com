@@ -1,31 +1,78 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
 import Scroll from "../../Utility/Scroll";
+import { Radio } from "antd";
 
 class SubModule7 extends Component {
-  render() {
-    return (
-      <div className={`${this.props.userActiveModule}-sub-panel mt-4 app`}>
-        <Scroll>
-          <h1 className='m-5'>
-            {this.props.SubModule1QuizQuestion[0].question}
-          </h1>
-          <h1 className='m-5'>Quiz</h1>
+  state = {};
 
-          <Button
-            className='m-3'
-            size='lg'
-            onClick={() =>
-              this.props.onClickNextModule(
-                `Module${
-                  parseInt(this.props.userActiveModule.substring(6)) + 1
-                }`,
-                "sub1"
-              )
-            }
-          >
-            Next Module
-          </Button>
+  render() {
+    const radioStyle = {
+      display: "block",
+      height: "30px",
+      lineHeight: "30px",
+    };
+
+    const {
+      randomAnswers,
+      SubModule1QuizQuestion,
+      userActiveModule,
+      HandleQuestionAnswerChange,
+      questionIndex,
+      questionCount,
+      HandleNextQuestion,
+      userAnswer,
+      HandleQuestionResult,
+    } = this.props;
+
+    return (
+      <div className={`${userActiveModule}-sub-panel mt-4 app`}>
+        <Scroll>
+          <div className='m-5 text-left'>
+            <div className='question font-weight-bold'>
+              {questionIndex + 1}.{" "}
+              {SubModule1QuizQuestion[questionIndex].question}
+            </div>
+
+            <div className='mt-3'>
+              <Radio.Group
+                onChange={HandleQuestionAnswerChange}
+                // defaultValue={value}
+                // defaultValue={randomAnswers.map((answers) => ({ answers }))}
+                size='large'
+              >
+                {randomAnswers.map((answers, index) => (
+                  <Radio
+                    style={radioStyle}
+                    value={answers}
+                    key={index}
+                    className='mt-3 answers'
+                  >
+                    {answers}
+                  </Radio>
+                ))}
+              </Radio.Group>
+            </div>
+          </div>
+
+          {questionIndex === questionCount ? (
+            userAnswer === "" ? null : (
+              <button
+                className='Module-next-btn'
+                size='lg'
+                onClick={HandleQuestionResult}
+              >
+                View Result
+              </button>
+            )
+          ) : userAnswer === "" ? null : (
+            <button
+              onClick={HandleNextQuestion}
+              className='Module-next-btn'
+              size='lg'
+            >
+              Next Question
+            </button>
+          )}
         </Scroll>
       </div>
     );
