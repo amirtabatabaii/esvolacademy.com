@@ -26,10 +26,15 @@ class SubModule extends Component {
       randomAnswers,
       questionIndex,
       questionCount,
+      showResult,
       userAnswer,
       HandleNextQuestion,
+      getRandomAnswer,
       HandleQuestionAnswerChange,
       HandleQuestionResult,
+      correctAnswerCount,
+      takeQuiz,
+      HandleRetakeQuiz,
     } = this.props;
 
     return (
@@ -96,11 +101,16 @@ class SubModule extends Component {
             randomAnswers={randomAnswers}
             questionIndex={questionIndex}
             questionCount={questionCount}
+            showResult={showResult}
             userAnswer={userAnswer}
+            correctAnswerCount={correctAnswerCount}
+            takeQuiz={takeQuiz}
             onClickNextModule={onClickNextModule}
+            getRandomAnswer={getRandomAnswer}
             HandleQuestionAnswerChange={HandleQuestionAnswerChange}
             HandleNextQuestion={HandleNextQuestion}
             HandleQuestionResult={HandleQuestionResult}
+            HandleRetakeQuiz={HandleRetakeQuiz}
           />
         ) : null}
       </div>

@@ -46,6 +46,8 @@ class ModuleHome extends Component {
       questionCount: 0,
       questionIndex: 0,
       correctAnswerCount: 0,
+      showResult: false,
+      takeQuiz: true,
     };
 
     this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
@@ -116,21 +118,23 @@ class ModuleHome extends Component {
   }
 
   getRandomAnswer = (QuizQuestion) => {
+    console.log(QuizQuestion);
     const correctAns = QuizQuestion.correct_answer;
     const incorrectAns = QuizQuestion.incorrect_answers;
 
-    incorrectAns.push(correctAns);
+    const randomAnswers = [...incorrectAns];
+    randomAnswers.push(correctAns);
 
-    let i = incorrectAns.length - 1;
+    let i = randomAnswers.length - 1;
     for (; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      const temp = incorrectAns[i];
-      incorrectAns[i] = incorrectAns[j];
-      incorrectAns[j] = temp;
+      const temp = randomAnswers[i];
+      randomAnswers[i] = randomAnswers[j];
+      randomAnswers[j] = temp;
     }
 
     this.setState({
-      randomAnswers: incorrectAns,
+      randomAnswers: randomAnswers,
     });
   };
 
@@ -173,6 +177,20 @@ class ModuleHome extends Component {
         correctAnswerCount: this.state.correctAnswerCount + 1,
       });
     }
+
+    this.setState({
+      showResult: true,
+    });
+  };
+
+  HandleRetakeQuiz = () => {
+    this.setState({
+      userAnswer: "",
+      questionIndex: 0,
+      correctAnswerCount: 0,
+      showResult: false,
+      takeQuiz: true,
+    });
   };
 
   render() {
@@ -231,12 +249,17 @@ class ModuleHome extends Component {
                 questionIndex={this.state.questionIndex}
                 questionCount={this.state.questionCount}
                 userAnswer={this.state.userAnswer}
+                showResult={this.state.showResult}
+                correctAnswerCount={this.state.correctAnswerCount}
                 randomAnswers={randomAnswers}
+                takeQuiz={this.state.takeQuiz}
                 onClick={this.handleClickSubModuleNext}
                 onClickNextModule={this.handleClickModuleNext}
+                getRandomAnswer={this.getRandomAnswer}
                 HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
                 HandleNextQuestion={this.HandleNextQuestion}
                 HandleQuestionResult={this.HandleQuestionResult}
+                HandleRetakeQuiz={this.HandleRetakeQuiz}
               />
             </Col>
           </Row>
