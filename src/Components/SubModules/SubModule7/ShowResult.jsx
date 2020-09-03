@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TranslateText from "../../Translate/TranslateText";
 
 class ShowResult extends Component {
   render() {
@@ -11,7 +12,7 @@ class ShowResult extends Component {
 
     return (
       <div>
-        <h3 className='m-5'>
+        <h3 className='m-5' style={{ color: "#525252" }}>
           Correct answer : {correctAnswerCount} / {questionCount + 1}
         </h3>
 
@@ -24,14 +25,14 @@ class ShowResult extends Component {
                 className='Module-next-btn m-4'
                 // onClick={HandleQuestionResult}
               >
-                View Answers
+                <TranslateText txt='SubModule7-ViewResult' />
               </button>
 
               <button
                 className='Module-next-btn m-4'
                 onClick={() => onClickNextModule("Module2", "sub1")}
               >
-                Next Module
+                <TranslateText txt='SubModule7-NextModule' />
               </button>
             </>
           ) : (
@@ -42,7 +43,7 @@ class ShowResult extends Component {
                 className='Module-next-btn m-3'
                 onClick={HandleRetakeQuiz}
               >
-                Retake Exam
+                <TranslateText txt='SubModule7-RetakeQuiz' />
               </button>
             </>
           )}

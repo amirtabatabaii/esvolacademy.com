@@ -53,6 +53,22 @@
     -5px -5px 24px rgba(254, 120, 57, 0.25);
 }
 
+.Module-next-qst-btn {
+  color: #525252;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 33px;
+  /*  */
+  width: 150px;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  background: #f2f3f7;
+  box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
+    -5px -5px 24px rgba(254, 120, 57, 0.25);
+}
+
 .w-10 {
   /* width: 7%; */
   width: 85px;

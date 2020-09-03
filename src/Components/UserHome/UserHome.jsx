@@ -30,20 +30,32 @@ class UserHome extends Component {
 
           <Row className='w-100 p-5'>
             <Col lg={6} md={12} sm={12} className='p-2'>
-              <div className='box text-center'>
+              <div className='box text-md-center'>
                 <Row className='w-100 m-auto'>
-                  <Col lg={5} md={12} sm={12} className='p-3 m-auto'>
+                  <Col
+                    lg={5}
+                    md={12}
+                    sm={12}
+                    className='p-5 m-auto text-lg-right'
+                  >
                     <Image src={avatar} alt='esvol' className='avatar-box' />
                   </Col>
-                  <Col lg={7} md={12} sm={12} className='p-3 m-auto'>
+                  <Col
+                    lg={7}
+                    md={12}
+                    sm={12}
+                    className='p-3 m-auto text-lg-left'
+                  >
                     <p className='user-info-head'>
                       <TranslateText txt='User-personal-info-Header' />
                     </p>
-                    <p className='info-text'>Melis</p>
-                    <p className='info-text'>Çaycı</p>
-                    <p className='info-text'>melis@gmail.com</p>
+                    <p className='info-text font-weight-light'>Melis</p>
+                    <p className='info-text font-weight-light'>Çaycı</p>
+                    <p className='info-text font-weight-light'>
+                      melis@gmail.com
+                    </p>
 
-                    {/* <Link to='/edit'> */}
+                    {/* <Link to='/modules'> */}
                     <button className='continue-Btn' type='submit'>
                       <TranslateText txt='User-Edit-Btn' />
                     </button>
@@ -54,12 +66,22 @@ class UserHome extends Component {
             </Col>
 
             <Col lg={6} md={12} sm={12} className='p-2'>
-              <div className='box text-center'>
+              <div className='box text-md-center'>
                 <Row className='w-100 m-auto'>
-                  <Col lg={5} md={12} sm={12} className='p-3 m-auto'>
+                  <Col
+                    lg={5}
+                    md={12}
+                    sm={12}
+                    className='p-3 m-auto text-lg-right'
+                  >
                     <Image src={Progress1} alt='esvol' className='chart-box' />
                   </Col>
-                  <Col lg={7} md={12} sm={12} className='p-3 m-auto'>
+                  <Col
+                    lg={7}
+                    md={12}
+                    sm={12}
+                    className='p-3 m-auto text-lg-left'
+                  >
                     <p className='user-info-head'>
                       <TranslateText txt='User-education-info-Header' />
                     </p>

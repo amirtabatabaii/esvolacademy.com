@@ -62,6 +62,10 @@
   border-color: #525252 !important;
 }
 
+.ant-radio-checked::after {
+  border: 1px solid #525252 !important;
+}
+
 /*  */
 
 .ant-radio-checked {
@@ -72,3 +76,7 @@
   font-weight: bolder !important;
   font-size: 50px !important;
 }
+/* 
+input[type="radiogroup"]:checked + label {
+  color: #0ecc08 !important;
+} */

@@ -23,16 +23,16 @@ class Login extends Component {
       <div className='main-bg-color'>
         <div id='page-wrap' className='App'>
           <HomeNavBar />
-          <p className='login-head text-center pt-5'>
+          <p className='login-head text-center pt-4'>
             <TranslateText txt='Login-text' />
           </p>
 
           <Form
-            className='text-center mt-5 mb-5'
+            className='text-center'
             id='InsertForm'
             onSubmit={this.handleSubmit}
           >
-            <Form.Group className='mt-3 mb-3'>
+            <Form.Group className='mt-2 mb-2'>
               <div className='m-auto'>
                 <TextField
                   className='login-textField'
@@ -47,7 +47,7 @@ class Login extends Component {
               </div>
             </Form.Group>
 
-            <Form.Group className='mt-3 mb-3'>
+            <Form.Group className='mt-2 mb-2'>
               <div className='m-auto'>
                 <TextField
                   className='login-textField'
@@ -71,7 +71,9 @@ class Login extends Component {
           </Form>
         </div>
 
-        <Footer userActiveModule={"Main"} />
+        <div style={{ marginTop: "200px" }}>
+          <Footer userActiveModule={"Main"} />
+        </div>
       </div>
     );
   }

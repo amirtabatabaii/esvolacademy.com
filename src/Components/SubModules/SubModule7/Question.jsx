@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Radio } from "antd";
+import TranslateText from "../../Translate/TranslateText";
 
 class Question extends Component {
   render() {
@@ -30,6 +31,8 @@ class Question extends Component {
 
           <div className='mt-3'>
             <Radio.Group
+              // type='radiogroup'
+              // name='radiogroup'
               onChange={HandleQuestionAnswerChange}
               // defaultValue={value}
               // defaultValue={randomAnswers.map((answers) => ({ answers }))}
@@ -40,7 +43,7 @@ class Question extends Component {
                   style={radioStyle}
                   value={answers}
                   key={index}
-                  className='mt-3 answers'
+                  className='mt-2 answers'
                 >
                   {answers}
                 </Radio>
@@ -56,17 +59,19 @@ class Question extends Component {
               size='lg'
               onClick={HandleQuestionResult}
             >
-              View Result
+              <TranslateText txt='SubModule7-ViewResult' />
             </button>
           )
         ) : userAnswer === "" ? null : (
-          <button
-            onClick={HandleNextQuestion}
-            className='Module-next-btn'
-            size='lg'
-          >
-            Next Question
-          </button>
+          <div className='text-left m-5'>
+            <button
+              onClick={HandleNextQuestion}
+              className='Module-next-qst-btn'
+              size='lg'
+            >
+              <TranslateText txt='SubModule7-NextQuestion' />
+            </button>
+          </div>
         )}
       </>
     );
