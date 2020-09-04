@@ -21,6 +21,7 @@ class SubModule7 extends Component {
       questionIndex,
       questionCount,
       HandleNextQuestion,
+      HandlePrevQuestion,
       userAnswer,
       HandleQuestionResult,
       showResult,
@@ -49,6 +50,7 @@ class SubModule7 extends Component {
               userAnswer={userAnswer}
               HandleQuestionAnswerChange={HandleQuestionAnswerChange}
               HandleNextQuestion={HandleNextQuestion}
+              HandlePrevQuestion={HandlePrevQuestion}
               HandleQuestionResult={HandleQuestionResult}
             />
           ) : (
