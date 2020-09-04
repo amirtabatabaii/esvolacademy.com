@@ -76,6 +76,7 @@
   "SubModule7-note": "Please select the right answer for each question.",
   "SubModule7-Continue": "Continue",
   "SubModule7-NextQuestion": "Next Question",
+  "SubModule7-PrevQuestion": "Previous Question",
   "SubModule7-ViewResult": "View Result",
   "SubModule7-NextModule": "Next Module",
   "SubModule7-RetakeQuiz": "Retake Quiz"
