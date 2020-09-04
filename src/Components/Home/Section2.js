@@ -23,7 +23,7 @@ function Section2() {
       <Col lg={7} md={7} sm={12} xs={12}>
         <div>
           <Animated animationIn='fadeIn' animationInDuration={1500}>
-            <div className='note-txt-header'>
+            <div className='note-txt-header2'>
               <TranslateText txt='Home-Section2-HeadText' />
             </div>
             <div className='note-txt'>

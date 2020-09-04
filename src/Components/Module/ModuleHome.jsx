@@ -71,7 +71,7 @@ class ModuleHome extends Component {
         this.props.SubModule1Quiz(Response.data.results);
       });
 
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub7");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -118,7 +118,8 @@ class ModuleHome extends Component {
   }
 
   getRandomAnswer = (QuizQuestion) => {
-    console.log(QuizQuestion);
+    // console.log(QuizQuestion);
+
     const correctAns = QuizQuestion.correct_answer;
     const incorrectAns = QuizQuestion.incorrect_answers;
 
@@ -140,7 +141,7 @@ class ModuleHome extends Component {
 
   HandleQuestionAnswerChange = (e) => {
     const userAnswer = e.target.value;
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({
       userAnswer: userAnswer,
     });
@@ -185,13 +186,26 @@ class ModuleHome extends Component {
   };
 
   HandleRetakeQuiz = () => {
-    this.setState({
-      userAnswer: "",
-      questionIndex: 0,
-      correctAnswerCount: 0,
-      showResult: false,
-      takeQuiz: true,
-    });
+    this.setState(
+      {
+        SubModule1QuizQuestion: [],
+        randomAnswers: [],
+        userAnswer: "",
+        questionIndex: 0,
+        correctAnswerCount: 0,
+        showResult: false,
+        takeQuiz: true,
+        questionCount: this.props.SubModule1QuizQuestion.length - 1,
+      },
+      () =>
+        this.getRandomAnswer(
+          this.props.SubModule1QuizQuestion[this.state.questionIndex]
+        )
+    );
+
+    this.getRandomAnswer(
+      this.props.SubModule1QuizQuestion[this.state.questionIndex]
+    );
   };
 
   render() {

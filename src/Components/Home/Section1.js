@@ -14,8 +14,11 @@ function Section1() {
       <Col lg={7} md={7} sm={12} xs={12}>
         <div>
           <Animated animationIn='fadeIn' animationInDuration={1500}>
-            <div className='note-txt-header'>
-              <TranslateText txt='Home-Section1-HeadText' />
+            <div className='note-txt-header1'>
+              <TranslateText txt='Home-Section1-HeadText1' />
+            </div>
+            <div className='note-txt-header2'>
+              <TranslateText txt='Home-Section1-HeadText2' />
             </div>
             <div className='note-txt'>
               <TranslateText txt='Home-Section1-text' />

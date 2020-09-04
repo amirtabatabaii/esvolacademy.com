@@ -12,7 +12,19 @@
 
 /*  */
 
-.note-txt-header {
+.note-txt-header1 {
+  /* width: 100%; */
+  color: #3b3c3c;
+  /* font-family: "Montserrat", sans-serif; */
+  font-size: 60px;
+  /* font-weight: 800; */
+  line-height: 5px;
+  text-align: left !important;
+  /* margin-bottom: 30px; */
+  margin-top: 80px;
+}
+
+.note-txt-header2 {
   /* width: 100%; */
   color: #3b3c3c;
   /* font-family: "Montserrat", sans-serif; */
