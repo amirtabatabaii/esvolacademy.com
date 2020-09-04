@@ -140,6 +140,7 @@ class ModuleHome extends Component {
 
   HandleQuestionAnswerChange = (e) => {
     const userAnswer = e.target.value;
+    console.log(e.target.value);
     this.setState({
       userAnswer: userAnswer,
     });
