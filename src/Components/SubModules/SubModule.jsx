@@ -29,6 +29,7 @@ class SubModule extends Component {
       showResult,
       userAnswer,
       HandleNextQuestion,
+      HandlePrevQuestion,
       getRandomAnswer,
       HandleQuestionAnswerChange,
       HandleQuestionResult,
@@ -108,6 +109,7 @@ class SubModule extends Component {
             getRandomAnswer={getRandomAnswer}
             HandleQuestionAnswerChange={HandleQuestionAnswerChange}
             HandleNextQuestion={HandleNextQuestion}
+            HandlePrevQuestion={HandlePrevQuestion}
             HandleQuestionResult={HandleQuestionResult}
             HandleRetakeQuiz={HandleRetakeQuiz}
             onClickNextModule={onClickNextModule}
