@@ -6,7 +6,7 @@ import Dropdown from "react-dropdown";
 import "./LanguageSelector.css";
 
 const LanguageSelector = () => {
-  const [language, setLanguage] = useState("TR");
+  const [language, setLanguage] = useState("EN");
 
   const { i18n } = useTranslation();
 
@@ -17,8 +17,8 @@ const LanguageSelector = () => {
   };
 
   const options = [
-    { value: "tr", label: "TR" },
     { value: "en", label: "EN" },
+    { value: "tr", label: "TR" },
   ];
 
   return (
