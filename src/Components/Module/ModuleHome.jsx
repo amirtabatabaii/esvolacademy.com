@@ -170,6 +170,20 @@ class ModuleHome extends Component {
     );
   };
 
+  HandlePrevQuestion = () => {
+    this.setState(
+      {
+        questionIndex: this.state.questionIndex - 1,
+        userAnswer: "",
+      },
+      () => {
+        this.getRandomAnswer(
+          this.props.SubModule1QuizQuestion[this.state.questionIndex]
+        );
+      }
+    );
+  };
+
   HandleQuestionResult = () => {
     if (
       this.props.SubModule1QuizQuestion[this.state.questionIndex]
@@ -273,6 +287,7 @@ class ModuleHome extends Component {
                 getRandomAnswer={this.getRandomAnswer}
                 HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
                 HandleNextQuestion={this.HandleNextQuestion}
+                HandlePrevQuestion={this.HandlePrevQuestion}
                 HandleQuestionResult={this.HandleQuestionResult}
                 HandleRetakeQuiz={this.HandleRetakeQuiz}
               />
