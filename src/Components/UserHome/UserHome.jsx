@@ -207,7 +207,7 @@ class UserHome extends Component {
           <div id='page-wrap' className='App'>
             <ModuleNavBar userActiveModule='Module1' />
             <p style={{ paddingTop: "100px", paddingBottom: "100px" }}>
-              <h1 className='m-5 p-5'>Gamification</h1>
+              <h1 className='m-5 p-5'>Taking only the videos</h1>
             </p>
           </div>
         )}
