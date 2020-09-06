@@ -1,6 +1,8 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import Esvol from "../../assets/img/home.png";
+import Esvol1 from "../../assets/img/home4.png";
+import Esvol2 from "../../assets/img/home3.png";
+import Esvol3 from "../../assets/img/home5.png";
 import CardBody from "../Home/CardBody";
 import { Animated } from "react-animated-css";
 
@@ -11,7 +13,7 @@ function HomeCards() {
         <Col lg={4} md={6} sm={6} xs={12}>
           <CardBody
             txt='first-card-text'
-            ImageSrc={Esvol}
+            ImageSrc={Esvol1}
             alt='esvol'
             width='80%'
           />
@@ -20,7 +22,7 @@ function HomeCards() {
         <Col lg={4} md={6} sm={6} xs={12}>
           <CardBody
             txt='second-card-text'
-            ImageSrc={Esvol}
+            ImageSrc={Esvol2}
             alt='esvol'
             width='80%'
           />
@@ -29,7 +31,7 @@ function HomeCards() {
         <Col lg={4} md={6} sm={6} xs={12} className='mx-auto'>
           <CardBody
             txt='third-card-text'
-            ImageSrc={Esvol}
+            ImageSrc={Esvol3}
             alt='esvol'
             width='80%'
           />

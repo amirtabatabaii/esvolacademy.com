@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { Animated } from "react-animated-css";
 
 import "./Home.css";
-import Esvol from "../../assets/img/home-3.png";
+import Esvol from "../../assets/img/home1.png";
 import HomeImage from "../Utility/HomeImage";
 import TranslateText from "../Translate/TranslateText";
 import { Link } from "react-router-dom";
@@ -44,7 +44,7 @@ function Section1() {
           animationInDuration={1000}
           ImageSrc={Esvol}
           alt='esvol'
-          width='100%'
+          width='90%'
         />
       </Col>
     </Row>
