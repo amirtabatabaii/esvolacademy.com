@@ -20,7 +20,7 @@ const radioStyle = {
 };
 
 class UserHome extends Component {
-  state = { visible: false, value: "NoGamification" };
+  state = { visible: false, value: "YesGamification" };
 
   hideModal = () => {
     this.setState({
@@ -35,21 +35,21 @@ class UserHome extends Component {
   };
 
   handleOk = (e) => {
-    console.log(e);
+    // console.log(e);
     this.setState({
       visible: false,
     });
   };
 
   handleCancel = (e) => {
-    console.log(e);
+    // console.log(e);
     this.setState({
       visible: false,
     });
   };
 
   onChange = (e) => {
-    console.log(e.target.value);
+    // `console`.log(e.target.value);
     this.setState({
       value: e.target.value,
     });
@@ -106,7 +106,7 @@ class UserHome extends Component {
           <Radio.Group
             onChange={this.onChange}
             value={value}
-            defaultValue={"NoGamification"}
+            defaultValue={"YesGamification"}
           >
             <Radio style={radioStyle} value={"YesGamification"}>
               Taking gamification course
@@ -117,7 +117,7 @@ class UserHome extends Component {
           </Radio.Group>
         </Modal>
 
-        {value === "NoGamification" ? (
+        {value === "YesGamification" ? (
           <div id='page-wrap' className='App'>
             <ModuleNavBar userActiveModule='Module1' />
 
