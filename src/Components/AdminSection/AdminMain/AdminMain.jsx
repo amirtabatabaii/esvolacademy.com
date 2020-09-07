@@ -67,6 +67,7 @@ class AdminMain extends Component {
               {adminActiveSubModule === SubModule1Name ? (
                 <IntroductionVideo
                   adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
                 />
               ) : null}
 
@@ -79,10 +80,7 @@ class AdminMain extends Component {
               ) : null}
 
               {adminActiveSubModule === SubModule4Name ? (
-                <>
-                  <ExpertVideo adminActiveSubModule={adminActiveSubModule} />
-                  <ExpertVideo adminActiveSubModule={adminActiveSubModule} />
-                </>
+                <ExpertVideo adminActiveSubModule={adminActiveSubModule} />
               ) : null}
 
               {adminActiveSubModule === SubModule5Name ? (
