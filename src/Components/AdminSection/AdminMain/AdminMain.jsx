@@ -54,10 +54,12 @@ class AdminMain extends Component {
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>
-                {adminActiveModule === "" ? "--" : adminActiveModule}
+                <b>{adminActiveModule === "" ? "--" : adminActiveModule}</b>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                {adminActiveSubModule === "" ? "--" : adminActiveSubModule}
+                <b>
+                  {adminActiveSubModule === "" ? "--" : adminActiveSubModule}
+                </b>
               </Breadcrumb.Item>
             </Breadcrumb>
             <div
@@ -72,27 +74,45 @@ class AdminMain extends Component {
               ) : null}
 
               {adminActiveSubModule === SubModule2Name ? (
-                <CourseVideo adminActiveSubModule={adminActiveSubModule} />
+                <CourseVideo
+                  adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
               ) : null}
 
               {adminActiveSubModule === SubModule3Name ? (
-                <InteractiveTool adminActiveSubModule={adminActiveSubModule} />
+                <InteractiveTool
+                  adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
               ) : null}
 
               {adminActiveSubModule === SubModule4Name ? (
-                <ExpertVideo adminActiveSubModule={adminActiveSubModule} />
+                <ExpertVideo
+                  adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
               ) : null}
 
               {adminActiveSubModule === SubModule5Name ? (
-                <Reading adminActiveSubModule={adminActiveSubModule} />
+                <Reading
+                  adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
               ) : null}
 
               {adminActiveSubModule === SubModule6Name ? (
-                <CaseStudy adminActiveSubModule={adminActiveSubModule} />
+                <CaseStudy
+                  adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
               ) : null}
 
               {adminActiveSubModule === SubModule7Name ? (
-                <Quiz adminActiveSubModule={adminActiveSubModule} />
+                <Quiz
+                  adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
               ) : null}
             </div>
           </Content>
