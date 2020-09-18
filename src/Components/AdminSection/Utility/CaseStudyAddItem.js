@@ -3,11 +3,16 @@ import TextField from "@material-ui/core/TextField";
 import { Form, Button } from "react-bootstrap";
 import { Select, Radio } from "antd";
 
-function InteractiveToolAddItem(props) {
+function CaseStudyAddItem(props) {
   const { Option } = Select;
 
   const [inputList, setInputList] = useState([
-    { task_title: "", task_url: "", task_question: "", task_type: "pdf" },
+    {
+      caseStudy_title1: "",
+      caseStudy_title2: "",
+      caseStudy_url: "",
+      caseStudy_type: "pdf",
+    },
   ]);
 
   const [ActiveModule, setActiveModule] = useState({
@@ -35,7 +40,12 @@ function InteractiveToolAddItem(props) {
   const handleAddClick = () => {
     setInputList([
       ...inputList,
-      { task_title: "", task_url: "", task_question: "", task_type: "" },
+      {
+        caseStudy_title1: "",
+        caseStudy_title2: "",
+        caseStudy_url: "",
+        caseStudy_type: "",
+      },
     ]);
   };
 
@@ -44,7 +54,7 @@ function InteractiveToolAddItem(props) {
     event.preventDefault();
 
     setActiveModule({
-      Interactive_tool: inputList,
+      Case_Study: inputList,
       active_subModule: props.adminActiveSubModule,
       active_Module: props.adminActiveModule,
       language: ActiveModule.language,
@@ -83,44 +93,44 @@ function InteractiveToolAddItem(props) {
                 <TextField
                   className='w-25 mt-3 ml-1 mr-1'
                   variant='outlined'
-                  label={"Task Title"}
-                  name='task_title'
-                  value={x.task_title}
+                  label={"Case Study Title 1"}
+                  name='caseStudy_title1'
+                  value={x.caseStudy_title1}
                   onChange={(e) => handleInputChange(e, i)}
                   required
                   error={false}
-                  helperText={"Insert Task Title"}
+                  helperText={"Insert Case Study Title 1"}
                 />
 
                 <TextField
                   className='w-25 mt-3 ml-1 mr-1'
                   variant='outlined'
-                  label={"Task URL"}
-                  name='task_url'
-                  value={x.task_url}
+                  label={"Case Study Title 2"}
+                  name='caseStudy_title2'
+                  value={x.caseStudy_title2}
                   onChange={(e) => handleInputChange(e, i)}
                   required
                   error={false}
-                  helperText={"Insert Task URL"}
+                  helperText={"Insert Case Study Title 2"}
                 />
 
                 <TextField
                   className='w-25 mt-3 ml-1 mr-1'
                   variant='outlined'
-                  label={"Task Question"}
-                  name='task_question'
-                  value={x.task_question}
+                  label={"Case Study URL"}
+                  name='caseStudy_url'
+                  value={x.caseStudy_url}
                   onChange={(e) => handleInputChange(e, i)}
                   required
                   error={false}
-                  helperText={"Insert Task Question"}
+                  helperText={"Insert Case Study URL"}
                 />
 
                 <Radio.Group
                   onChange={(e) => handleInputChange(e, i)}
-                  name='task_type'
+                  name='caseStudy_type'
                   className='pt-2 m-1'
-                  value={x.task_type !== "" ? x.task_type : "pdf"}
+                  value={x.caseStudy_type !== "" ? x.caseStudy_type : "pdf"}
                 >
                   <Radio style={radioStyle} value={"pdf"}>
                     PDF
@@ -168,4 +178,4 @@ function InteractiveToolAddItem(props) {
   );
 }
 
-export default InteractiveToolAddItem;
+export default CaseStudyAddItem;

@@ -3,11 +3,11 @@ import TextField from "@material-ui/core/TextField";
 import { Form, Button } from "react-bootstrap";
 import { Select, Radio } from "antd";
 
-function InteractiveToolAddItem(props) {
+function ReadingAddItem(props) {
   const { Option } = Select;
 
   const [inputList, setInputList] = useState([
-    { task_title: "", task_url: "", task_question: "", task_type: "pdf" },
+    { reading_title: "", reading_url: "", reading_type: "pdf" },
   ]);
 
   const [ActiveModule, setActiveModule] = useState({
@@ -35,7 +35,7 @@ function InteractiveToolAddItem(props) {
   const handleAddClick = () => {
     setInputList([
       ...inputList,
-      { task_title: "", task_url: "", task_question: "", task_type: "" },
+      { reading_title: "", reading_url: "", reading_type: "" },
     ]);
   };
 
@@ -44,7 +44,7 @@ function InteractiveToolAddItem(props) {
     event.preventDefault();
 
     setActiveModule({
-      Interactive_tool: inputList,
+      Reading: inputList,
       active_subModule: props.adminActiveSubModule,
       active_Module: props.adminActiveModule,
       language: ActiveModule.language,
@@ -81,46 +81,36 @@ function InteractiveToolAddItem(props) {
             return (
               <div className='ml-3 pl-4'>
                 <TextField
-                  className='w-25 mt-3 ml-1 mr-1'
+                  style={{ width: "38%" }}
+                  className='mt-3 ml-1 mr-1'
                   variant='outlined'
-                  label={"Task Title"}
-                  name='task_title'
-                  value={x.task_title}
+                  label={"Reading Title"}
+                  name='reading_title'
+                  value={x.reading_title}
                   onChange={(e) => handleInputChange(e, i)}
                   required
                   error={false}
-                  helperText={"Insert Task Title"}
+                  helperText={"Insert Reading Title"}
                 />
 
                 <TextField
-                  className='w-25 mt-3 ml-1 mr-1'
+                  style={{ width: "38%" }}
+                  className='mt-3 ml-1 mr-1'
                   variant='outlined'
-                  label={"Task URL"}
-                  name='task_url'
-                  value={x.task_url}
+                  label={"Reading URL"}
+                  name='reading_url'
+                  value={x.reading_url}
                   onChange={(e) => handleInputChange(e, i)}
                   required
                   error={false}
-                  helperText={"Insert Task URL"}
-                />
-
-                <TextField
-                  className='w-25 mt-3 ml-1 mr-1'
-                  variant='outlined'
-                  label={"Task Question"}
-                  name='task_question'
-                  value={x.task_question}
-                  onChange={(e) => handleInputChange(e, i)}
-                  required
-                  error={false}
-                  helperText={"Insert Task Question"}
+                  helperText={"Insert Reading URL"}
                 />
 
                 <Radio.Group
                   onChange={(e) => handleInputChange(e, i)}
-                  name='task_type'
+                  name='reading_type'
                   className='pt-2 m-1'
-                  value={x.task_type !== "" ? x.task_type : "pdf"}
+                  value={x.reading_type !== "" ? x.reading_type : "pdf"}
                 >
                   <Radio style={radioStyle} value={"pdf"}>
                     PDF
@@ -168,4 +158,4 @@ function InteractiveToolAddItem(props) {
   );
 }
 
-export default InteractiveToolAddItem;
+export default ReadingAddItem;

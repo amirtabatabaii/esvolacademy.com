@@ -88,21 +88,21 @@ class AdminMain extends Component {
               ) : null}
 
               {adminActiveSubModule === SubModule4Name ? (
-                <ExpertVideo
-                  adminActiveSubModule={adminActiveSubModule}
-                  adminActiveModule={adminActiveModule}
-                />
-              ) : null}
-
-              {adminActiveSubModule === SubModule5Name ? (
                 <Reading
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
               ) : null}
 
-              {adminActiveSubModule === SubModule6Name ? (
+              {adminActiveSubModule === SubModule5Name ? (
                 <CaseStudy
+                  adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
+              ) : null}
+
+              {adminActiveSubModule === SubModule6Name ? (
+                <ExpertVideo
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />

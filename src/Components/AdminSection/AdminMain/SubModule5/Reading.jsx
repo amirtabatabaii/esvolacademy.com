@@ -1,14 +1,13 @@
 import React, { Component } from "react";
+import ReadingAddItem from "../../Utility/ReadingAddItem";
 
 class Reading extends Component {
   render() {
     return (
-      <div>
-        <h3 className='bg-primary p-5'>
-          {this.props.adminActiveSubModule}
-          {" Component"}
-        </h3>
-      </div>
+      <ReadingAddItem
+        adminActiveSubModule={this.props.adminActiveSubModule}
+        adminActiveModule={this.props.adminActiveModule}
+      />
     );
   }
 }

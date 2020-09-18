@@ -1,15 +1,15 @@
 import React, { Component } from "react";
+import QuizAddQuestions from "./QuizAddQuestions";
 
 class Quiz extends Component {
   render() {
     return (
-      <div>
-        <h3 className='text-light bg-dark p-5'>
-          {this.props.adminActiveSubModule}
-          {" Component"}
-        </h3>
-      </div>
+      <QuizAddQuestions
+        adminActiveSubModule={this.props.adminActiveSubModule}
+        adminActiveModule={this.props.adminActiveModule}
+      />
     );
   }
 }
+
 export default Quiz;

@@ -1,15 +1,15 @@
 import React, { Component } from "react";
+import CaseStudyAddItem from "../../Utility/CaseStudyAddItem";
 
 class CaseStudy extends Component {
   render() {
     return (
-      <div>
-        <h3 className='bg-secondary p-5'>
-          {this.props.adminActiveSubModule}
-          {" Component"}
-        </h3>
-      </div>
+      <CaseStudyAddItem
+        adminActiveSubModule={this.props.adminActiveSubModule}
+        adminActiveModule={this.props.adminActiveModule}
+      />
     );
   }
 }
+
 export default CaseStudy;
