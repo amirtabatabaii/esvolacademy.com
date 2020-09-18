@@ -13,7 +13,7 @@ function CollapseInputs(props) {
         expandIcon={({ isActive }) => (
           <CaretRightOutlined rotate={isActive ? 90 : 0} />
         )}
-        className='site-collapse-custom-collapse'
+        className='site-collapse-custom-collapse bg-white'
       >
         <Panel
           header={props.header}

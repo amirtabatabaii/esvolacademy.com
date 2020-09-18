@@ -18,16 +18,6 @@ import CollapseInputs from "../../Utility/CollapseInputs";
 function QuizMultipleChoice(props) {
   return (
     <div className='border border-secondary p-2 mt-2'>
-      <TextField
-        className='w-25 mt-3 ml-1 mr-1'
-        variant='outlined'
-        label={"Question title"}
-        name='question'
-        value={props.x.question}
-        required
-        onChange={(e) => props.handleInputChange(e, props.i)}
-      />
-
       <FormControl
         variant='outlined'
         style={{ width: "9%" }}
@@ -35,6 +25,7 @@ function QuizMultipleChoice(props) {
       >
         <InputLabel id='forLanguages'>Language</InputLabel>
         <Select
+          className='bg-light text-danger font-weight-bold'
           labelId='forLanguages'
           value={props.x.languages}
           label='Language'
@@ -48,6 +39,16 @@ function QuizMultipleChoice(props) {
           <MenuItem value={"Tr"}>Tr</MenuItem>
         </Select>
       </FormControl>
+
+      <TextField
+        className='w-25 mt-3 ml-1 mr-1'
+        variant='outlined'
+        label={"Question title"}
+        name='question'
+        value={props.x.question}
+        required
+        onChange={(e) => props.handleInputChange(e, props.i)}
+      />
 
       <TextField
         className='w-25 mt-3 ml-1 mr-1'

@@ -220,16 +220,6 @@ function QuizAddQuestions(props) {
     <div>
       <Form className='text-left' onSubmit={handleSubmit}>
         <div className='m-auto'>
-          <TextField
-            className='ml-1 mr-1'
-            variant='outlined'
-            label={"Question Point"}
-            name='point'
-            type='number'
-            required
-            onChange={(e) => handleQuizChange(e)}
-          />
-
           <FormControl variant='outlined' style={{ width: "15%" }}>
             <InputLabel id='demo-simple-select-outlined-label'>
               Question Type
@@ -250,6 +240,16 @@ function QuizAddQuestions(props) {
               <MenuItem value={"Blank"}>Blank</MenuItem>
             </Select>
           </FormControl>
+
+          <TextField
+            className='ml-1 mr-1'
+            variant='outlined'
+            label={"Question Point"}
+            name='point'
+            type='number'
+            required
+            onChange={(e) => handleQuizChange(e)}
+          />
 
           {Quiz.questionType === "Blank" && (
             <TextField
