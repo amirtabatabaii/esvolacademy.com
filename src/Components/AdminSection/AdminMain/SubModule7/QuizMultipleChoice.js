@@ -16,6 +16,32 @@ import NumberInput from "../../Utility/NumberInput";
 import CollapseInputs from "../../Utility/CollapseInputs";
 
 function QuizMultipleChoice(props) {
+  const createIncorrectInput = (index) => {
+    let input = [];
+    for (let i = 0; i < props.inputList[index].incorrectAnswerCount; i++) {
+      input.push(
+        <TextField
+          className='w-100 mt-3 ml-1 mr-1'
+          variant='outlined'
+          label={"incorrect Answer " + (i + 1)}
+          name={"incorrectAnswer" + i}
+          onChange={(e) => handleIncorrectAnswersInputChange(e, i, index)}
+          value={props.inputList[index].incorrectAnswers[i]}
+          required
+          error={false}
+        />
+      );
+    }
+    return input;
+  };
+
+  const handleIncorrectAnswersInputChange = (e, i, index) => {
+    const { value } = e.target;
+    const list = [...props.inputList];
+    list[index]["incorrectAnswers"][i] = value;
+    props.setInputList(list);
+  };
+
   return (
     <div className='border border-secondary p-2 mt-2'>
       <FormControl
@@ -34,9 +60,13 @@ function QuizMultipleChoice(props) {
           error={false}
           helperText={"Select Language"}
           onChange={(e) => props.handleInputChange(e, props.i)}
+          onClick={(e) => props.handleLanguageChange(e)}
         >
           <MenuItem value={"En"}>En</MenuItem>
           <MenuItem value={"Tr"}>Tr</MenuItem>
+          <MenuItem value={"Fa"}>Fa</MenuItem>
+          <MenuItem value={"Az"}>Az</MenuItem>
+          <MenuItem value={"Ar"}>Ar</MenuItem>
         </Select>
       </FormControl>
 
@@ -76,20 +106,8 @@ function QuizMultipleChoice(props) {
       {props.inputList[props.i].incorrectAnswerCount > 0 && (
         <CollapseInputs
           header={"Incorrect Answers panel"}
-          PanelContent={props.createIncorrectInput(props.i)}
+          PanelContent={createIncorrectInput(props.i)}
         />
-      )}
-
-      {props.inputList.length !== 1 && (
-        <Button
-          variant='contained'
-          color='secondary'
-          className='m-3 p-3 bg-danger'
-          onClick={() => props.handleRemoveClick(props.i)}
-          startIcon={<DeleteIcon />}
-        >
-          Delete
-        </Button>
       )}
 
       {props.inputList.length - 1 === props.i && (
@@ -101,6 +119,18 @@ function QuizMultipleChoice(props) {
           startIcon={<AddBoxIcon />}
         >
           Add
+        </Button>
+      )}
+
+      {props.inputList.length !== 1 && (
+        <Button
+          variant='contained'
+          color='secondary'
+          className='m-3 p-3 bg-danger'
+          onClick={() => props.handleRemoveClick(props.i)}
+          startIcon={<DeleteIcon />}
+        >
+          Delete
         </Button>
       )}
     </div>

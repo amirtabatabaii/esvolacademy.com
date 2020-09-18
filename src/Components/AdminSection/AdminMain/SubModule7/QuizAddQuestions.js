@@ -12,6 +12,8 @@ import QuizFilling from "./QuizFilling";
 import QuizBoolean from "./QuizBoolean";
 import QuizBlank from "./QuizBlank";
 
+// const AllLanguages = ["En", "Tr", "Fa", "Az", "Ar"];
+
 function QuizAddQuestions(props) {
   // --------------
   const incorrectAnswerDecrementCount = (index) => {
@@ -22,7 +24,8 @@ function QuizAddQuestions(props) {
 
       let AnsList = list[index]["incorrectAnswers"];
       const length = list[index]["incorrectAnswers"].length;
-      AnsList.splice([length - 1], 1);
+      if (list[index]["incorrectAnswerCount"] === length - 1)
+        AnsList.splice([length - 1], 1);
       setInputList(list);
     }
   };
@@ -43,7 +46,8 @@ function QuizAddQuestions(props) {
 
       let AnsList = list[index]["correctAnswers"];
       const length = list[index]["correctAnswers"].length;
-      AnsList.splice([length - 1], 1);
+      if (list[index]["correctAnswerCount"] === length - 1)
+        AnsList.splice([length - 1], 1);
       setInputList(list);
     }
   };
@@ -151,58 +155,6 @@ function QuizAddQuestions(props) {
     });
   };
 
-  const createIncorrectInput = (index) => {
-    let input = [];
-    for (let i = 0; i < inputList[index].incorrectAnswerCount; i++) {
-      input.push(
-        <TextField
-          className='w-100 mt-3 ml-1 mr-1'
-          variant='outlined'
-          label={"incorrect Answer " + (i + 1)}
-          name={"incorrectAnswer" + i}
-          onChange={(e) => handleIncorrectAnswersInputChange(e, i, index)}
-          value={inputList[index].incorrectAnswers[i]}
-          required
-          error={false}
-        />
-      );
-    }
-    return input;
-  };
-
-  const handleIncorrectAnswersInputChange = (e, i, index) => {
-    const { value } = e.target;
-    const list = [...inputList];
-    list[index]["incorrectAnswers"][i] = value;
-    setInputList(list);
-  };
-
-  const createCorrectInput = (index) => {
-    let input = [];
-    for (let i = 0; i < inputList[index].correctAnswerCount; i++) {
-      input.push(
-        <TextField
-          className='w-100 mt-3 ml-1 mr-1'
-          variant='outlined'
-          label={"Correct Answer " + (i + 1)}
-          name={"correctAnswer" + i}
-          onChange={(e) => handleCorrectAnswersInputChange(e, i, index)}
-          value={inputList[index].correctAnswers[i]}
-          required
-          error={false}
-        />
-      );
-    }
-    return input;
-  };
-
-  const handleCorrectAnswersInputChange = (e, i, index) => {
-    const { value } = e.target;
-    const list = [...inputList];
-    list[index]["correctAnswers"][i] = value;
-    setInputList(list);
-  };
-
   const handleEmptyAllInputs = () => {
     setInputList([
       {
@@ -214,6 +166,24 @@ function QuizAddQuestions(props) {
         incorrectAnswers: [],
       },
     ]);
+  };
+
+  const handleLanguageChange = (e, i) => {
+    // let filtered = [];
+    // for (let i = 0; i < inputList.length; i++) {
+    //   if (inputList[i].languages) {
+    //     filtered.push(inputList[i].languages);
+    //   }
+    // }
+    // let allLng = filtered.filter(function (lng) {
+    //   return lng === e.target.value;
+    // });
+    //if (allLng.length > 1) alert("sSSSs");
+    //-----------------------
+    // let allLng = AllLanguages.filter((lng) => lng === e.target.value);
+    // let idx = AllLanguages.indexOf(allLng[0]);
+    // if (idx !== -1) AllLanguages.splice(idx, 1);
+    // console.log(allLng[0], idx, AllLanguages);
   };
 
   return (
@@ -271,9 +241,11 @@ function QuizAddQuestions(props) {
                     handleInputChange={handleInputChange}
                     handleAddClick={handleAddClick}
                     handleRemoveClick={handleRemoveClick}
-                    createIncorrectInput={createIncorrectInput}
+                    // createIncorrectInput={createIncorrectInput}
+                    setInputList={setInputList}
                     incrementCount={incorrectAnswerIncrementCount}
                     decrementCount={incorrectAnswerDecrementCount}
+                    handleLanguageChange={handleLanguageChange}
                     x={x}
                     i={i}
                     inputList={inputList}
@@ -285,7 +257,8 @@ function QuizAddQuestions(props) {
                     handleInputChange={handleInputChange}
                     handleAddClick={handleAddClick}
                     handleRemoveClick={handleRemoveClick}
-                    createCorrectInput={createCorrectInput}
+                    // createCorrectInput={createCorrectInput}
+                    setInputList={setInputList}
                     incrementCount={correctAnswerIncrementCount}
                     decrementCount={correctAnswerDecrementCount}
                     x={x}

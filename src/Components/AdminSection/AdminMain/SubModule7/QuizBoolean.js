@@ -47,51 +47,62 @@ function QuizBoolean(props) {
         onChange={(e) => props.handleInputChange(e, props.i)}
       />
 
-      <FormControl
-        variant='outlined'
-        style={{ width: "15%" }}
-        className='mt-3 ml-1 mr-1'
-      >
-        <InputLabel id='forCorrectAnswer'>Correct Answer</InputLabel>
-        <Select
-          labelId='forCorrectAnswer'
+      {props.x.languages === "En" ? (
+        <FormControl
+          variant='outlined'
+          style={{ width: "15%" }}
+          className='mt-3 ml-1 mr-1'
+        >
+          <InputLabel id='forCorrectAnswer'>Correct Answer</InputLabel>
+          <Select
+            labelId='forCorrectAnswer'
+            value={props.x.correctAnswers}
+            label={"Correct Answer"}
+            name='correctAnswers'
+            required
+            onChange={(e) => props.handleYesNoChange(e, props.i)}
+          >
+            <MenuItem value={"yes"}>Yes</MenuItem>
+            <MenuItem value={"no"}>No</MenuItem>
+          </Select>
+        </FormControl>
+      ) : (
+        <TextField
+          className='mt-3 ml-1 mr-1'
+          variant='outlined'
           value={props.x.correctAnswers}
           label={"Correct Answer"}
           name='correctAnswers'
           required
-          onChange={(e) => props.handleYesNoChange(e, props.i)}
-        >
-          <MenuItem value={"yes"}>Yes</MenuItem>
-          <MenuItem value={"no"}>No</MenuItem>
-        </Select>
-      </FormControl>
+          onChange={(e) => props.handleInputChange(e, props.i)}
+        />
+      )}
 
-      <TextField
-        className='mt-3 ml-1 mr-1'
-        variant='outlined'
-        label={"Incorrect Answer"}
-        name='incorrectAnswers'
-        value={
-          props.x.correctAnswers === "yes"
-            ? "No"
-            : props.x.correctAnswers === "no"
-            ? "Yes"
-            : "---"
-        }
-        disabled
-        onChange={(e, yesNo) => props.handleInputChange(e, props.i, "yesNo")}
-      />
-
-      {props.inputList.length !== 1 && (
-        <Button
-          variant='contained'
-          color='secondary'
-          className='m-3 p-3 bg-danger'
-          onClick={() => props.handleRemoveClick(props.i)}
-          startIcon={<DeleteIcon />}
-        >
-          Delete
-        </Button>
+      {props.x.languages === "En" ? (
+        <TextField
+          className='mt-3 ml-1 mr-1'
+          variant='outlined'
+          label={"Incorrect Answer"}
+          name='incorrectAnswers'
+          value={
+            props.x.correctAnswers === "yes"
+              ? "No"
+              : props.x.correctAnswers === "no"
+              ? "Yes"
+              : "---"
+          }
+          disabled
+          onChange={(e) => props.handleInputChange(e, props.i)}
+        />
+      ) : (
+        <TextField
+          className='mt-3 ml-1 mr-1'
+          variant='outlined'
+          label={"Incorrect Answer"}
+          name='incorrectAnswers'
+          value={props.x.incorrectAnswers}
+          onChange={(e) => props.handleInputChange(e, props.i)}
+        />
       )}
 
       {props.inputList.length - 1 === props.i && (
@@ -103,6 +114,18 @@ function QuizBoolean(props) {
           startIcon={<AddBoxIcon />}
         >
           Add
+        </Button>
+      )}
+
+      {props.inputList.length !== 1 && (
+        <Button
+          variant='contained'
+          color='secondary'
+          className='m-3 p-3 bg-danger'
+          onClick={() => props.handleRemoveClick(props.i)}
+          startIcon={<DeleteIcon />}
+        >
+          Delete
         </Button>
       )}
     </div>

@@ -16,6 +16,32 @@ import NumberInput from "../../Utility/NumberInput";
 import CollapseInputs from "../../Utility/CollapseInputs";
 
 function QuizFilling(props) {
+  const createCorrectInput = (index) => {
+    let input = [];
+    for (let i = 0; i < props.inputList[index].correctAnswerCount; i++) {
+      input.push(
+        <TextField
+          className='w-100 mt-3 ml-1 mr-1'
+          variant='outlined'
+          label={"Keyword Answer " + (i + 1)}
+          name={"Keyword Answer" + i}
+          onChange={(e) => handleCorrectAnswersInputChange(e, i, index)}
+          value={props.inputList[index].correctAnswers[i]}
+          required
+          error={false}
+        />
+      );
+    }
+    return input;
+  };
+
+  const handleCorrectAnswersInputChange = (e, i, index) => {
+    const { value } = e.target;
+    const list = [...props.inputList];
+    list[index]["correctAnswers"][i] = value;
+    props.setInputList(list);
+  };
+
   return (
     <div className='border border-secondary p-2 mt-2'>
       <FormControl
@@ -74,20 +100,8 @@ function QuizFilling(props) {
       {props.inputList[props.i].correctAnswerCount > 0 && (
         <CollapseInputs
           header={"Keyword panel"}
-          PanelContent={props.createCorrectInput(props.i)}
+          PanelContent={createCorrectInput(props.i)}
         />
-      )}
-
-      {props.inputList.length !== 1 && (
-        <Button
-          variant='contained'
-          color='secondary'
-          className='m-3 p-3 bg-danger'
-          onClick={() => props.handleRemoveClick(props.i)}
-          startIcon={<DeleteIcon />}
-        >
-          Delete
-        </Button>
       )}
 
       {props.inputList.length - 1 === props.i && (
@@ -99,6 +113,18 @@ function QuizFilling(props) {
           startIcon={<AddBoxIcon />}
         >
           Add
+        </Button>
+      )}
+
+      {props.inputList.length !== 1 && (
+        <Button
+          variant='contained'
+          color='secondary'
+          className='m-3 p-3 bg-danger'
+          onClick={() => props.handleRemoveClick(props.i)}
+          startIcon={<DeleteIcon />}
+        >
+          Delete
         </Button>
       )}
     </div>
