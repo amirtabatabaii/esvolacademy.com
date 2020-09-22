@@ -12,7 +12,117 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 
+import CollapseInputs from "../../Utility/CollapseInputs";
+import { withStyles } from "@material-ui/core/styles";
+
+const CssTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "green",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "green",
+        border: "2px solid red",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "green",
+      },
+    },
+  },
+})(TextField);
+
 function QuizBlank(props) {
+  const createCorrectInput = (index) => {
+    let input = [];
+    for (let i = 0; i < props.Quiz.NumberOfBlank; i++) {
+      input.push(
+        <>
+          {i === 0 && (
+            <TextField
+              className='w-25 mt-3 ml-1 mr-1'
+              variant='outlined'
+              label={i === 0 ? "Question title" : "Continue Question title"}
+              name='question'
+              value={
+                Array.isArray(props.inputList[index]["question"]) === false
+                  ? props.inputList[index]["question"].split(" _ ")[0]
+                  : props.inputList[index]["question"][0]
+              }
+              required={i === 0 ? true : false}
+              onChange={(e) => handleDivChange(e, props.i)}
+            />
+          )}
+
+          <CssTextField
+            className={i === 0 ? "w-25 mt-3 ml-1 mr-1" : "w-25 mt-3 ml-1 mr-1"}
+            variant='outlined'
+            label={"Blank Answer " + (i + 1)}
+            name={"Blank Answer" + i}
+            onChange={(e) => handleCorrectAnswersInputChange(e, i, index)}
+            value={props.inputList[index].correctAnswers[i]}
+            required
+            error={false}
+          />
+
+          <TextField
+            className={i === 0 ? "w-25 mt-3 ml-1 mr-1" : "w-25 mt-3 ml-1 mr-1"}
+            variant='outlined'
+            label={i === 0 ? "Question title" : "Continue Question title"}
+            name={"question" + i}
+            value={
+              Array.isArray(props.inputList[index]["question"]) === false
+                ? props.inputList[index]["question"].split(" _ ")[i + 1]
+                : props.inputList[index]["question"][i + 1]
+            }
+            required={i === 0 ? true : false}
+            onChange={(e) => handleBlankQuestionsInputChange(e, i, index)}
+          />
+          {/* <br /> */}
+        </>
+      );
+    }
+    return input;
+  };
+
+  const handleCorrectAnswersInputChange = (e, i, index) => {
+    const { value } = e.target;
+    const list = [...props.inputList];
+    list[index]["correctAnswers"][i] = value;
+    props.setInputList(list);
+  };
+
+  const handleDivChange = (e, i, index) => {
+    const { value } = e.target;
+    // qst0 = value;
+    const list = [...props.inputList];
+
+    if (Array.isArray(list[i]["question"]) === false) {
+      let arr2 = [];
+      arr2 = list[i]["question"].split(" _ ");
+      list[i]["question"] = arr2;
+    }
+
+    list[i]["question"][0] = value;
+    props.setInputList(list);
+  };
+
+  const handleBlankQuestionsInputChange = (e, i, index) => {
+    const { value } = e.target;
+
+    const list = [...props.inputList];
+
+    if (Array.isArray(list[index]["question"]) === false) {
+      let arr2 = [];
+      arr2 = list[index]["question"].split(" _ ");
+      list[index]["question"] = arr2;
+    }
+
+    list[index]["question"][i + 1] = value;
+
+    props.setInputList(list);
+  };
+
   return (
     <div className='border border-secondary p-2 mt-2'>
       <FormControl
@@ -37,71 +147,10 @@ function QuizBlank(props) {
         </Select>
       </FormControl>
 
-      <TextField
-        className='w-25 mt-3 ml-1 mr-1'
-        variant='outlined'
-        label={"Question title"}
-        name='question'
-        value={props.x.question}
-        required
-        onChange={(e) => props.handleInputChange(e, props.i)}
-      />
-
-      {props.x.languages === "En" ? (
-        <FormControl
-          variant='outlined'
-          style={{ width: "15%" }}
-          className='mt-3 ml-1 mr-1'
-        >
-          <InputLabel id='forCorrectAnswer'>Correct Answer</InputLabel>
-          <Select
-            labelId='forCorrectAnswer'
-            value={props.x.correctAnswers}
-            label={"Correct Answer"}
-            name='correctAnswers'
-            required
-            onChange={(e) => props.handleYesNoChange(e, props.i)}
-          >
-            <MenuItem value={"yes"}>Yes</MenuItem>
-            <MenuItem value={"no"}>No</MenuItem>
-          </Select>
-        </FormControl>
-      ) : (
-        <TextField
-          className='mt-3 ml-1 mr-1'
-          variant='outlined'
-          value={props.x.correctAnswers}
-          label={"Correct Answer"}
-          name='correctAnswers'
-          required
-          onChange={(e) => props.handleInputChange(e, props.i)}
-        />
-      )}
-
-      {props.x.languages === "En" ? (
-        <TextField
-          className='mt-3 ml-1 mr-1'
-          variant='outlined'
-          label={"Incorrect Answer"}
-          name='incorrectAnswers'
-          value={
-            props.x.correctAnswers === "yes"
-              ? "No"
-              : props.x.correctAnswers === "no"
-              ? "Yes"
-              : "---"
-          }
-          disabled
-          onChange={(e) => props.handleInputChange(e, props.i)}
-        />
-      ) : (
-        <TextField
-          className='mt-3 ml-1 mr-1'
-          variant='outlined'
-          label={"Incorrect Answer"}
-          name='incorrectAnswers'
-          value={props.x.incorrectAnswers}
-          onChange={(e) => props.handleInputChange(e, props.i)}
+      {props.Quiz.NumberOfBlank > 0 && (
+        <CollapseInputs
+          header={"Question Creator panel"}
+          PanelContent={createCorrectInput(props.i)}
         />
       )}
 

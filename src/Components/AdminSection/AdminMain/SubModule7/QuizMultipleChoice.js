@@ -64,9 +64,9 @@ function QuizMultipleChoice(props) {
         >
           <MenuItem value={"En"}>En</MenuItem>
           <MenuItem value={"Tr"}>Tr</MenuItem>
-          <MenuItem value={"Fa"}>Fa</MenuItem>
+          {/* <MenuItem value={"Fa"}>Fa</MenuItem>
           <MenuItem value={"Az"}>Az</MenuItem>
-          <MenuItem value={"Ar"}>Ar</MenuItem>
+          <MenuItem value={"Ar"}>Ar</MenuItem> */}
         </Select>
       </FormControl>
 

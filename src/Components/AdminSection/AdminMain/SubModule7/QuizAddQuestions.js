@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
 import { Form } from "react-bootstrap";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
+
+import {
+  TextField,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+  Button,
+} from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
-import ButtonM from "@material-ui/core/Button";
+
 import QuizMultipleChoice from "./QuizMultipleChoice";
 import QuizFilling from "./QuizFilling";
 import QuizBoolean from "./QuizBoolean";
 import QuizBlank from "./QuizBlank";
-
-// const AllLanguages = ["En", "Tr", "Fa", "Az", "Ar"];
+import NumberInput from "../../Utility/NumberInput";
 
 function QuizAddQuestions(props) {
   // --------------
@@ -59,9 +62,47 @@ function QuizAddQuestions(props) {
   };
   // -----------------
 
+  // --------------
+  const blankAnswerDecrementCount = (index, i) => {
+    let NumberOfBlank = Quiz.NumberOfBlank;
+    if (NumberOfBlank > 0) {
+      NumberOfBlank -= 1;
+      setQuiz({ ...Quiz, NumberOfBlank });
+
+      let list = [...inputList];
+
+      for (let j = 0; j < list.length; j++) {
+        if (NumberOfBlank === list[j]["correctAnswers"].length - 1) {
+          list[j]["correctAnswers"].splice(
+            [list[j]["correctAnswers"].length - 1],
+            1
+          );
+        }
+
+        if (Array.isArray(list[j]["question"]) === false) {
+          list[j].question = list[j].question.split(" _ ");
+        }
+
+        if (NumberOfBlank + 1 === list[j]["question"].length - 1) {
+          list[j]["question"].splice([list[j]["question"].length - 1], 1);
+          if (list[j]["question"].length === 1)
+            list[j]["question"].splice([list[j]["question"].length - 1], 1);
+        }
+      }
+      setInputList(list);
+    }
+  };
+
+  const blankAnswerIncrementCount = (index) => {
+    let NumberOfBlank = Quiz.NumberOfBlank;
+    NumberOfBlank += 1;
+    setQuiz({ ...Quiz, NumberOfBlank });
+  };
+  // -----------------
+
   const [inputList, setInputList] = useState([
     {
-      question: "",
+      question: [],
       languages: "",
       correctAnswerCount: 3,
       correctAnswers: [],
@@ -74,7 +115,7 @@ function QuizAddQuestions(props) {
     point: null,
     questionType: "",
     moduleName: "",
-    NumberOfBlank: null,
+    NumberOfBlank: 1,
   });
 
   const handleInputChange = (e, index) => {
@@ -103,7 +144,7 @@ function QuizAddQuestions(props) {
     setInputList([
       ...inputList,
       {
-        question: "",
+        question: [],
         languages: "",
         correctAnswerCount: 3,
         correctAnswers: [],
@@ -131,7 +172,7 @@ function QuizAddQuestions(props) {
         setQuiz({
           ...Quiz,
           questionType: e.target.value,
-          NumberOfBlank: null,
+          NumberOfBlank: 1,
         });
       }
 
@@ -143,11 +184,38 @@ function QuizAddQuestions(props) {
     }
   };
 
+  const [EndInputList, setEndInputList] = useState([
+    {
+      question: [],
+      languages: "",
+      correctAnswers: [],
+      incorrectAnswers: [],
+    },
+  ]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    let EndListTemp = [...inputList];
+
+    if (Quiz.questionType === "Blank") {
+      for (let i = 0; i < EndListTemp.length; i++) {
+        if (Array.isArray(EndListTemp[i]["question"]) === true) {
+          let arr = [...EndListTemp[i].question];
+          EndListTemp[i].question = arr.join(" _ ");
+          setEndInputList(EndListTemp);
+        }
+        // delete EndListTemp[i].correctAnswerCount;
+        // delete EndListTemp[i].incorrectAnswerCount;
+      }
+    }
+
+    if (Quiz.questionType !== "Blank") {
+      setQuiz((Quiz.NumberOfBlank = null));
+    }
+
     setQuiz({
-      questionTranslations: inputList,
+      questionTranslations: EndListTemp,
       point: Quiz.point,
       questionType: Quiz.questionType,
       moduleName: props.adminActiveModule,
@@ -158,7 +226,7 @@ function QuizAddQuestions(props) {
   const handleEmptyAllInputs = () => {
     setInputList([
       {
-        question: "",
+        question: [],
         languages: "",
         correctAnswerCount: 3,
         correctAnswers: [],
@@ -222,14 +290,20 @@ function QuizAddQuestions(props) {
           />
 
           {Quiz.questionType === "Blank" && (
-            <TextField
-              className='ml-1 mr-1'
-              variant='outlined'
-              label={"Number of Blank"}
+            <NumberInput
+              label='Number of Blank'
               name='NumberOfBlank'
               type='number'
               required
               onChange={(e) => handleQuizChange(e)}
+              incrementCount={blankAnswerIncrementCount}
+              handleInputChange={handleInputChange}
+              decrementCount={blankAnswerDecrementCount}
+              inputList={Quiz}
+              value={Quiz.NumberOfBlank}
+              NegClassName={"ml-5 mt-3 p-3"}
+              PlusClassName={"mt-3 p-3"}
+              disabled={Quiz.NumberOfBlank === 0 && true}
             />
           )}
 
@@ -241,7 +315,6 @@ function QuizAddQuestions(props) {
                     handleInputChange={handleInputChange}
                     handleAddClick={handleAddClick}
                     handleRemoveClick={handleRemoveClick}
-                    // createIncorrectInput={createIncorrectInput}
                     setInputList={setInputList}
                     incrementCount={incorrectAnswerIncrementCount}
                     decrementCount={incorrectAnswerDecrementCount}
@@ -257,7 +330,6 @@ function QuizAddQuestions(props) {
                     handleInputChange={handleInputChange}
                     handleAddClick={handleAddClick}
                     handleRemoveClick={handleRemoveClick}
-                    // createCorrectInput={createCorrectInput}
                     setInputList={setInputList}
                     incrementCount={correctAnswerIncrementCount}
                     decrementCount={correctAnswerDecrementCount}
@@ -279,14 +351,27 @@ function QuizAddQuestions(props) {
                   />
                 ) : null}
 
-                {Quiz.questionType === "Blank" ? <QuizBlank /> : null}
+                {Quiz.questionType === "Blank" ? (
+                  <QuizBlank
+                    handleInputChange={handleInputChange}
+                    handleAddClick={handleAddClick}
+                    handleRemoveClick={handleRemoveClick}
+                    setInputList={setInputList}
+                    incrementCount={correctAnswerIncrementCount}
+                    decrementCount={correctAnswerDecrementCount}
+                    x={x}
+                    i={i}
+                    inputList={inputList}
+                    Quiz={Quiz}
+                  />
+                ) : null}
               </div>
             );
           })}
         </div>
 
         <div className='m-5'>
-          <ButtonM
+          <Button
             variant='contained'
             color='primary'
             type='submit'
@@ -295,12 +380,11 @@ function QuizAddQuestions(props) {
             startIcon={<SaveIcon />}
           >
             Save Question
-          </ButtonM>
+          </Button>
         </div>
       </Form>
 
-      <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
-      <div style={{ marginTop: 20 }}>{JSON.stringify(Quiz)}</div>
+      <div style={{ marginTop: 20 }}>Quiz : {JSON.stringify(Quiz)}</div>
     </div>
   );
 }
