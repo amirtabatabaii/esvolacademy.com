@@ -385,7 +385,9 @@ function QuizAddQuestions(props) {
         </div>
       </Form>
 
-      <div style={{ marginTop: 20 }}>Quiz : {JSON.stringify(Quiz)}</div>
+      <div style={{ marginTop: 20 }}>
+        <pre>{JSON.stringify(Quiz, null, 2)}</pre>
+      </div>
     </div>
   );
 }
