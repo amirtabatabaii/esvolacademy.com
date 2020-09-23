@@ -301,8 +301,9 @@ function QuizAddQuestions(props) {
               decrementCount={blankAnswerDecrementCount}
               inputList={Quiz}
               value={Quiz.NumberOfBlank}
-              NegClassName={"ml-5 mt-3 p-3"}
-              PlusClassName={"mt-3 p-3"}
+              NegClassName={"ml-5 p-3"}
+              TextFieldClassName={" "}
+              PlusClassName={"p-3"}
               disabled={Quiz.NumberOfBlank === 0 && true}
             />
           )}

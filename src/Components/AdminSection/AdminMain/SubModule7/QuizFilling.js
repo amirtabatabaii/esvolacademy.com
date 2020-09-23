@@ -91,6 +91,7 @@ function QuizFilling(props) {
             ? "ml-5 p-3"
             : "ml-5 mt-3 p-3"
         }
+        TextFieldClassName={"mt-3"}
         PlusClassName={
           props.inputList[props.i].correctAnswerCount === 0 ? "p-3" : "mt-3 p-3"
         }

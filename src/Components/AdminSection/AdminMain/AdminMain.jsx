@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Breadcrumb } from "antd";
+import { Layout } from "antd";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import SubModuleList from "./SubModuleList";
@@ -9,11 +9,12 @@ import InteractiveTool from "./SubModule3/InteractiveTool";
 import ExpertVideo from "./SubModule4/ExpertVideo";
 import Reading from "./SubModule5/Reading";
 import CaseStudy from "./SubModule6/CaseStudy";
-import Quiz from "./SubModule7/Quiz";
+import QuizAddQuestions from "./SubModule7/QuizAddQuestions";
 
 import "./AdminMain.css";
+import HeaderBreadcrumb from "./HeaderBreadcrumb";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 class AdminMain extends Component {
   state = {
@@ -47,73 +48,64 @@ class AdminMain extends Component {
           onCollapse={this.onCollapse}
         />
         <Layout className='site-layout'>
-          <Header className='site-layout-background' style={{ padding: 0 }}>
-            <h3 className='p-3'>ESVOL Administrator Page</h3>
-          </Header>
-
           <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>
-                <b>{adminActiveModule === "" ? "--" : adminActiveModule}</b>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>
-                <b>
-                  {adminActiveSubModule === "" ? "--" : adminActiveSubModule}
-                </b>
-              </Breadcrumb.Item>
-            </Breadcrumb>
+            <HeaderBreadcrumb
+              adminActiveModule={adminActiveModule}
+              adminActiveSubModule={adminActiveSubModule}
+            />
+
             <div
               className='site-layout-background'
               style={{ padding: 24, minHeight: 360 }}
             >
-              {adminActiveSubModule === SubModule1Name ? (
+              {adminActiveSubModule === SubModule1Name && (
                 <IntroductionVideo
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
-              ) : null}
+              )}
 
-              {adminActiveSubModule === SubModule2Name ? (
+              {adminActiveSubModule === SubModule2Name && (
                 <CourseVideo
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
-              ) : null}
+              )}
 
-              {adminActiveSubModule === SubModule3Name ? (
+              {adminActiveSubModule === SubModule3Name && (
                 <InteractiveTool
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
-              ) : null}
+              )}
 
-              {adminActiveSubModule === SubModule4Name ? (
+              {adminActiveSubModule === SubModule4Name && (
                 <Reading
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
-              ) : null}
+              )}
 
-              {adminActiveSubModule === SubModule5Name ? (
+              {adminActiveSubModule === SubModule5Name && (
                 <CaseStudy
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
-              ) : null}
+              )}
 
-              {adminActiveSubModule === SubModule6Name ? (
+              {adminActiveSubModule === SubModule6Name && (
                 <ExpertVideo
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
-              ) : null}
+              )}
 
-              {adminActiveSubModule === SubModule7Name ? (
-                <Quiz
+              {adminActiveSubModule === SubModule7Name && (
+                <QuizAddQuestions
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
-              ) : null}
+              )}
             </div>
           </Content>
         </Layout>

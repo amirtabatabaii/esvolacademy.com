@@ -19,7 +19,7 @@ function NumberInput(props) {
 
       <TextField
         style={{ width: "15%" }}
-        className='mt-3 ml-1 mr-1'
+        className={props.TextFieldClassName}
         variant='outlined'
         label={props.label}
         name={props.name}

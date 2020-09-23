@@ -99,6 +99,7 @@ function QuizMultipleChoice(props) {
         label={"Incorrect Answer Count"}
         name={"incorrectAnswerCount"}
         NegClassName={"ml-5 mt-3 p-3"}
+        TextFieldClassName={"mt-3"}
         PlusClassName={"mt-3 p-3"}
         disabled={props.inputList[props.i].incorrectAnswerCount === 0 && true}
       />
