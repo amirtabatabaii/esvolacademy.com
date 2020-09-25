@@ -99,6 +99,16 @@ class SubModuleList extends Component {
                 SubModuleName={SubModule7Name}
               />
             </Menu.Item>
+
+            <Menu.Item>
+              <MenuItem
+                key='18'
+                onClick={() =>
+                  this.handleOnClick(Module1Name, "Questions Setting")
+                }
+                SubModuleName={"Questions Setting"}
+              />
+            </Menu.Item>
           </SubMenu>
 
           <SubMenu key='2' icon={<FolderOutlined />} title={Module2Name}>
@@ -155,6 +165,16 @@ class SubModuleList extends Component {
                 key='27'
                 onClick={() => this.handleOnClick(Module2Name, SubModule7Name)}
                 SubModuleName={SubModule7Name}
+              />
+            </Menu.Item>
+
+            <Menu.Item>
+              <MenuItem
+                key='28'
+                onClick={() =>
+                  this.handleOnClick(Module2Name, "Questions Setting")
+                }
+                SubModuleName={"Questions Setting"}
               />
             </Menu.Item>
           </SubMenu>
@@ -215,6 +235,16 @@ class SubModuleList extends Component {
                 SubModuleName={SubModule7Name}
               />
             </Menu.Item>
+
+            <Menu.Item>
+              <MenuItem
+                key='38'
+                onClick={() =>
+                  this.handleOnClick(Module3Name, "Questions Setting")
+                }
+                SubModuleName={"Questions Setting"}
+              />
+            </Menu.Item>
           </SubMenu>
 
           <SubMenu key='4' icon={<FolderOutlined />} title={Module4Name}>
@@ -273,6 +303,16 @@ class SubModuleList extends Component {
                 SubModuleName={SubModule7Name}
               />
             </Menu.Item>
+
+            <Menu.Item>
+              <MenuItem
+                key='48'
+                onClick={() =>
+                  this.handleOnClick(Module4Name, "Questions Setting")
+                }
+                SubModuleName={"Questions Setting"}
+              />
+            </Menu.Item>
           </SubMenu>
 
           <SubMenu key='5' icon={<FolderOutlined />} title={Module5Name}>
@@ -329,6 +369,16 @@ class SubModuleList extends Component {
                 key='57'
                 onClick={() => this.handleOnClick(Module5Name, SubModule7Name)}
                 SubModuleName={SubModule7Name}
+              />
+            </Menu.Item>
+
+            <Menu.Item>
+              <MenuItem
+                key='58'
+                onClick={() =>
+                  this.handleOnClick(Module5Name, "Questions Setting")
+                }
+                SubModuleName={"Questions Setting"}
               />
             </Menu.Item>
           </SubMenu>

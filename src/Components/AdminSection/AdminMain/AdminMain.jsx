@@ -13,6 +13,7 @@ import QuizAddQuestions from "./SubModule7/QuizAddQuestions";
 
 import "./AdminMain.css";
 import HeaderBreadcrumb from "./HeaderBreadcrumb";
+import QuestionsSetting from "./QuestionsSetting/QuestionsSetting";
 
 const { Content } = Layout;
 
@@ -103,6 +104,13 @@ class AdminMain extends Component {
               {adminActiveSubModule === SubModule7Name && (
                 <QuizAddQuestions
                   adminActiveSubModule={adminActiveSubModule}
+                  adminActiveModule={adminActiveModule}
+                />
+              )}
+
+              {adminActiveSubModule === "Questions Setting" && (
+                <QuestionsSetting
+                  adminActiveSubModule={"Quiz"}
                   adminActiveModule={adminActiveModule}
                 />
               )}

@@ -23,6 +23,7 @@ class SubModule extends Component {
       onClick,
       onClickNextModule,
       SubModule1QuizQuestion,
+      SubModule1QuizQuestionText,
       randomAnswers,
       questionIndex,
       questionCount,
@@ -99,6 +100,7 @@ class SubModule extends Component {
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             SubModule1QuizQuestion={SubModule1QuizQuestion}
+            SubModule1QuizQuestionText={SubModule1QuizQuestionText}
             randomAnswers={randomAnswers}
             questionIndex={questionIndex}
             questionCount={questionCount}
