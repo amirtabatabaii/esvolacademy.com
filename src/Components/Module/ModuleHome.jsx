@@ -14,6 +14,7 @@ import {
   SubModule2Detail,
   SubModule6Detail,
   SubModule1Quiz,
+  SubModule1QuizFiltered,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -41,10 +42,12 @@ class ModuleHome extends Component {
       SubModule6Ratio: "",
       //
       SubModule1QuizQuestion: [],
+      SubModule1QuizQuestionFilterd: [],
       randomAnswers: [],
       userAnswer: "",
       questionCount: 0,
       questionIndex: 0,
+      selectedLanguage: "En",
       correctAnswerCount: 0,
       showResult: false,
       takeQuiz: true,
@@ -60,7 +63,8 @@ class ModuleHome extends Component {
     //Get Module 1 questions
     await axios
       .get(
-        `https://run.mocky.io/v3/c8fd0d94-2a99-4280-b78c-5e988e9869a0`
+        // `https://run.mocky.io/v3/c8fd0d94-2a99-4280-b78c-5e988e9869a0`
+        `https://run.mocky.io/v3/cd704f37-748d-4b2e-95ce-08b712cd1dc9`
         //  {
         //   headers: {
         //     Authorization: localStorage.getItem("jwtToken"),
@@ -71,7 +75,7 @@ class ModuleHome extends Component {
         this.props.SubModule1Quiz(Response.data.results);
       });
 
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    this.props.UserActiveModuleSubModule("Module1", "sub7");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -93,7 +97,9 @@ class ModuleHome extends Component {
     );
 
     this.getRandomAnswer(
-      this.props.SubModule1QuizQuestion[this.state.questionIndex]
+      // this.props.SubModule1QuizQuestion[this.state.questionIndex]
+      this.props.SubModule1QuizQuestion,
+      this.props.selectedLanguage
     );
 
     this.setState({
@@ -117,15 +123,54 @@ class ModuleHome extends Component {
     this.props.UserActiveModuleSubModule(ActiveModuleName, ActiveSubName);
   }
 
-  getRandomAnswer = (QuizQuestion) => {
-    // console.log(QuizQuestion);
+  componentDidUpdate(previousProps) {
+    if (previousProps.selectedLanguage !== this.props.selectedLanguage) {
+      this.setState({
+        SubModule1QuizQuestionFilterd: [],
+        selectedLanguage: this.props.selectedLanguage,
+        userAnswer: "",
+      });
+      this.getRandomAnswer(
+        this.props.SubModule1QuizQuestion,
+        this.props.selectedLanguage
+      );
+    }
+  }
 
-    const correctAns = QuizQuestion.correct_answer;
-    const incorrectAns = QuizQuestion.incorrect_answers;
+  getRandomAnswer = (QuizQuestion, lng) => {
+    let NewFilter = [];
+    for (let i = 0; i < QuizQuestion.length; i++) {
+      NewFilter = [
+        ...NewFilter,
+        {
+          // selectedLanguage: this.props.selectedLanguage,
+          point: QuizQuestion[i].point,
+          correctAnswers: QuizQuestion[i].questionTranslations.filter(
+            (qst) => qst.languages === lng
+          )[0].correctAnswers,
+          incorrectAnswers: QuizQuestion[i].questionTranslations.filter(
+            (qst) => qst.languages === lng
+          )[0].incorrectAnswers,
+          languages: QuizQuestion[i].questionTranslations.filter(
+            (qst) => qst.languages === lng
+          )[0].languages,
+          question: QuizQuestion[i].questionTranslations.filter(
+            (qst) => qst.languages === lng
+          )[0].question,
+          questionType: QuizQuestion[i].questionType,
+          moduleName: QuizQuestion[i].moduleName,
+          NumberOfBlank: QuizQuestion[i].NumberOfBlank,
+        },
+      ];
+    }
+    this.props.SubModule1QuizFiltered(NewFilter);
+    const correctAns = NewFilter[this.state.questionIndex].correctAnswers;
+    const incorrectAns = NewFilter[this.state.questionIndex].incorrectAnswers;
 
+    //
     const randomAnswers = [...incorrectAns];
     randomAnswers.push(correctAns);
-
+    //
     let i = randomAnswers.length - 1;
     for (; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -133,7 +178,7 @@ class ModuleHome extends Component {
       randomAnswers[i] = randomAnswers[j];
       randomAnswers[j] = temp;
     }
-
+    //
     this.setState({
       randomAnswers: randomAnswers,
     });
@@ -141,7 +186,6 @@ class ModuleHome extends Component {
 
   HandleQuestionAnswerChange = (e) => {
     const userAnswer = e.target.value;
-    // console.log(e.target.value);
     this.setState({
       userAnswer: userAnswer,
     });
@@ -149,8 +193,8 @@ class ModuleHome extends Component {
 
   HandleNextQuestion = () => {
     if (
-      this.props.SubModule1QuizQuestion[this.state.questionIndex]
-        .correct_answer === this.state.userAnswer
+      this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+        .correctAnswers === this.state.userAnswer
     ) {
       this.setState({
         correctAnswerCount: this.state.correctAnswerCount + 1,
@@ -164,7 +208,8 @@ class ModuleHome extends Component {
       },
       () => {
         this.getRandomAnswer(
-          this.props.SubModule1QuizQuestion[this.state.questionIndex]
+          this.props.SubModule1QuizQuestion,
+          this.props.selectedLanguage
         );
       }
     );
@@ -178,7 +223,8 @@ class ModuleHome extends Component {
       },
       () => {
         this.getRandomAnswer(
-          this.props.SubModule1QuizQuestion[this.state.questionIndex]
+          this.props.SubModule1QuizQuestion,
+          this.props.selectedLanguage
         );
       }
     );
@@ -186,8 +232,8 @@ class ModuleHome extends Component {
 
   HandleQuestionResult = () => {
     if (
-      this.props.SubModule1QuizQuestion[this.state.questionIndex]
-        .correct_answer === this.state.userAnswer
+      this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+        .correctAnswers === this.state.userAnswer
     ) {
       this.setState({
         correctAnswerCount: this.state.correctAnswerCount + 1,
@@ -206,6 +252,7 @@ class ModuleHome extends Component {
         randomAnswers: [],
         userAnswer: "",
         questionIndex: 0,
+        // questionLanguage: "",
         correctAnswerCount: 0,
         showResult: false,
         takeQuiz: true,
@@ -213,12 +260,16 @@ class ModuleHome extends Component {
       },
       () =>
         this.getRandomAnswer(
-          this.props.SubModule1QuizQuestion[this.state.questionIndex]
+          //this.props.SubModule1QuizQuestion[this.state.questionIndex]
+          this.props.SubModule1QuizQuestion,
+          this.props.selectedLanguage
         )
     );
 
     this.getRandomAnswer(
-      this.props.SubModule1QuizQuestion[this.state.questionIndex]
+      // this.props.SubModule1QuizQuestion[this.state.questionIndex]
+      this.props.SubModule1QuizQuestion,
+      this.props.selectedLanguage
     );
   };
 
@@ -233,12 +284,16 @@ class ModuleHome extends Component {
       SubModule6Url,
       SubModule6Ratio,
       SubModule1QuizQuestion,
+      SubModule1QuizQuestionFiltered,
+      selectedLanguage,
     } = this.props;
 
     const { randomAnswers } = this.state;
 
     return (
       <div className='main-bg-color'>
+        {/* <TranslateText txt={"language"} /> */}
+
         <ModuleNavBar userActiveModule={userActiveModule} />
 
         <Container>
@@ -275,6 +330,9 @@ class ModuleHome extends Component {
                 SubModule6Url={SubModule6Url}
                 SubModule6Ratio={SubModule6Ratio}
                 SubModule1QuizQuestion={SubModule1QuizQuestion}
+                SubModule1QuizQuestionText={
+                  SubModule1QuizQuestionFiltered[this.state.questionIndex]
+                }
                 questionIndex={this.state.questionIndex}
                 questionCount={this.state.questionCount}
                 userAnswer={this.state.userAnswer}
@@ -282,6 +340,7 @@ class ModuleHome extends Component {
                 correctAnswerCount={this.state.correctAnswerCount}
                 randomAnswers={randomAnswers}
                 takeQuiz={this.state.takeQuiz}
+                selectedLanguage={selectedLanguage}
                 onClick={this.handleClickSubModuleNext}
                 onClickNextModule={this.handleClickModuleNext}
                 getRandomAnswer={this.getRandomAnswer}
@@ -318,6 +377,9 @@ const mapStateToProps = (state) => ({
   SubModule6Ratio: state.SubModule6Ratio,
   //
   SubModule1QuizQuestion: state.SubModule1QuizQuestion,
+  SubModule1QuizQuestionFiltered: state.SubModule1QuizQuestionFiltered,
+  //
+  selectedLanguage: state.selectedLanguage,
 });
 
 export default connect(mapStateToProps, {
@@ -327,4 +389,5 @@ export default connect(mapStateToProps, {
   SubModule2Detail,
   SubModule6Detail,
   SubModule1Quiz,
+  SubModule1QuizFiltered,
 })(withRouter(ModuleHome));

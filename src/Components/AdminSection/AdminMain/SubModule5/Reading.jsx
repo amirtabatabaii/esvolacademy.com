@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReadingAddItem from "../../Utility/ReadingAddItem";
+import ReadingAddItem from "./ReadingAddItem";
 
 class Reading extends Component {
   render() {
