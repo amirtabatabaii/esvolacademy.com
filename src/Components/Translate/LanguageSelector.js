@@ -5,7 +5,11 @@ import Dropdown from "react-dropdown";
 // import "react-dropdown/style.css";
 import "./LanguageSelector.css";
 
-const LanguageSelector = () => {
+import { SelectedLanguage } from "../../Redux/action";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
+const LanguageSelector = (props) => {
   const [language, setLanguage] = useState("EN");
 
   const { i18n } = useTranslation();
@@ -14,6 +18,10 @@ const LanguageSelector = () => {
     if (event.value === "en") setLanguage("EN");
     if (event.value === "tr") setLanguage("TR");
     i18n.changeLanguage(event.value);
+
+    // const lng = event.value.toUpperCase();
+    const lng = event.value.replace(/^\w/, (c) => c.toUpperCase());
+    props.SelectedLanguage(lng);
   };
 
   const options = [
@@ -31,4 +39,10 @@ const LanguageSelector = () => {
   );
 };
 
-export default LanguageSelector;
+const mapStateToProps = (state) => ({
+  selectedLanguage: state.selectedLanguage,
+});
+
+export default connect(mapStateToProps, {
+  SelectedLanguage,
+})(withRouter(LanguageSelector));

@@ -6,6 +6,8 @@ import {
   SUBMODULE_2_DETAIL,
   SUBMODULE_6_DETAIL,
   SUBMODULE_1_QUIZ,
+  SELECTED_LANGUAGE,
+  SUBMODULE_1_QUIZ_FILTERED,
 } from "./types";
 
 const initialState = {
@@ -40,6 +42,9 @@ const initialState = {
   SubModule6Ratio: "",
   //
   SubModule1QuizQuestion: [],
+  SubModule1QuizQuestionFiltered: [],
+  //
+  selectedLanguage: "En",
 };
 
 export default function (state = initialState, action) {
@@ -92,6 +97,19 @@ export default function (state = initialState, action) {
       return {
         ...state,
         SubModule1QuizQuestion: action.payload.SubModule1QuizQuestion,
+      };
+
+    case SUBMODULE_1_QUIZ_FILTERED:
+      return {
+        ...state,
+        SubModule1QuizQuestionFiltered:
+          action.payload.SubModule1QuizQuestionFiltered,
+      };
+
+    case SELECTED_LANGUAGE:
+      return {
+        ...state,
+        selectedLanguage: action.payload.selectedLanguage,
       };
 
     default:

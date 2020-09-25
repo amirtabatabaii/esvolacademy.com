@@ -12,7 +12,8 @@ class Question extends Component {
 
     const {
       randomAnswers,
-      SubModule1QuizQuestion,
+      // SubModule1QuizQuestion,
+      SubModule1QuizQuestionText,
       HandleQuestionAnswerChange,
       questionIndex,
       questionCount,
@@ -26,7 +27,8 @@ class Question extends Component {
         <div className='m-5 text-left'>
           <div className='question font-weight-bold'>
             {questionIndex + 1}.{" "}
-            {SubModule1QuizQuestion[questionIndex].question}
+            {SubModule1QuizQuestionText !== undefined &&
+              SubModule1QuizQuestionText.question}
           </div>
 
           <div className='mt-3'>

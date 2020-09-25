@@ -184,14 +184,14 @@ function QuizAddQuestions(props) {
     }
   };
 
-  const [EndInputList, setEndInputList] = useState([
-    {
-      question: [],
-      languages: "",
-      correctAnswers: [],
-      incorrectAnswers: [],
-    },
-  ]);
+  // const [EndInputList, setEndInputList] = useState([
+  //   {
+  //     question: [],
+  //     languages: "",
+  //     correctAnswers: [],
+  //     incorrectAnswers: [],
+  //   },
+  // ]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -203,7 +203,8 @@ function QuizAddQuestions(props) {
         if (Array.isArray(EndListTemp[i]["question"]) === true) {
           let arr = [...EndListTemp[i].question];
           EndListTemp[i].question = arr.join(" _ ");
-          setEndInputList(EndListTemp);
+          // setEndInputList(EndListTemp);
+          // console.log(EndInputList);
         }
         // delete EndListTemp[i].correctAnswerCount;
         // delete EndListTemp[i].incorrectAnswerCount;

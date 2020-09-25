@@ -16,6 +16,7 @@ class SubModule7 extends Component {
     const {
       randomAnswers,
       SubModule1QuizQuestion,
+      SubModule1QuizQuestionText,
       userActiveModule,
       HandleQuestionAnswerChange,
       questionIndex,
@@ -45,6 +46,7 @@ class SubModule7 extends Component {
             <Question
               randomAnswers={randomAnswers}
               SubModule1QuizQuestion={SubModule1QuizQuestion}
+              SubModule1QuizQuestionText={SubModule1QuizQuestionText}
               questionIndex={questionIndex}
               questionCount={questionCount}
               userAnswer={userAnswer}

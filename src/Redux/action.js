@@ -6,6 +6,8 @@ import {
   SUBMODULE_2_DETAIL,
   SUBMODULE_6_DETAIL,
   SUBMODULE_1_QUIZ,
+  SUBMODULE_1_QUIZ_FILTERED,
+  SELECTED_LANGUAGE,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -58,6 +60,16 @@ export const SubModule1Quiz = (SubModule1QuizQuestion) => (dispatch) => {
   });
 };
 
+// SubModule 1 QUIZ Questions Filtered
+export const SubModule1QuizFiltered = (SubModule1QuizQuestionFiltered) => (
+  dispatch
+) => {
+  dispatch({
+    type: SUBMODULE_1_QUIZ_FILTERED,
+    payload: { SubModule1QuizQuestionFiltered },
+  });
+};
+
 // SubModule 2 Detail
 export const SubModule2Detail = (
   SubModule2Title,
@@ -79,5 +91,13 @@ export const SubModule6Detail = (
   dispatch({
     type: SUBMODULE_6_DETAIL,
     payload: { SubModule6Title, SubModule6Url, SubModule6Ratio },
+  });
+};
+
+// Selected Language
+export const SelectedLanguage = (selectedLanguage) => (dispatch) => {
+  dispatch({
+    type: SELECTED_LANGUAGE,
+    payload: { selectedLanguage },
   });
 };
