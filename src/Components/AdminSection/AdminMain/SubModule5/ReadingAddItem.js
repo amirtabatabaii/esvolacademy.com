@@ -50,8 +50,8 @@ function ReadingAddItem(props) {
 
     setActiveModule({
       subLevelTranslations: inputList,
-      moduleName: props.adminActiveSubModule,
-      subModuleType: props.adminActiveModule,
+      moduleName: props.adminActiveModule,
+      subModuleType: props.adminActiveSubModule,
       taskUrl: ActiveModule.taskUrl,
       urlFormat: ActiveModule.urlFormat,
     });
