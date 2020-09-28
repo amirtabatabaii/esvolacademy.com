@@ -46,8 +46,6 @@ const initialState = {
   SubModule1QuizQuestionFiltered: [],
   //
   selectedLanguage: "En",
-  //
-  TestNumber: 0,
 };
 
 export default function (state = initialState, action) {
@@ -113,12 +111,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         selectedLanguage: action.payload.selectedLanguage,
-      };
-
-    case TEST_NUMBER:
-      return {
-        ...state,
-        TestNumber: action.payload.TestNumber,
       };
 
     default:
