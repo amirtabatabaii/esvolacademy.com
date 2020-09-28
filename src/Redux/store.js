@@ -37,6 +37,8 @@ const initialState = {
   SubModule1QuizQuestionFiltered: [],
   //
   selectedLanguage: "En",
+  //
+  TestNumber: 0,
 };
 
 const middleware = [thunk];

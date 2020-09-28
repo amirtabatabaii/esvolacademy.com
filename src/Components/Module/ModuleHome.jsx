@@ -15,6 +15,7 @@ import {
   SubModule6Detail,
   SubModule1Quiz,
   SubModule1QuizFiltered,
+  ChangeTestNumber,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -283,6 +284,10 @@ class ModuleHome extends Component {
     );
   };
 
+  MyTestNumber = (TestNumber) => {
+    ChangeTestNumber(TestNumber + 1);
+  };
+
   render() {
     const {
       userActiveModule,
@@ -296,74 +301,81 @@ class ModuleHome extends Component {
       SubModule1QuizQuestion,
       SubModule1QuizQuestionFiltered,
       selectedLanguage,
+      TestNumber,
     } = this.props;
 
     const { randomAnswers } = this.state;
 
     return (
-      <div className='main-bg-color'>
-        <ModuleNavBar userActiveModule={userActiveModule} />
-
-        <Container>
-          <Row
-            // style={{ paddingTop: "130px" }}
-            className='w-100 pt-5 pb-5'
-          >
-            {/* Module panel */}
-            <Col lg={2} className='d-flex justify-content-end'>
-              <ModuleStagesName userActiveModule={userActiveModule} />
-            </Col>
-
-            <Col lg={10}>
-              <div className='d-flex justify-content-start'>
-                {/* SubModule panel */}
-                <SubModuleBtn
-                  userActiveSubModule={userActiveSubModule}
-                  userActiveModule={userActiveModule}
-                  onClick={this.handleOnClickSubModule}
-                />
-              </div>
-
-              {/* SubModule Note Section */}
-              <SubModuleNote userActiveSubModule={userActiveSubModule} />
-
-              {/* SubModule Section */}
-              <SubModule
-                userActiveModule={userActiveModule}
-                userActiveSubModule={userActiveSubModule}
-                SubModule1Url={SubModule1Url}
-                SubModule1Ratio={SubModule1Ratio}
-                SubModule2Url={SubModule2Url}
-                SubModule2Ratio={SubModule2Ratio}
-                SubModule6Url={SubModule6Url}
-                SubModule6Ratio={SubModule6Ratio}
-                SubModule1QuizQuestion={SubModule1QuizQuestion}
-                SubModule1QuizQuestionText={
-                  SubModule1QuizQuestionFiltered[this.state.questionIndex]
-                }
-                questionIndex={this.state.questionIndex}
-                questionCount={this.state.questionCount}
-                userAnswer={this.state.userAnswer}
-                showResult={this.state.showResult}
-                correctAnswerCount={this.state.correctAnswerCount}
-                randomAnswers={randomAnswers}
-                takeQuiz={this.state.takeQuiz}
-                selectedLanguage={selectedLanguage}
-                onClick={this.handleClickSubModuleNext}
-                onClickNextModule={this.handleClickModuleNext}
-                getRandomAnswer={this.getRandomAnswer}
-                HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
-                HandleNextQuestion={this.HandleNextQuestion}
-                HandlePrevQuestion={this.HandlePrevQuestion}
-                HandleQuestionResult={this.HandleQuestionResult}
-                HandleRetakeQuiz={this.HandleRetakeQuiz}
-              />
-            </Col>
-          </Row>
-        </Container>
-
-        <Footer userActiveModule={userActiveModule} />
+      <div>
+        <input type='text' value={TestNumber} />
+        <button onClick={() => this.props.ChangeTestNumber(TestNumber + 1)}>
+          add
+        </button>
       </div>
+      // <div className='main-bg-color'>
+      //   <ModuleNavBar userActiveModule={userActiveModule} />
+
+      //   <Container>
+      //     <Row
+      //       // style={{ paddingTop: "130px" }}
+      //       className='w-100 pt-5 pb-5'
+      //     >
+      //       {/* Module panel */}
+      //       <Col lg={2} className='d-flex justify-content-end'>
+      //         <ModuleStagesName userActiveModule={userActiveModule} />
+      //       </Col>
+
+      //       <Col lg={10}>
+      //         <div className='d-flex justify-content-start'>
+      //           {/* SubModule panel */}
+      //           <SubModuleBtn
+      //             userActiveSubModule={userActiveSubModule}
+      //             userActiveModule={userActiveModule}
+      //             onClick={this.handleOnClickSubModule}
+      //           />
+      //         </div>
+
+      //         {/* SubModule Note Section */}
+      //         <SubModuleNote userActiveSubModule={userActiveSubModule} />
+
+      //         {/* SubModule Section */}
+      //         <SubModule
+      //           userActiveModule={userActiveModule}
+      //           userActiveSubModule={userActiveSubModule}
+      //           SubModule1Url={SubModule1Url}
+      //           SubModule1Ratio={SubModule1Ratio}
+      //           SubModule2Url={SubModule2Url}
+      //           SubModule2Ratio={SubModule2Ratio}
+      //           SubModule6Url={SubModule6Url}
+      //           SubModule6Ratio={SubModule6Ratio}
+      //           SubModule1QuizQuestion={SubModule1QuizQuestion}
+      //           SubModule1QuizQuestionText={
+      //             SubModule1QuizQuestionFiltered[this.state.questionIndex]
+      //           }
+      //           questionIndex={this.state.questionIndex}
+      //           questionCount={this.state.questionCount}
+      //           userAnswer={this.state.userAnswer}
+      //           showResult={this.state.showResult}
+      //           correctAnswerCount={this.state.correctAnswerCount}
+      //           randomAnswers={randomAnswers}
+      //           takeQuiz={this.state.takeQuiz}
+      //           selectedLanguage={selectedLanguage}
+      //           onClick={this.handleClickSubModuleNext}
+      //           onClickNextModule={this.handleClickModuleNext}
+      //           getRandomAnswer={this.getRandomAnswer}
+      //           HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
+      //           HandleNextQuestion={this.HandleNextQuestion}
+      //           HandlePrevQuestion={this.HandlePrevQuestion}
+      //           HandleQuestionResult={this.HandleQuestionResult}
+      //           HandleRetakeQuiz={this.HandleRetakeQuiz}
+      //         />
+      //       </Col>
+      //     </Row>
+      //   </Container>
+
+      //   <Footer userActiveModule={userActiveModule} />
+      // </div>
     );
   }
 }
@@ -388,6 +400,8 @@ const mapStateToProps = (state) => ({
   SubModule1QuizQuestionFiltered: state.SubModule1QuizQuestionFiltered,
   //
   selectedLanguage: state.selectedLanguage,
+  //
+  TestNumber: state.TestNumber,
 });
 
 export default connect(mapStateToProps, {
@@ -398,4 +412,5 @@ export default connect(mapStateToProps, {
   SubModule6Detail,
   SubModule1Quiz,
   SubModule1QuizFiltered,
+  ChangeTestNumber,
 })(withRouter(ModuleHome));

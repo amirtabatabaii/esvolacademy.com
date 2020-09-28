@@ -8,6 +8,7 @@ import {
   SUBMODULE_1_QUIZ,
   SUBMODULE_1_QUIZ_FILTERED,
   SELECTED_LANGUAGE,
+  TEST_NUMBER,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -99,5 +100,12 @@ export const SelectedLanguage = (selectedLanguage) => (dispatch) => {
   dispatch({
     type: SELECTED_LANGUAGE,
     payload: { selectedLanguage },
+  });
+};
+
+export const ChangeTestNumber = (TestNumber) => (dispatch) => {
+  dispatch({
+    type: TEST_NUMBER,
+    payload: { TestNumber },
   });
 };
