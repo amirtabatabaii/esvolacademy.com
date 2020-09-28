@@ -124,6 +124,7 @@ class UserHome extends Component {
             {/* <Container> */}
             <p className='messageTxt text-left pt-5 pl-5'>
               <TranslateText txt='User-Hello-Message' />
+              {" Melis"}
             </p>
 
             <Row className='w-100 p-5'>
@@ -189,7 +190,10 @@ class UserHome extends Component {
                       </p>
                       <p className='info-text'>Module 1</p>
                       <p className='info-text'>SubModule 1</p>
-                      <p className='info-text'>Score : 200</p>
+                      <p className='info-text'>
+                        <TranslateText txt='User-education-info-Score' />
+                        {" : 200"}
+                      </p>
 
                       <Link to='/modules'>
                         <button className='continue-Btn' type='submit'>

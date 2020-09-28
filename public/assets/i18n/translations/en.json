@@ -44,9 +44,10 @@
   "MenuItem-Anasayfa": "Home",
   "MenuItem-Profil": "Profile",
   "MenuItem-Logout": "Logout",
-  "User-Hello-Message": "Hello Melis",
+  "User-Hello-Message": "Hello",
   "User-personal-info-Header": "Personal information",
   "User-education-info-Header": "Education mobility",
+  "User-education-info-Score": "Score",
   "User-Continue-Btn": "Continue",
   "User-Edit-Btn": "Edit",
   "Module1-text": "Stage 1",
@@ -79,6 +80,9 @@
   "SubModule7-PrevQuestion": "Previous Question",
   "SubModule7-ViewResult": "View Result",
   "SubModule7-NextModule": "Next Module",
+  "SubModule7-CorrectAnswer": "Correct answer",
+  "SubModule7-Passed": "You Passed.",
+  "SubModule7-Failed": "You Failed.",
   "SubModule7-FinishModule": "Finish",
   "SubModule7-RetakeQuiz": "Retake Quiz"
 }
