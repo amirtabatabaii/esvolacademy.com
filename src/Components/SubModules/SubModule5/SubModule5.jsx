@@ -11,6 +11,7 @@ class SubModule5 extends Component {
       <div className={`${this.props.userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
           <Reading5
+            userActiveModule={this.props.userActiveModule}
             header='Bulgaria:'
             note='Young Leaders Seminar provides food for thought in Sofia:'
             type='website'
@@ -18,6 +19,7 @@ class SubModule5 extends Component {
           />
 
           <Reading5
+            userActiveModule={this.props.userActiveModule}
             header='Greece:'
             note='The power of volunteers:'
             type='website'
@@ -25,6 +27,7 @@ class SubModule5 extends Component {
           />
 
           <Reading5
+            userActiveModule={this.props.userActiveModule}
             header='Italy:'
             note='An Olympic Experience: Torino 2006:'
             type='website'
@@ -32,6 +35,7 @@ class SubModule5 extends Component {
           />
 
           <Reading5
+            userActiveModule={this.props.userActiveModule}
             header='Spain:'
             note='2014 FIBA World Cup volunteers:'
             type='website'
@@ -39,6 +43,7 @@ class SubModule5 extends Component {
           />
 
           <Reading5
+            userActiveModule={this.props.userActiveModule}
             header='Turkey:'
             note=': EOC to launch education project ahead of 2017 European Youth Olympic Festival:'
             type='website'
@@ -46,6 +51,7 @@ class SubModule5 extends Component {
           />
 
           <Reading5
+            userActiveModule={this.props.userActiveModule}
             header='United Kingdom:'
             note='London Olympics: How volunteers made the Games:'
             type='website'
@@ -53,7 +59,7 @@ class SubModule5 extends Component {
           />
 
           <Sub5Button
-            className={"m-3 Module-next-btn"}
+            className={`${this.props.userActiveModule}-next-btn m-3`}
             txt='SubModule5-Continue'
             onClick={this.props.onClick}
           />

@@ -41,6 +41,7 @@ class SubModule7 extends Component {
               correctAnswerCount={correctAnswerCount}
               HandleRetakeQuiz={HandleRetakeQuiz}
               onClickNextModule={onClickNextModule}
+              userActiveModule={userActiveModule}
             />
           ) : takeQuiz ? (
             <Question
@@ -50,6 +51,7 @@ class SubModule7 extends Component {
               questionIndex={questionIndex}
               questionCount={questionCount}
               userAnswer={userAnswer}
+              userActiveModule={userActiveModule}
               HandleQuestionAnswerChange={HandleQuestionAnswerChange}
               HandleNextQuestion={HandleNextQuestion}
               HandlePrevQuestion={HandlePrevQuestion}

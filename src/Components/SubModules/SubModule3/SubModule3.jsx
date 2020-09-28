@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import Scroll from "../../Utility/Scroll";
-import "./SubModule3.css";
 import Task from "./Task";
 import Sub3Button from "./Sub3Button";
 
@@ -15,6 +14,7 @@ class SubModule3 extends Component {
       <div className={`${this.props.userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
           <Task
+            userActiveModule={this.props.userActiveModule}
             note='Task-1: Watch the Lausanne 2020 – Become a Volunteer video which you can find below :'
             type='video'
             Link='https://www.youtube.com/watch?v=xInABTGavt8'
@@ -24,6 +24,7 @@ class SubModule3 extends Component {
           />
 
           <Task
+            userActiveModule={this.props.userActiveModule}
             note='Task-2: Read the Council conclusions on the role of voluntary activities in sport in promoting active citizenship.'
             type='pdf'
             Link='https://ec.europa.eu/citizenship/pdf/council_conclusions_on_volunteering_in_sport_en.pdf'
@@ -33,7 +34,7 @@ class SubModule3 extends Component {
           />
 
           <Sub3Button
-            className={"m-3 Module-next-btn"}
+            className={`${this.props.userActiveModule}-next-btn m-3`}
             txt='SubModule3-Continue'
             onClick={this.props.onClick}
           />

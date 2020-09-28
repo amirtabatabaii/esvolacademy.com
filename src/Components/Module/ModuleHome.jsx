@@ -75,7 +75,7 @@ class ModuleHome extends Component {
         this.props.SubModule1Quiz(Response.data.results);
       });
 
-    this.props.UserActiveModuleSubModule("Module1", "sub7");
+    this.props.UserActiveModuleSubModule("Module1", "sub1");
 
     this.props.SubModule1Detail(
       "SubModule_1_Video",
@@ -120,7 +120,17 @@ class ModuleHome extends Component {
   }
 
   handleClickModuleNext(ActiveModuleName, ActiveSubName) {
-    this.props.UserActiveModuleSubModule(ActiveModuleName, ActiveSubName);
+    const ModuleNumber = ActiveModuleName.substr(ActiveModuleName.length - 1);
+    const editedModuleName = ActiveModuleName.slice(0, -1);
+
+    if (ModuleNumber === "5") {
+      alert("Finish Page...!!");
+    } else {
+      this.props.UserActiveModuleSubModule(
+        editedModuleName + (parseInt(ModuleNumber) + 1),
+        ActiveSubName
+      );
+    }
   }
 
   componentDidUpdate(previousProps) {
@@ -292,8 +302,6 @@ class ModuleHome extends Component {
 
     return (
       <div className='main-bg-color'>
-        {/* <TranslateText txt={"language"} /> */}
-
         <ModuleNavBar userActiveModule={userActiveModule} />
 
         <Container>

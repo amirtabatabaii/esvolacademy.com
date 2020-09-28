@@ -49,7 +49,7 @@ class SubModule6 extends Component {
 
         <Row className='w-100 d-flex justify-content-around'>
           <Sub6Button
-            className={"m-3 Module-next-btn"}
+            className={`${this.props.userActiveModule}-next-btn m-3`}
             disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
             txt='SubModule6-Continue'
             onClick={onClick}

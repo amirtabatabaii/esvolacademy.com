@@ -1,3 +1,5 @@
+/* Module1 */
+
 .Module1-menu-text {
   color: #fe7635 !important;
   font-size: 20px;
@@ -9,7 +11,9 @@
   color: #fa5305 !important;
 }
 
-/*  */
+/* ----------------------------------------------- */
+
+/* Module2 */
 
 .Module2-menu-text {
   color: #d61f23 !important;
@@ -21,3 +25,50 @@
 .Module2-menu-text:hover {
   color: #aa1518 !important;
 }
+
+/* ----------------------------------------------- */
+
+/* Module3 */
+
+.Module3-menu-text {
+  color: #c8d503 !important;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Module3-menu-text:hover {
+  color: #a4af05 !important;
+}
+
+/* ----------------------------------------------- */
+
+/* Module4 */
+
+.Module4-menu-text {
+  color: #77478f !important;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Module4-menu-text:hover {
+  color: #5c376e !important;
+}
+
+/* ----------------------------------------------- */
+
+/* Module5 */
+
+.Module5-menu-text {
+  color: #53739b !important;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.Module5-menu-text:hover {
+  color: #40699b !important;
+}
+
+/* ----------------------------------------------- */

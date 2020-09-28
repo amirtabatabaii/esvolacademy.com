@@ -8,6 +8,7 @@ class ShowResult extends Component {
       questionCount,
       HandleRetakeQuiz,
       onClickNextModule,
+      userActiveModule,
     } = this.props;
 
     return (
@@ -22,17 +23,21 @@ class ShowResult extends Component {
               <h3 className='text-success m-3'>You passed.</h3>
 
               <button
-                className='Module-next-btn m-4'
+                className={`${userActiveModule}-next-btn m-4`}
                 // onClick={HandleQuestionResult}
               >
                 <TranslateText txt='SubModule7-ViewResult' />
               </button>
 
               <button
-                className='Module-next-btn m-4'
-                onClick={() => onClickNextModule("Module2", "sub1")}
+                className={`${userActiveModule}-next-btn m-4`}
+                onClick={() => onClickNextModule(userActiveModule, "sub1")}
               >
-                <TranslateText txt='SubModule7-NextModule' />
+                {userActiveModule === "Module5" ? (
+                  <TranslateText txt='SubModule7-FinishModule' />
+                ) : (
+                  <TranslateText txt='SubModule7-NextModule' />
+                )}
               </button>
             </>
           ) : (

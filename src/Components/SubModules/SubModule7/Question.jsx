@@ -11,6 +11,7 @@ class Question extends Component {
     };
 
     const {
+      userActiveModule,
       randomAnswers,
       // SubModule1QuizQuestion,
       SubModule1QuizQuestionText,
@@ -57,7 +58,7 @@ class Question extends Component {
         {questionIndex === questionCount ? (
           userAnswer === "" ? null : (
             <button
-              className='Module-next-btn'
+              className={`${userActiveModule}-next-btn`}
               size='lg'
               onClick={HandleQuestionResult}
             >
@@ -68,7 +69,7 @@ class Question extends Component {
           <div className='text-left m-5'>
             <button
               onClick={HandleNextQuestion}
-              className='Module-next-qst-btn'
+              className={`${userActiveModule}-next-qst-btn`}
               size='lg'
             >
               <TranslateText txt='SubModule7-NextQuestion' />

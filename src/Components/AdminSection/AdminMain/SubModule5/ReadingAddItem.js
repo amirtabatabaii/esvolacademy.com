@@ -184,7 +184,9 @@ function ReadingAddItem(props) {
         </div>
       </Form>
 
-      <div style={{ marginTop: 20 }}>{JSON.stringify(ActiveModule)}</div>
+      <div style={{ marginTop: 20 }}>
+        <pre>{JSON.stringify(ActiveModule, null, 2)}</pre>
+      </div>
     </div>
   );
 }
