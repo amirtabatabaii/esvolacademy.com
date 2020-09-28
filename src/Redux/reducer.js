@@ -8,45 +8,9 @@ import {
   SUBMODULE_1_QUIZ,
   SELECTED_LANGUAGE,
   SUBMODULE_1_QUIZ_FILTERED,
-  TEST_NUMBER,
 } from "./types";
 
-const initialState = {
-  adminActiveModule: "",
-  adminActiveSubModule: "",
-  Module1Name: "Module 1",
-  Module2Name: "Module 2",
-  Module3Name: "Module 3",
-  Module4Name: "Module 4",
-  Module5Name: "Module 5",
-  SubModule1Name: "Introduction Video",
-  SubModule2Name: "Course Video",
-  SubModule3Name: "Interactive Tool",
-  SubModule4Name: "Expert Video",
-  SubModule5Name: "Reading",
-  SubModule6Name: "Case Study",
-  SubModule7Name: "Quiz",
-  //
-  userActiveModule: "",
-  userActiveSubModule: "",
-  //
-  SubModule1Title: "",
-  SubModule1Url: "",
-  SubModule1Ratio: "",
-  //
-  SubModule2Title: "",
-  SubModule2Url: "",
-  SubModule2Ratio: "",
-  //
-  SubModule6Title: "",
-  SubModule6Url: "",
-  SubModule6Ratio: "",
-  //
-  SubModule1QuizQuestion: [],
-  SubModule1QuizQuestionFiltered: [],
-  //
-  selectedLanguage: "En",
-};
+import initialState from "./store";
 
 export default function (state = initialState, action) {
   switch (action.type) {

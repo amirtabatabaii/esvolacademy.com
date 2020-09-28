@@ -75,26 +75,26 @@ class ModuleHome extends Component {
         this.props.SubModule1Quiz(Response.data.results);
       });
 
-    this.props.UserActiveModuleSubModule("Module1", "sub1");
+    // this.props.UserActiveModuleSubModule("Module1", "sub1");
 
-    this.props.SubModule1Detail(
-      "SubModule_1_Video",
-      "https://www.youtube.com/watch?v=A2pM6u-d-MM",
-      //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
-      "80"
-    );
+    // this.props.SubModule1Detail(
+    //   "SubModule_1_Video",
+    //   "https://www.youtube.com/watch?v=A2pM6u-d-MM",
+    //   //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
+    //   "80"
+    // );
 
-    this.props.SubModule2Detail(
-      "SubModule_2_Video",
-      "https://www.youtube.com/watch?v=_npPA9ydDTs",
-      "70"
-    );
+    // this.props.SubModule2Detail(
+    //   "SubModule_2_Video",
+    //   "https://www.youtube.com/watch?v=_npPA9ydDTs",
+    //   "70"
+    // );
 
-    this.props.SubModule6Detail(
-      "SubModule_6_Video",
-      "https://www.youtube.com/watch?v=3_JsyidKdaI",
-      "60"
-    );
+    // this.props.SubModule6Detail(
+    //   "SubModule_6_Video",
+    //   "https://www.youtube.com/watch?v=3_JsyidKdaI",
+    //   "60"
+    // );
 
     this.getRandomAnswer(
       // this.props.SubModule1QuizQuestion[this.state.questionIndex]

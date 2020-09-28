@@ -51,7 +51,7 @@ class ShowResult extends Component {
               </h3>
 
               <button
-                className='Module-next-btn m-3'
+                className={`${userActiveModule}-next-btn m-3`}
                 onClick={HandleRetakeQuiz}
               >
                 <TranslateText txt='SubModule7-RetakeQuiz' />
