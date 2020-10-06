@@ -10,146 +10,134 @@ import {
   Button,
 } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 import QuizMultipleChoice from "./QuizMultipleChoice";
 import QuizFilling from "./QuizFilling";
 import QuizBoolean from "./QuizBoolean";
 import QuizBlank from "./QuizBlank";
 import NumberInput from "../../Utility/NumberInput";
+import { QstLanguageList, AnsLanguageList } from "../../Utility/AdminUtility";
 
 function QuizAddQuestions(props) {
   // --------------
-  const incorrectAnswerDecrementCount = (index) => {
-    const list = [...inputList];
-    if (list[index]["incorrectAnswerCount"] > 0) {
-      list[index]["incorrectAnswerCount"] -= 1;
-      setInputList(list);
-
-      let AnsList = list[index]["incorrectAnswers"];
-      const length = list[index]["incorrectAnswers"].length;
-      if (list[index]["incorrectAnswerCount"] === length - 1)
-        AnsList.splice([length - 1], 1);
-      setInputList(list);
-    }
-  };
-
-  const incorrectAnswerIncrementCount = (index) => {
-    const list = [...inputList];
-    list[index]["incorrectAnswerCount"] += 1;
-    setInputList(list);
-  };
-  // -----------------
-
-  // --------------
-  const correctAnswerDecrementCount = (index) => {
-    const list = [...inputList];
-    if (list[index]["correctAnswerCount"] > 0) {
-      list[index]["correctAnswerCount"] -= 1;
-      setInputList(list);
-
-      let AnsList = list[index]["correctAnswers"];
-      const length = list[index]["correctAnswers"].length;
-      if (list[index]["correctAnswerCount"] === length - 1)
-        AnsList.splice([length - 1], 1);
-      setInputList(list);
-    }
-  };
-
-  const correctAnswerIncrementCount = (index) => {
-    const list = [...inputList];
-    list[index]["correctAnswerCount"] += 1;
-    setInputList(list);
-  };
-  // -----------------
-
-  // --------------
   const blankAnswerDecrementCount = (index, i) => {
     let NumberOfBlank = Quiz.NumberOfBlank;
-    if (NumberOfBlank > 0) {
+    if (NumberOfBlank > 1) {
       NumberOfBlank -= 1;
       setQuiz({ ...Quiz, NumberOfBlank });
-
-      let list = [...inputList];
-
-      for (let j = 0; j < list.length; j++) {
-        if (NumberOfBlank === list[j]["correctAnswers"].length - 1) {
-          list[j]["correctAnswers"].splice(
-            [list[j]["correctAnswers"].length - 1],
-            1
-          );
-        }
-
-        if (Array.isArray(list[j]["question"]) === false) {
-          list[j].question = list[j].question.split(" _ ");
-        }
-
-        if (NumberOfBlank + 1 === list[j]["question"].length - 1) {
-          list[j]["question"].splice([list[j]["question"].length - 1], 1);
-          if (list[j]["question"].length === 1)
-            list[j]["question"].splice([list[j]["question"].length - 1], 1);
-        }
-      }
-      setInputList(list);
     }
+
+    handleRemoveAnsListClick(AnsList.length - 1);
   };
 
   const blankAnswerIncrementCount = (index) => {
     let NumberOfBlank = Quiz.NumberOfBlank;
     NumberOfBlank += 1;
     setQuiz({ ...Quiz, NumberOfBlank });
+
+    handleAnsListAddClick(AnsList.length - 1);
   };
   // -----------------
 
-  const [inputList, setInputList] = useState([
+  const [QstList, setQstList] = useState([
     {
-      question: [],
-      languages: "",
-      correctAnswerCount: 3,
-      correctAnswers: [],
-      incorrectAnswerCount: 3,
-      incorrectAnswers: [],
+      questionText: "",
+      language: "",
+    },
+  ]);
+
+  const [AnsList, setAnsList] = useState([
+    {
+      questionAnswersDictionaries: [{ answerText: "", language: "" }],
+      correctAnswer: false,
     },
   ]);
 
   const [Quiz, setQuiz] = useState({
     point: null,
+    activationStatus: true,
     questionType: "",
-    moduleName: "",
+    moduleName: props.adminActiveModule,
     NumberOfBlank: 1,
+    questionDictionaries: [],
+    answers: [],
   });
 
-  const handleInputChange = (e, index) => {
+  const handleQstListChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...inputList];
-    list[index][name] = value;
-    setInputList(list);
+    const list = [...QstList];
+
+    if (name === "language") list[index]["language"] = value;
+    if (name === "questionText") list[index]["questionText"] = value;
+    setQstList(list);
   };
 
-  const handleYesNoChange = (e, index) => {
+  const handleAnsListDetailChange = (e, index, questionType, p) => {
     const { name, value } = e.target;
-    const list2 = [...inputList];
-    list2[index][name] = value;
-    if (value === "yes") list2[index]["incorrectAnswers"] = "no";
-    else list2[index]["incorrectAnswers"] = "yes";
-    setInputList(list2);
+
+    const list2 = [...AnsList];
+
+    if (questionType === "Filling" || questionType === "Blank") {
+      list2[p]["correctAnswer"] = true;
+    } else {
+      if (name === "isTrue") list2[p]["correctAnswer"] = e.target.checked;
+    }
+
+    if (name === "language")
+      list2[p]["questionAnswersDictionaries"][index]["language"] = value;
+    if (name === "answerText")
+      list2[p]["questionAnswersDictionaries"][index]["answerText"] = value;
+    setAnsList(list2);
   };
 
-  const handleRemoveClick = (index) => {
-    const list = [...inputList];
+  const handleRemoveQstListClick = (index) => {
+    const list = [...QstList];
     list.splice(index, 1);
-    setInputList(list);
+    setQstList(list);
   };
 
-  const handleAddClick = () => {
-    setInputList([
-      ...inputList,
+  const handleRemoveAnsListDetailClick = (index, j) => {
+    const dic = [...AnsList[j].questionAnswersDictionaries];
+    dic.splice(index, 1);
+    AnsList[j].questionAnswersDictionaries = [...dic];
+
+    setAnsList([...AnsList]);
+  };
+
+  const handleRemoveAnsListClick = (index) => {
+    const list = [...AnsList];
+    list.splice(index, 1);
+    setAnsList(list);
+  };
+
+  const handleQstListAddClick = () => {
+    setQstList([
+      ...QstList,
       {
-        question: [],
-        languages: "",
-        correctAnswerCount: 3,
-        correctAnswers: [],
-        incorrectAnswerCount: 3,
-        incorrectAnswers: [],
+        questionText: "",
+        language: "",
+      },
+    ]);
+  };
+
+  const handleAnsListDetailAddClick = (p) => {
+    const dic = [...AnsList[p].questionAnswersDictionaries];
+
+    AnsList[p].questionAnswersDictionaries = [
+      ...dic,
+      { answerText: "", language: "" },
+    ];
+
+    setAnsList([...AnsList]);
+  };
+
+  const handleAnsListAddClick = () => {
+    setAnsList([
+      ...AnsList,
+      {
+        questionAnswersDictionaries: [{ answerText: "", language: "" }],
+        correctAnswer: false,
       },
     ]);
   };
@@ -184,27 +172,17 @@ function QuizAddQuestions(props) {
     }
   };
 
-  // const [EndInputList, setEndInputList] = useState([
-  //   {
-  //     question: [],
-  //     languages: "",
-  //     correctAnswers: [],
-  //     incorrectAnswers: [],
-  //   },
-  // ]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    let EndListTemp = [...inputList];
+    let EndListTemp = [...QstList];
 
     if (Quiz.questionType === "Blank") {
       for (let i = 0; i < EndListTemp.length; i++) {
-        if (Array.isArray(EndListTemp[i]["question"]) === true) {
-          let arr = [...EndListTemp[i].question];
-          EndListTemp[i].question = arr.join(" _ ");
+        if (Array.isArray(EndListTemp[i]["questionText"]) === true) {
+          let arr = [...EndListTemp[i].questionText];
+          EndListTemp[i].questionText = arr.join(" _ ");
           // setEndInputList(EndListTemp);
-          // console.log(EndInputList);
         }
         // delete EndListTemp[i].correctAnswerCount;
         // delete EndListTemp[i].incorrectAnswerCount;
@@ -212,47 +190,54 @@ function QuizAddQuestions(props) {
     }
 
     if (Quiz.questionType !== "Blank") {
-      setQuiz((Quiz.NumberOfBlank = null));
+      setQuiz((Quiz.NumberOfBlank = 1));
     }
 
     setQuiz({
-      questionTranslations: EndListTemp,
       point: Quiz.point,
-      questionType: Quiz.questionType,
       moduleName: props.adminActiveModule,
+      questionType: Quiz.questionType,
       NumberOfBlank: Quiz.NumberOfBlank,
+      activationStatus: true,
+      questionDictionaries: [...QstList],
+      answers: [...AnsList],
     });
   };
 
   const handleEmptyAllInputs = () => {
-    setInputList([
+    setQstList([
       {
-        question: [],
-        languages: "",
-        correctAnswerCount: 3,
-        correctAnswers: [],
-        incorrectAnswerCount: 3,
-        incorrectAnswers: [],
+        questionText: "",
+        language: "",
+      },
+    ]);
+
+    setAnsList([
+      {
+        questionAnswersDictionaries: [{ answerText: "", language: "" }],
+        correctAnswer: false,
       },
     ]);
   };
 
-  const handleLanguageChange = (e, i) => {
-    // let filtered = [];
-    // for (let i = 0; i < inputList.length; i++) {
-    //   if (inputList[i].languages) {
-    //     filtered.push(inputList[i].languages);
-    //   }
-    // }
-    // let allLng = filtered.filter(function (lng) {
-    //   return lng === e.target.value;
-    // });
-    //if (allLng.length > 1) alert("sSSSs");
-    //-----------------------
-    // let allLng = AllLanguages.filter((lng) => lng === e.target.value);
-    // let idx = AllLanguages.indexOf(allLng[0]);
-    // if (idx !== -1) AllLanguages.splice(idx, 1);
-    // console.log(allLng[0], idx, AllLanguages);
+  const handleBlankQuestionsInputChange = (e, i, index) => {
+    const { name, value } = e.target;
+
+    const list = [...QstList];
+
+    if (name === "language") list[index]["language"] = value;
+
+    if (name === "questionText") {
+      if (Array.isArray(list[index]["questionText"]) === false) {
+        let arr2 = [];
+        arr2 = list[index]["questionText"].split(" _ ");
+        list[index]["questionText"] = arr2;
+      }
+
+      list[index]["questionText"][i] = value;
+    }
+
+    setQstList(list);
   };
 
   return (
@@ -273,10 +258,18 @@ function QuizAddQuestions(props) {
               required
               error={false}
             >
-              <MenuItem value={"MultipleChoice"}>MultipleChoice</MenuItem>
-              <MenuItem value={"Filling"}>Filling</MenuItem>
-              <MenuItem value={"Boolean"}>Boolean</MenuItem>
-              <MenuItem value={"Blank"}>Blank</MenuItem>
+              <MenuItem key={0} value={"MultipleChoice"}>
+                MultipleChoice
+              </MenuItem>
+              <MenuItem key={1} value={"Filling"}>
+                Filling
+              </MenuItem>
+              <MenuItem key={2} value={"Boolean"}>
+                Boolean
+              </MenuItem>
+              <MenuItem key={3} value={"Blank"}>
+                Blank
+              </MenuItem>
             </Select>
           </FormControl>
 
@@ -298,78 +291,105 @@ function QuizAddQuestions(props) {
               required
               onChange={(e) => handleQuizChange(e)}
               incrementCount={blankAnswerIncrementCount}
-              handleInputChange={handleInputChange}
               decrementCount={blankAnswerDecrementCount}
               inputList={Quiz}
               value={Quiz.NumberOfBlank}
               NegClassName={"ml-5 p-3"}
               TextFieldClassName={" "}
               PlusClassName={"p-3"}
-              disabled={Quiz.NumberOfBlank === 0 && true}
+              disabled={Quiz.NumberOfBlank === 1 && true}
             />
           )}
 
-          {inputList.map((x, i) => {
-            return (
-              <div className='ml-3 pl-4'>
-                {Quiz.questionType === "MultipleChoice" ? (
-                  <QuizMultipleChoice
-                    handleInputChange={handleInputChange}
-                    handleAddClick={handleAddClick}
-                    handleRemoveClick={handleRemoveClick}
-                    setInputList={setInputList}
-                    incrementCount={incorrectAnswerIncrementCount}
-                    decrementCount={incorrectAnswerDecrementCount}
-                    handleLanguageChange={handleLanguageChange}
-                    x={x}
-                    i={i}
-                    inputList={inputList}
-                  />
-                ) : null}
+          {/* {QstList.map((x, i) => {
+            return ( */}
+          <div className='ml-3 pl-4'>
+            {Quiz.questionType === "MultipleChoice" ? (
+              <QuizMultipleChoice
+                handleQstListChange={handleQstListChange}
+                handleAnsListDetailChange={handleAnsListDetailChange}
+                handleQstListAddClick={handleQstListAddClick}
+                handleRemoveQstListClick={handleRemoveQstListClick}
+                handleAnsListDetailAddClick={handleAnsListDetailAddClick}
+                handleRemoveAnsListDetailClick={handleRemoveAnsListDetailClick}
+                handleAnsListAddClick={handleAnsListAddClick}
+                handleRemoveAnsListClick={handleRemoveAnsListClick}
+                setQstList={setQstList}
+                setAnsList={setAnsList}
+                QstList={QstList}
+                AnsList={AnsList}
+                QstLanguageList={QstLanguageList}
+                AnsLanguageList={AnsLanguageList}
+                questionType={Quiz.questionType}
+              />
+            ) : null}
 
-                {Quiz.questionType === "Filling" ? (
-                  <QuizFilling
-                    handleInputChange={handleInputChange}
-                    handleAddClick={handleAddClick}
-                    handleRemoveClick={handleRemoveClick}
-                    setInputList={setInputList}
-                    incrementCount={correctAnswerIncrementCount}
-                    decrementCount={correctAnswerDecrementCount}
-                    x={x}
-                    i={i}
-                    inputList={inputList}
-                  />
-                ) : null}
+            {Quiz.questionType === "Filling" ? (
+              <QuizFilling
+                handleQstListChange={handleQstListChange}
+                handleAnsListDetailChange={handleAnsListDetailChange}
+                handleQstListAddClick={handleQstListAddClick}
+                handleRemoveQstListClick={handleRemoveQstListClick}
+                handleAnsListDetailAddClick={handleAnsListDetailAddClick}
+                handleRemoveAnsListDetailClick={handleRemoveAnsListDetailClick}
+                handleAnsListAddClick={handleAnsListAddClick}
+                handleRemoveAnsListClick={handleRemoveAnsListClick}
+                setQstList={setQstList}
+                setAnsList={setAnsList}
+                QstList={QstList}
+                AnsList={AnsList}
+                QstLanguageList={QstLanguageList}
+                AnsLanguageList={AnsLanguageList}
+                questionType={Quiz.questionType}
+              />
+            ) : null}
 
-                {Quiz.questionType === "Boolean" ? (
-                  <QuizBoolean
-                    handleInputChange={handleInputChange}
-                    handleYesNoChange={handleYesNoChange}
-                    handleAddClick={handleAddClick}
-                    handleRemoveClick={handleRemoveClick}
-                    x={x}
-                    i={i}
-                    inputList={inputList}
-                  />
-                ) : null}
+            {Quiz.questionType === "Boolean" ? (
+              <QuizBoolean
+                handleQstListChange={handleQstListChange}
+                handleAnsListDetailChange={handleAnsListDetailChange}
+                handleQstListAddClick={handleQstListAddClick}
+                handleRemoveQstListClick={handleRemoveQstListClick}
+                handleAnsListDetailAddClick={handleAnsListDetailAddClick}
+                handleRemoveAnsListDetailClick={handleRemoveAnsListDetailClick}
+                handleAnsListAddClick={handleAnsListAddClick}
+                handleRemoveAnsListClick={handleRemoveAnsListClick}
+                setQstList={setQstList}
+                setAnsList={setAnsList}
+                QstList={QstList}
+                AnsList={AnsList}
+                QstLanguageList={QstLanguageList}
+                AnsLanguageList={AnsLanguageList}
+                questionType={Quiz.questionType}
+              />
+            ) : null}
 
-                {Quiz.questionType === "Blank" ? (
-                  <QuizBlank
-                    handleInputChange={handleInputChange}
-                    handleAddClick={handleAddClick}
-                    handleRemoveClick={handleRemoveClick}
-                    setInputList={setInputList}
-                    incrementCount={correctAnswerIncrementCount}
-                    decrementCount={correctAnswerDecrementCount}
-                    x={x}
-                    i={i}
-                    inputList={inputList}
-                    Quiz={Quiz}
-                  />
-                ) : null}
-              </div>
-            );
-          })}
+            {Quiz.questionType === "Blank" ? (
+              <QuizBlank
+                handleBlankQuestionsInputChange={
+                  handleBlankQuestionsInputChange
+                }
+                handleQstListChange={handleQstListChange}
+                handleAnsListDetailChange={handleAnsListDetailChange}
+                handleQstListAddClick={handleQstListAddClick}
+                handleRemoveQstListClick={handleRemoveQstListClick}
+                handleAnsListDetailAddClick={handleAnsListDetailAddClick}
+                handleRemoveAnsListDetailClick={handleRemoveAnsListDetailClick}
+                handleAnsListAddClick={handleAnsListAddClick}
+                handleRemoveAnsListClick={handleRemoveAnsListClick}
+                setQstList={setQstList}
+                setAnsList={setAnsList}
+                QstList={QstList}
+                AnsList={AnsList}
+                QstLanguageList={QstLanguageList}
+                AnsLanguageList={AnsLanguageList}
+                questionType={Quiz.questionType}
+                Quiz={Quiz}
+              />
+            ) : null}
+          </div>
+          {/* );
+          })} */}
         </div>
 
         <div className='m-5'>
@@ -380,10 +400,31 @@ function QuizAddQuestions(props) {
             className='p-3 w-100'
             size='large'
             startIcon={<SaveIcon />}
+            disabled={
+              QstList[0].questionText === "" ||
+              QstList[0].questionText[0] === ""
+            }
           >
             Save Question
           </Button>
         </div>
+
+        {/* {QstList[0].questionText === "" || QstList[0].questionText[0] === "" ? (
+          ""
+        ) : (
+          <div className='m-5'>
+            <Button
+              variant='contained'
+              color='primary'
+              type='submit'
+              className='p-3 w-100'
+              size='large'
+              startIcon={<SaveIcon />}
+            >
+              Save Question
+            </Button>
+          </div>
+        )} */}
       </Form>
 
       <div style={{ marginTop: 20 }}>

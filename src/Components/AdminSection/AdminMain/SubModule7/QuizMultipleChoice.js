@@ -8,132 +8,240 @@ import {
   Button,
   FormControl,
 } from "@material-ui/core";
+import { Checkbox } from "antd";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 
-import NumberInput from "../../Utility/NumberInput";
-import CollapseInputs from "../../Utility/CollapseInputs";
-
 function QuizMultipleChoice(props) {
-  const createIncorrectInput = (index) => {
-    let input = [];
-    for (let i = 0; i < props.inputList[index].incorrectAnswerCount; i++) {
-      input.push(
-        <TextField
-          className='w-100 mt-3 ml-1 mr-1'
-          variant='outlined'
-          label={"incorrect Answer " + (i + 1)}
-          name={"incorrectAnswer" + i}
-          onChange={(e) => handleIncorrectAnswersInputChange(e, i, index)}
-          value={props.inputList[index].incorrectAnswers[i]}
-          required
-          error={false}
-        />
-      );
-    }
-    return input;
-  };
-
-  const handleIncorrectAnswersInputChange = (e, i, index) => {
-    const { value } = e.target;
-    const list = [...props.inputList];
-    list[index]["incorrectAnswers"][i] = value;
-    props.setInputList(list);
-  };
-
   return (
     <div className='border border-secondary p-2 mt-2'>
-      <FormControl
-        variant='outlined'
-        style={{ width: "9%" }}
-        className='mt-3 ml-1 mr-1'
-      >
-        <InputLabel id='forLanguages'>Language</InputLabel>
-        <Select
-          className='bg-light text-danger font-weight-bold'
-          labelId='forLanguages'
-          value={props.x.languages}
-          label='Language'
-          name='languages'
-          required
-          error={false}
-          helperText={"Select Language"}
-          onChange={(e) => props.handleInputChange(e, props.i)}
-          onClick={(e) => props.handleLanguageChange(e)}
-        >
-          <MenuItem value={"En"}>En</MenuItem>
-          <MenuItem value={"Tr"}>Tr</MenuItem>
-          {/* <MenuItem value={"Fa"}>Fa</MenuItem>
-          <MenuItem value={"Az"}>Az</MenuItem>
-          <MenuItem value={"Ar"}>Ar</MenuItem> */}
-        </Select>
-      </FormControl>
+      {props.QstList.map((qst, i) => {
+        return (
+          <>
+            <FormControl
+              variant='outlined'
+              style={{ width: "10%" }}
+              className='mt-2 ml-1 mr-1'
+              key={i + (i + 0)}
+            >
+              <InputLabel id='forLanguages'>Language</InputLabel>
+              <Select
+                className='bg-light text-danger font-weight-bold'
+                labelId='forLanguages'
+                value={qst.language}
+                label='Language'
+                name='language'
+                required
+                error={false}
+                helperText={"Select Language"}
+                onChange={(e) => props.handleQstListChange(e, i)}
+              >
+                {props.QstLanguageList.map((x, i) => {
+                  return (
+                    <MenuItem key={i} value={x}>
+                      {x}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
 
-      <TextField
-        className='w-25 mt-3 ml-1 mr-1'
-        variant='outlined'
-        label={"Question title"}
-        name='question'
-        value={props.x.question}
-        required
-        onChange={(e) => props.handleInputChange(e, props.i)}
-      />
+            <TextField
+              className='w-50 mt-2 ml-1 mr-1'
+              key={i + (i + 1)}
+              variant='outlined'
+              label={"Question title"}
+              name='questionText'
+              value={qst.questionText}
+              required
+              onChange={(e) => props.handleQstListChange(e, i)}
+            />
 
-      <TextField
-        className='w-25 mt-3 ml-1 mr-1'
-        variant='outlined'
-        label={"Correct Answer"}
-        name='correctAnswers'
-        value={props.x.correctAnswers}
-        required
-        onChange={(e) => props.handleInputChange(e, props.i)}
-      />
+            {props.QstList.length - 1 === i && (
+              <Button
+                variant='contained'
+                color='secondary'
+                style={{ width: "10%" }}
+                className='m-2 p-3 bg-success'
+                onClick={props.handleQstListAddClick}
+                startIcon={<AddBoxIcon />}
+              >
+                Add
+              </Button>
+            )}
 
-      <NumberInput
-        incrementCount={props.incrementCount}
-        decrementCount={props.decrementCount}
-        inputList={props.inputList}
-        i={props.i}
-        value={props.inputList[props.i].incorrectAnswerCount}
-        label={"Incorrect Answer Count"}
-        name={"incorrectAnswerCount"}
-        NegClassName={"ml-5 mt-3 p-3"}
-        TextFieldClassName={"mt-3"}
-        PlusClassName={"mt-3 p-3"}
-        disabled={props.inputList[props.i].incorrectAnswerCount === 0 && true}
-      />
+            {props.QstList.length !== 1 && (
+              <Button
+                variant='contained'
+                color='secondary'
+                style={{ width: "10%" }}
+                className='m-2 p-3 bg-danger'
+                onClick={() => props.handleRemoveQstListClick(i)}
+                startIcon={<DeleteIcon />}
+              >
+                Delete
+              </Button>
+            )}
 
-      {props.inputList[props.i].incorrectAnswerCount > 0 && (
-        <CollapseInputs
-          header={"Incorrect Answers panel"}
-          PanelContent={createIncorrectInput(props.i)}
-        />
-      )}
+            <br />
+          </>
+        );
+      })}
 
-      {props.inputList.length - 1 === props.i && (
-        <Button
-          variant='contained'
-          color='secondary'
-          className='m-3 p-3 bg-success'
-          onClick={props.handleAddClick}
-          startIcon={<AddBoxIcon />}
-        >
-          Add
-        </Button>
-      )}
+      {props.AnsList.map((mainList, p) => {
+        return (
+          <>
+            <div
+              className={
+                mainList.correctAnswer === true
+                  ? "border border-success p-2 mt-2"
+                  : "border border-danger p-2 mt-2"
+              }
+            >
+              <div
+                className='d-flex justify-content-between m-1 p-2'
+                style={
+                  mainList.correctAnswer === true
+                    ? { backgroundColor: "#BEFBA0" }
+                    : { backgroundColor: "#FBB2A0" }
+                }
+              >
+                <div
+                  className={
+                    mainList.correctAnswer === true
+                      ? "m-1 p-1 text-success font-weight-bold"
+                      : "m-1 p-1 text-danger font-weight-bold"
+                  }
+                >
+                  Option {p + 1}
+                  {" - "}
+                  <Checkbox
+                    name='isTrue'
+                    checked={mainList.correctAnswer}
+                    onChange={(e) =>
+                      props.handleAnsListDetailChange(e, 0, true, p)
+                    }
+                  >
+                    Correct Answer?
+                  </Checkbox>
+                </div>
 
-      {props.inputList.length !== 1 && (
-        <Button
-          variant='contained'
-          color='secondary'
-          className='m-3 p-3 bg-danger'
-          onClick={() => props.handleRemoveClick(props.i)}
-          startIcon={<DeleteIcon />}
-        >
-          Delete
-        </Button>
-      )}
+                <div className='m-0 p-0 text-success font-weight-bold'>
+                  {props.AnsList.length - 1 === p &&
+                    props.AnsList.length - 1 < 3 && (
+                      <Button
+                        variant='contained'
+                        color='secondary'
+                        // style={{ width: "12%" }}
+                        className='m-1 p-1 bg-success'
+                        onClick={() => props.handleAnsListAddClick(p)}
+                        startIcon={<AddBoxIcon />}
+                      >
+                        Add Option
+                      </Button>
+                    )}
+
+                  {props.AnsList.length !== 1 && (
+                    <Button
+                      variant='contained'
+                      color='secondary'
+                      // style={{ width: "12%" }}
+                      className='m-1 p-1 bg-danger'
+                      onClick={() => props.handleRemoveAnsListClick(p)}
+                      startIcon={<DeleteIcon />}
+                    >
+                      Delete Option
+                    </Button>
+                  )}
+                </div>
+              </div>
+              {/* {props.AnsList[0].questionAnswersDictionaries.map( */}
+              {props.AnsList[p].questionAnswersDictionaries.map(
+                (ansList, j) => {
+                  return (
+                    <>
+                      <FormControl
+                        variant='outlined'
+                        style={{ width: "10%" }}
+                        className='mt-2 ml-1 mr-1'
+                      >
+                        <InputLabel id='forLanguages'>Language</InputLabel>
+                        <Select
+                          className='bg-light text-danger font-weight-bold'
+                          labelId='forLanguages'
+                          value={ansList.language}
+                          label='Language'
+                          name='language'
+                          required
+                          error={false}
+                          helperText={"Select Language"}
+                          onChange={(e) =>
+                            props.handleAnsListDetailChange(e, j, true, p)
+                          }
+                        >
+                          {props.AnsLanguageList.map((x, i) => {
+                            return (
+                              <MenuItem key={i} value={x}>
+                                {x}
+                              </MenuItem>
+                            );
+                          })}
+                        </Select>
+                      </FormControl>
+
+                      <TextField
+                        className='w-50 mt-2 ml-1 mr-1'
+                        variant='outlined'
+                        label={"Correct Answer "}
+                        name='answerText'
+                        value={ansList.answerText}
+                        required
+                        onChange={(e) =>
+                          props.handleAnsListDetailChange(e, j, true, p)
+                        }
+                      />
+
+                      {props.AnsList[p].questionAnswersDictionaries.length -
+                        1 ===
+                        j && (
+                        <Button
+                          variant='contained'
+                          color='secondary'
+                          style={{ width: "12%" }}
+                          className='m-2 p-3 bg-success'
+                          onClick={() => props.handleAnsListDetailAddClick(p)}
+                          startIcon={<AddBoxIcon />}
+                        >
+                          Add
+                        </Button>
+                      )}
+
+                      {props.AnsList[p].questionAnswersDictionaries.length !==
+                        1 && (
+                        <Button
+                          variant='contained'
+                          color='secondary'
+                          style={{ width: "12%" }}
+                          className='m-2 p-3 bg-danger'
+                          onClick={() =>
+                            props.handleRemoveAnsListDetailClick(j, p)
+                          }
+                          startIcon={<DeleteIcon />}
+                        >
+                          Delete
+                        </Button>
+                      )}
+
+                      <br />
+                    </>
+                  );
+                }
+              )}
+            </div>
+          </>
+        );
+      })}
     </div>
   );
 }
