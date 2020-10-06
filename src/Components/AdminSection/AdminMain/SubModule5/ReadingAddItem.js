@@ -49,11 +49,11 @@ function ReadingAddItem(props) {
     event.preventDefault();
 
     setActiveModule({
-      subLevelTranslations: inputList,
       moduleName: props.adminActiveModule,
       subModuleType: props.adminActiveSubModule,
       taskUrl: ActiveModule.taskUrl,
       urlFormat: ActiveModule.urlFormat,
+      subLevelTranslations: inputList,
     });
   };
 

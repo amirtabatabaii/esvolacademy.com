@@ -10,9 +10,6 @@ import { withRouter } from "react-router-dom";
 import {
   SelectedSubModule,
   UserActiveModuleSubModule,
-  SubModule1Detail,
-  SubModule2Detail,
-  SubModule6Detail,
   SubModule1Quiz,
   SubModule1QuizFiltered,
 } from "../../Redux/action";
@@ -28,18 +25,6 @@ class ModuleHome extends Component {
     this.state = {
       userActiveModule: "",
       userActiveSubModule: "",
-      //
-      SubModule1Title: "",
-      SubModule1Url: "",
-      SubModule1Ratio: "",
-      //
-      SubModule2Title: "",
-      SubModule2Url: "",
-      SubModule2Ratio: "",
-      //
-      SubModule6Title: "",
-      SubModule6Url: "",
-      SubModule6Ratio: "",
       //
       SubModule1QuizQuestion: [],
       SubModule1QuizQuestionFilterd: [],
@@ -75,29 +60,7 @@ class ModuleHome extends Component {
         this.props.SubModule1Quiz(Response.data.results);
       });
 
-    // this.props.UserActiveModuleSubModule("Module1", "sub1");
-
-    // this.props.SubModule1Detail(
-    //   "SubModule_1_Video",
-    //   "https://www.youtube.com/watch?v=A2pM6u-d-MM",
-    //   //"https://www.kastanjetextile.com/video/kastanje-en.mp4",
-    //   "80"
-    // );
-
-    // this.props.SubModule2Detail(
-    //   "SubModule_2_Video",
-    //   "https://www.youtube.com/watch?v=_npPA9ydDTs",
-    //   "70"
-    // );
-
-    // this.props.SubModule6Detail(
-    //   "SubModule_6_Video",
-    //   "https://www.youtube.com/watch?v=3_JsyidKdaI",
-    //   "60"
-    // );
-
     this.getRandomAnswer(
-      // this.props.SubModule1QuizQuestion[this.state.questionIndex]
       this.props.SubModule1QuizQuestion,
       this.props.selectedLanguage
     );
@@ -372,18 +335,6 @@ const mapStateToProps = (state) => ({
   userActiveModule: state.userActiveModule,
   userActiveSubModule: state.userActiveSubModule,
   //
-  SubModule1Title: state.SubModule1Title,
-  SubModule1Url: state.SubModule1Url,
-  SubModule1Ratio: state.SubModule1Ratio,
-  //
-  SubModule2Title: state.SubModule2Title,
-  SubModule2Url: state.SubModule2Url,
-  SubModule2Ratio: state.SubModule2Ratio,
-  //
-  SubModule6Title: state.SubModule6Title,
-  SubModule6Url: state.SubModule6Url,
-  SubModule6Ratio: state.SubModule6Ratio,
-  //
   SubModule1QuizQuestion: state.SubModule1QuizQuestion,
   SubModule1QuizQuestionFiltered: state.SubModule1QuizQuestionFiltered,
   //
@@ -395,9 +346,6 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   SelectedSubModule,
   UserActiveModuleSubModule,
-  SubModule1Detail,
-  SubModule2Detail,
-  SubModule6Detail,
   SubModule1Quiz,
   SubModule1QuizFiltered,
 })(withRouter(ModuleHome));
