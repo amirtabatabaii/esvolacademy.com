@@ -3,7 +3,12 @@ import TranslateText from "../Translate/TranslateText";
 
 class SubModuleNote extends Component {
   render() {
-    const { userActiveSubModule } = this.props;
+    const {
+      userActiveSubModule,
+      showResult,
+      takeQuiz,
+      compareAnswer,
+    } = this.props;
 
     return (
       <p className='Module-note m-3'>
@@ -63,10 +68,32 @@ class SubModuleNote extends Component {
 
         {userActiveSubModule === "sub7" ? (
           <>
-            <h4 className='font-weight-bold'>
-              <TranslateText txt='SubModule7-header' />
-            </h4>
-            <TranslateText txt='SubModule7-note' />
+            {showResult && (
+              <>
+                <h4 className='font-weight-bold'>
+                  <TranslateText txt='SubModule7-header' />
+                </h4>
+                <TranslateText txt='SubModule7-ResultNote' />
+              </>
+            )}
+
+            {compareAnswer && (
+              <>
+                <h4 className='font-weight-bold'>
+                  <TranslateText txt='SubModule7-header' />
+                </h4>
+                <TranslateText txt='SubModule7-CompareNote' />
+              </>
+            )}
+
+            {takeQuiz && (
+              <>
+                <h4 className='font-weight-bold'>
+                  <TranslateText txt='SubModule7-header' />
+                </h4>
+                <TranslateText txt='SubModule7-note' />
+              </>
+            )}
           </>
         ) : null}
       </p>

@@ -8,6 +8,8 @@ import {
   SUBMODULE_1_QUIZ,
   SUBMODULE_1_QUIZ_FILTERED,
   SELECTED_LANGUAGE,
+  QUIZ_SCORE,
+  USER_QUIZ_ALL_ANSWERS,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -101,3 +103,23 @@ export const SelectedLanguage = (selectedLanguage) => (dispatch) => {
     payload: { selectedLanguage },
   });
 };
+
+// QUIZ_SCORE
+export function SetQuizScore(userQuizScore, QuizScore) {
+  return (dispatch) => {
+    dispatch({
+      type: QUIZ_SCORE,
+      payload: { userQuizScore, QuizScore },
+    });
+  };
+}
+
+// USER_QUIZ_ALL_ANSWERS
+export function SetUserQuizAnswer(UserQuizAllAnswers,UserQuizAllAnswersLanguage) {
+  return (dispatch) => {
+    dispatch({
+      type: USER_QUIZ_ALL_ANSWERS,
+      payload: { UserQuizAllAnswers,UserQuizAllAnswersLanguage },
+    });
+  };
+}

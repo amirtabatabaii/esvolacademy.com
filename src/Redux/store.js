@@ -20,7 +20,7 @@ export const initialState = {
   SubModule7Name: "Quiz",
   //
   userActiveModule: "Module1",
-  userActiveSubModule: "sub1",
+  userActiveSubModule: "sub7",
   //
   Module1SubModule1Title: "SubModule_1_Video",
   Module1SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
@@ -38,6 +38,10 @@ export const initialState = {
   SubModule1QuizQuestionFiltered: [],
   //
   selectedLanguage: "En",
+  userQuizScore: 0,
+  QuizScore: 0,
+  UserQuizAllAnswers: [],
+  UserQuizAllAnswersLanguage:[]
 };
 
 const middleware = [thunk];
@@ -46,9 +50,8 @@ const store = createStore(
   Reducer,
   initialState,
   compose(
-    applyMiddleware(...middleware)
-    //,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

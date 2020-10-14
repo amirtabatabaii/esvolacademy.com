@@ -8,6 +8,8 @@ import {
   SUBMODULE_1_QUIZ,
   SELECTED_LANGUAGE,
   SUBMODULE_1_QUIZ_FILTERED,
+  QUIZ_SCORE,
+  USER_QUIZ_ALL_ANSWERS,
 } from "./types";
 
 import initialState from "./store";
@@ -76,6 +78,20 @@ export default function (state = initialState, action) {
         ...state,
         selectedLanguage: action.payload.selectedLanguage,
       };
+    
+    case QUIZ_SCORE:
+      return {
+        ...state,
+        userQuizScore: action.payload.userQuizScore,
+        QuizScore: action.payload.QuizScore,
+      };
+    
+    case USER_QUIZ_ALL_ANSWERS:
+      return {
+        ...state,
+        UserQuizAllAnswers: action.payload.UserQuizAllAnswers,
+         UserQuizAllAnswersLanguage :action.payload.UserQuizAllAnswersLanguage
+       };
 
     default:
       return {

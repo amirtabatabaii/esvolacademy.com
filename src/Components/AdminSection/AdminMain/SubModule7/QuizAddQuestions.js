@@ -301,8 +301,6 @@ function QuizAddQuestions(props) {
             />
           )}
 
-          {/* {QstList.map((x, i) => {
-            return ( */}
           <div className='ml-3 pl-4'>
             {Quiz.questionType === "MultipleChoice" ? (
               <QuizMultipleChoice
@@ -388,8 +386,6 @@ function QuizAddQuestions(props) {
               />
             ) : null}
           </div>
-          {/* );
-          })} */}
         </div>
 
         <div className='m-5'>
@@ -408,23 +404,6 @@ function QuizAddQuestions(props) {
             Save Question
           </Button>
         </div>
-
-        {/* {QstList[0].questionText === "" || QstList[0].questionText[0] === "" ? (
-          ""
-        ) : (
-          <div className='m-5'>
-            <Button
-              variant='contained'
-              color='primary'
-              type='submit'
-              className='p-3 w-100'
-              size='large'
-              startIcon={<SaveIcon />}
-            >
-              Save Question
-            </Button>
-          </div>
-        )} */}
       </Form>
 
       <div style={{ marginTop: 20 }}>

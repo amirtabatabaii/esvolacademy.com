@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Scroll from "../../Utility/Scroll";
+import CompareAnswers from "./CompareAnswers";
 import Question from "./Question";
 import ShowResult from "./ShowResult";
 
@@ -15,21 +16,37 @@ class SubModule7 extends Component {
   render() {
     const {
       randomAnswers,
-      SubModule1QuizQuestion,
       SubModule1QuizQuestionText,
       userActiveModule,
-      HandleQuestionAnswerChange,
+      HandleQuestionFillingAnswerChange,
       questionIndex,
       questionCount,
       HandleNextQuestion,
-      HandlePrevQuestion,
-      userAnswer,
       HandleQuestionResult,
       showResult,
-      correctAnswerCount,
       takeQuiz,
       HandleRetakeQuiz,
       onClickNextModule,
+      AllQuestions,
+      userFillingAnswer,
+      HandleFillingNextQuestion,
+      userBlankAnswer,
+      HandleBlankNextQuestion,
+      userYesNoAnswer,
+      userMultipleChoiceAnswer,
+      HandleYesNoAnswerChange,
+      HandleMultipleChoiceAnswerChange,
+      userQuizScore,
+      QuizScore,
+      UserQuizAllAnswers,
+      HandleCompareAnswer,
+      CompareAnswer,
+      HandleCompareAnswerPrevQuestion,
+      HandleCompareAnswerNextQuestion,
+      HandleCompareAnswerQuestionResult,
+      handleBlankAnswerInputChange,
+      SubModule1QuizQuestion,
+      UserQuizAllAnswersLanguage,
     } = this.props;
 
     return (
@@ -37,29 +54,53 @@ class SubModule7 extends Component {
         <Scroll>
           {showResult ? (
             <ShowResult
-              questionCount={questionCount}
-              correctAnswerCount={correctAnswerCount}
               HandleRetakeQuiz={HandleRetakeQuiz}
               onClickNextModule={onClickNextModule}
               userActiveModule={userActiveModule}
+              userQuizScore={userQuizScore}
+              QuizScore={QuizScore}
+              HandleCompareAnswer={HandleCompareAnswer}
             />
           ) : takeQuiz ? (
             <Question
+              userActiveModule={userActiveModule}
               randomAnswers={randomAnswers}
-              SubModule1QuizQuestion={SubModule1QuizQuestion}
               SubModule1QuizQuestionText={SubModule1QuizQuestionText}
               questionIndex={questionIndex}
               questionCount={questionCount}
-              userAnswer={userAnswer}
-              userActiveModule={userActiveModule}
-              HandleQuestionAnswerChange={HandleQuestionAnswerChange}
               HandleNextQuestion={HandleNextQuestion}
-              HandlePrevQuestion={HandlePrevQuestion}
               HandleQuestionResult={HandleQuestionResult}
+              AllQuestions={AllQuestions}
+              HandleQuestionFillingAnswerChange={
+                HandleQuestionFillingAnswerChange
+              }
+              userFillingAnswer={userFillingAnswer}
+              HandleFillingNextQuestion={HandleFillingNextQuestion}
+              userBlankAnswer={userBlankAnswer}
+              HandleBlankNextQuestion={HandleBlankNextQuestion}
+              userYesNoAnswer={userYesNoAnswer}
+              userMultipleChoiceAnswer={userMultipleChoiceAnswer}
+              HandleYesNoAnswerChange={HandleYesNoAnswerChange}
+              HandleMultipleChoiceAnswerChange={
+                HandleMultipleChoiceAnswerChange
+              }
+              handleBlankAnswerInputChange={handleBlankAnswerInputChange}
             />
-          ) : (
-            "null"
-          )}
+          ) : CompareAnswer ? (
+            <CompareAnswers
+              UserQuizAllAnswers={UserQuizAllAnswers}
+              userActiveModule={userActiveModule}
+              questionCount={questionCount}
+              questionIndex={questionIndex}
+              HandleCompareAnswerPrevQuestion={HandleCompareAnswerPrevQuestion}
+              HandleCompareAnswerNextQuestion={HandleCompareAnswerNextQuestion}
+              HandleCompareAnswerQuestionResult={
+                HandleCompareAnswerQuestionResult
+              }
+              SubModule1QuizQuestion={SubModule1QuizQuestion}
+              UserQuizAllAnswersLanguage={UserQuizAllAnswersLanguage}
+            />
+          ) : null}
         </Scroll>
       </div>
     );

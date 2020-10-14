@@ -2,24 +2,30 @@ import React, { Component } from "react";
 import TranslateText from "../../Translate/TranslateText";
 
 class ShowResult extends Component {
+  percentageQuizScore = (QuizScore) => {
+    // if (QuizScore !== 0) return (QuizScore * 70) / 100;
+    if (QuizScore !== 0) return (QuizScore * 5) / 100;
+  };
+
   render() {
     const {
-      correctAnswerCount,
-      questionCount,
       HandleRetakeQuiz,
       onClickNextModule,
       userActiveModule,
+      userQuizScore,
+      QuizScore,
+      HandleCompareAnswer,
     } = this.props;
 
     return (
       <div>
         <h3 className='m-5' style={{ color: "#525252" }}>
-          <TranslateText txt='SubModule7-CorrectAnswer' /> :{" "}
-          {correctAnswerCount} / {questionCount + 1}
+          <TranslateText txt='SubModule7-YourScore' /> : {userQuizScore} /{" "}
+          {QuizScore}
         </h3>
 
         <h3 className='m-5'>
-          {correctAnswerCount > questionCount - 1 ? (
+          {userQuizScore >= this.percentageQuizScore(QuizScore) ? (
             <>
               <h3 className='text-success m-3'>
                 <TranslateText txt='SubModule7-Passed' />
@@ -27,9 +33,9 @@ class ShowResult extends Component {
 
               <button
                 className={`${userActiveModule}-next-btn m-4`}
-                // onClick={HandleQuestionResult}
+                onClick={HandleCompareAnswer}
               >
-                <TranslateText txt='SubModule7-ViewResult' />
+                <TranslateText txt='SubModule7-CheckAnswers' />
               </button>
 
               <button

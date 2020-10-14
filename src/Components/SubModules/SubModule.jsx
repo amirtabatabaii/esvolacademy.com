@@ -22,7 +22,7 @@ class SubModule extends Component {
       SubModule6Ratio,
       onClick,
       onClickNextModule,
-      SubModule1QuizQuestion,
+      SubModule1QuizQuestionFiltered,
       SubModule1QuizQuestionText,
       randomAnswers,
       questionIndex,
@@ -33,10 +33,32 @@ class SubModule extends Component {
       HandlePrevQuestion,
       getRandomAnswer,
       HandleQuestionAnswerChange,
+      HandleQuestionFillingAnswerChange,
       HandleQuestionResult,
       correctAnswerCount,
       takeQuiz,
       HandleRetakeQuiz,
+      AllQuestions,
+      userFillingAnswer,
+      HandleFillingNextQuestion,
+      handleBlankAnswerInputChange,
+      userBlankAnswer,
+      HandleBlankNextQuestion,
+      userYesNoAnswer,
+      userMultipleChoiceAnswer,
+      HandleYesNoAnswerChange,
+      HandleMultipleChoiceAnswerChange,
+      selectedLanguage,
+      userQuizScore,
+      QuizScore,
+      UserQuizAllAnswers,
+      HandleCompareAnswer,
+      CompareAnswer,
+      HandleCompareAnswerNextQuestion,
+      HandleCompareAnswerPrevQuestion,
+      HandleCompareAnswerQuestionResult,
+      SubModule1QuizQuestion,
+      UserQuizAllAnswersLanguage,
     } = this.props;
 
     return (
@@ -99,22 +121,49 @@ class SubModule extends Component {
           <SubModule7
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
-            SubModule1QuizQuestion={SubModule1QuizQuestion}
+            SubModule1QuizQuestionFiltered={SubModule1QuizQuestionFiltered}
             SubModule1QuizQuestionText={SubModule1QuizQuestionText}
             randomAnswers={randomAnswers}
+            AllQuestions={AllQuestions}
             questionIndex={questionIndex}
             questionCount={questionCount}
             showResult={showResult}
             userAnswer={userAnswer}
+            userFillingAnswer={userFillingAnswer}
+            userBlankAnswer={userBlankAnswer}
             correctAnswerCount={correctAnswerCount}
             takeQuiz={takeQuiz}
             getRandomAnswer={getRandomAnswer}
             HandleQuestionAnswerChange={HandleQuestionAnswerChange}
+            HandleQuestionFillingAnswerChange={
+              HandleQuestionFillingAnswerChange
+            }
             HandleNextQuestion={HandleNextQuestion}
+            HandleFillingNextQuestion={HandleFillingNextQuestion}
+            HandleBlankNextQuestion={HandleBlankNextQuestion}
+            handleBlankAnswerInputChange={handleBlankAnswerInputChange}
             HandlePrevQuestion={HandlePrevQuestion}
             HandleQuestionResult={HandleQuestionResult}
             HandleRetakeQuiz={HandleRetakeQuiz}
             onClickNextModule={onClickNextModule}
+            //
+            userYesNoAnswer={userYesNoAnswer}
+            userMultipleChoiceAnswer={userMultipleChoiceAnswer}
+            HandleYesNoAnswerChange={HandleYesNoAnswerChange}
+            HandleMultipleChoiceAnswerChange={HandleMultipleChoiceAnswerChange}
+            selectedLanguage={selectedLanguage}
+            userQuizScore={userQuizScore}
+            QuizScore={QuizScore}
+            UserQuizAllAnswers={UserQuizAllAnswers}
+            UserQuizAllAnswersLanguage={UserQuizAllAnswersLanguage}
+            HandleCompareAnswer={HandleCompareAnswer}
+            CompareAnswer={CompareAnswer}
+            HandleCompareAnswerPrevQuestion={HandleCompareAnswerPrevQuestion}
+            HandleCompareAnswerNextQuestion={HandleCompareAnswerNextQuestion}
+            HandleCompareAnswerQuestionResult={
+              HandleCompareAnswerQuestionResult
+            }
+            SubModule1QuizQuestion={SubModule1QuizQuestion}
           />
         ) : null}
       </div>
