@@ -20,28 +20,33 @@ export const initialState = {
   SubModule7Name: "Quiz",
   //
   userActiveModule: "Module1",
-  userActiveSubModule: "sub7",
+  userActiveSubModule: "sub5",
   //
-  Module1SubModule1Title: "SubModule_1_Video",
-  Module1SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
-  Module1SubModule1Ratio: "80",
+  SubModule1Title: "Introduction Video",
+  SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
+  SubModule1Ratio: "80",
   //
-  Module1SubModule2Title: "SubModule_2_Video",
-  Module1SubModule2Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
-  Module1SubModule2Ratio: "70",
+  SubModule2Title: "Course Video",
+  SubModule2Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
+  SubModule2Ratio: "70",
   //
-  Module1SubModule6Title: "SubModule_6_Video",
-  Module1SubModule6Url: "https://www.youtube.com/watch?v=3_JsyidKdaI",
-  Module1SubModule6Ratio: "60",
+  SubModule61Title: "Expert Video 1",
+  SubModule61Url: "https://www.youtube.com/watch?v=3_JsyidKdaI",
+  SubModule61Ratio: "50",
+  SubModule62Title: "Expert Video 2",
+  SubModule62Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
+  SubModule62Ratio: "80",
   //
-  SubModule1QuizQuestion: [],
-  SubModule1QuizQuestionFiltered: [],
+  SubModule7QuizQuestion: [],
+  SubModule7QuizQuestionFiltered: [],
   //
   selectedLanguage: "En",
   userQuizScore: 0,
   QuizScore: 0,
   UserQuizAllAnswers: [],
-  UserQuizAllAnswersLanguage:[]
+  UserQuizAllAnswersLanguage: [],
+  //
+  EducationWithTasks: true,
 };
 
 const middleware = [thunk];

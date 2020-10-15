@@ -5,8 +5,8 @@ import {
   SUBMODULE_1_DETAIL,
   SUBMODULE_2_DETAIL,
   SUBMODULE_6_DETAIL,
-  SUBMODULE_1_QUIZ,
-  SUBMODULE_1_QUIZ_FILTERED,
+  SUBMODULE_7_QUIZ,
+  SUBMODULE_7_QUIZ_FILTERED,
   SELECTED_LANGUAGE,
   QUIZ_SCORE,
   USER_QUIZ_ALL_ANSWERS,
@@ -54,21 +54,21 @@ export const SubModule1Detail = (
   });
 };
 
-// SubModule 1 QUIZ Questions
-export const SubModule1Quiz = (SubModule1QuizQuestion) => (dispatch) => {
+// SubModule 7 QUIZ Questions
+export const SubModule1Quiz = (SubModule7QuizQuestion) => (dispatch) => {
   dispatch({
-    type: SUBMODULE_1_QUIZ,
-    payload: { SubModule1QuizQuestion },
+    type: SUBMODULE_7_QUIZ,
+    payload: { SubModule7QuizQuestion },
   });
 };
 
 // SubModule 1 QUIZ Questions Filtered
-export const SubModule1QuizFiltered = (SubModule1QuizQuestionFiltered) => (
+export const SubModule1QuizFiltered = (SubModule7QuizQuestionFiltered) => (
   dispatch
 ) => {
   dispatch({
-    type: SUBMODULE_1_QUIZ_FILTERED,
-    payload: { SubModule1QuizQuestionFiltered },
+    type: SUBMODULE_7_QUIZ_FILTERED,
+    payload: { SubModule7QuizQuestionFiltered },
   });
 };
 
@@ -115,11 +115,14 @@ export function SetQuizScore(userQuizScore, QuizScore) {
 }
 
 // USER_QUIZ_ALL_ANSWERS
-export function SetUserQuizAnswer(UserQuizAllAnswers,UserQuizAllAnswersLanguage) {
+export function SetUserQuizAnswer(
+  UserQuizAllAnswers,
+  UserQuizAllAnswersLanguage
+) {
   return (dispatch) => {
     dispatch({
       type: USER_QUIZ_ALL_ANSWERS,
-      payload: { UserQuizAllAnswers,UserQuizAllAnswersLanguage },
+      payload: { UserQuizAllAnswers, UserQuizAllAnswersLanguage },
     });
   };
 }

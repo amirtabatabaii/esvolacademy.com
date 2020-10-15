@@ -39,7 +39,7 @@ class Question extends Component {
     const {
       userActiveModule,
       randomAnswers,
-      SubModule1QuizQuestionText,
+      SubModule7QuizQuestionText,
       questionIndex,
       questionCount,
       HandleNextQuestion,
@@ -59,14 +59,14 @@ class Question extends Component {
     return (
       <>
         <div>
-          {SubModule1QuizQuestionText !== undefined &&
+          {SubModule7QuizQuestionText !== undefined &&
             AllQuestions[questionIndex].questionType === "MultipleChoice" && (
               <div>
                 <div className='m-5 text-left'>
                   <div className='question font-weight-bold'>
                     {questionIndex + 1}.{" "}
-                    {SubModule1QuizQuestionText !== undefined &&
-                      SubModule1QuizQuestionText.question}
+                    {SubModule7QuizQuestionText !== undefined &&
+                      SubModule7QuizQuestionText.question}
                   </div>
 
                   <div className='mt-3'>
@@ -112,14 +112,14 @@ class Question extends Component {
               </div>
             )}
 
-          {SubModule1QuizQuestionText !== undefined &&
+          {SubModule7QuizQuestionText !== undefined &&
             AllQuestions[questionIndex].questionType === "Boolean" && (
               <div>
                 <div className='m-5 text-left'>
                   <div className='question font-weight-bold'>
                     {questionIndex + 1}.{" "}
-                    {SubModule1QuizQuestionText !== undefined &&
-                      SubModule1QuizQuestionText.question}
+                    {SubModule7QuizQuestionText !== undefined &&
+                      SubModule7QuizQuestionText.question}
                   </div>
 
                   <div className='mt-3'>
@@ -165,14 +165,14 @@ class Question extends Component {
               </div>
             )}
 
-          {SubModule1QuizQuestionText !== undefined &&
+          {SubModule7QuizQuestionText !== undefined &&
             AllQuestions[questionIndex].questionType === "Filling" && (
               <div>
                 <div className='m-5 text-left'>
                   <div className='question font-weight-bold'>
                     {questionIndex + 1}.{" "}
-                    {SubModule1QuizQuestionText !== undefined &&
-                      SubModule1QuizQuestionText.question}
+                    {SubModule7QuizQuestionText !== undefined &&
+                      SubModule7QuizQuestionText.question}
                   </div>
 
                   <div className='mt-3'>
@@ -212,14 +212,14 @@ class Question extends Component {
               </div>
             )}
 
-          {SubModule1QuizQuestionText !== undefined &&
+          {SubModule7QuizQuestionText !== undefined &&
             AllQuestions[questionIndex].questionType === "Blank" && (
               <div className='m-5 text-left'>
                 <div className='question font-weight-bold'>
                   {questionIndex + 1}.{" "}
-                  {SubModule1QuizQuestionText !== undefined &&
+                  {SubModule7QuizQuestionText !== undefined &&
                     this.CreateBlankQuestion(
-                      SubModule1QuizQuestionText.question
+                      SubModule7QuizQuestionText.question
                     )}
                 </div>
 

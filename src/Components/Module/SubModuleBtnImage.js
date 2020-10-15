@@ -2,10 +2,6 @@ import React from "react";
 import { Image } from "react-bootstrap";
 
 function SubModuleBtnImage(props) {
-  // const handleOnClick = (ActiveSubName) => {
-  //   console.log("ActiveSubName : ", ActiveSubName);
-  // };
-
   return (
     <Image
       src={
@@ -21,6 +17,7 @@ function SubModuleBtnImage(props) {
           ? `${props.userActiveModule}-ActiveSubStyle`
           : `${props.userActiveModule}-NormalSubStyle`
       }`}
+      // onClick={props.EducationWithTasks && (() => props.onClick(props.subName))}
       onClick={() => props.onClick(props.subName)}
     />
   );

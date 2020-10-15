@@ -18,12 +18,16 @@ class SubModule extends Component {
       SubModule1Ratio,
       SubModule2Url,
       SubModule2Ratio,
-      SubModule6Url,
-      SubModule6Ratio,
+      SubModule61Url,
+      SubModule61Ratio,
+      SubModule61Title,
+      SubModule62Url,
+      SubModule62Ratio,
+      SubModule62Title,
       onClick,
       onClickNextModule,
-      SubModule1QuizQuestionFiltered,
-      SubModule1QuizQuestionText,
+      SubModule7QuizQuestionFiltered,
+      SubModule7QuizQuestionText,
       randomAnswers,
       questionIndex,
       questionCount,
@@ -57,13 +61,14 @@ class SubModule extends Component {
       HandleCompareAnswerNextQuestion,
       HandleCompareAnswerPrevQuestion,
       HandleCompareAnswerQuestionResult,
-      SubModule1QuizQuestion,
+      SubModule7QuizQuestion,
       UserQuizAllAnswersLanguage,
+      EducationWithTasks,
     } = this.props;
 
     return (
       <div>
-        {userActiveSubModule === "sub1" ? (
+        {userActiveSubModule === "sub1" && (
           <SubModule1
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
@@ -71,58 +76,60 @@ class SubModule extends Component {
             SubModuleRatio={SubModule1Ratio}
             onClick={onClick}
           />
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub2" ? (
+        {userActiveSubModule === "sub2" && (
           <SubModule2
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             SubModuleUrl={SubModule2Url}
             SubModuleRatio={SubModule2Ratio}
             onClick={onClick}
+            EducationWithTasks={EducationWithTasks}
           />
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub3" ? (
+        {userActiveSubModule === "sub3" && EducationWithTasks && (
           <SubModule3
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
           />
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub4" ? (
+        {userActiveSubModule === "sub4" && EducationWithTasks && (
           <SubModule4
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
           />
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub5" ? (
+        {userActiveSubModule === "sub5" && EducationWithTasks && (
           <SubModule5
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
           />
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub6" ? (
+        {userActiveSubModule === "sub6" && (
           <SubModule6
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
-            SubModuleUrl={SubModule6Url}
-            SubModuleRatio={SubModule6Ratio}
+            SubModuleUrl={SubModule61Url}
+            SubModuleRatio={SubModule61Ratio}
+            SubModuleTitle={SubModule61Title}
             onClick={onClick}
           />
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub7" ? (
+        {userActiveSubModule === "sub7" && (
           <SubModule7
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
-            SubModule1QuizQuestionFiltered={SubModule1QuizQuestionFiltered}
-            SubModule1QuizQuestionText={SubModule1QuizQuestionText}
+            SubModule7QuizQuestionFiltered={SubModule7QuizQuestionFiltered}
+            SubModule7QuizQuestionText={SubModule7QuizQuestionText}
             randomAnswers={randomAnswers}
             AllQuestions={AllQuestions}
             questionIndex={questionIndex}
@@ -163,9 +170,9 @@ class SubModule extends Component {
             HandleCompareAnswerQuestionResult={
               HandleCompareAnswerQuestionResult
             }
-            SubModule1QuizQuestion={SubModule1QuizQuestion}
+            SubModule7QuizQuestion={SubModule7QuizQuestion}
           />
-        ) : null}
+        )}
       </div>
     );
   }

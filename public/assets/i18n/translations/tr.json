@@ -83,9 +83,11 @@
   "SubModule7-ViewResult": "Sonucu göster",
   "SubModule7-CheckAnswers": "Cevapları kontrol et",
   "SubModule7-NextModule": "Sonraki Stage",
-  "SubModule7-YourScore": "Puanınız",
-  "SubModule7-Passed": "Tebrikler! Başarıyla Geçtiniz.",
-  "SubModule7-Failed": "Başarısız Oldunuz.",
+  "SubModule7-YourScore": "Sınav puanınız ",
+  "SubModule7-Passed": "Tebrikler!",
+  "SubModule7-Passed2": "Etapı başarıyla geçtiniz",
+  "SubModule7-Failed": "Üzgünüz!",
+  "SubModule7-Failed2": "Sınavını geçemediniz.",
   "SubModule7-FinishModule": "Tamamla",
   "SubModule7-RetakeQuiz": "Sınavı Tekrarla"
 }

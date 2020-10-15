@@ -5,18 +5,10 @@ import Question from "./Question";
 import ShowResult from "./ShowResult";
 
 class SubModule7 extends Component {
-  state = {};
-
-  // componentDidMount() {
-  //   this.props.getRandomAnswer(
-  //     this.props.SubModule1QuizQuestion[this.props.questionIndex]
-  //   );
-  // }
-
   render() {
     const {
       randomAnswers,
-      SubModule1QuizQuestionText,
+      SubModule7QuizQuestionText,
       userActiveModule,
       HandleQuestionFillingAnswerChange,
       questionIndex,
@@ -45,14 +37,14 @@ class SubModule7 extends Component {
       HandleCompareAnswerNextQuestion,
       HandleCompareAnswerQuestionResult,
       handleBlankAnswerInputChange,
-      SubModule1QuizQuestion,
+      SubModule7QuizQuestion,
       UserQuizAllAnswersLanguage,
     } = this.props;
 
     return (
       <div className={`${userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
-          {showResult ? (
+          {showResult && (
             <ShowResult
               HandleRetakeQuiz={HandleRetakeQuiz}
               onClickNextModule={onClickNextModule}
@@ -61,11 +53,13 @@ class SubModule7 extends Component {
               QuizScore={QuizScore}
               HandleCompareAnswer={HandleCompareAnswer}
             />
-          ) : takeQuiz ? (
+          )}
+
+          {takeQuiz && (
             <Question
               userActiveModule={userActiveModule}
               randomAnswers={randomAnswers}
-              SubModule1QuizQuestionText={SubModule1QuizQuestionText}
+              SubModule7QuizQuestionText={SubModule7QuizQuestionText}
               questionIndex={questionIndex}
               questionCount={questionCount}
               HandleNextQuestion={HandleNextQuestion}
@@ -86,7 +80,9 @@ class SubModule7 extends Component {
               }
               handleBlankAnswerInputChange={handleBlankAnswerInputChange}
             />
-          ) : CompareAnswer ? (
+          )}
+
+          {CompareAnswer && (
             <CompareAnswers
               UserQuizAllAnswers={UserQuizAllAnswers}
               userActiveModule={userActiveModule}
@@ -97,10 +93,10 @@ class SubModule7 extends Component {
               HandleCompareAnswerQuestionResult={
                 HandleCompareAnswerQuestionResult
               }
-              SubModule1QuizQuestion={SubModule1QuizQuestion}
+              SubModule7QuizQuestion={SubModule7QuizQuestion}
               UserQuizAllAnswersLanguage={UserQuizAllAnswersLanguage}
             />
-          ) : null}
+          )}
         </Scroll>
       </div>
     );
@@ -108,10 +104,3 @@ class SubModule7 extends Component {
 }
 
 export default SubModule7;
-
-// export default connect(
-//   {},
-//   {
-//     UserActiveModuleSubModule,
-//   }
-// )(withRouter(SubModule7));

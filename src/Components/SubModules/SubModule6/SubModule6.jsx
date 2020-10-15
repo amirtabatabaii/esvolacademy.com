@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
 import { Row } from "react-bootstrap";
+// import LinearProgress from "@material-ui/core/LinearProgress";
 
 import "../../Module/ModuleHome.css";
 import "../SubModule.css";
@@ -46,6 +47,8 @@ class SubModule6 extends Component {
             />
           </div>
         </section>
+
+        {/* <LinearProgress variant='determinate' value={played * 100} /> */}
 
         <Row className='w-100 d-flex justify-content-around'>
           <Sub6Button

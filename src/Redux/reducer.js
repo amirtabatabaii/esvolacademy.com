@@ -5,9 +5,9 @@ import {
   SUBMODULE_1_DETAIL,
   SUBMODULE_2_DETAIL,
   SUBMODULE_6_DETAIL,
-  SUBMODULE_1_QUIZ,
+  SUBMODULE_7_QUIZ,
   SELECTED_LANGUAGE,
-  SUBMODULE_1_QUIZ_FILTERED,
+  SUBMODULE_7_QUIZ_FILTERED,
   QUIZ_SCORE,
   USER_QUIZ_ALL_ANSWERS,
 } from "./types";
@@ -60,17 +60,17 @@ export default function (state = initialState, action) {
         SubModule6Ratio: action.payload.SubModule6Ratio,
       };
 
-    case SUBMODULE_1_QUIZ:
+    case SUBMODULE_7_QUIZ:
       return {
         ...state,
-        SubModule1QuizQuestion: action.payload.SubModule1QuizQuestion,
+        SubModule7QuizQuestion: action.payload.SubModule7QuizQuestion,
       };
 
-    case SUBMODULE_1_QUIZ_FILTERED:
+    case SUBMODULE_7_QUIZ_FILTERED:
       return {
         ...state,
-        SubModule1QuizQuestionFiltered:
-          action.payload.SubModule1QuizQuestionFiltered,
+        SubModule7QuizQuestionFiltered:
+          action.payload.SubModule7QuizQuestionFiltered,
       };
 
     case SELECTED_LANGUAGE:
@@ -78,20 +78,20 @@ export default function (state = initialState, action) {
         ...state,
         selectedLanguage: action.payload.selectedLanguage,
       };
-    
+
     case QUIZ_SCORE:
       return {
         ...state,
         userQuizScore: action.payload.userQuizScore,
         QuizScore: action.payload.QuizScore,
       };
-    
+
     case USER_QUIZ_ALL_ANSWERS:
       return {
         ...state,
         UserQuizAllAnswers: action.payload.UserQuizAllAnswers,
-         UserQuizAllAnswersLanguage :action.payload.UserQuizAllAnswersLanguage
-       };
+        UserQuizAllAnswersLanguage: action.payload.UserQuizAllAnswersLanguage,
+      };
 
     default:
       return {

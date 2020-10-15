@@ -83,9 +83,11 @@
   "SubModule7-ViewResult": "View Result",
   "SubModule7-CheckAnswers": "Check Answers",
   "SubModule7-NextModule": "Next Module",
-  "SubModule7-YourScore": "Your Score",
-  "SubModule7-Passed": "Congratulations! You Passed.",
-  "SubModule7-Failed": "You Failed.",
+  "SubModule7-YourScore": "Your quiz score is ",
+  "SubModule7-Passed": "Congratulations!",
+  "SubModule7-Passed2": "You’ve passed the stage.",
+  "SubModule7-Failed": "Sorry!",
+  "SubModule7-Failed2": "You couldn’t pass your exam. ",
   "SubModule7-FinishModule": "Finish",
   "SubModule7-RetakeQuiz": "Retake Quiz"
 }

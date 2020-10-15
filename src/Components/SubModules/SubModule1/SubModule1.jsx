@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
 import { Row } from "react-bootstrap";
-// import {  ProgressBar } from "react-bootstrap";
+// import { ProgressBar } from "react-bootstrap";
+// import LinearProgress from "@material-ui/core/LinearProgress";
 
 import "../../Module/ModuleHome.css";
 import "../SubModule.css";
@@ -47,6 +48,9 @@ class SubModule1 extends Component {
             />
           </div>
         </section>
+
+        {/* <LinearProgress variant='determinate' value={played * 100} /> */}
+
         {/* <ProgressBar
           animated
           max={1}

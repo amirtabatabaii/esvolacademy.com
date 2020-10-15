@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// import styled from "styled-components";
-// import styled from "./Module1.css";
 import { Row, Col } from "react-bootstrap";
 
 import Module1sub1 from "../../assets/img/m1s1.png";
@@ -60,52 +58,13 @@ class SubModuleBtn extends Component {
     NormalImage: {},
   };
 
-  // componentDidMount() {
-  //   if (this.props.userActiveModule === "Module1") {
-  //     console.log("Module11111111");
-  //     if (this.props.userActiveSubModule === "SubModule1")
-  //       this.setState(
-  //         {
-  //           ActiveImage: { Module1sub1a },
-  //           NormalImage: { Module1sub1 },
-  //         },
-  //         () => console.log(this.state.activeImage)
-  //       );
-  //     else if (this.props.userActiveSubModule === "SubModule2")
-  //       this.setState({
-  //         ActiveImage: { Module1sub2a },
-  //         NormalImage: { Module1sub2 },
-  //       });
-  //     else if (this.props.userActiveSubModule === "SubModule3")
-  //       this.setState({
-  //         ActiveImage: "Module1sub3a",
-  //         NormalImage: "Module1sub3",
-  //       });
-  //     else if (this.props.userActiveSubModule === "SubModule4")
-  //       this.setState({
-  //         ActiveImage: "Module1sub4a",
-  //         NormalImage: "Module1sub4",
-  //       });
-  //     else if (this.props.userActiveSubModule === "SubModule5")
-  //       this.setState({
-  //         ActiveImage: "Module1sub5a",
-  //         NormalImage: "Module1sub5",
-  //       });
-  //     else if (this.props.userActiveSubModule === "SubModule6")
-  //       this.setState({
-  //         ActiveImage: "Module1sub6a",
-  //         NormalImage: "Module1sub6",
-  //       });
-  //     else if (this.props.userActiveSubModule === "SubModule7")
-  //       this.setState({
-  //         ActiveImage: "Module1sub7a",
-  //         NormalImage: "Module1sub7",
-  //       });
-  //   }
-  // }
-
   render() {
-    const { userActiveSubModule, userActiveModule, onClick } = this.props;
+    const {
+      userActiveSubModule,
+      userActiveModule,
+      onClick,
+      EducationWithTasks,
+    } = this.props;
 
     return (
       <div className={`d-none d-lg-block Sub${userActiveModule}-panel`}>
@@ -176,6 +135,7 @@ class SubModuleBtn extends Component {
               normalImage={Module1sub3}
               subName='sub3'
               onClick={onClick}
+              EducationWithTasks={EducationWithTasks}
             />
           </Col>
 

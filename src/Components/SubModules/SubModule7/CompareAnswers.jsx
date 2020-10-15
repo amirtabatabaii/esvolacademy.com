@@ -22,7 +22,7 @@ class CompareAnswers extends Component {
     let NewFilter = [];
     let incorrectAnswers = [];
     let correctAnswers = [];
-    const QuizQuestion = this.props.SubModule1QuizQuestion;
+    const QuizQuestion = this.props.SubModule7QuizQuestion;
     const AllAnswersLanguage = this.props.UserQuizAllAnswersLanguage;
     // console.log(AllAnswersLanguage);
 
@@ -175,11 +175,12 @@ class CompareAnswers extends Component {
             <>
               {UserAns[i].toLowerCase() === Answers[i].toLowerCase() ? (
                 <label
-                  className='mt-2 ml-1 mr-1'
+                  className='mt-2 ml-2 mr-2'
                   style={{
                     width: "auto",
-                    border: "2px solid green",
-                    backgroundColor: "#B6F98B",
+                    border: "2px solid #A2D87A",
+                    borderRadius: "10px",
+                    backgroundColor: "#D9FFBD",
                   }}
                 >
                   {UserAns[i]}
@@ -187,16 +188,18 @@ class CompareAnswers extends Component {
               ) : (
                 <>
                   <label
-                    className='mt-2 ml-1 mr-1'
+                    className='mt-2 ml-2 mr-2'
                     style={{
                       width: "auto",
+                      borderRadius: "10px",
                       border: "3px solid #545BFB",
                     }}
                   >
                     <del
                       style={{
                         width: "auto",
-                        backgroundColor: "#FABFB4",
+                        borderRadius: "10px",
+                        backgroundColor: "#FFE0DA",
                       }}
                     >
                       {UserAns[i]}
@@ -206,7 +209,8 @@ class CompareAnswers extends Component {
                       className='ml-2 mr-2'
                       style={{
                         width: "auto",
-                        backgroundColor: "#D4FEB9",
+                        borderRadius: "10px",
+                        backgroundColor: "#D9FFBD",
                       }}
                     >
                       {" (" + Answers[i] + " )"}
@@ -273,8 +277,9 @@ class CompareAnswers extends Component {
                   className='p-2 m-1 answers'
                   style={{
                     width: "auto",
-                    backgroundColor: "#D4FEB9",
-                    border: "2px solid green",
+                    backgroundColor: "#D9FFBD",
+                    borderRadius: "10px",
+                    border: "2px solid #A2D87A",
                   }}
                 >
                   {ViewFilteredQuestion[questionIndex].correctAnswers}
@@ -289,9 +294,10 @@ class CompareAnswers extends Component {
                           <div
                             className='p-2 m-1 answers'
                             style={{
-                              border: "2px solid red",
+                              border: "2px solid #EC8A77",
                               width: "auto",
-                              backgroundColor: "#FCD8D2",
+                              borderRadius: "10px",
+                              backgroundColor: "#FFE0DA",
                             }}
                           >
                             {UserQuizAllAnswers[questionIndex]}

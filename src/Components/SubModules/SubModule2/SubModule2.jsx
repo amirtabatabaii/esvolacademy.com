@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactPlayer from "react-player";
 import { Row } from "react-bootstrap";
 // import {  ProgressBar } from "react-bootstrap";
+// import LinearProgress from "@material-ui/core/LinearProgress";
 
 import "../../Module/ModuleHome.css";
 import "../SubModule.css";
@@ -30,6 +31,7 @@ class SubModule2 extends Component {
       SubModuleUrl,
       SubModuleRatio,
       onClick,
+      EducationWithTasks,
     } = this.props;
 
     return (
@@ -47,6 +49,9 @@ class SubModule2 extends Component {
             />
           </div>
         </section>
+
+        {/* <LinearProgress variant='determinate' value={played * 100} /> */}
+
         {/* <ProgressBar
           animated
           max={1}
@@ -62,17 +67,8 @@ class SubModule2 extends Component {
             // size='lg'
             txt='SubModule2-Continue'
             onClick={onClick}
+            EducationWithTasks={EducationWithTasks}
           />
-          {/* <Sub2Button
-            className={
-              played.toFixed(2) * 100 > SubModuleRatio
-                ? "visible m-3 Module-next-btn"
-                : "invisible m-3 Module-next-btn"
-            }
-            // size='lg'
-            txt='SubModule2-Continue'
-            onClick={onClick}
-          /> */}
         </Row>
       </div>
     );

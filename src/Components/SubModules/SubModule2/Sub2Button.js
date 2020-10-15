@@ -9,7 +9,11 @@ function Sub2Button(props) {
       disabled={props.disabled}
       // size={props.size}
       // disabled={props.ifCondition ? props.IfAction : props.elseAction}
-      onClick={() => props.onClick("sub3")}
+      onClick={
+        props.EducationWithTasks
+          ? () => props.onClick("sub3")
+          : () => props.onClick("sub6")
+      }
     >
       <TranslateText txt={props.txt} />
     </button>

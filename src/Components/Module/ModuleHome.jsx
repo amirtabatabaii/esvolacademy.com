@@ -32,8 +32,8 @@ class ModuleHome extends Component {
       userActiveModule: "",
       userActiveSubModule: "",
       //
-      SubModule1QuizQuestion: [],
-      SubModule1QuizQuestionFilterd: [],
+      SubModule7QuizQuestion: [],
+      SubModule7QuizQuestionFilterd: [],
       randomAnswers: [],
       AllQuestions: [],
       userAnswer: "",
@@ -63,8 +63,8 @@ class ModuleHome extends Component {
     //Get Module 1 questions
     await axios
       .get(
-        `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
-        // `https://run.mocky.io/v3/9a4f4608-9abb-4f36-aff8-dd776d113568`
+        // `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
+        `https://run.mocky.io/v3/9a4f4608-9abb-4f36-aff8-dd776d113568`
         //  {
         //   headers: {
         //     Authorization: localStorage.getItem("jwtToken"),
@@ -76,21 +76,33 @@ class ModuleHome extends Component {
       });
 
     this.getRandomAnswer(
-      this.props.SubModule1QuizQuestion,
+      this.props.SubModule7QuizQuestion,
       this.props.selectedLanguage
     );
 
     this.setState({
-      questionCount: this.props.SubModule1QuizQuestion.length - 1,
+      questionCount: this.props.SubModule7QuizQuestion.length - 1,
     });
   }
 
   handleOnClickSubModule(ActiveSubName) {
     const UserActiveSubNumber = this.props.userActiveSubModule.substring(3);
     const UserSelectedSubNumber = ActiveSubName.substring(3);
-    if (UserSelectedSubNumber <= UserActiveSubNumber)
-      this.props.SelectedSubModule(ActiveSubName);
-    //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
+
+    if (!this.props.EducationWithTasks) {
+      if (
+        UserSelectedSubNumber === "1" ||
+        UserSelectedSubNumber === "2" ||
+        UserSelectedSubNumber === "6" ||
+        UserSelectedSubNumber === "7"
+      ) {
+        this.props.SelectedSubModule(ActiveSubName);
+      }
+    } else {
+      if (UserSelectedSubNumber <= UserActiveSubNumber)
+        this.props.SelectedSubModule(ActiveSubName);
+      //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
+    }
   }
 
   handleClickSubModuleNext(ActiveSubName) {
@@ -114,12 +126,12 @@ class ModuleHome extends Component {
   componentDidUpdate(previousProps) {
     if (previousProps.selectedLanguage !== this.props.selectedLanguage) {
       this.setState({
-        SubModule1QuizQuestionFilterd: [],
+        SubModule7QuizQuestionFilterd: [],
         selectedLanguage: this.props.selectedLanguage,
         userAnswer: "",
       });
       this.getRandomAnswer(
-        this.props.SubModule1QuizQuestion,
+        this.props.SubModule7QuizQuestion,
         this.props.selectedLanguage
       );
     }
@@ -213,9 +225,8 @@ class ModuleHome extends Component {
       ];
     }
 
-    // console.log("NewFilter ", NewFilter);
-
     this.props.SubModule1QuizFiltered(NewFilter);
+
     const correctAns = NewFilter[this.state.questionIndex].correctAnswers;
     const incorrectAns = NewFilter[this.state.questionIndex].incorrectAnswers;
     //
@@ -308,7 +319,7 @@ class ModuleHome extends Component {
       },
       () => {
         this.getRandomAnswer(
-          this.props.SubModule1QuizQuestion,
+          this.props.SubModule7QuizQuestion,
           this.props.selectedLanguage
         );
       }
@@ -318,7 +329,7 @@ class ModuleHome extends Component {
   HandleFillingNextQuestion = () => {
     let Str = this.state.userFillingAnswer.toLowerCase();
 
-    let Arr = this.props.SubModule1QuizQuestionFiltered[
+    let Arr = this.props.SubModule7QuizQuestionFiltered[
       this.state.questionIndex
     ].correctAnswers;
 
@@ -342,7 +353,7 @@ class ModuleHome extends Component {
       },
       () => {
         this.getRandomAnswer(
-          this.props.SubModule1QuizQuestion,
+          this.props.SubModule7QuizQuestion,
           this.props.selectedLanguage
         );
       }
@@ -368,10 +379,10 @@ class ModuleHome extends Component {
   };
 
   HandleBlankNextQuestion = () => {
-    let point = this.props.SubModule1QuizQuestionFiltered[
+    let point = this.props.SubModule7QuizQuestionFiltered[
       this.state.questionIndex
     ].point;
-    let ansArr = this.props.SubModule1QuizQuestionFiltered[
+    let ansArr = this.props.SubModule7QuizQuestionFiltered[
       this.state.questionIndex
     ].correctAnswers;
     let eachBlankPoint = parseInt(point) / parseInt(ansArr.length);
@@ -403,7 +414,7 @@ class ModuleHome extends Component {
       () => {
         // userBlankAnswers = [];
         this.getRandomAnswer(
-          this.props.SubModule1QuizQuestion,
+          this.props.SubModule7QuizQuestion,
           this.props.selectedLanguage
         );
       }
@@ -418,7 +429,7 @@ class ModuleHome extends Component {
       },
       () => {
         this.getRandomAnswer(
-          this.props.SubModule1QuizQuestion,
+          this.props.SubModule7QuizQuestion,
           this.props.selectedLanguage
         );
       }
@@ -427,19 +438,19 @@ class ModuleHome extends Component {
 
   HandleQuestionResult = () => {
     let sumPoint = 0;
-    for (let m = 0; m < this.props.SubModule1QuizQuestionFiltered.length; m++) {
-      sumPoint += parseInt(this.props.SubModule1QuizQuestionFiltered[m].point);
+    for (let m = 0; m < this.props.SubModule7QuizQuestionFiltered.length; m++) {
+      sumPoint += parseInt(this.props.SubModule7QuizQuestionFiltered[m].point);
       // userAllAnswers[m] = userAllAnswers[m].substring(2);
     }
     // console.log(userAllAnswers);
 
     if (
-      this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+      this.props.SubModule7QuizQuestionFiltered[this.state.questionIndex]
         .questionType === "MultipleChoice"
     ) {
       if (
         userAllAnswers[this.state.questionIndex] ===
-        this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+        this.props.SubModule7QuizQuestionFiltered[this.state.questionIndex]
           .correctAnswers
       )
         this.setState(
@@ -447,7 +458,7 @@ class ModuleHome extends Component {
             userScore:
               parseInt(this.state.userScore) +
               parseInt(
-                this.props.SubModule1QuizQuestionFiltered[
+                this.props.SubModule7QuizQuestionFiltered[
                   this.state.questionIndex
                 ].point
               ),
@@ -464,12 +475,12 @@ class ModuleHome extends Component {
           }
         );
     } else if (
-      this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+      this.props.SubModule7QuizQuestionFiltered[this.state.questionIndex]
         .questionType === "Boolean"
     ) {
       if (
         userAllAnswers[this.state.questionIndex] ===
-        this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+        this.props.SubModule7QuizQuestionFiltered[this.state.questionIndex]
           .correctAnswers
       )
         this.setState(
@@ -477,7 +488,7 @@ class ModuleHome extends Component {
             userScore:
               parseInt(this.state.userScore) +
               parseInt(
-                this.props.SubModule1QuizQuestionFiltered[
+                this.props.SubModule7QuizQuestionFiltered[
                   this.state.questionIndex
                 ].point
               ),
@@ -494,12 +505,12 @@ class ModuleHome extends Component {
           }
         );
     } else if (
-      this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+      this.props.SubModule7QuizQuestionFiltered[this.state.questionIndex]
         .questionType === "Filling"
     ) {
       let Str = this.state.userFillingAnswer.toLowerCase();
 
-      let Arr = this.props.SubModule1QuizQuestionFiltered[
+      let Arr = this.props.SubModule7QuizQuestionFiltered[
         this.state.questionIndex
       ].correctAnswers;
 
@@ -514,7 +525,7 @@ class ModuleHome extends Component {
             userScore:
               parseInt(this.state.userScore) +
               parseInt(
-                this.props.SubModule1QuizQuestionFiltered[
+                this.props.SubModule7QuizQuestionFiltered[
                   this.state.questionIndex
                 ].point
               ),
@@ -532,13 +543,13 @@ class ModuleHome extends Component {
         );
       }
     } else if (
-      this.props.SubModule1QuizQuestionFiltered[this.state.questionIndex]
+      this.props.SubModule7QuizQuestionFiltered[this.state.questionIndex]
         .questionType === "Blank"
     ) {
-      let point = this.props.SubModule1QuizQuestionFiltered[
+      let point = this.props.SubModule7QuizQuestionFiltered[
         this.state.questionIndex
       ].point;
-      let ansArr = this.props.SubModule1QuizQuestionFiltered[
+      let ansArr = this.props.SubModule7QuizQuestionFiltered[
         this.state.questionIndex
       ].correctAnswers;
       let eachBlankPoint = parseInt(point) / parseInt(ansArr.length);
@@ -585,7 +596,7 @@ class ModuleHome extends Component {
 
     this.setState(
       {
-        SubModule1QuizQuestion: [],
+        SubModule7QuizQuestion: [],
         randomAnswers: [],
         userAnswer: "",
         questionIndex: 0,
@@ -594,7 +605,7 @@ class ModuleHome extends Component {
         showResult: false,
         takeQuiz: true,
         compareAnswer: false,
-        questionCount: this.props.SubModule1QuizQuestion.length - 1,
+        questionCount: this.props.SubModule7QuizQuestion.length - 1,
         //
         userYesNoAnswer: "",
         userMultipleChoiceAnswer: "",
@@ -605,15 +616,15 @@ class ModuleHome extends Component {
       },
       () =>
         this.getRandomAnswer(
-          //this.props.SubModule1QuizQuestion[this.state.questionIndex]
-          this.props.SubModule1QuizQuestion,
+          //this.props.SubModule7QuizQuestion[this.state.questionIndex]
+          this.props.SubModule7QuizQuestion,
           this.props.selectedLanguage
         )
     );
 
     this.getRandomAnswer(
-      // this.props.SubModule1QuizQuestion[this.state.questionIndex]
-      this.props.SubModule1QuizQuestion,
+      // this.props.SubModule7QuizQuestion[this.state.questionIndex]
+      this.props.SubModule7QuizQuestion,
       this.props.selectedLanguage
     );
   };
@@ -655,30 +666,31 @@ class ModuleHome extends Component {
       SubModule1Ratio,
       SubModule2Url,
       SubModule2Ratio,
-      SubModule6Url,
-      SubModule6Ratio,
-      HandleCompareAnswer,
-      SubModule1QuizQuestionFiltered,
-      SubModule1QuizQuestion,
+      SubModule61Url,
+      SubModule61Ratio,
+      SubModule61Title,
+      SubModule62Url,
+      SubModule62Ratio,
+      SubModule62Title,
+      SubModule7QuizQuestionFiltered,
+      SubModule7QuizQuestion,
       //
       userQuizScore,
       QuizScore,
       UserQuizAllAnswers,
       selectedLanguage,
       UserQuizAllAnswersLanguage,
+      EducationWithTasks,
     } = this.props;
 
-    const { randomAnswers, AllQuestions, userFillingAnswer } = this.state;
+    const { randomAnswers } = this.state;
 
     return (
       <div className='main-bg-color'>
         <ModuleNavBar userActiveModule={userActiveModule} />
 
         <Container>
-          <Row
-            // style={{ paddingTop: "130px" }}
-            className='w-100 pt-5 pb-5'
-          >
+          <Row className='w-100 pt-5 pb-5'>
             {/* Module panel */}
             <Col lg={2} className='d-flex justify-content-end'>
               <ModuleStagesName userActiveModule={userActiveModule} />
@@ -691,6 +703,7 @@ class ModuleHome extends Component {
                   userActiveSubModule={userActiveSubModule}
                   userActiveModule={userActiveModule}
                   onClick={this.handleOnClickSubModule}
+                  EducationWithTasks={EducationWithTasks}
                 />
               </div>
 
@@ -700,6 +713,7 @@ class ModuleHome extends Component {
                 showResult={this.state.showResult}
                 takeQuiz={this.state.takeQuiz}
                 compareAnswer={this.state.compareAnswer}
+                EducationWithTasks={EducationWithTasks}
               />
 
               {/* SubModule Section */}
@@ -710,11 +724,15 @@ class ModuleHome extends Component {
                 SubModule1Ratio={SubModule1Ratio}
                 SubModule2Url={SubModule2Url}
                 SubModule2Ratio={SubModule2Ratio}
-                SubModule6Url={SubModule6Url}
-                SubModule6Ratio={SubModule6Ratio}
-                SubModule1QuizQuestionFiltered={SubModule1QuizQuestionFiltered}
-                SubModule1QuizQuestionText={
-                  SubModule1QuizQuestionFiltered[this.state.questionIndex]
+                SubModule61Url={SubModule61Url}
+                SubModule61Ratio={SubModule61Ratio}
+                SubModule61Title={SubModule61Title}
+                SubModule62Url={SubModule62Url}
+                SubModule62Ratio={SubModule62Ratio}
+                SubModule62Title={SubModule62Title}
+                SubModule7QuizQuestionFiltered={SubModule7QuizQuestionFiltered}
+                SubModule7QuizQuestionText={
+                  SubModule7QuizQuestionFiltered[this.state.questionIndex]
                 }
                 questionIndex={this.state.questionIndex}
                 questionCount={this.state.questionCount}
@@ -731,8 +749,8 @@ class ModuleHome extends Component {
                 showResult={this.state.showResult}
                 correctAnswerCount={this.state.correctAnswerCount}
                 randomAnswers={randomAnswers}
-                AllQuestions={SubModule1QuizQuestionFiltered}
-                SubModule1QuizQuestion={SubModule1QuizQuestion}
+                AllQuestions={SubModule7QuizQuestionFiltered}
+                SubModule7QuizQuestion={SubModule7QuizQuestion}
                 takeQuiz={this.state.takeQuiz}
                 onClick={this.handleClickSubModuleNext}
                 onClickNextModule={this.handleClickModuleNext}
@@ -764,6 +782,7 @@ class ModuleHome extends Component {
                 HandleCompareAnswerQuestionResult={
                   this.HandleCompareAnswerQuestionResult
                 }
+                EducationWithTasks={EducationWithTasks}
               />
             </Col>
           </Row>
@@ -779,8 +798,19 @@ const mapStateToProps = (state) => ({
   userActiveModule: state.userActiveModule,
   userActiveSubModule: state.userActiveSubModule,
   //
-  SubModule1QuizQuestion: state.SubModule1QuizQuestion,
-  SubModule1QuizQuestionFiltered: state.SubModule1QuizQuestionFiltered,
+  SubModule1Url: state.SubModule1Url,
+  SubModule1Ratio: state.SubModule1Ratio,
+  SubModule2Url: state.SubModule2Url,
+  SubModule2Ratio: state.SubModule2Ratio,
+  SubModule61Url: state.SubModule61Url,
+  SubModule61Ratio: state.SubModule61Ratio,
+  SubModule61Title: state.SubModule61Title,
+  SubModule62Url: state.SubModule62Url,
+  SubModule62Ratio: state.SubModule62Ratio,
+  SubModule62Title: state.SubModule62Title,
+  //
+  SubModule7QuizQuestion: state.SubModule7QuizQuestion,
+  SubModule7QuizQuestionFiltered: state.SubModule7QuizQuestionFiltered,
   //
   selectedLanguage: state.selectedLanguage,
 
@@ -788,6 +818,8 @@ const mapStateToProps = (state) => ({
   QuizScore: state.QuizScore,
   UserQuizAllAnswers: state.UserQuizAllAnswers,
   UserQuizAllAnswersLanguage: state.UserQuizAllAnswersLanguage,
+  //
+  EducationWithTasks: state.EducationWithTasks,
 });
 
 export default connect(mapStateToProps, {

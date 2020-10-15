@@ -8,65 +8,66 @@ class SubModuleNote extends Component {
       showResult,
       takeQuiz,
       compareAnswer,
+      EducationWithTasks,
     } = this.props;
 
     return (
       <p className='Module-note m-3'>
-        {userActiveSubModule === "sub1" ? (
+        {userActiveSubModule === "sub1" && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule1-header' />
             </h4>
             <TranslateText txt='SubModule1-note' />
           </>
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub2" ? (
+        {userActiveSubModule === "sub2" && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule2-header' />
             </h4>
             <TranslateText txt='SubModule2-note' />
           </>
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub3" ? (
+        {userActiveSubModule === "sub3" && EducationWithTasks && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule3-header' />
             </h4>
             <TranslateText txt='SubModule3-note' />
           </>
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub4" ? (
+        {userActiveSubModule === "sub4" && EducationWithTasks && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule4-header' />
             </h4>
             <TranslateText txt='SubModule4-note' />
           </>
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub5" ? (
+        {userActiveSubModule === "sub5" && EducationWithTasks && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule5-header' />
             </h4>
             <TranslateText txt='SubModule5-note' />
           </>
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub6" ? (
+        {userActiveSubModule === "sub6" && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule6-header' />
             </h4>
             <TranslateText txt='SubModule6-note' />
           </>
-        ) : null}
+        )}
 
-        {userActiveSubModule === "sub7" ? (
+        {userActiveSubModule === "sub7" && (
           <>
             {showResult && (
               <>
@@ -95,7 +96,7 @@ class SubModuleNote extends Component {
               </>
             )}
           </>
-        ) : null}
+        )}
       </p>
     );
   }

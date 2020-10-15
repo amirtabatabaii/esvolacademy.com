@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import { Col, Image, Row } from "react-bootstrap";
 import TranslateText from "../../Translate/TranslateText";
+import StarFull from "../../../assets/img/starFull.png";
+import Retake from "../../../assets/img/retake.png";
+import QuizPassFail from "../../Utility/QuizPassFail";
 
 class ShowResult extends Component {
   percentageQuizScore = (QuizScore) => {
-    // if (QuizScore !== 0) return (QuizScore * 70) / 100;
-    if (QuizScore !== 0) return (QuizScore * 5) / 100;
+    if (QuizScore !== 0) return (QuizScore * 70) / 100;
+    //if (QuizScore !== 0) return (QuizScore * 5) / 100;
   };
 
   render() {
@@ -19,17 +23,16 @@ class ShowResult extends Component {
 
     return (
       <div>
-        <h3 className='m-5' style={{ color: "#525252" }}>
-          <TranslateText txt='SubModule7-YourScore' /> : {userQuizScore} /{" "}
-          {QuizScore}
-        </h3>
-
-        <h3 className='m-5'>
+        <h3 className='m-2'>
           {userQuizScore >= this.percentageQuizScore(QuizScore) ? (
             <>
-              <h3 className='text-success m-3'>
-                <TranslateText txt='SubModule7-Passed' />
-              </h3>
+              <QuizPassFail
+                userActiveModule={userActiveModule}
+                userQuizScore={userQuizScore}
+                QuizScore={QuizScore}
+                StarFull={StarFull}
+                Passed={true}
+              />
 
               <button
                 className={`${userActiveModule}-next-btn m-4`}
@@ -51,10 +54,13 @@ class ShowResult extends Component {
             </>
           ) : (
             <>
-              <h3 className='text-danger m-4'>
-                {" "}
-                <TranslateText txt='SubModule7-Failed' />
-              </h3>
+              <QuizPassFail
+                userActiveModule={userActiveModule}
+                userQuizScore={userQuizScore}
+                QuizScore={QuizScore}
+                Retake={Retake}
+                Passed={false}
+              />
 
               <button
                 className={`${userActiveModule}-next-btn m-3`}
