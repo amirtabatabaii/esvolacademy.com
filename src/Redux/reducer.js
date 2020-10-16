@@ -10,6 +10,7 @@ import {
   SUBMODULE_7_QUIZ_FILTERED,
   QUIZ_SCORE,
   USER_QUIZ_ALL_ANSWERS,
+  // EMPTY_REDUX,
 } from "./types";
 
 import initialState from "./store";
@@ -92,6 +93,37 @@ export default function (state = initialState, action) {
         UserQuizAllAnswers: action.payload.UserQuizAllAnswers,
         UserQuizAllAnswersLanguage: action.payload.UserQuizAllAnswersLanguage,
       };
+
+    // case EMPTY_REDUX:
+    //   return {
+    //     ...state,
+    //     adminActiveModule: "",
+    //     adminActiveSubModule: "",
+
+    //     // userActiveModule: "",
+    //     // userActiveSubModule: "",
+
+    //     // SubModule1Title: "",
+    //     // SubModule1Url: "",
+    //     // SubModule1Ratio: "",
+
+    //     // SubModule2Title: "",
+    //     // SubModule2Url: "",
+    //     // SubModule2Ratio: "",
+
+    //     // SubModule6: [],
+
+    //     // SubModule7QuizQuestion: [],
+    //     // SubModule7QuizQuestionFiltered: [],
+
+    //     selectedLanguage: "En",
+    //     userQuizScore: 0,
+    //     QuizScore: 0,
+    //     UserQuizAllAnswers: [],
+    //     UserQuizAllAnswersLanguage: [],
+
+    //     EducationWithTasks: true,
+    //   };
 
     default:
       return {

@@ -8,6 +8,7 @@ class SubModule7 extends Component {
   render() {
     const {
       randomAnswers,
+      SubModule7QuizQuestion,
       SubModule7QuizQuestionText,
       userActiveModule,
       HandleQuestionFillingAnswerChange,
@@ -37,7 +38,6 @@ class SubModule7 extends Component {
       HandleCompareAnswerNextQuestion,
       HandleCompareAnswerQuestionResult,
       handleBlankAnswerInputChange,
-      SubModule7QuizQuestion,
       UserQuizAllAnswersLanguage,
     } = this.props;
 
@@ -57,6 +57,7 @@ class SubModule7 extends Component {
 
           {takeQuiz && (
             <Question
+              SubModule7QuizQuestion={SubModule7QuizQuestion}
               userActiveModule={userActiveModule}
               randomAnswers={randomAnswers}
               SubModule7QuizQuestionText={SubModule7QuizQuestionText}

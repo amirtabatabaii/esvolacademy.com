@@ -20,7 +20,7 @@ export const initialState = {
   SubModule7Name: "Quiz",
   //
   userActiveModule: "Module1",
-  userActiveSubModule: "sub5",
+  userActiveSubModule: "sub7",
   //
   SubModule1Title: "Introduction Video",
   SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
@@ -30,12 +30,19 @@ export const initialState = {
   SubModule2Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
   SubModule2Ratio: "70",
   //
-  SubModule61Title: "Expert Video 1",
-  SubModule61Url: "https://www.youtube.com/watch?v=3_JsyidKdaI",
-  SubModule61Ratio: "50",
-  SubModule62Title: "Expert Video 2",
-  SubModule62Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
-  SubModule62Ratio: "80",
+  SubModule6: [
+    {
+      SubModule6Title: "Expert Video 1",
+      SubModule6Url: "https://www.youtube.com/watch?v=3_JsyidKdaI",
+      SubModule6Ratio: "50",
+    },
+    {
+      SubModule6Title: "Expert Video 2",
+      SubModule6Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
+      SubModule6Ratio: "80",
+    },
+  ],
+
   //
   SubModule7QuizQuestion: [],
   SubModule7QuizQuestionFiltered: [],

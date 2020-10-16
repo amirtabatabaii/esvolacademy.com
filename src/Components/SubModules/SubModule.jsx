@@ -18,14 +18,11 @@ class SubModule extends Component {
       SubModule1Ratio,
       SubModule2Url,
       SubModule2Ratio,
-      SubModule61Url,
-      SubModule61Ratio,
-      SubModule61Title,
-      SubModule62Url,
-      SubModule62Ratio,
-      SubModule62Title,
+      SubModule6Detail,
+      ExpertIndex,
       onClick,
       onClickNextModule,
+      handleClickExpertVideo,
       SubModule7QuizQuestionFiltered,
       SubModule7QuizQuestionText,
       randomAnswers,
@@ -117,10 +114,10 @@ class SubModule extends Component {
           <SubModule6
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
-            SubModuleUrl={SubModule61Url}
-            SubModuleRatio={SubModule61Ratio}
-            SubModuleTitle={SubModule61Title}
+            SubModule6Detail={SubModule6Detail}
+            ExpertIndex={ExpertIndex}
             onClick={onClick}
+            handleClickExpertVideo={handleClickExpertVideo}
           />
         )}
 

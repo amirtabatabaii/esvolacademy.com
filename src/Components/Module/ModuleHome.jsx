@@ -51,6 +51,7 @@ class ModuleHome extends Component {
       userAllAnswers: [],
       userAllAnswersLanguage: [],
       userScore: 0,
+      ExpertIndex: 0,
     };
 
     this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
@@ -107,7 +108,17 @@ class ModuleHome extends Component {
 
   handleClickSubModuleNext(ActiveSubName) {
     this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
+
+    this.setState({
+      ExpertIndex: 0,
+    });
   }
+
+  handleClickExpertVideo = () => {
+    this.setState({
+      ExpertIndex: this.state.ExpertIndex + 1,
+    });
+  };
 
   handleClickModuleNext(ActiveModuleName, ActiveSubName) {
     const ModuleNumber = ActiveModuleName.substr(ActiveModuleName.length - 1);
@@ -123,12 +134,39 @@ class ModuleHome extends Component {
     }
   }
 
-  componentDidUpdate(previousProps) {
+  componentDidUpdate(previousProps, previousState) {
     if (previousProps.selectedLanguage !== this.props.selectedLanguage) {
       this.setState({
         SubModule7QuizQuestionFilterd: [],
         selectedLanguage: this.props.selectedLanguage,
         userAnswer: "",
+      });
+      this.getRandomAnswer(
+        this.props.SubModule7QuizQuestion,
+        this.props.selectedLanguage
+      );
+    }
+    // console.log(previousProps);
+    // console.log(previousState);
+    if (previousProps.userActiveModule !== this.props.userActiveModule) {
+      this.setState({
+        SubModule7QuizQuestion: [],
+        randomAnswers: [],
+        userAnswer: "",
+        questionIndex: 0,
+        // questionLanguage: "",
+        correctAnswerCount: 0,
+        showResult: false,
+        takeQuiz: true,
+        compareAnswer: false,
+        questionCount: this.props.SubModule7QuizQuestion.length - 1,
+        //
+        userYesNoAnswer: "",
+        userMultipleChoiceAnswer: "",
+        userFillingAnswer: "",
+        userBlankAnswer: [],
+        userAllAnswers: [],
+        userScore: 0,
       });
       this.getRandomAnswer(
         this.props.SubModule7QuizQuestion,
@@ -226,6 +264,7 @@ class ModuleHome extends Component {
     }
 
     this.props.SubModule1QuizFiltered(NewFilter);
+    // console.log(NewFilter);
 
     const correctAns = NewFilter[this.state.questionIndex].correctAnswers;
     const incorrectAns = NewFilter[this.state.questionIndex].incorrectAnswers;
@@ -244,6 +283,7 @@ class ModuleHome extends Component {
     this.setState({
       randomAnswers: randomAnswers,
       AllQuestions: NewFilter,
+      // questionIndex:0
     });
   };
 
@@ -666,12 +706,7 @@ class ModuleHome extends Component {
       SubModule1Ratio,
       SubModule2Url,
       SubModule2Ratio,
-      SubModule61Url,
-      SubModule61Ratio,
-      SubModule61Title,
-      SubModule62Url,
-      SubModule62Ratio,
-      SubModule62Title,
+      SubModule6,
       SubModule7QuizQuestionFiltered,
       SubModule7QuizQuestion,
       //
@@ -724,12 +759,7 @@ class ModuleHome extends Component {
                 SubModule1Ratio={SubModule1Ratio}
                 SubModule2Url={SubModule2Url}
                 SubModule2Ratio={SubModule2Ratio}
-                SubModule61Url={SubModule61Url}
-                SubModule61Ratio={SubModule61Ratio}
-                SubModule61Title={SubModule61Title}
-                SubModule62Url={SubModule62Url}
-                SubModule62Ratio={SubModule62Ratio}
-                SubModule62Title={SubModule62Title}
+                SubModule6Detail={SubModule6}
                 SubModule7QuizQuestionFiltered={SubModule7QuizQuestionFiltered}
                 SubModule7QuizQuestionText={
                   SubModule7QuizQuestionFiltered[this.state.questionIndex]
@@ -753,6 +783,8 @@ class ModuleHome extends Component {
                 SubModule7QuizQuestion={SubModule7QuizQuestion}
                 takeQuiz={this.state.takeQuiz}
                 onClick={this.handleClickSubModuleNext}
+                ExpertIndex={this.state.ExpertIndex}
+                handleClickExpertVideo={this.handleClickExpertVideo}
                 onClickNextModule={this.handleClickModuleNext}
                 getRandomAnswer={this.getRandomAnswer}
                 HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
@@ -802,12 +834,7 @@ const mapStateToProps = (state) => ({
   SubModule1Ratio: state.SubModule1Ratio,
   SubModule2Url: state.SubModule2Url,
   SubModule2Ratio: state.SubModule2Ratio,
-  SubModule61Url: state.SubModule61Url,
-  SubModule61Ratio: state.SubModule61Ratio,
-  SubModule61Title: state.SubModule61Title,
-  SubModule62Url: state.SubModule62Url,
-  SubModule62Ratio: state.SubModule62Ratio,
-  SubModule62Title: state.SubModule62Title,
+  SubModule6: state.SubModule6,
   //
   SubModule7QuizQuestion: state.SubModule7QuizQuestion,
   SubModule7QuizQuestionFiltered: state.SubModule7QuizQuestionFiltered,

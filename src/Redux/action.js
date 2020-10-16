@@ -10,6 +10,7 @@ import {
   SELECTED_LANGUAGE,
   QUIZ_SCORE,
   USER_QUIZ_ALL_ANSWERS,
+  // EMPTY_REDUX,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -126,3 +127,13 @@ export function SetUserQuizAnswer(
     });
   };
 }
+
+// Empty
+// export function SetEmptyRedux() {
+//   return (dispatch) => {
+//     dispatch({
+//       type: EMPTY_REDUX,
+//       payload: {},
+//     });
+//   };
+// }
