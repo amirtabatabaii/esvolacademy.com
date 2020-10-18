@@ -17,6 +17,7 @@ import QuizFilling from "./QuizFilling";
 import QuizBoolean from "./QuizBoolean";
 import QuizBlank from "./QuizBlank";
 import NumberInput from "../../Utility/NumberInput";
+import { openNotificationWithIcon } from "../../Utility/Error";
 import { QstLanguageList, AnsLanguageList } from "../../Utility/AdminUtility";
 
 function QuizAddQuestions(props) {
@@ -89,6 +90,12 @@ function QuizAddQuestions(props) {
     if (name === "answerText")
       list2[p]["questionAnswersDictionaries"][index]["answerText"] = value;
     setAnsList(list2);
+
+    // console.log(list2);
+    // for (let i = 0; i <= p; i++) {
+    //   if (list2[i]["correctAnswer"] === true) {
+
+    // }
   };
 
   const handleRemoveQstListClick = (index) => {
@@ -187,21 +194,75 @@ function QuizAddQuestions(props) {
         // delete EndListTemp[i].correctAnswerCount;
         // delete EndListTemp[i].incorrectAnswerCount;
       }
+      setQuiz({
+        point: Quiz.point,
+        moduleName: props.adminActiveModule,
+        questionType: Quiz.questionType,
+        NumberOfBlank: Quiz.NumberOfBlank,
+        activationStatus: true,
+        questionDictionaries: [...QstList],
+        answers: [...AnsList],
+      });
+      openNotificationWithIcon("success", "Blank", "Blank", 10);
     }
 
     if (Quiz.questionType !== "Blank") {
-      setQuiz((Quiz.NumberOfBlank = 1));
+      if (
+        Quiz.questionType === "Boolean" ||
+        Quiz.questionType === "MultipleChoice"
+      ) {
+        let count = 0;
+        for (let i = 0; i < AnsList.length; i++) {
+          if (AnsList[i]["correctAnswer"] === true) {
+            count += 1;
+          }
+        }
+        if (count > 1)
+          openNotificationWithIcon(
+            "error",
+            " TrueCount > 1 ",
+            " TrueCount >>> 111",
+            10
+          );
+        else if (count === 0)
+          openNotificationWithIcon(
+            "error",
+            " TrueCount = 0 ",
+            " TrueCount === 0",
+            10
+          );
+        else if (count === 1) {
+          openNotificationWithIcon(
+            "success",
+            " TrueCount = 1 ",
+            " TrueCount === 111",
+            10
+          );
+          setQuiz({
+            point: Quiz.point,
+            // NumberOfBlank: 0,
+            NumberOfBlank: Quiz.NumberOfBlank,
+            moduleName: props.adminActiveModule,
+            questionType: Quiz.questionType,
+            activationStatus: true,
+            questionDictionaries: [...QstList],
+            answers: [...AnsList],
+          });
+        }
+      } else {
+        openNotificationWithIcon("success", "Filling", "Filling", 10);
+        setQuiz({
+          point: Quiz.point,
+          // NumberOfBlank: 0,
+          NumberOfBlank: Quiz.NumberOfBlank,
+          moduleName: props.adminActiveModule,
+          questionType: Quiz.questionType,
+          activationStatus: true,
+          questionDictionaries: [...QstList],
+          answers: [...AnsList],
+        });
+      }
     }
-
-    setQuiz({
-      point: Quiz.point,
-      moduleName: props.adminActiveModule,
-      questionType: Quiz.questionType,
-      NumberOfBlank: Quiz.NumberOfBlank,
-      activationStatus: true,
-      questionDictionaries: [...QstList],
-      answers: [...AnsList],
-    });
   };
 
   const handleEmptyAllInputs = () => {
@@ -297,12 +358,14 @@ function QuizAddQuestions(props) {
               NegClassName={"ml-5 p-3"}
               TextFieldClassName={" "}
               PlusClassName={"p-3"}
-              disabled={Quiz.NumberOfBlank === 1 && true}
+              disabled={
+                (Quiz.NumberOfBlank === 1 || Quiz.NumberOfBlank === 0) && true
+              }
             />
           )}
 
           <div className='ml-3 pl-4'>
-            {Quiz.questionType === "MultipleChoice" ? (
+            {Quiz.questionType === "MultipleChoice" && (
               <QuizMultipleChoice
                 handleQstListChange={handleQstListChange}
                 handleAnsListDetailChange={handleAnsListDetailChange}
@@ -320,9 +383,9 @@ function QuizAddQuestions(props) {
                 AnsLanguageList={AnsLanguageList}
                 questionType={Quiz.questionType}
               />
-            ) : null}
+            )}
 
-            {Quiz.questionType === "Filling" ? (
+            {Quiz.questionType === "Filling" && (
               <QuizFilling
                 handleQstListChange={handleQstListChange}
                 handleAnsListDetailChange={handleAnsListDetailChange}
@@ -340,9 +403,9 @@ function QuizAddQuestions(props) {
                 AnsLanguageList={AnsLanguageList}
                 questionType={Quiz.questionType}
               />
-            ) : null}
+            )}
 
-            {Quiz.questionType === "Boolean" ? (
+            {Quiz.questionType === "Boolean" && (
               <QuizBoolean
                 handleQstListChange={handleQstListChange}
                 handleAnsListDetailChange={handleAnsListDetailChange}
@@ -360,9 +423,9 @@ function QuizAddQuestions(props) {
                 AnsLanguageList={AnsLanguageList}
                 questionType={Quiz.questionType}
               />
-            ) : null}
+            )}
 
-            {Quiz.questionType === "Blank" ? (
+            {Quiz.questionType === "Blank" && (
               <QuizBlank
                 handleBlankQuestionsInputChange={
                   handleBlankQuestionsInputChange
@@ -384,7 +447,7 @@ function QuizAddQuestions(props) {
                 questionType={Quiz.questionType}
                 Quiz={Quiz}
               />
-            ) : null}
+            )}
           </div>
         </div>
 

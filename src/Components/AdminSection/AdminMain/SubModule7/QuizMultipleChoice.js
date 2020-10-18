@@ -119,6 +119,8 @@ function QuizMultipleChoice(props) {
                   <Checkbox
                     name='isTrue'
                     checked={mainList.correctAnswer}
+                    enabled={mainList.correctAnswer === true ? false : true}
+                    // enabled={props.EnabledCheckAnswer}
                     onChange={(e) =>
                       props.handleAnsListDetailChange(e, 0, true, p)
                     }

@@ -11,6 +11,7 @@ import {
 import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
+import { openNotificationWithIcon } from "../../Utility/Error";
 
 function CaseStudyAddItem(props) {
   const [inputList, setInputList] = useState([
@@ -55,6 +56,8 @@ function CaseStudyAddItem(props) {
       urlFormat: ActiveModule.urlFormat,
       subLevelTranslations: inputList,
     });
+
+    openNotificationWithIcon("success", "CaseStudy", "CaseStudy", 10);
   };
 
   const handleChangeReading = (e) => {
