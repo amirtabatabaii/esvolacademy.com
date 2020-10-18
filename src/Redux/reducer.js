@@ -125,7 +125,7 @@ export default function (state = initialState, action) {
         SubModule7QuizQuestion: [],
         SubModule7QuizQuestionFiltered: [],
         //
-        selectedLanguage: "En",
+        // selectedLanguage: "En",
         userQuizScore: 0,
         QuizScore: 0,
         UserQuizAllAnswers: [],
