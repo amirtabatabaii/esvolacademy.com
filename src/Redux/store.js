@@ -20,7 +20,7 @@ export const initialState = {
   SubModule7Name: "Quiz",
   //
   userActiveModule: "Module1",
-  userActiveSubModule: "sub7",
+  userActiveSubModule: "sub1",
   //
   SubModule1Title: "Introduction Video",
   SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
@@ -66,8 +66,9 @@ const store = createStore(
   Reducer,
   initialState,
   compose(
-    applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middleware)
+    //,
+    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 
