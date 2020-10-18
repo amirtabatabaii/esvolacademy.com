@@ -10,7 +10,11 @@ import {
   SUBMODULE_7_QUIZ_FILTERED,
   QUIZ_SCORE,
   USER_QUIZ_ALL_ANSWERS,
-  // EMPTY_REDUX,
+  SUBMODULE_4_READING,
+  SUBMODULE_4_READING_FILTERED,
+  SUBMODULE_5_CASESTUDY,
+  SUBMODULE_5_CASESTUDY_FILTERED,
+  EMPTY_REDUX,
 } from "./types";
 
 import initialState from "./store";
@@ -94,36 +98,68 @@ export default function (state = initialState, action) {
         UserQuizAllAnswersLanguage: action.payload.UserQuizAllAnswersLanguage,
       };
 
-    // case EMPTY_REDUX:
-    //   return {
-    //     ...state,
-    //     adminActiveModule: "",
-    //     adminActiveSubModule: "",
+    case EMPTY_REDUX:
+      return {
+        ...state,
+        //
+        SubModule1Title: "Introduction Video",
+        SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
+        SubModule1Ratio: "80",
+        //
+        SubModule2Title: "Course Video",
+        SubModule2Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
+        SubModule2Ratio: "70",
+        //
+        SubModule6: [
+          {
+            SubModule6Title: "Expert Video 1",
+            SubModule6Url: "https://www.youtube.com/watch?v=3_JsyidKdaI",
+            SubModule6Ratio: "50",
+          },
+          {
+            SubModule6Title: "Expert Video 2",
+            SubModule6Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
+            SubModule6Ratio: "80",
+          },
+        ],
+        SubModule7QuizQuestion: [],
+        SubModule7QuizQuestionFiltered: [],
+        //
+        selectedLanguage: "En",
+        userQuizScore: 0,
+        QuizScore: 0,
+        UserQuizAllAnswers: [],
+        UserQuizAllAnswersLanguage: [],
+        //
+        SubModule4Reading: [],
+        SubModule4ReadingFiltered: [],
+        SubModule5CaseStudy: [],
+        SubModule5CaseStudyFiltered: [],
+      };
 
-    //     // userActiveModule: "",
-    //     // userActiveSubModule: "",
+    case SUBMODULE_4_READING:
+      return {
+        ...state,
+        SubModule4Reading: action.payload.SubModule4Reading,
+      };
 
-    //     // SubModule1Title: "",
-    //     // SubModule1Url: "",
-    //     // SubModule1Ratio: "",
+    case SUBMODULE_4_READING_FILTERED:
+      return {
+        ...state,
+        SubModule4ReadingFiltered: action.payload.SubModule4ReadingFiltered,
+      };
 
-    //     // SubModule2Title: "",
-    //     // SubModule2Url: "",
-    //     // SubModule2Ratio: "",
+    case SUBMODULE_5_CASESTUDY:
+      return {
+        ...state,
+        SubModule5CaseStudy: action.payload.SubModule5CaseStudy,
+      };
 
-    //     // SubModule6: [],
-
-    //     // SubModule7QuizQuestion: [],
-    //     // SubModule7QuizQuestionFiltered: [],
-
-    //     selectedLanguage: "En",
-    //     userQuizScore: 0,
-    //     QuizScore: 0,
-    //     UserQuizAllAnswers: [],
-    //     UserQuizAllAnswersLanguage: [],
-
-    //     EducationWithTasks: true,
-    //   };
+    case SUBMODULE_5_CASESTUDY_FILTERED:
+      return {
+        ...state,
+        SubModule5CaseStudyFiltered: action.payload.SubModule5CaseStudyFiltered,
+      };
 
     default:
       return {

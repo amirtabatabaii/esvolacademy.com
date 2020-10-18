@@ -72,13 +72,13 @@
   "SubModule5-Continue": "Continue",
   "SubModule6-header": "6.Expert Video",
   "SubModule6-note": "Please watch the Expert video.",
+  "SubModule6-NextVideo": "Next Video",
   "SubModule6-Continue": "Continue",
   "SubModule7-header": "7.Quiz",
   "SubModule7-note": "Please select the right answer for each question.",
   "SubModule7-ResultNote": "Quiz Result",
   "SubModule7-CompareNote": "Check Your Wrong Answers",
   "SubModule7-Continue": "Continue",
-  "SubModule6-NextVideo": "Next Video",
   "SubModule7-NextQuestion": "Next Question",
   "SubModule7-PrevQuestion": "Previous Question",
   "SubModule7-ViewResult": "View Result",
@@ -90,5 +90,7 @@
   "SubModule7-Failed": "Sorry!",
   "SubModule7-Failed2": "You couldn’t pass your exam. ",
   "SubModule7-FinishModule": "Finish",
-  "SubModule7-RetakeQuiz": "Retake Quiz"
+  "SubModule7-RetakeQuiz": "Retake Quiz",
+  "SubModule4-ReadPdf": "Read Pdf",
+  "SubModule4-OpenSite": "Open Site"
 }

@@ -7,56 +7,34 @@ import Sub5Button from "./Sub5Button";
 
 class SubModule5 extends Component {
   render() {
+    const { userActiveModule, SubModule5CaseStudyFiltered } = this.props;
+
     return (
-      <div className={`${this.props.userActiveModule}-sub-panel mt-4 app`}>
+      <div className={`${userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
-          <Reading5
-            userActiveModule={this.props.userActiveModule}
-            header='Bulgaria:'
-            note='Young Leaders Seminar provides food for thought in Sofia:'
-            type='website'
-            Link='https://www.european-athletics.org/athletics-community/young-leaders/news/article=young-leaders-seminar-provides-food-for-thought-sofia.html'
-          />
+          {SubModule5CaseStudyFiltered.map((caseStudy, index) => (
+            <Reading5
+              userActiveModule={this.props.userActiveModule}
+              // header='Bulgaria:'
+              note={caseStudy.title}
+              type={caseStudy.urlFormat}
+              Link={caseStudy.taskUrl}
+            />
+            // <Reading4
+            //   userActiveModule={userActiveModule}
+            //   note={reading.title}
+            //   type={reading.urlFormat}
+            //   Link={reading.taskUrl}
+            // />
+          ))}
 
-          <Reading5
-            userActiveModule={this.props.userActiveModule}
-            header='Greece:'
-            note='The power of volunteers:'
-            type='website'
-            Link='https://www.olympic.org/news/olympic-legacy/athens-2004/the-power-of-volunteers'
-          />
-
-          <Reading5
-            userActiveModule={this.props.userActiveModule}
-            header='Italy:'
-            note='An Olympic Experience: Torino 2006:'
-            type='website'
-            Link='https://thebudgetmindedtraveler.com/olympic-experience-torino-2006/'
-          />
-
-          <Reading5
-            userActiveModule={this.props.userActiveModule}
-            header='Spain:'
-            note='2014 FIBA World Cup volunteers:'
-            type='website'
-            Link='http://www.fiba.basketball/basketballworldcup/2014/news/FIBA-2014-FIBA-Basketball-World-Cup-volunteers--pro'
-          />
-
-          <Reading5
-            userActiveModule={this.props.userActiveModule}
-            header='Turkey:'
-            note=': EOC to launch education project ahead of 2017 European Youth Olympic Festival:'
-            type='website'
-            Link='https://www.insidethegames.biz/articles/1042178/eoc-to-launch-education-project-ahead-of-2017-european-youth-olympic-festival'
-          />
-
-          <Reading5
+          {/* <Reading5
             userActiveModule={this.props.userActiveModule}
             header='United Kingdom:'
             note='London Olympics: How volunteers made the Games:'
             type='website'
             Link='https://www.bbc.com/news/uk-19201329'
-          />
+          /> */}
 
           <Sub5Button
             className={`${this.props.userActiveModule}-next-btn m-3`}

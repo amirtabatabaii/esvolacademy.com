@@ -90,5 +90,7 @@
   "SubModule7-Failed": "Üzgünüz!",
   "SubModule7-Failed2": "Sınavını geçemediniz.",
   "SubModule7-FinishModule": "Tamamla",
-  "SubModule7-RetakeQuiz": "Sınavı Tekrarla"
+  "SubModule7-RetakeQuiz": "Sınavı Tekrarla",
+  "SubModule4-ReadPdf": "PDF'yi okuyun",
+  "SubModule4-OpenSite": "Web Sitesini aç"
 }

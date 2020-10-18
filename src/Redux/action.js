@@ -10,7 +10,11 @@ import {
   SELECTED_LANGUAGE,
   QUIZ_SCORE,
   USER_QUIZ_ALL_ANSWERS,
-  // EMPTY_REDUX,
+  SUBMODULE_4_READING,
+  SUBMODULE_4_READING_FILTERED,
+  SUBMODULE_5_CASESTUDY_FILTERED,
+  SUBMODULE_5_CASESTUDY,
+  EMPTY_REDUX,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -128,12 +132,50 @@ export function SetUserQuizAnswer(
   };
 }
 
-// Empty
-// export function SetEmptyRedux() {
-//   return (dispatch) => {
-//     dispatch({
-//       type: EMPTY_REDUX,
-//       payload: {},
-//     });
-//   };
-// }
+//Empty;
+export function SetEmptyRedux() {
+  return (dispatch) => {
+    dispatch({
+      type: EMPTY_REDUX,
+      payload: {},
+    });
+  };
+}
+
+// SubModule 4 Reading
+export const SubModule4ReadingSection = (SubModule4Reading) => (dispatch) => {
+  dispatch({
+    type: SUBMODULE_4_READING,
+    payload: { SubModule4Reading },
+  });
+};
+
+// SubModule 4 REading Filtered
+export const SubModule4ReadingSectionFiltered = (SubModule4ReadingFiltered) => (
+  dispatch
+) => {
+  dispatch({
+    type: SUBMODULE_4_READING_FILTERED,
+    payload: { SubModule4ReadingFiltered },
+  });
+};
+
+// SubModule 5 case study
+export const SubModule5CaseStudySection = (SubModule5CaseStudy) => (
+  dispatch
+) => {
+  dispatch({
+    type: SUBMODULE_5_CASESTUDY,
+    payload: { SubModule5CaseStudy },
+  });
+};
+
+// SubModule 5 case study Filtered
+export const SubModule5CaseStudySectionFiltered = (
+  SubModule5CaseStudyFiltered
+) => (dispatch) => {
+  dispatch({
+    type: SUBMODULE_5_CASESTUDY_FILTERED,
+    payload: { SubModule5CaseStudyFiltered },
+  });
+};

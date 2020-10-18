@@ -42,7 +42,6 @@ export const initialState = {
       SubModule6Ratio: "80",
     },
   ],
-
   //
   SubModule7QuizQuestion: [],
   SubModule7QuizQuestionFiltered: [],
@@ -54,6 +53,11 @@ export const initialState = {
   UserQuizAllAnswersLanguage: [],
   //
   EducationWithTasks: true,
+  //
+  SubModule4Reading: [],
+  SubModule4ReadingFiltered: [],
+  SubModule5CaseStudy: [],
+  SubModule5CaseStudyFiltered: [],
 };
 
 const middleware = [thunk];
@@ -62,9 +66,8 @@ const store = createStore(
   Reducer,
   initialState,
   compose(
-    applyMiddleware(...middleware)
-    // ,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

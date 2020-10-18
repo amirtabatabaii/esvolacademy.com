@@ -14,6 +14,11 @@ import {
   SubModule1QuizFiltered,
   SetQuizScore,
   SetUserQuizAnswer,
+  SubModule4ReadingSection,
+  SubModule4ReadingSectionFiltered,
+  SubModule5CaseStudySection,
+  SubModule5CaseStudySectionFiltered,
+  SetEmptyRedux,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -53,40 +58,9 @@ class ModuleHome extends Component {
       userScore: 0,
       ExpertIndex: 0,
     };
-
-    this.handleClickSubModuleNext = this.handleClickSubModuleNext.bind(this);
-    this.handleOnClickSubModule = this.handleOnClickSubModule.bind(this);
-    this.handleClickModuleNext = this.handleClickModuleNext.bind(this);
-    this.getRandomAnswer = this.getRandomAnswer.bind(this);
   }
 
-  async componentDidMount() {
-    //Get Module 1 questions
-    await axios
-      .get(
-        // `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
-        `https://run.mocky.io/v3/9a4f4608-9abb-4f36-aff8-dd776d113568`
-        //  {
-        //   headers: {
-        //     Authorization: localStorage.getItem("jwtToken"),
-        //   },
-        // }
-      )
-      .then((Response) => {
-        this.props.SubModule1Quiz(Response.data.results);
-      });
-
-    this.getRandomAnswer(
-      this.props.SubModule7QuizQuestion,
-      this.props.selectedLanguage
-    );
-
-    this.setState({
-      questionCount: this.props.SubModule7QuizQuestion.length - 1,
-    });
-  }
-
-  handleOnClickSubModule(ActiveSubName) {
+  handleOnClickSubModule = (ActiveSubName) => {
     const UserActiveSubNumber = this.props.userActiveSubModule.substring(3);
     const UserSelectedSubNumber = ActiveSubName.substring(3);
 
@@ -104,15 +78,15 @@ class ModuleHome extends Component {
         this.props.SelectedSubModule(ActiveSubName);
       //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
     }
-  }
+  };
 
-  handleClickSubModuleNext(ActiveSubName) {
+  handleClickSubModuleNext = (ActiveSubName) => {
     this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
 
     this.setState({
       ExpertIndex: 0,
     });
-  }
+  };
 
   handleClickExpertVideo = () => {
     this.setState({
@@ -120,9 +94,11 @@ class ModuleHome extends Component {
     });
   };
 
-  handleClickModuleNext(ActiveModuleName, ActiveSubName) {
+  handleClickModuleNext = (ActiveModuleName, ActiveSubName) => {
     const ModuleNumber = ActiveModuleName.substr(ActiveModuleName.length - 1);
     const editedModuleName = ActiveModuleName.slice(0, -1);
+
+    this.props.SetEmptyRedux();
 
     if (ModuleNumber === "5") {
       alert("Finish Page...!!");
@@ -132,22 +108,141 @@ class ModuleHome extends Component {
         ActiveSubName
       );
     }
+  };
+
+  async componentDidMount() {
+    if (this.props.userActiveSubModule === "sub4") {
+      await axios
+        .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
+        .then((Response) => {
+          this.props.SubModule4ReadingSection(Response.data.results);
+
+          this.HandleReadingCaseStudy(
+            this.props.SubModule4Reading,
+            this.props.selectedLanguage
+          );
+        });
+    }
+
+    if (this.props.userActiveSubModule === "sub5") {
+      await axios
+        .get(`https://run.mocky.io/v3/175b6331-58f4-4695-b280-46bc4d708be0`)
+        .then((Response) => {
+          this.props.SubModule5CaseStudySection(Response.data.results);
+
+          this.HandleReadingCaseStudy(
+            this.props.SubModule5CaseStudy,
+            this.props.selectedLanguage
+          );
+        });
+    }
+
+    if (this.props.userActiveSubModule === "sub7") {
+      await axios
+        .get(
+          // `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
+          `https://run.mocky.io/v3/9a4f4608-9abb-4f36-aff8-dd776d113568`
+          //  {
+          //   headers: {
+          //     Authorization: localStorage.getItem("jwtToken"),
+          //   },
+          // }
+        )
+        .then((Response) => {
+          this.props.SubModule1Quiz(Response.data.results);
+
+          this.getRandomAnswer(
+            this.props.SubModule7QuizQuestion,
+            this.props.selectedLanguage
+          );
+
+          this.setState({
+            questionCount: this.props.SubModule7QuizQuestion.length - 1,
+          });
+        });
+    }
   }
 
-  componentDidUpdate(previousProps, previousState) {
+  async componentDidUpdate(previousProps, previousState) {
+    if (previousProps.userActiveSubModule !== this.props.userActiveSubModule) {
+      if (this.props.userActiveSubModule === "sub4") {
+        await axios
+          .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
+          .then((Response) => {
+            this.props.SubModule4ReadingSection(Response.data.results);
+
+            this.HandleReadingCaseStudy(
+              this.props.SubModule4Reading,
+              this.props.selectedLanguage
+            );
+          });
+      }
+
+      if (this.props.userActiveSubModule === "sub5") {
+        await axios
+          .get(`https://run.mocky.io/v3/175b6331-58f4-4695-b280-46bc4d708be0`)
+          .then((Response) => {
+            this.props.SubModule5CaseStudySection(Response.data.results);
+
+            this.HandleReadingCaseStudy(
+              this.props.SubModule5CaseStudy,
+              this.props.selectedLanguage
+            );
+          });
+      }
+
+      if (this.props.userActiveSubModule === "sub7") {
+        await axios
+          .get(
+            // `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
+            `https://run.mocky.io/v3/9a4f4608-9abb-4f36-aff8-dd776d113568`
+            //  {
+            //   headers: {
+            //     Authorization: localStorage.getItem("jwtToken"),
+            //   },
+            // }
+          )
+          .then((Response) => {
+            this.props.SubModule1Quiz(Response.data.results);
+
+            this.getRandomAnswer(
+              this.props.SubModule7QuizQuestion,
+              this.props.selectedLanguage
+            );
+
+            this.setState({
+              questionCount: this.props.SubModule7QuizQuestion.length - 1,
+            });
+          });
+      }
+    }
+
     if (previousProps.selectedLanguage !== this.props.selectedLanguage) {
       this.setState({
         SubModule7QuizQuestionFilterd: [],
         selectedLanguage: this.props.selectedLanguage,
         userAnswer: "",
       });
-      this.getRandomAnswer(
-        this.props.SubModule7QuizQuestion,
-        this.props.selectedLanguage
-      );
+
+      if (this.props.userActiveSubModule === "sub7")
+        this.getRandomAnswer(
+          this.props.SubModule7QuizQuestion,
+          this.props.selectedLanguage
+        );
+
+      if (this.props.userActiveSubModule === "sub4")
+        this.HandleReadingCaseStudy(
+          this.props.SubModule4Reading,
+          this.props.selectedLanguage
+        );
+
+      if (this.props.userActiveSubModule === "sub5")
+        this.HandleReadingCaseStudy(
+          this.props.SubModule5CaseStudy,
+          this.props.selectedLanguage
+        );
     }
-    // console.log(previousProps);
-    // console.log(previousState);
+
     if (previousProps.userActiveModule !== this.props.userActiveModule) {
       this.setState({
         SubModule7QuizQuestion: [],
@@ -168,10 +263,6 @@ class ModuleHome extends Component {
         userAllAnswers: [],
         userScore: 0,
       });
-      this.getRandomAnswer(
-        this.props.SubModule7QuizQuestion,
-        this.props.selectedLanguage
-      );
     }
   }
 
@@ -264,7 +355,8 @@ class ModuleHome extends Component {
     }
 
     this.props.SubModule1QuizFiltered(NewFilter);
-    // console.log(NewFilter);
+    console.log(NewFilter);
+    console.log(this.state.questionIndex);
 
     const correctAns = NewFilter[this.state.questionIndex].correctAnswers;
     const incorrectAns = NewFilter[this.state.questionIndex].incorrectAnswers;
@@ -662,11 +754,11 @@ class ModuleHome extends Component {
         )
     );
 
-    this.getRandomAnswer(
-      // this.props.SubModule7QuizQuestion[this.state.questionIndex]
-      this.props.SubModule7QuizQuestion,
-      this.props.selectedLanguage
-    );
+    // this.getRandomAnswer(
+    //   // this.props.SubModule7QuizQuestion[this.state.questionIndex]
+    //   this.props.SubModule7QuizQuestion,
+    //   this.props.selectedLanguage
+    // );
   };
 
   HandleCompareAnswer = () => {
@@ -698,6 +790,29 @@ class ModuleHome extends Component {
     });
   };
 
+  HandleReadingCaseStudy = (List, lng) => {
+    let NewFilter = [];
+
+    for (let i = 0; i < List.length; i++) {
+      NewFilter = [
+        ...NewFilter,
+        {
+          moduleName: List[i].moduleName,
+          subModuleType: List[i].subModuleType,
+          taskUrl: List[i].taskUrl,
+          urlFormat: List[i].urlFormat,
+          title: List[i].subLevelTranslations.filter(
+            (ans) => ans.language === lng
+          )[0].title,
+        },
+      ];
+    }
+    if (this.props.userActiveSubModule === "sub4")
+      this.props.SubModule4ReadingSectionFiltered(NewFilter);
+    if (this.props.userActiveSubModule === "sub5")
+      this.props.SubModule5CaseStudySectionFiltered(NewFilter);
+  };
+
   render() {
     const {
       userActiveModule,
@@ -716,6 +831,8 @@ class ModuleHome extends Component {
       selectedLanguage,
       UserQuizAllAnswersLanguage,
       EducationWithTasks,
+      SubModule4ReadingFiltered,
+      SubModule5CaseStudyFiltered,
     } = this.props;
 
     const { randomAnswers } = this.state;
@@ -815,6 +932,8 @@ class ModuleHome extends Component {
                   this.HandleCompareAnswerQuestionResult
                 }
                 EducationWithTasks={EducationWithTasks}
+                SubModule4ReadingFiltered={SubModule4ReadingFiltered}
+                SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
               />
             </Col>
           </Row>
@@ -847,6 +966,11 @@ const mapStateToProps = (state) => ({
   UserQuizAllAnswersLanguage: state.UserQuizAllAnswersLanguage,
   //
   EducationWithTasks: state.EducationWithTasks,
+  //
+  SubModule4Reading: state.SubModule4Reading,
+  SubModule4ReadingFiltered: state.SubModule4ReadingFiltered,
+  SubModule5CaseStudy: state.SubModule5CaseStudy,
+  SubModule5CaseStudyFiltered: state.SubModule5CaseStudyFiltered,
 });
 
 export default connect(mapStateToProps, {
@@ -856,4 +980,9 @@ export default connect(mapStateToProps, {
   SubModule1QuizFiltered,
   SetQuizScore,
   SetUserQuizAnswer,
+  SubModule4ReadingSection,
+  SubModule4ReadingSectionFiltered,
+  SubModule5CaseStudySection,
+  SubModule5CaseStudySectionFiltered,
+  SetEmptyRedux,
 })(withRouter(ModuleHome));

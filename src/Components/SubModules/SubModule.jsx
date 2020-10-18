@@ -61,6 +61,8 @@ class SubModule extends Component {
       SubModule7QuizQuestion,
       UserQuizAllAnswersLanguage,
       EducationWithTasks,
+      SubModule4ReadingFiltered,
+      SubModule5CaseStudyFiltered,
     } = this.props;
 
     return (
@@ -99,6 +101,7 @@ class SubModule extends Component {
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
+            SubModule4ReadingFiltered={SubModule4ReadingFiltered}
           />
         )}
 
@@ -107,6 +110,7 @@ class SubModule extends Component {
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
+            SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
           />
         )}
 
