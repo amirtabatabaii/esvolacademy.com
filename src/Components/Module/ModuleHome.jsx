@@ -355,8 +355,8 @@ class ModuleHome extends Component {
     }
 
     this.props.SubModule1QuizFiltered(NewFilter);
-    console.log(NewFilter);
-    console.log(this.state.questionIndex);
+    // console.log(NewFilter);
+    // console.log(this.state.questionIndex);
 
     const correctAns = NewFilter[this.state.questionIndex].correctAnswers;
     const incorrectAns = NewFilter[this.state.questionIndex].incorrectAnswers;
