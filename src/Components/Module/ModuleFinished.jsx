@@ -4,7 +4,7 @@ import ModuleNavBar from "./ModuleNavBar";
 
 class ModuleFinished extends Component {
   render() {
-    const { userActiveModule } = this.props;
+    // const { userActiveModule } = this.props;
 
     return (
       <div className='main-bg-color'>

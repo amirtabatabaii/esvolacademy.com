@@ -19,7 +19,7 @@ export const initialState = {
   SubModule6Name: "Expert Video",
   SubModule7Name: "Quiz",
   //
-  userActiveModule: "Module5",
+  userActiveModule: "Module3",
   userActiveSubModule: "sub7",
   //
   SubModule1Title: "Introduction Video",

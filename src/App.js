@@ -47,7 +47,6 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/certificate"}
             component={ModuleFinished}
-            userActiveModule={"Module1"}
           />
 
           {/* User Home */}
