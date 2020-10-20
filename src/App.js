@@ -11,6 +11,7 @@ import Register from "./Components/LoginRegister/Register";
 import Login from "./Components/LoginRegister/Login";
 import UserHome from "./Components/UserHome/UserHome";
 import UserPrivateRoute from "./Components/UserHome/UserPrivateRoute";
+import ModuleFinished from "./Components/Module/ModuleFinished";
 
 function App() {
   return (
@@ -39,6 +40,14 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/login"}
             component={Login}
+          />
+
+          {/* User Certificate */}
+          <UserPrivateRoute
+            exact
+            path={process.env.PUBLIC_URL + "/certificate"}
+            component={ModuleFinished}
+            userActiveModule={"Module1"}
           />
 
           {/* User Home */}

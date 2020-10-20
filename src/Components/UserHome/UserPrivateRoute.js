@@ -1,27 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import UserHome from "./UserHome";
 
-class UserPrivateRoute extends Component {
-  render() {
-    return (
-      <div>
-        <Route
-          render={({ location }) =>
-            localStorage.getItem("UserToken") ? (
-              <UserHome />
-            ) : (
-              <Redirect
-                to={{
-                  pathname: "/login",
-                  state: { from: location },
-                }}
-              />
-            )
-          }
-        />
-      </div>
-    );
-  }
-}
+const UserPrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        localStorage.getItem("UserToken") ? (
+          <Component />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+};
 export default UserPrivateRoute;

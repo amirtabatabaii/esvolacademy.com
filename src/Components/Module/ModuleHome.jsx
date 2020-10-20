@@ -25,6 +25,7 @@ import Footer from "../Footer/Footer";
 import SubModule from "../SubModules/SubModule";
 import ModuleStagesName from "./ModuleStagesName";
 import SubModuleNote from "../SubModules/SubModuleNote";
+import TranslateText from "../Translate/TranslateText";
 
 let userAllAnswers = [];
 let userAllAnswersLanguage = [];
@@ -100,14 +101,10 @@ class ModuleHome extends Component {
 
     this.props.SetEmptyRedux();
 
-    if (ModuleNumber === "5") {
-      alert("Finish Page...!!");
-    } else {
-      this.props.UserActiveModuleSubModule(
-        editedModuleName + (parseInt(ModuleNumber) + 1),
-        ActiveSubName
-      );
-    }
+    this.props.UserActiveModuleSubModule(
+      editedModuleName + (parseInt(ModuleNumber) + 1),
+      ActiveSubName
+    );
   };
 
   async componentDidMount() {

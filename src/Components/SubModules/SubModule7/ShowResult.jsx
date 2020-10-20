@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Col, Image, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 import TranslateText from "../../Translate/TranslateText";
 import StarFull from "../../../assets/img/starFull.png";
 import Retake from "../../../assets/img/retake.png";
@@ -24,7 +26,7 @@ class ShowResult extends Component {
     return (
       <div>
         <h3 className='m-2'>
-          {userQuizScore >= this.percentageQuizScore(QuizScore) ? (
+          {userQuizScore >= this.percentageQuizScore(QuizScore) && (
             <>
               <QuizPassFail
                 userActiveModule={userActiveModule}
@@ -40,19 +42,29 @@ class ShowResult extends Component {
               >
                 <TranslateText txt='SubModule7-CheckAnswers' />
               </button>
+              {userActiveModule === "Module5" && (
+                <Link
+                  to='/certificate'
+                  className='Menu-text ml-4 text-decoration-none'
+                >
+                  <button className={`${userActiveModule}-next-btn m-4`}>
+                    <TranslateText txt='SubModule7-FinishModule' />
+                  </button>
+                </Link>
+              )}
 
-              <button
-                className={`${userActiveModule}-next-btn m-4`}
-                onClick={() => onClickNextModule(userActiveModule, "sub1")}
-              >
-                {userActiveModule === "Module5" ? (
-                  <TranslateText txt='SubModule7-FinishModule' />
-                ) : (
+              {userActiveModule !== "Module5" && (
+                <button
+                  className={`${userActiveModule}-next-btn m-4`}
+                  onClick={() => onClickNextModule(userActiveModule, "sub1")}
+                >
                   <TranslateText txt='SubModule7-NextModule' />
-                )}
-              </button>
+                </button>
+              )}
             </>
-          ) : (
+          )}
+
+          {userQuizScore < this.percentageQuizScore(QuizScore) && (
             <>
               <QuizPassFail
                 userActiveModule={userActiveModule}
