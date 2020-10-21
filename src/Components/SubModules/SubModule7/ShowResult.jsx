@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Col, Image, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import TranslateText from "../../Translate/TranslateText";
@@ -35,7 +34,6 @@ class ShowResult extends Component {
                 StarFull={StarFull}
                 Passed={true}
               />
-
               <button
                 className={`${userActiveModule}-next-btn m-4`}
                 onClick={HandleCompareAnswer}
@@ -52,7 +50,6 @@ class ShowResult extends Component {
                   </button>
                 </Link>
               )}
-
               {userActiveModule !== "Module5" && (
                 <button
                   className={`${userActiveModule}-next-btn m-4`}

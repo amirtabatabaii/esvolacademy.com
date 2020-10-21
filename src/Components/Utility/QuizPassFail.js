@@ -1,10 +1,29 @@
 import React from "react";
 import TranslateText from "../Translate/TranslateText";
 import { Col, Image, Row } from "react-bootstrap";
+import { useWindowSize } from "react-use";
+import Confetti from "react-confetti";
 
 function QuizPassFail(props) {
+  const { width, height } = useWindowSize();
+
   return (
     <Row className='w-100'>
+      {props.Passed && (
+        <Confetti
+          // width={(width * 50) / 100}
+          // height={height}
+          width={(width * 50) / 100}
+          height={height}
+          confettiSource={{
+            // w: 10,
+            // h: 10,
+            x: width / 3,
+            y: height / 3,
+          }}
+        />
+      )}
+
       <Col lg={6} md={6} sm={12} className='m-auto p-3'>
         <div
           className={`${props.userActiveModule}-text-active Module-text-active mb-5`}

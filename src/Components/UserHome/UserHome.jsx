@@ -18,9 +18,6 @@ import ProgressImage from "./ProgressImage";
 import UserModuleActivity from "./UserModuleActivity";
 import UserSubModuleActivity from "./UserSubModuleActivity";
 
-import star from "../../assets/img/user/module_0.png";
-import m5s1 from "../../assets/img/progress_chart/29.png";
-
 const radioStyle = {
   display: "block",
   height: "30px",
