@@ -108,6 +108,19 @@ class ModuleHome extends Component {
   };
 
   async componentDidMount() {
+    if (!this.props.EducationWithTasks) {
+      if (
+        this.props.userActiveSubModule === "sub3" ||
+        this.props.userActiveSubModule === "sub4" ||
+        this.props.userActiveSubModule === "sub5"
+      ) {
+        this.props.UserActiveModuleSubModule(
+          this.props.userActiveModule,
+          "sub6"
+        );
+      }
+    }
+
     if (this.props.userActiveSubModule === "sub4") {
       await axios
         .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)

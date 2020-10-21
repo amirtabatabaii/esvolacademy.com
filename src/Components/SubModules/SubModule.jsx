@@ -74,6 +74,7 @@ class SubModule extends Component {
             SubModuleUrl={SubModule1Url}
             SubModuleRatio={SubModule1Ratio}
             onClick={onClick}
+            EducationWithTasks={EducationWithTasks}
           />
         )}
 
@@ -93,6 +94,7 @@ class SubModule extends Component {
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
+            EducationWithTasks={EducationWithTasks}
           />
         )}
 
@@ -102,6 +104,7 @@ class SubModule extends Component {
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
             SubModule4ReadingFiltered={SubModule4ReadingFiltered}
+            EducationWithTasks={EducationWithTasks}
           />
         )}
 
@@ -111,6 +114,7 @@ class SubModule extends Component {
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
             SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
+            EducationWithTasks={EducationWithTasks}
           />
         )}
 
@@ -122,6 +126,7 @@ class SubModule extends Component {
             ExpertIndex={ExpertIndex}
             onClick={onClick}
             handleClickExpertVideo={handleClickExpertVideo}
+            EducationWithTasks={EducationWithTasks}
           />
         )}
 

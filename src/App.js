@@ -22,7 +22,7 @@ function App() {
           <Route exact path={process.env.PUBLIC_URL + "/"} component={Home} />
 
           {/* Module */}
-          <Route
+          <UserPrivateRoute
             exact
             path={process.env.PUBLIC_URL + "/modules"}
             component={module}

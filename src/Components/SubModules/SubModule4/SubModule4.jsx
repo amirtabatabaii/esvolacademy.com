@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 
 import Scroll from "../../Utility/Scroll";
+import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 // import "./SubModule4.css";
 import Reading4 from "./Reading4";
-import Sub4Button from "./Sub4Button";
 
 class SubModule4 extends Component {
   render() {
-    const { userActiveModule, SubModule4ReadingFiltered } = this.props;
+    const {
+      userActiveModule,
+      EducationWithTasks,
+      onClick,
+      SubModule4ReadingFiltered,
+    } = this.props;
 
     return (
       <div className={`${userActiveModule}-sub-panel mt-4 app`}>
@@ -21,10 +26,15 @@ class SubModule4 extends Component {
             />
           ))}
 
-          <Sub4Button
-            className={`${this.props.userActiveModule}-next-btn m-3`}
+          <SubModuleNextButton
+            // disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
+            className={`${userActiveModule}-next-btn m-3`}
+            condition={!EducationWithTasks}
+            EducationWithTasks={!EducationWithTasks}
+            NormalNextSubModule='sub5'
+            SubModule6Name='sub6'
             txt='SubModule4-Continue'
-            onClick={this.props.onClick}
+            onClick={onClick}
           />
         </Scroll>
       </div>

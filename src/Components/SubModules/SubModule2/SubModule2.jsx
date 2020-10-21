@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap";
 
 import "../../Module/ModuleHome.css";
 import "../SubModule.css";
-import Sub2Button from "./Sub2Button";
+import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 
 class SubModule2 extends Component {
   state = {
@@ -61,13 +61,15 @@ class SubModule2 extends Component {
           className='m-3'
         /> */}
         <Row className='w-100 d-flex justify-content-around'>
-          <Sub2Button
-            className={`${userActiveModule}-next-btn m-3`}
+          <SubModuleNextButton
             disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
-            // size='lg'
+            className={`${userActiveModule}-next-btn m-3`}
+            condition={!EducationWithTasks}
+            EducationWithTasks={EducationWithTasks}
+            NormalNextSubModule='sub3'
+            SubModule6Name='sub6'
             txt='SubModule2-Continue'
             onClick={onClick}
-            EducationWithTasks={EducationWithTasks}
           />
         </Row>
       </div>

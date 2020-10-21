@@ -5,7 +5,7 @@ import { Row } from "react-bootstrap";
 
 import "../../Module/ModuleHome.css";
 import "../SubModule.css";
-import Sub6Button from "./Sub6Button";
+import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 
 class SubModule6 extends Component {
   state = {
@@ -39,6 +39,7 @@ class SubModule6 extends Component {
       onClick,
       handleClickExpertVideo,
       ExpertIndex,
+      EducationWithTasks,
     } = this.props;
 
     return (
@@ -61,28 +62,36 @@ class SubModule6 extends Component {
 
         <Row className='w-100 d-flex justify-content-around'>
           {ExpertIndex === 0 && (
-            <Sub6Button
-              className={`${this.props.userActiveModule}-next-btn m-3`}
+            <SubModuleNextButton
               disabled={
                 played.toFixed(2) * 100 <=
                 SubModule6Detail[ExpertIndex].SubModule6Ratio
                   ? true
                   : false
               }
+              className={`${userActiveModule}-next-btn m-3`}
+              condition={!EducationWithTasks}
+              EducationWithTasks={!EducationWithTasks}
+              NormalNextSubModule='sub7'
+              SubModule6Name='sub6'
               txt='SubModule6-NextVideo'
               onClick={handleClickExpertVideo}
             />
           )}
 
           {ExpertIndex === 1 && (
-            <Sub6Button
-              className={`${this.props.userActiveModule}-next-btn m-3`}
+            <SubModuleNextButton
               disabled={
                 played.toFixed(2) * 100 <=
                 SubModule6Detail[ExpertIndex].SubModule6Ratio
                   ? true
                   : false
               }
+              className={`${userActiveModule}-next-btn m-3`}
+              condition={!EducationWithTasks}
+              EducationWithTasks={!EducationWithTasks}
+              NormalNextSubModule='sub7'
+              SubModule6Name='sub6'
               txt='SubModule6-Continue'
               onClick={onClick}
             />

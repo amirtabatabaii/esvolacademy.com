@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import Scroll from "../../Utility/Scroll";
+import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 import Task from "./Task";
-import Sub3Button from "./Sub3Button";
 
 class SubModule3 extends Component {
   handleChange(event) {
@@ -10,11 +10,18 @@ class SubModule3 extends Component {
   }
 
   render() {
+    const {
+      userActiveModule,
+      EducationWithTasks,
+      SubModuleRatio,
+      onClick,
+    } = this.props;
+
     return (
-      <div className={`${this.props.userActiveModule}-sub-panel mt-4 app`}>
+      <div className={`${userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
           <Task
-            userActiveModule={this.props.userActiveModule}
+            userActiveModule={userActiveModule}
             note='Task-1: Watch the Lausanne 2020 – Become a Volunteer video which you can find below :'
             type='video'
             Link='https://www.youtube.com/watch?v=xInABTGavt8'
@@ -24,7 +31,7 @@ class SubModule3 extends Component {
           />
 
           <Task
-            userActiveModule={this.props.userActiveModule}
+            userActiveModule={userActiveModule}
             note='Task-2: Read the Council conclusions on the role of voluntary activities in sport in promoting active citizenship.'
             type='pdf'
             Link='https://ec.europa.eu/citizenship/pdf/council_conclusions_on_volunteering_in_sport_en.pdf'
@@ -33,10 +40,15 @@ class SubModule3 extends Component {
             onChange={this.handleChange}
           />
 
-          <Sub3Button
-            className={`${this.props.userActiveModule}-next-btn m-3`}
+          <SubModuleNextButton
+            // disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
+            className={`${userActiveModule}-next-btn m-3`}
+            condition={!EducationWithTasks}
+            EducationWithTasks={!EducationWithTasks}
+            NormalNextSubModule='sub4'
+            SubModule6Name='sub6'
             txt='SubModule3-Continue'
-            onClick={this.props.onClick}
+            onClick={onClick}
           />
         </Scroll>
       </div>
