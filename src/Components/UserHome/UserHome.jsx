@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col, Image } from "react-bootstrap";
 import { Modal, Radio } from "antd";
+
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -9,11 +10,13 @@ import Footer from "../Footer/Footer";
 import TranslateText from "../Translate/TranslateText";
 
 import "./userHome.css";
-
+import { SetEducationWithTasks } from "../../Redux/action";
 import avatar from "../../assets/img/img_avatar.png";
 import { Link } from "react-router-dom";
 
 import ProgressImage from "./ProgressImage";
+import UserModuleActivity from "./UserModuleActivity";
+import UserSubModuleActivity from "./UserSubModuleActivity";
 
 const radioStyle = {
   display: "block",
@@ -22,7 +25,12 @@ const radioStyle = {
 };
 
 class UserHome extends Component {
-  state = { visible: false, value: "YesGamification" };
+  state = {
+    visible: false,
+    value: this.props.EducationWithTasks
+      ? "CourseWithTasks"
+      : "CourseOnlyVideo",
+  };
 
   hideModal = () => {
     this.setState({
@@ -37,71 +45,46 @@ class UserHome extends Component {
   };
 
   handleOk = (e) => {
-    // console.log(e);
-    this.setState({
-      visible: false,
-    });
+    this.setState(
+      {
+        visible: false,
+      },
+      () => {
+        if (this.state.value === "CourseWithTasks")
+          this.props.SetEducationWithTasks(true);
+        else this.props.SetEducationWithTasks(false);
+      }
+    );
   };
 
-  handleCancel = (e) => {
-    // console.log(e);
+  handleCancel = () => {
     this.setState({
       visible: false,
     });
   };
 
   onChange = (e) => {
-    // `console`.log(e.target.value);
     this.setState({
       value: e.target.value,
     });
   };
 
-  // info() {
-  //   Modal.info({
-  //     title: "I Perfer...",
-  //     content: (
-  //       <div>
-  //         <Radio.Group
-  //           onChange={this.onChange}
-  //           value={this.state.value}
-  //           defaultValue={"NoGamification"}
-  //         >
-  //           <Radio style={radioStyle} value={"YesGamification"}>
-  //             Taking gamification course
-  //           </Radio>
-  //           <Radio style={radioStyle} value={"NoGamification"}>
-  //             Taking only the videos
-  //           </Radio>
-  //         </Radio.Group>
-  //       </div>
-  //     ),
-  //     onOk() {
-  //       this.setState({
-  //         visible: false,
-  //       });
-  //     },
-  //     // onOk() {},
-  //   });
-  // }
-
   componentDidMount() {
     window.scrollTo(0, 0);
     this.showModal();
-    // this.info();
   }
 
   render() {
     const { value } = this.state;
-    const { userActiveModule, userActiveSubModule } = this.props;
+    const {
+      userActiveModule,
+      userActiveSubModule,
+      EducationWithTasks,
+    } = this.props;
 
     return (
       <div className='main-bg-color'>
-        {/* <Button type='primary' onClick={this.showModal}>
-          Open Modal
-        </Button> */}
-
-        {/* <Modal
+        <Modal
           title='I Perfer...'
           visible={this.state.visible}
           onOk={this.handleOk}
@@ -109,20 +92,26 @@ class UserHome extends Component {
         >
           <Radio.Group
             onChange={this.onChange}
-            value={value}
-            defaultValue={"YesGamification"}
+            defaultValue={
+              EducationWithTasks ? "CourseWithTasks" : "CourseOnlyVideo"
+            }
+            Value={value}
           >
-            <Radio style={radioStyle} value={"YesGamification"}>
-              Taking gamification course
+            <Radio style={radioStyle} value='CourseWithTasks'>
+              <TranslateText txt='Course-With-Tasks' />
             </Radio>
-            <Radio style={radioStyle} value={"NoGamification"}>
-              Taking only the videos
+            <Radio style={radioStyle} value='CourseOnlyVideo'>
+              <TranslateText txt='Course-Only-Video' />
             </Radio>
           </Radio.Group>
-        </Modal> */}
+
+          <p className='m-2 p-2 font-weight-bold'>
+            <TranslateText txt='Course-selection-note' />
+          </p>
+        </Modal>
 
         <div id='page-wrap' className='App'>
-          <ModuleNavBar userActiveModule='Module1' />
+          <ModuleNavBar userActiveModule={userActiveModule} />
 
           {/* <Container> */}
           <p className='messageTxt text-left pt-5 pl-5'>
@@ -132,7 +121,7 @@ class UserHome extends Component {
 
           <Row className='w-100 p-5'>
             <Col lg={6} md={12} sm={12} className='p-2'>
-              <div className='box text-md-center'>
+              <div className='box text-center'>
                 <Row className='w-100 m-auto'>
                   <Col
                     lg={5}
@@ -166,9 +155,8 @@ class UserHome extends Component {
                 </Row>
               </div>
             </Col>
-
             <Col lg={6} md={12} sm={12} className='p-2'>
-              <div className='box text-md-center'>
+              <div className='box text-center'>
                 <Row className='w-100 m-auto'>
                   <Col
                     lg={5}
@@ -192,10 +180,14 @@ class UserHome extends Component {
                       <TranslateText txt='User-education-info-Header' />
                     </p>
                     <p className='info-text'>
-                      {userActiveModule.replace("Module", "Module ")}
+                      <UserModuleActivity userActiveModule={userActiveModule} />
+                      {/* {userActiveModule.replace("Module", "Module ")} */}
                     </p>
                     <p className='info-text'>
-                      {userActiveSubModule.replace("sub", "Sub Module ")}
+                      <UserSubModuleActivity
+                        userActiveSubModule={userActiveSubModule}
+                      />
+                      {/* {userActiveSubModule.replace("sub", "Sub Module ")} */}
                     </p>
                     <p className='info-text'>
                       <TranslateText txt='User-education-info-Score' />
@@ -211,11 +203,18 @@ class UserHome extends Component {
                 </Row>
               </div>
             </Col>
+
+            <div className='w-100 text-center'>
+              <button className='esvolon-Btn' disabled>
+                <TranslateText txt='User-Start-Esvolon' />
+              </button>
+            </div>
           </Row>
           {/* </Container> */}
         </div>
 
-        <Footer userActiveModule={"Main"} />
+        {/* <Footer userActiveModule={"Main"} /> */}
+        <Footer userActiveModule={userActiveModule} />
       </div>
     );
   }
@@ -224,6 +223,9 @@ class UserHome extends Component {
 const mapStateToProps = (state) => ({
   userActiveModule: state.userActiveModule,
   userActiveSubModule: state.userActiveSubModule,
+  EducationWithTasks: state.EducationWithTasks,
 });
 
-export default connect(mapStateToProps, {})(withRouter(UserHome));
+export default connect(mapStateToProps, { SetEducationWithTasks })(
+  withRouter(UserHome)
+);

@@ -15,6 +15,7 @@ import {
   SUBMODULE_5_CASESTUDY_FILTERED,
   SUBMODULE_5_CASESTUDY,
   EMPTY_REDUX,
+  EDUCATION_WITH_TASK,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -177,5 +178,13 @@ export const SubModule5CaseStudySectionFiltered = (
   dispatch({
     type: SUBMODULE_5_CASESTUDY_FILTERED,
     payload: { SubModule5CaseStudyFiltered },
+  });
+};
+
+// Set Education With Tasks
+export const SetEducationWithTasks = (EducationWithTasks) => (dispatch) => {
+  dispatch({
+    type: EDUCATION_WITH_TASK,
+    payload: { EducationWithTasks },
   });
 };

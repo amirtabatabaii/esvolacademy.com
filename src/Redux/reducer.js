@@ -15,6 +15,7 @@ import {
   SUBMODULE_5_CASESTUDY,
   SUBMODULE_5_CASESTUDY_FILTERED,
   EMPTY_REDUX,
+  EDUCATION_WITH_TASK,
 } from "./types";
 
 import initialState from "./store";
@@ -159,6 +160,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         SubModule5CaseStudyFiltered: action.payload.SubModule5CaseStudyFiltered,
+      };
+
+    case EDUCATION_WITH_TASK:
+      return {
+        ...state,
+        EducationWithTasks: action.payload.EducationWithTasks,
       };
 
     default:
