@@ -18,6 +18,9 @@ import ProgressImage from "./ProgressImage";
 import UserModuleActivity from "./UserModuleActivity";
 import UserSubModuleActivity from "./UserSubModuleActivity";
 
+import star from "../../assets/img/user/module_0.png";
+import m5s1 from "../../assets/img/progress_chart/29.png";
+
 const radioStyle = {
   display: "block",
   height: "30px",
@@ -71,7 +74,7 @@ class UserHome extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.showModal();
+    // this.showModal();
   }
 
   render() {
@@ -122,17 +125,17 @@ class UserHome extends Component {
           <Row className='w-100 p-5'>
             <Col lg={6} md={12} sm={12} className='p-2'>
               <div className='box text-center'>
-                <Row className='w-100 m-auto'>
+                <Row className='w-100 m-auto p-5'>
                   <Col
-                    lg={5}
+                    lg={6}
                     md={12}
                     sm={12}
-                    className='p-5 m-auto text-lg-right'
+                    className='p-3 m-auto text-lg-right'
                   >
                     <Image src={avatar} alt='esvol' className='avatar-box' />
                   </Col>
                   <Col
-                    lg={7}
+                    lg={6}
                     md={12}
                     sm={12}
                     className='p-3 m-auto text-lg-left'
@@ -147,7 +150,7 @@ class UserHome extends Component {
                     </p>
 
                     {/* <Link to='/modules'> */}
-                    <button className='continue-Btn' type='submit'>
+                    <button className='continue-Btn mt-5' type='submit'>
                       <TranslateText txt='User-Edit-Btn' />
                     </button>
                     {/* </Link> */}
@@ -155,6 +158,7 @@ class UserHome extends Component {
                 </Row>
               </div>
             </Col>
+
             <Col lg={6} md={12} sm={12} className='p-2'>
               <div className='box text-center'>
                 <Row className='w-100 m-auto'>
@@ -168,10 +172,9 @@ class UserHome extends Component {
                       userActiveModule={userActiveModule}
                       userActiveSubModule={userActiveSubModule}
                     />
-                    {/* <Image src={Progress1} alt='esvol' className='chart-box' /> */}
                   </Col>
                   <Col
-                    lg={7}
+                    lg={5}
                     md={12}
                     sm={12}
                     className='p-3 m-auto text-lg-left'
@@ -181,13 +184,11 @@ class UserHome extends Component {
                     </p>
                     <p className='info-text'>
                       <UserModuleActivity userActiveModule={userActiveModule} />
-                      {/* {userActiveModule.replace("Module", "Module ")} */}
                     </p>
                     <p className='info-text'>
                       <UserSubModuleActivity
                         userActiveSubModule={userActiveSubModule}
                       />
-                      {/* {userActiveSubModule.replace("sub", "Sub Module ")} */}
                     </p>
                     <p className='info-text'>
                       <TranslateText txt='User-education-info-Score' />
@@ -195,7 +196,7 @@ class UserHome extends Component {
                     </p>
 
                     <Link to='/modules'>
-                      <button className='continue-Btn' type='submit'>
+                      <button className='continue-Btn mt-5' type='submit'>
                         <TranslateText txt='User-Continue-Btn' />
                       </button>
                     </Link>

@@ -40,6 +40,13 @@ import m5s5 from "../../assets/img/progress_chart/33.png";
 import m5s6 from "../../assets/img/progress_chart/34.png";
 import m5s7 from "../../assets/img/progress_chart/35.png";
 
+import module_0 from "../../assets/img/user/module_0.png";
+import module_1 from "../../assets/img/user/module_1.png";
+import module_2 from "../../assets/img/user/module_2.png";
+import module_3 from "../../assets/img/user/module_3.png";
+import module_4 from "../../assets/img/user/module_4.png";
+import module_5 from "../../assets/img/user/module_5.png";
+
 class ProgressImage extends Component {
   render() {
     const { userActiveModule, userActiveSubModule } = this.props;
@@ -69,6 +76,7 @@ class ProgressImage extends Component {
             {userActiveSubModule === "sub7" && (
               <Image src={m1s7} alt='esvol' className='chart-box' />
             )}
+            <Image src={module_0} alt='esvol' className='chart-box' />
           </>
         )}
 
@@ -94,7 +102,8 @@ class ProgressImage extends Component {
             )}
             {userActiveSubModule === "sub7" && (
               <Image src={m2s7} alt='esvol' className='chart-box' />
-            )}
+            )}{" "}
+            <Image src={module_1} alt='esvol' className='chart-box' />
           </>
         )}
 
@@ -120,7 +129,8 @@ class ProgressImage extends Component {
             )}
             {userActiveSubModule === "sub7" && (
               <Image src={m3s7} alt='esvol' className='chart-box' />
-            )}
+            )}{" "}
+            <Image src={module_2} alt='esvol' className='chart-box' />
           </>
         )}
 
@@ -146,7 +156,8 @@ class ProgressImage extends Component {
             )}
             {userActiveSubModule === "sub7" && (
               <Image src={m4s7} alt='esvol' className='chart-box' />
-            )}
+            )}{" "}
+            <Image src={module_3} alt='esvol' className='chart-box' />
           </>
         )}
 
@@ -172,7 +183,8 @@ class ProgressImage extends Component {
             )}
             {userActiveSubModule === "sub7" && (
               <Image src={m5s7} alt='esvol' className='chart-box' />
-            )}
+            )}{" "}
+            <Image src={module_4} alt='esvol' className='chart-box' />
           </>
         )}
       </>
