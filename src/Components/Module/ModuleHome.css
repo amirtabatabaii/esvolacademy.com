@@ -124,7 +124,8 @@ button[disabled] {
   width: 300px;
   height: 69px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(254, 120, 57, 0.25);
@@ -140,7 +141,8 @@ button[disabled] {
   width: 150px;
   height: 50px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(254, 120, 57, 0.25);
@@ -161,7 +163,8 @@ button[disabled] {
   line-height: 16px;
   /*  */
   text-align: center;
-  border: none;
+  border: none !important;
+  outline: none !important;
   text-decoration: none !important;
 }
 
@@ -216,7 +219,8 @@ button[disabled] {
   width: 300px;
   height: 69px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(214, 31, 35, 0.25);
@@ -232,7 +236,8 @@ button[disabled] {
   width: 150px;
   height: 50px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(214, 31, 35, 0.25);
@@ -253,7 +258,8 @@ button[disabled] {
   line-height: 16px;
   /*  */
   text-align: center;
-  border: none;
+  border: none !important;
+  outline: none !important;
   text-decoration: none !important;
 }
 
@@ -308,7 +314,8 @@ button[disabled] {
   width: 300px;
   height: 69px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(200, 213, 3, 0.25);
@@ -324,7 +331,8 @@ button[disabled] {
   width: 150px;
   height: 50px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(200, 213, 3, 0.25);
@@ -345,7 +353,8 @@ button[disabled] {
   line-height: 16px;
   /*  */
   text-align: center;
-  border: none;
+  border: none !important;
+  outline: none !important;
   text-decoration: none !important;
 }
 
@@ -400,7 +409,8 @@ button[disabled] {
   width: 300px;
   height: 69px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(119, 71, 143, 0.25);
@@ -416,7 +426,8 @@ button[disabled] {
   width: 150px;
   height: 50px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(119, 71, 143, 0.25);
@@ -437,7 +448,8 @@ button[disabled] {
   line-height: 16px;
   /*  */
   text-align: center;
-  border: none;
+  border: none !important;
+  outline: none !important;
   text-decoration: none !important;
 }
 
@@ -492,7 +504,8 @@ button[disabled] {
   width: 300px;
   height: 69px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(83, 115, 155, 0.25);
@@ -508,7 +521,8 @@ button[disabled] {
   width: 150px;
   height: 50px;
   border-radius: 12px;
-  border: none;
+  border: none !important;
+  outline: none !important;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
     -5px -5px 24px rgba(83, 115, 155, 0.25);
@@ -529,7 +543,8 @@ button[disabled] {
   line-height: 16px;
   /*  */
   text-align: center;
-  border: none;
+  border: none !important;
+  outline: none !important;
   text-decoration: none !important;
 }
 
