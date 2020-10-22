@@ -9,18 +9,19 @@ function QuizPassFail(props) {
 
   return (
     <Row className='w-100'>
+      {/* {console.log(width, height)} */}
       {props.Passed && (
         <Confetti
-          // width={(width * 50) / 100}
-          // height={height}
-          width={(width * 50) / 100}
+          width={width / 2}
           height={height}
           confettiSource={{
-            // w: 10,
-            // h: 10,
-            x: width / 3,
-            y: height / 3,
+            w: width / 2,
+            h: height,
+            x: 10,
+            y: 10,
           }}
+          recycle={false}
+          numberOfPieces={600}
         />
       )}
 
