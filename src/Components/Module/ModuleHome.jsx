@@ -25,7 +25,11 @@ import Footer from "../Footer/Footer";
 import SubModule from "../SubModules/SubModule";
 import ModuleStagesName from "./ModuleStagesName";
 import SubModuleNote from "../SubModules/SubModuleNote";
-import TranslateText from "../Translate/TranslateText";
+import {
+  ApiUrlMain2,
+  ApiUrlGetQuestion,
+  ApiUrlQuestion,
+} from "../Utility/ApiUrl";
 
 let userAllAnswers = [];
 let userAllAnswersLanguage = [];
@@ -150,8 +154,8 @@ class ModuleHome extends Component {
     if (this.props.userActiveSubModule === "sub7") {
       await axios
         .get(
-          // `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
-          `https://run.mocky.io/v3/9a4f4608-9abb-4f36-aff8-dd776d113568`
+          ApiUrlMain2 + ApiUrlQuestion
+          //ApiUrlGetQuestion
           //  {
           //   headers: {
           //     Authorization: localStorage.getItem("jwtToken"),
@@ -159,7 +163,8 @@ class ModuleHome extends Component {
           // }
         )
         .then((Response) => {
-          this.props.SubModule1Quiz(Response.data.results);
+          console.log(Response);
+          this.props.SubModule1Quiz(Response.data);
 
           this.getRandomAnswer(
             this.props.SubModule7QuizQuestion,
@@ -204,8 +209,9 @@ class ModuleHome extends Component {
       if (this.props.userActiveSubModule === "sub7") {
         await axios
           .get(
-            // `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
-            `https://run.mocky.io/v3/9a4f4608-9abb-4f36-aff8-dd776d113568`
+            ApiUrlMain2 +
+              ApiUrlQuestion +
+              `?moduleName=MODULE1&questionType=MultipleChoice`
             //  {
             //   headers: {
             //     Authorization: localStorage.getItem("jwtToken"),
@@ -213,7 +219,7 @@ class ModuleHome extends Component {
             // }
           )
           .then((Response) => {
-            this.props.SubModule1Quiz(Response.data.results);
+            this.props.SubModule1Quiz(Response.data);
 
             this.getRandomAnswer(
               this.props.SubModule7QuizQuestion,
@@ -283,10 +289,10 @@ class ModuleHome extends Component {
 
     for (let i = 0; i < QuizQuestion.length; i++) {
       incorrectAnswers.push(
-        QuizQuestion[i].answers.filter((ans) => ans.correctAnswer === false)
+        QuizQuestion[i].answers.filter((ans) => ans.isCorrectAnswer === false)
       );
       correctAnswers.push(
-        QuizQuestion[i].answers.filter((ans) => ans.correctAnswer === true)
+        QuizQuestion[i].answers.filter((ans) => ans.isCorrectAnswer === true)
       );
       // userAllAnswers.push([]);
     }
@@ -338,7 +344,7 @@ class ModuleHome extends Component {
       } else {
         // correctAnswers2[k][0] = QuizQuestion[k].answers
         correctAnswers2[k] = QuizQuestion[k].answers
-          .filter((ans) => ans.correctAnswer === true)[0]
+          .filter((ans) => ans.isCorrectAnswer === true)[0]
           .questionAnswersDictionaries.filter(
             (ans) => ans.language === lng
           )[0].answerText;

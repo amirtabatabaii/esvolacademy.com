@@ -10,7 +10,6 @@ import {
   Button,
 } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 
 import QuizMultipleChoice from "./QuizMultipleChoice";
 import QuizFilling from "./QuizFilling";
@@ -19,6 +18,8 @@ import QuizBlank from "./QuizBlank";
 import NumberInput from "../../Utility/NumberInput";
 import { openNotificationWithIcon } from "../../Utility/Error";
 import { QstLanguageList, AnsLanguageList } from "../../Utility/AdminUtility";
+import { ApiUrlMain2, ApiUrlQuestion } from "../../../Utility/ApiUrl";
+import axios from "axios";
 
 function QuizAddQuestions(props) {
   // --------------
@@ -179,6 +180,22 @@ function QuizAddQuestions(props) {
     }
   };
 
+  const handleEmptyAllInputs = () => {
+    setQstList([
+      {
+        questionText: "",
+        language: "",
+      },
+    ]);
+
+    setAnsList([
+      {
+        questionAnswersDictionaries: [{ answerText: "", language: "" }],
+        correctAnswer: false,
+      },
+    ]);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -203,7 +220,29 @@ function QuizAddQuestions(props) {
         questionDictionaries: [...QstList],
         answers: [...AnsList],
       });
-      openNotificationWithIcon("success", "Blank", "Blank", 10);
+      axios
+        .post(
+          ApiUrlMain2 + ApiUrlQuestion,
+          {
+            point: Quiz.point,
+            type: Quiz.questionType,
+            moduleName: props.adminActiveModule,
+            // interactiveUrl: "",
+            // interactiveUrlFormat: "",
+            activationStatus: true,
+            numberOfBlank: Quiz.NumberOfBlank,
+            questionDictionaries: [...QstList],
+            answers: [...AnsList],
+          },
+          // (axios.defaults.headers.common[
+          //   "Authorization"
+          // ] = this.state.Authorization),
+          { "Content-type": "application/json; charset=iso-8859-1" }
+        )
+        .then((res) => {
+          // console.log("Success res ========>", res);
+          openNotificationWithIcon("success", "Blank", "Blank", 10);
+        });
     }
 
     if (Quiz.questionType !== "Blank") {
@@ -232,15 +271,8 @@ function QuizAddQuestions(props) {
             10
           );
         else if (count === 1) {
-          openNotificationWithIcon(
-            "success",
-            " TrueCount = 1 ",
-            " TrueCount === 111",
-            10
-          );
           setQuiz({
             point: Quiz.point,
-            // NumberOfBlank: 0,
             NumberOfBlank: Quiz.NumberOfBlank,
             moduleName: props.adminActiveModule,
             questionType: Quiz.questionType,
@@ -248,12 +280,39 @@ function QuizAddQuestions(props) {
             questionDictionaries: [...QstList],
             answers: [...AnsList],
           });
+
+          axios
+            .post(
+              ApiUrlMain2 + ApiUrlQuestion,
+              {
+                point: Quiz.point,
+                type: Quiz.questionType,
+                moduleName: props.adminActiveModule,
+                // interactiveUrl: "",
+                // interactiveUrlFormat: "",
+                activationStatus: true,
+                numberOfBlank: Quiz.NumberOfBlank,
+                questionDictionaries: [...QstList],
+                answers: [...AnsList],
+              },
+              // (axios.defaults.headers.common[
+              //   "Authorization"
+              // ] = this.state.Authorization),
+              { "Content-type": "application/json; charset=iso-8859-1" }
+            )
+            .then((res) => {
+              // console.log("Success res ========>", res);
+              openNotificationWithIcon(
+                "success",
+                " TrueCount = 1 ",
+                " TrueCount === 111",
+                10
+              );
+            });
         }
       } else {
-        openNotificationWithIcon("success", "Filling", "Filling", 10);
         setQuiz({
           point: Quiz.point,
-          // NumberOfBlank: 0,
           NumberOfBlank: Quiz.NumberOfBlank,
           moduleName: props.adminActiveModule,
           questionType: Quiz.questionType,
@@ -261,24 +320,34 @@ function QuizAddQuestions(props) {
           questionDictionaries: [...QstList],
           answers: [...AnsList],
         });
+
+        axios
+          .post(
+            ApiUrlMain2 + ApiUrlQuestion,
+            {
+              point: Quiz.point,
+              type: Quiz.questionType,
+              moduleName: props.adminActiveModule,
+              // interactiveUrl: "",
+              // interactiveUrlFormat: "",
+              activationStatus: true,
+              numberOfBlank: Quiz.NumberOfBlank,
+              questionDictionaries: [...QstList],
+              answers: [...AnsList],
+            },
+            // (axios.defaults.headers.common[
+            //   "Authorization"
+            // ] = this.state.Authorization),
+            { "Content-type": "application/json; charset=iso-8859-1" }
+          )
+          .then((res) => {
+            // console.log("Success res ========>", res);
+            openNotificationWithIcon("success", "Filling", "Filling", 10);
+          });
       }
     }
-  };
-
-  const handleEmptyAllInputs = () => {
-    setQstList([
-      {
-        questionText: "",
-        language: "",
-      },
-    ]);
-
-    setAnsList([
-      {
-        questionAnswersDictionaries: [{ answerText: "", language: "" }],
-        correctAnswer: false,
-      },
-    ]);
+    document.getElementById("InsertForm").reset();
+    handleEmptyAllInputs();
   };
 
   const handleBlankQuestionsInputChange = (e, i, index) => {
@@ -303,7 +372,7 @@ function QuizAddQuestions(props) {
 
   return (
     <div>
-      <Form className='text-left' onSubmit={handleSubmit}>
+      <Form id='InsertForm' className='text-left' onSubmit={handleSubmit}>
         <div className='m-auto'>
           <FormControl variant='outlined' style={{ width: "15%" }}>
             <InputLabel id='demo-simple-select-outlined-label'>
@@ -469,9 +538,11 @@ function QuizAddQuestions(props) {
         </div>
       </Form>
 
-      <div style={{ marginTop: 20 }}>
+      {/* <Divider className='bg-info' /> */}
+
+      {/* <div style={{ marginTop: 20 }}>
         <pre>{JSON.stringify(Quiz, null, 2)}</pre>
-      </div>
+      </div> */}
     </div>
   );
 }

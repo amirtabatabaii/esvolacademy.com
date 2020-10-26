@@ -12,6 +12,7 @@ import Login from "./Components/LoginRegister/Login";
 import UserHome from "./Components/UserHome/UserHome";
 import UserPrivateRoute from "./Components/UserHome/UserPrivateRoute";
 import ModuleFinished from "./Components/Module/ModuleFinished";
+import Settings from "./Components/UserHome/Settings";
 
 function App() {
   return (
@@ -54,6 +55,13 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/user"}
             component={UserHome}
+          />
+
+          {/* User Setting */}
+          <UserPrivateRoute
+            exact
+            path={process.env.PUBLIC_URL + "/user/setting"}
+            component={Settings}
           />
 
           {/* Admin Login */}

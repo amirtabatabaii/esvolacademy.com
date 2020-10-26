@@ -14,6 +14,7 @@ import QuizAddQuestions from "./SubModule7/QuizAddQuestions";
 import "./AdminMain.css";
 import HeaderBreadcrumb from "./HeaderBreadcrumb";
 import QuestionsSetting from "./QuestionsSetting/QuestionsSetting";
+import QuizAdmin from "./SubModule7/QuizAdmin";
 
 const { Content } = Layout;
 
@@ -102,7 +103,7 @@ class AdminMain extends Component {
               )}
 
               {adminActiveSubModule === SubModule7Name && (
-                <QuizAddQuestions
+                <QuizAdmin
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />

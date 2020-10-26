@@ -9,6 +9,19 @@ import Footer from "../Footer/Footer";
 import "./Home.css";
 
 class Home extends Component {
+  componentDidMount() {
+    try {
+      const serializedState = JSON.stringify({
+        userActiveSubModule: "Module1",
+        userActiveModule: "sub1",
+        selectedLanguage: "En",
+        EducationWithTasks: true,
+      });
+      localStorage.setItem("state", serializedState);
+    } catch (e) {
+      console.log(e);
+    }
+  }
   render() {
     return (
       <div className='main-bg-color'>

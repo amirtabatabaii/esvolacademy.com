@@ -48,6 +48,8 @@ import module_4 from "../../assets/img/user/module_4.png";
 import module_5 from "../../assets/img/user/module_5.png";
 
 class ProgressImage extends Component {
+  componentDidMount() {}
+
   render() {
     const { userActiveModule, userActiveSubModule } = this.props;
 

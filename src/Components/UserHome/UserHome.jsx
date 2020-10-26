@@ -146,11 +146,11 @@ class UserHome extends Component {
                       melis@gmail.com
                     </p>
 
-                    {/* <Link to='/modules'> */}
-                    <button className='continue-Btn mt-5' type='submit'>
-                      <TranslateText txt='User-Edit-Btn' />
-                    </button>
-                    {/* </Link> */}
+                    <Link to='/user/setting'>
+                      <button className='continue-Btn mt-5' type='submit'>
+                        <TranslateText txt='User-Edit-Btn' />
+                      </button>
+                    </Link>
                   </Col>
                 </Row>
               </div>
