@@ -8,7 +8,7 @@ import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
-import DrawerSection from "./DrawerSection";
+import DrawerSection from "./DrawerSection/DrawerSection";
 import { openNotificationWithIcon } from "../../Utility/Error";
 
 class TableQuestion extends Component {
@@ -16,6 +16,7 @@ class TableQuestion extends Component {
     ViewVisible: false,
     EditVisible: false,
     QST: [],
+    FltQst: {},
   };
 
   handleTableChange = (e) => {
@@ -31,22 +32,34 @@ class TableQuestion extends Component {
               `?moduleName=${this.props.adminActiveModule}&questionType=${this.state.questionType}`
           )
           .then((Response) => {
-            // console.log("Success res ========>", Response.data);
+            console.log("Success res ========>", Response.data);
             this.setState({ QST: Response.data });
           })
     );
   };
 
-  showViewDrawer = () => {
-    this.setState({
-      ViewVisible: true,
-    });
+  showViewDrawer = (id) => {
+    this.setState(
+      {
+        ViewVisible: true,
+        FltQst: this.state.QST.filter(
+          (qsts) => parseInt(qsts.id) == parseInt(id)
+        )[0],
+      }
+      // () => console.log(this.state.FltQst)
+    );
   };
 
-  showEditDrawer = () => {
-    this.setState({
-      EditVisible: true,
-    });
+  showEditDrawer = (id) => {
+    this.setState(
+      {
+        EditVisible: true,
+        FltQst: this.state.QST.filter(
+          (qsts) => parseInt(qsts.id) == parseInt(id)
+        )[0],
+      }
+      // () => console.log(this.state.FltQst)
+    );
   };
 
   onClose = () => {
@@ -57,6 +70,7 @@ class TableQuestion extends Component {
   };
 
   onActiveDeactive(id, status) {
+    // console.log("id", id);
     axios
       .put(ApiUrlMain2 + ApiUrlQuestion + `/${id}/status?activation=${status}`)
       .then((res) => {
@@ -151,7 +165,6 @@ class TableQuestion extends Component {
                               qst.activationStatus == 1 ? false : true
                             )
                           }
-                          onCancel={this.cancel}
                           okText='Yes'
                           cancelText='No'
                         >
@@ -166,7 +179,7 @@ class TableQuestion extends Component {
                         </Popconfirm>
                       </td>
                       <td>
-                        <Link onClick={this.showViewDrawer}>
+                        <Link onClick={() => this.showViewDrawer(qst.id)}>
                           <FontAwesomeIcon
                             className='text-success ml-2 mr-4'
                             icon={faEye}
@@ -174,7 +187,6 @@ class TableQuestion extends Component {
                             fixedWidth
                           />
                         </Link>
-
                         <DrawerSection
                           visible={this.state.ViewVisible}
                           onClose={this.onClose}
@@ -182,25 +194,30 @@ class TableQuestion extends Component {
                           title='View Detail'
                           placement='left'
                           width={800}
+                          FltQst={this.state.FltQst}
                         />
 
-                        <Link onClick={this.showEditDrawer}>
-                          <FontAwesomeIcon
-                            className='text-primary mr-4'
-                            icon={faEdit}
-                            transform='grow-15'
-                            fixedWidth
-                          />
-                        </Link>
-
-                        <DrawerSection
-                          visible={this.state.EditVisible}
-                          onClose={this.onClose}
-                          DrawerType='Edit'
-                          title={"Edit Detail"}
-                          placement='right'
-                          width={800}
-                        />
+                        {qst.activationStatus && (
+                          <>
+                            <Link onClick={() => this.showEditDrawer(qst.id)}>
+                              <FontAwesomeIcon
+                                className='text-primary mr-4'
+                                icon={faEdit}
+                                transform='grow-15'
+                                fixedWidth
+                              />
+                            </Link>
+                            <DrawerSection
+                              visible={this.state.EditVisible}
+                              onClose={this.onClose}
+                              DrawerType='Edit'
+                              title={"Edit Detail"}
+                              placement='right'
+                              width={800}
+                              FltQst={this.state.FltQst}
+                            />
+                          </>
+                        )}
                       </td>
                     </tr>
                   ))}
