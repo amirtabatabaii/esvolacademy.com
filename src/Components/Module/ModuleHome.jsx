@@ -170,6 +170,15 @@ class ModuleHome extends Component {
         });
     }
 
+    if (this.props.userActiveSubModule === "sub6") {
+      await axios
+        .get(`https://run.mocky.io/v3/f91f7ece-7a02-4b5f-b70e-e695bf11fef3`)
+        // .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+        .then((Response) => {
+          this.props.SubModule6ExpertVideoSection(Response.data.results);
+        });
+    }
+
     if (this.props.userActiveSubModule === "sub7") {
       await axios
         .get(
@@ -199,6 +208,19 @@ class ModuleHome extends Component {
   }
 
   async componentDidUpdate(previousProps, previousState) {
+    if (!this.props.EducationWithTasks) {
+      if (
+        this.props.userActiveSubModule === "sub3" ||
+        this.props.userActiveSubModule === "sub4" ||
+        this.props.userActiveSubModule === "sub5"
+      ) {
+        this.props.UserActiveModuleSubModule(
+          this.props.userActiveModule,
+          "sub6"
+        );
+      }
+    }
+
     if (previousProps.userActiveSubModule !== this.props.userActiveSubModule) {
       if (this.props.userActiveSubModule === "sub1") {
         await axios
