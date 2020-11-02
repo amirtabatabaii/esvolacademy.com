@@ -16,6 +16,7 @@ import {
   SUBMODULE_5_CASESTUDY_FILTERED,
   EMPTY_REDUX,
   EDUCATION_WITH_TASK,
+  SUBMODULE_6_EXPERT_VIDEO,
 } from "./types";
 
 import initialState from "./store";
@@ -166,6 +167,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         EducationWithTasks: action.payload.EducationWithTasks,
+      };
+
+    case SUBMODULE_6_EXPERT_VIDEO:
+      return {
+        ...state,
+        SubModule6ExpertVideo: action.payload.SubModule6ExpertVideo,
       };
 
     default:

@@ -47,7 +47,7 @@ class SubModule6 extends Component {
         <section className='section'>
           <div className='player-wrapper'>
             <ReactPlayer
-              url={SubModule6Detail[ExpertIndex].SubModule6Url}
+              url={SubModule6Detail[ExpertIndex].url}
               className='react-player'
               width='100%'
               height='100%'
@@ -61,11 +61,11 @@ class SubModule6 extends Component {
         {/* <LinearProgress variant='determinate' value={played * 100} /> */}
 
         <Row className='w-100 d-flex justify-content-around'>
-          {ExpertIndex === 0 && (
+          {ExpertIndex === 0 && SubModule6Detail.length === 2 && (
             <SubModuleNextButton
               disabled={
                 played.toFixed(2) * 100 <=
-                SubModule6Detail[ExpertIndex].SubModule6Ratio
+                SubModule6Detail[ExpertIndex].completionRatio
                   ? true
                   : false
               }
@@ -79,11 +79,11 @@ class SubModule6 extends Component {
             />
           )}
 
-          {ExpertIndex === 1 && (
+          {(ExpertIndex !== 0 || SubModule6Detail.length === 1) && (
             <SubModuleNextButton
               disabled={
                 played.toFixed(2) * 100 <=
-                SubModule6Detail[ExpertIndex].SubModule6Ratio
+                SubModule6Detail[ExpertIndex].completionRatio
                   ? true
                   : false
               }

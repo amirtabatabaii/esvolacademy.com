@@ -28,10 +28,10 @@ class CompareAnswers extends Component {
 
     for (let i = 0; i < QuizQuestion.length; i++) {
       incorrectAnswers.push(
-        QuizQuestion[i].answers.filter((ans) => ans.correctAnswer === false)
+        QuizQuestion[i].answers.filter((ans) => ans.isCorrectAnswer === false)
       );
       correctAnswers.push(
-        QuizQuestion[i].answers.filter((ans) => ans.correctAnswer === true)
+        QuizQuestion[i].answers.filter((ans) => ans.isCorrectAnswer === true)
       );
       // userAllAnswers.push([]);
     }
@@ -83,7 +83,7 @@ class CompareAnswers extends Component {
       } else {
         // correctAnswers2[k][0] = QuizQuestion[k].answers
         correctAnswers2[k] = QuizQuestion[k].answers
-          .filter((ans) => ans.correctAnswer === true)[0]
+          .filter((ans) => ans.isCorrectAnswer === true)[0]
           .questionAnswersDictionaries.filter(
             (ans) => ans.language === AllAnswersLanguage[k]
           )[0].answerText;

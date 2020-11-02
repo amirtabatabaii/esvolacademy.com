@@ -19,6 +19,7 @@ import {
   SubModule5CaseStudySection,
   SubModule5CaseStudySectionFiltered,
   SetEmptyRedux,
+  SubModule6ExpertVideoSection,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -154,7 +155,8 @@ class ModuleHome extends Component {
     if (this.props.userActiveSubModule === "sub7") {
       await axios
         .get(
-          ApiUrlMain2 + ApiUrlQuestion
+          `https://run.mocky.io/v3/060f8d8a-ba8a-4d08-945b-e7ac1b188e36`
+          // ApiUrlMain2 + ApiUrlQuestion
           //ApiUrlGetQuestion
           //  {
           //   headers: {
@@ -163,8 +165,8 @@ class ModuleHome extends Component {
           // }
         )
         .then((Response) => {
-          console.log(Response);
-          this.props.SubModule1Quiz(Response.data);
+          // console.log(Response);
+          this.props.SubModule1Quiz(Response.data.results);
 
           this.getRandomAnswer(
             this.props.SubModule7QuizQuestion,
@@ -206,10 +208,19 @@ class ModuleHome extends Component {
           });
       }
 
+      if (this.props.userActiveSubModule === "sub6") {
+        await axios
+          .get(`https://run.mocky.io/v3/f91f7ece-7a02-4b5f-b70e-e695bf11fef3`)
+          // .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+          .then((Response) => {
+            this.props.SubModule6ExpertVideoSection(Response.data.results);
+          });
+      }
+
       if (this.props.userActiveSubModule === "sub7") {
         await axios
           .get(
-            `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
+            `https://run.mocky.io/v3/060f8d8a-ba8a-4d08-945b-e7ac1b188e36`
             // ApiUrlMain2 +
             //   ApiUrlQuestion +
             //   `?moduleName=MODULE1&questionType=MultipleChoice`
@@ -220,7 +231,7 @@ class ModuleHome extends Component {
             // }
           )
           .then((Response) => {
-            this.props.SubModule1Quiz(Response.data);
+            this.props.SubModule1Quiz(Response.data.results);
 
             this.getRandomAnswer(
               this.props.SubModule7QuizQuestion,
@@ -838,7 +849,7 @@ class ModuleHome extends Component {
       SubModule1Ratio,
       SubModule2Url,
       SubModule2Ratio,
-      SubModule6,
+      SubModule6ExpertVideo,
       SubModule7QuizQuestionFiltered,
       SubModule7QuizQuestion,
       //
@@ -893,7 +904,7 @@ class ModuleHome extends Component {
                 SubModule1Ratio={SubModule1Ratio}
                 SubModule2Url={SubModule2Url}
                 SubModule2Ratio={SubModule2Ratio}
-                SubModule6Detail={SubModule6}
+                SubModule6Detail={SubModule6ExpertVideo}
                 SubModule7QuizQuestionFiltered={SubModule7QuizQuestionFiltered}
                 SubModule7QuizQuestionText={
                   SubModule7QuizQuestionFiltered[this.state.questionIndex]
@@ -970,7 +981,7 @@ const mapStateToProps = (state) => ({
   SubModule1Ratio: state.SubModule1Ratio,
   SubModule2Url: state.SubModule2Url,
   SubModule2Ratio: state.SubModule2Ratio,
-  SubModule6: state.SubModule6,
+  SubModule6ExpertVideo: state.SubModule6ExpertVideo,
   //
   SubModule7QuizQuestion: state.SubModule7QuizQuestion,
   SubModule7QuizQuestionFiltered: state.SubModule7QuizQuestionFiltered,
@@ -1002,4 +1013,5 @@ export default connect(mapStateToProps, {
   SubModule5CaseStudySection,
   SubModule5CaseStudySectionFiltered,
   SetEmptyRedux,
+  SubModule6ExpertVideoSection,
 })(withRouter(ModuleHome));

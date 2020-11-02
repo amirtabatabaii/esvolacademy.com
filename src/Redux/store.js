@@ -20,7 +20,7 @@ export const initialState = {
   SubModule7Name: "Quiz",
   //
   userActiveModule: "Module1",
-  userActiveSubModule: "sub1",
+  userActiveSubModule: "sub5",
   //
   SubModule1Title: "Introduction Video",
   SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
@@ -30,16 +30,12 @@ export const initialState = {
   SubModule2Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
   SubModule2Ratio: "70",
   //
-  SubModule6: [
+  SubModule6ExpertVideo: [
     {
-      SubModule6Title: "Expert Video 1",
-      SubModule6Url: "https://www.youtube.com/watch?v=3_JsyidKdaI",
-      SubModule6Ratio: "50",
-    },
-    {
-      SubModule6Title: "Expert Video 2",
-      SubModule6Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
-      SubModule6Ratio: "80",
+      courseName: "",
+      url: "",
+      completionRatio: "",
+      type: "",
     },
   ],
   //
@@ -95,9 +91,8 @@ const store = createStore(
   // persistedState,
   initialState,
   compose(
-    applyMiddleware(...middleware)
-    // ,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

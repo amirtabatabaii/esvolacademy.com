@@ -16,6 +16,7 @@ import {
   SUBMODULE_5_CASESTUDY,
   EMPTY_REDUX,
   EDUCATION_WITH_TASK,
+  SUBMODULE_6_EXPERT_VIDEO,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -186,5 +187,15 @@ export const SetEducationWithTasks = (EducationWithTasks) => (dispatch) => {
   dispatch({
     type: EDUCATION_WITH_TASK,
     payload: { EducationWithTasks },
+  });
+};
+
+// SubModule 6 Expert Video
+export const SubModule6ExpertVideoSection = (SubModule6ExpertVideo) => (
+  dispatch
+) => {
+  dispatch({
+    type: SUBMODULE_6_EXPERT_VIDEO,
+    payload: { SubModule6ExpertVideo },
   });
 };
