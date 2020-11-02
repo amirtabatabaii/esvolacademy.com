@@ -20,7 +20,7 @@ export const initialState = {
   SubModule7Name: "Quiz",
   //
   userActiveModule: "Module1",
-  userActiveSubModule: "sub5",
+  userActiveSubModule: "sub7",
   //
   SubModule1IntroductionVideo: [
     {
@@ -39,13 +39,6 @@ export const initialState = {
       type: "",
     },
   ],
-  // SubModule1Title: "Introduction Video",
-  // SubModule1Url: "https://www.youtube.com/watch?v=A2pM6u-d-MM",
-  // SubModule1Ratio: "80",
-  //
-  // SubModule2Title: "Course Video",
-  // SubModule2Url: "https://www.youtube.com/watch?v=_npPA9ydDTs",
-  // SubModule2Ratio: "70",
   //
   SubModule6ExpertVideo: [
     {
