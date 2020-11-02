@@ -209,9 +209,10 @@ class ModuleHome extends Component {
       if (this.props.userActiveSubModule === "sub7") {
         await axios
           .get(
-            ApiUrlMain2 +
-              ApiUrlQuestion +
-              `?moduleName=MODULE1&questionType=MultipleChoice`
+            `https://run.mocky.io/v3/51c388ae-3b25-4a84-be49-5a7ac17d993f`
+            // ApiUrlMain2 +
+            //   ApiUrlQuestion +
+            //   `?moduleName=MODULE1&questionType=MultipleChoice`
             //  {
             //   headers: {
             //     Authorization: localStorage.getItem("jwtToken"),
