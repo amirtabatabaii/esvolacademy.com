@@ -14,10 +14,8 @@ class SubModule extends Component {
     const {
       userActiveModule,
       userActiveSubModule,
-      SubModule1Url,
-      SubModule1Ratio,
-      SubModule2Url,
-      SubModule2Ratio,
+      SubModule1IntroductionVideo,
+      SubModule2CourseVideo,
       SubModule6Detail,
       ExpertIndex,
       onClick,
@@ -71,8 +69,7 @@ class SubModule extends Component {
           <SubModule1
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
-            SubModuleUrl={SubModule1Url}
-            SubModuleRatio={SubModule1Ratio}
+            SubModule1Detail={SubModule1IntroductionVideo}
             onClick={onClick}
             EducationWithTasks={EducationWithTasks}
           />
@@ -82,8 +79,7 @@ class SubModule extends Component {
           <SubModule2
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
-            SubModuleUrl={SubModule2Url}
-            SubModuleRatio={SubModule2Ratio}
+            SubModule2Detail={SubModule2CourseVideo}
             onClick={onClick}
             EducationWithTasks={EducationWithTasks}
           />

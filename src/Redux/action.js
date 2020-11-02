@@ -17,6 +17,8 @@ import {
   EMPTY_REDUX,
   EDUCATION_WITH_TASK,
   SUBMODULE_6_EXPERT_VIDEO,
+  SUBMODULE_1_INTRO_VIDEO,
+  SUBMODULE_2_COURSE_VIDEO,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -197,5 +199,25 @@ export const SubModule6ExpertVideoSection = (SubModule6ExpertVideo) => (
   dispatch({
     type: SUBMODULE_6_EXPERT_VIDEO,
     payload: { SubModule6ExpertVideo },
+  });
+};
+
+// SubModule 1 Introduction Video
+export const SubModule1IntroductionVideoSection = (
+  SubModule1IntroductionVideo
+) => (dispatch) => {
+  dispatch({
+    type: SUBMODULE_1_INTRO_VIDEO,
+    payload: { SubModule1IntroductionVideo },
+  });
+};
+
+// SubModule 2 Course Video
+export const SubModule2CourseVideoSection = (SubModule2CourseVideo) => (
+  dispatch
+) => {
+  dispatch({
+    type: SUBMODULE_2_COURSE_VIDEO,
+    payload: { SubModule2CourseVideo },
   });
 };

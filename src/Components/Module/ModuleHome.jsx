@@ -20,6 +20,8 @@ import {
   SubModule5CaseStudySectionFiltered,
   SetEmptyRedux,
   SubModule6ExpertVideoSection,
+  SubModule1IntroductionVideoSection,
+  SubModule2CourseVideoSection,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -126,6 +128,22 @@ class ModuleHome extends Component {
       }
     }
 
+    if (this.props.userActiveSubModule === "sub1") {
+      await axios
+        .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+        .then((Response) => {
+          this.props.SubModule1IntroductionVideoSection(Response.data.results);
+        });
+    }
+
+    if (this.props.userActiveSubModule === "sub2") {
+      await axios
+        .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+        .then((Response) => {
+          this.props.SubModule2CourseVideoSection(Response.data.results);
+        });
+    }
+
     if (this.props.userActiveSubModule === "sub4") {
       await axios
         .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
@@ -182,6 +200,24 @@ class ModuleHome extends Component {
 
   async componentDidUpdate(previousProps, previousState) {
     if (previousProps.userActiveSubModule !== this.props.userActiveSubModule) {
+      if (this.props.userActiveSubModule === "sub1") {
+        await axios
+          .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+          .then((Response) => {
+            this.props.SubModule1IntroductionVideoSection(
+              Response.data.results
+            );
+          });
+      }
+
+      if (this.props.userActiveSubModule === "sub2") {
+        await axios
+          .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+          .then((Response) => {
+            this.props.SubModule2CourseVideoSection(Response.data.results);
+          });
+      }
+
       if (this.props.userActiveSubModule === "sub4") {
         await axios
           .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
@@ -845,10 +881,8 @@ class ModuleHome extends Component {
     const {
       userActiveModule,
       userActiveSubModule,
-      SubModule1Url,
-      SubModule1Ratio,
-      SubModule2Url,
-      SubModule2Ratio,
+      SubModule1IntroductionVideo,
+      SubModule2CourseVideo,
       SubModule6ExpertVideo,
       SubModule7QuizQuestionFiltered,
       SubModule7QuizQuestion,
@@ -900,10 +934,8 @@ class ModuleHome extends Component {
               <SubModule
                 userActiveModule={userActiveModule}
                 userActiveSubModule={userActiveSubModule}
-                SubModule1Url={SubModule1Url}
-                SubModule1Ratio={SubModule1Ratio}
-                SubModule2Url={SubModule2Url}
-                SubModule2Ratio={SubModule2Ratio}
+                SubModule1IntroductionVideo={SubModule1IntroductionVideo}
+                SubModule2CourseVideo={SubModule2CourseVideo}
                 SubModule6Detail={SubModule6ExpertVideo}
                 SubModule7QuizQuestionFiltered={SubModule7QuizQuestionFiltered}
                 SubModule7QuizQuestionText={
@@ -977,10 +1009,8 @@ const mapStateToProps = (state) => ({
   userActiveModule: state.userActiveModule,
   userActiveSubModule: state.userActiveSubModule,
   //
-  SubModule1Url: state.SubModule1Url,
-  SubModule1Ratio: state.SubModule1Ratio,
-  SubModule2Url: state.SubModule2Url,
-  SubModule2Ratio: state.SubModule2Ratio,
+  SubModule1IntroductionVideo: state.SubModule1IntroductionVideo,
+  SubModule2CourseVideo: state.SubModule2CourseVideo,
   SubModule6ExpertVideo: state.SubModule6ExpertVideo,
   //
   SubModule7QuizQuestion: state.SubModule7QuizQuestion,
@@ -1014,4 +1044,6 @@ export default connect(mapStateToProps, {
   SubModule5CaseStudySectionFiltered,
   SetEmptyRedux,
   SubModule6ExpertVideoSection,
+  SubModule1IntroductionVideoSection,
+  SubModule2CourseVideoSection,
 })(withRouter(ModuleHome));

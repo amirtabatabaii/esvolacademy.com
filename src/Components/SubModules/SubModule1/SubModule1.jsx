@@ -28,8 +28,7 @@ class SubModule1 extends Component {
     const { played } = this.state;
     const {
       userActiveModule,
-      SubModuleUrl,
-      SubModuleRatio,
+      SubModule1Detail,
       onClick,
       EducationWithTasks,
       NormalNextSubModule,
@@ -40,7 +39,8 @@ class SubModule1 extends Component {
         <section className='section'>
           <div className='player-wrapper'>
             <ReactPlayer
-              url={SubModuleUrl}
+              url={SubModule1Detail[0].url}
+              // url={SubModuleUrl}
               className='react-player'
               width='100%'
               height='100%'
@@ -63,7 +63,11 @@ class SubModule1 extends Component {
         /> */}
         <Row className='w-100 d-flex justify-content-around'>
           <SubModuleNextButton
-            disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
+            disabled={
+              played.toFixed(2) * 100 <= SubModule1Detail[0].completionRatio
+                ? true
+                : false
+            }
             className={`${userActiveModule}-next-btn m-3`}
             condition={!EducationWithTasks}
             EducationWithTasks={!EducationWithTasks}
