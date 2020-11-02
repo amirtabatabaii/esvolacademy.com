@@ -52,7 +52,7 @@ function QuizAddQuestions(props) {
   const [AnsList, setAnsList] = useState([
     {
       questionAnswersDictionaries: [{ answerText: "", language: "" }],
-      correctAnswer: false,
+      isCorrectAnswer: false,
     },
   ]);
 
@@ -81,9 +81,9 @@ function QuizAddQuestions(props) {
     const list2 = [...AnsList];
 
     if (questionType === "Filling" || questionType === "Blank") {
-      list2[p]["correctAnswer"] = true;
+      list2[p]["isCorrectAnswer"] = true;
     } else {
-      if (name === "isTrue") list2[p]["correctAnswer"] = e.target.checked;
+      if (name === "isTrue") list2[p]["isCorrectAnswer"] = e.target.checked;
     }
 
     if (name === "language")
@@ -94,7 +94,7 @@ function QuizAddQuestions(props) {
 
     // console.log(list2);
     // for (let i = 0; i <= p; i++) {
-    //   if (list2[i]["correctAnswer"] === true) {
+    //   if (list2[i]["isCorrectAnswer"] === true) {
 
     // }
   };
@@ -145,7 +145,7 @@ function QuizAddQuestions(props) {
       ...AnsList,
       {
         questionAnswersDictionaries: [{ answerText: "", language: "" }],
-        correctAnswer: false,
+        isCorrectAnswer: false,
       },
     ]);
   };
@@ -191,7 +191,7 @@ function QuizAddQuestions(props) {
     setAnsList([
       {
         questionAnswersDictionaries: [{ answerText: "", language: "" }],
-        correctAnswer: false,
+        isCorrectAnswer: false,
       },
     ]);
   };
@@ -208,8 +208,8 @@ function QuizAddQuestions(props) {
           EndListTemp[i].questionText = arr.join(" _ ");
           // setEndInputList(EndListTemp);
         }
-        // delete EndListTemp[i].correctAnswerCount;
-        // delete EndListTemp[i].incorrectAnswerCount;
+        // delete EndListTemp[i].isCorrectAnswerCount;
+        // delete EndListTemp[i].inisCorrectAnswerCount;
       }
       setQuiz({
         point: Quiz.point,
@@ -252,7 +252,7 @@ function QuizAddQuestions(props) {
       ) {
         let count = 0;
         for (let i = 0; i < AnsList.length; i++) {
-          if (AnsList[i]["correctAnswer"] === true) {
+          if (AnsList[i]["isCorrectAnswer"] === true) {
             count += 1;
           }
         }

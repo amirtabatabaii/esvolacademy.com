@@ -94,7 +94,7 @@ function QuizBoolean(props) {
           <>
             <div
               className={
-                mainList.correctAnswer === true
+                mainList.isCorrectAnswer === true
                   ? "border border-success p-2 mt-2"
                   : "border border-danger p-2 mt-2"
               }
@@ -102,14 +102,14 @@ function QuizBoolean(props) {
               <div
                 className='d-flex justify-content-between m-1 p-2'
                 style={
-                  mainList.correctAnswer === true
+                  mainList.isCorrectAnswer === true
                     ? { backgroundColor: "#BEFBA0" }
                     : { backgroundColor: "#FBB2A0" }
                 }
               >
                 <div
                   className={
-                    mainList.correctAnswer === true
+                    mainList.isCorrectAnswer === true
                       ? "m-1 p-1 text-success font-weight-bold"
                       : "m-1 p-1 text-danger font-weight-bold"
                   }
@@ -118,7 +118,7 @@ function QuizBoolean(props) {
                   {" - "}
                   <Checkbox
                     name='isTrue'
-                    checked={mainList.correctAnswer}
+                    checked={mainList.isCorrectAnswer}
                     onChange={(e) =>
                       props.handleAnsListDetailChange(e, 0, true, p)
                     }
