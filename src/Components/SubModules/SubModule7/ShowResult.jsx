@@ -34,12 +34,14 @@ class ShowResult extends Component {
                 StarFull={StarFull}
                 Passed={true}
               />
+
               <button
                 className={`${userActiveModule}-next-btn m-4`}
                 onClick={HandleCompareAnswer}
               >
                 <TranslateText txt='SubModule7-CheckAnswers' />
               </button>
+
               {userActiveModule === "Module5" && (
                 <Link
                   to='/certificate'
@@ -50,6 +52,7 @@ class ShowResult extends Component {
                   </button>
                 </Link>
               )}
+
               {userActiveModule !== "Module5" && (
                 <button
                   className={`${userActiveModule}-next-btn m-4`}
