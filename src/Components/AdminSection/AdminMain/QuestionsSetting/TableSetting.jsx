@@ -188,7 +188,7 @@ class TableSetting extends Component {
         if (Response.status === 200) {
           openNotificationWithIcon("success", "Setting", "setting", 10);
           this.setState({ EditVisible: false });
-          document.getElementById("InsertForm").reset();
+          // document.getElementById("InsertForm").reset();
         }
       });
   };
