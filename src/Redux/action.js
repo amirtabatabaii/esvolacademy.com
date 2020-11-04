@@ -19,6 +19,7 @@ import {
   SUBMODULE_6_EXPERT_VIDEO,
   SUBMODULE_1_INTRO_VIDEO,
   SUBMODULE_2_COURSE_VIDEO,
+  USER_INFO,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -219,5 +220,13 @@ export const SubModule2CourseVideoSection = (SubModule2CourseVideo) => (
   dispatch({
     type: SUBMODULE_2_COURSE_VIDEO,
     payload: { SubModule2CourseVideo },
+  });
+};
+
+// USER_INFO
+export const SetUserInfo = (UserInfo) => (dispatch) => {
+  dispatch({
+    type: USER_INFO,
+    payload: { UserInfo },
   });
 };

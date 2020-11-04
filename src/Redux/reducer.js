@@ -19,6 +19,7 @@ import {
   SUBMODULE_6_EXPERT_VIDEO,
   SUBMODULE_1_INTRO_VIDEO,
   SUBMODULE_2_COURSE_VIDEO,
+  USER_INFO,
 } from "./types";
 
 import initialState from "./store";
@@ -187,6 +188,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         SubModule2CourseVideo: action.payload.SubModule2CourseVideo,
+      };
+
+    case USER_INFO:
+      return {
+        ...state,
+        UserInfo: action.payload.UserInfo,
+        UserStatus: action.payload.UserInfo.userStatus,
       };
 
     default:

@@ -10,7 +10,7 @@ import Footer from "../Footer/Footer";
 import TranslateText from "../Translate/TranslateText";
 
 import "./userHome.css";
-import { SetEducationWithTasks } from "../../Redux/action";
+import { SetEducationWithTasks, SetUserInfo } from "../../Redux/action";
 import avatar from "../../assets/img/img_avatar.png";
 import { Link } from "react-router-dom";
 
@@ -82,7 +82,8 @@ class UserHome extends Component {
       })
       .then((Response) => {
         if (Response.status === 200) {
-          console.log(Response.data);
+          // console.log(Response.data);
+          this.props.SetUserInfo(Response.data);
         }
       });
 
@@ -92,9 +93,11 @@ class UserHome extends Component {
   render() {
     const { value } = this.state;
     const {
-      userActiveModule,
-      userActiveSubModule,
+      // userActiveModule,
+      // userActiveSubModule,
       EducationWithTasks,
+      UserInfo,
+      UserStatus,
     } = this.props;
 
     return (
@@ -126,12 +129,12 @@ class UserHome extends Component {
         </Modal>
 
         <div id='page-wrap' className='App'>
-          <ModuleNavBar userActiveModule={userActiveModule} />
+          <ModuleNavBar userActiveModule={UserStatus.currentModule} />
 
           {/* <Container> */}
           <p className='messageTxt text-left pt-5 pl-5'>
             <TranslateText txt='User-Hello-Message' />
-            {" Melis"}
+            {" " + UserInfo.firstName}
           </p>
 
           <Row className='w-100 p-5'>
@@ -155,10 +158,14 @@ class UserHome extends Component {
                     <p className='user-info-head'>
                       <TranslateText txt='User-personal-info-Header' />
                     </p>
-                    <p className='info-text font-weight-light'>Melis</p>
-                    <p className='info-text font-weight-light'>Çaycı</p>
                     <p className='info-text font-weight-light'>
-                      melis@gmail.com
+                      {UserInfo.firstName}
+                    </p>
+                    <p className='info-text font-weight-light'>
+                      {UserInfo.lastName}
+                    </p>
+                    <p className='info-text font-weight-light'>
+                      {UserInfo.email}
                     </p>
 
                     <Link to='/user/setting'>
@@ -181,8 +188,8 @@ class UserHome extends Component {
                     className='p-3 m-auto text-lg-right'
                   >
                     <ProgressImage
-                      userActiveModule={userActiveModule}
-                      userActiveSubModule={userActiveSubModule}
+                      userActiveModule={UserStatus.currentModule}
+                      userActiveSubModule={UserStatus.currentSubModule}
                     />
                   </Col>
                   <Col
@@ -195,16 +202,18 @@ class UserHome extends Component {
                       <TranslateText txt='User-education-info-Header' />
                     </p>
                     <p className='info-text'>
-                      <UserModuleActivity userActiveModule={userActiveModule} />
+                      <UserModuleActivity
+                        userActiveModule={UserStatus.currentModule}
+                      />
                     </p>
                     <p className='info-text'>
                       <UserSubModuleActivity
-                        userActiveSubModule={userActiveSubModule}
+                        userActiveSubModule={UserStatus.currentSubModule}
                       />
                     </p>
                     <p className='info-text'>
                       <TranslateText txt='User-education-info-Score' />
-                      {" : 200"}
+                      {" : " + UserStatus.score}
                     </p>
 
                     <Link to='/modules'>
@@ -226,8 +235,7 @@ class UserHome extends Component {
           {/* </Container> */}
         </div>
 
-        {/* <Footer userActiveModule={"Main"} /> */}
-        <Footer userActiveModule={userActiveModule} />
+        <Footer userActiveModule={UserStatus.currentModule} />
       </div>
     );
   }
@@ -237,8 +245,10 @@ const mapStateToProps = (state) => ({
   userActiveModule: state.userActiveModule,
   userActiveSubModule: state.userActiveSubModule,
   EducationWithTasks: state.EducationWithTasks,
+  UserInfo: state.UserInfo,
+  UserStatus: state.UserStatus,
 });
 
-export default connect(mapStateToProps, { SetEducationWithTasks })(
+export default connect(mapStateToProps, { SetEducationWithTasks, SetUserInfo })(
   withRouter(UserHome)
 );

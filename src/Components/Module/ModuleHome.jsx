@@ -917,19 +917,21 @@ class ModuleHome extends Component {
       EducationWithTasks,
       SubModule4ReadingFiltered,
       SubModule5CaseStudyFiltered,
+      UserInfo,
+      UserStatus,
     } = this.props;
 
     const { randomAnswers } = this.state;
 
     return (
       <div className='main-bg-color'>
-        <ModuleNavBar userActiveModule={userActiveModule} />
+        <ModuleNavBar userActiveModule={UserStatus.currentModule} />
 
         <Container>
           <Row className='w-100 pt-5 pb-5'>
             {/* Module panel */}
             <Col lg={2} className='d-flex justify-content-end'>
-              <ModuleStagesName userActiveModule={userActiveModule} />
+              <ModuleStagesName userActiveModule={UserStatus.currentModule} />
             </Col>
 
             <Col lg={10}>
@@ -937,7 +939,7 @@ class ModuleHome extends Component {
                 {/* SubModule panel */}
                 <SubModuleBtn
                   userActiveSubModule={userActiveSubModule}
-                  userActiveModule={userActiveModule}
+                  userActiveModule={UserStatus.currentModule}
                   onClick={this.handleOnClickSubModule}
                   EducationWithTasks={EducationWithTasks}
                 />
@@ -954,7 +956,7 @@ class ModuleHome extends Component {
 
               {/* SubModule Section */}
               <SubModule
-                userActiveModule={userActiveModule}
+                userActiveModule={UserStatus.currentModule}
                 userActiveSubModule={userActiveSubModule}
                 SubModule1IntroductionVideo={SubModule1IntroductionVideo}
                 SubModule2CourseVideo={SubModule2CourseVideo}
@@ -1021,7 +1023,7 @@ class ModuleHome extends Component {
           </Row>
         </Container>
 
-        <Footer userActiveModule={userActiveModule} />
+        <Footer userActiveModule={UserStatus.currentModule} />
       </div>
     );
   }
@@ -1051,6 +1053,9 @@ const mapStateToProps = (state) => ({
   SubModule4ReadingFiltered: state.SubModule4ReadingFiltered,
   SubModule5CaseStudy: state.SubModule5CaseStudy,
   SubModule5CaseStudyFiltered: state.SubModule5CaseStudyFiltered,
+  //
+  UserInfo: state.UserInfo,
+  UserStatus: state.UserStatus,
 });
 
 export default connect(mapStateToProps, {
