@@ -32,10 +32,12 @@ class Login extends Component {
           email: this.state.email,
           password: hashedPass,
         },
-        // (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+        (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+        // (axios.defaults.headers.common["Access-Control-Allow-Headers"] =
+        //   "Origin, X-Requested-With, Content-Type, Accept"),
         {
           "Content-type": "application/json; charset=iso-8859-1",
-          "Access-Control-Allow-Origin": "*",
+          // "Access-Control-Allow-Origin": "*",
         }
       )
       .then((res) => {
