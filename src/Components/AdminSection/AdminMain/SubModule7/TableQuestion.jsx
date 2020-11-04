@@ -32,7 +32,7 @@ class TableQuestion extends Component {
               `?moduleName=${this.props.adminActiveModule}&questionType=${this.state.questionType}`
           )
           .then((Response) => {
-            console.log("Success res ========>", Response.data);
+            // console.log("Success res ========>", Response.data);
             this.setState({ QST: Response.data });
           })
     );

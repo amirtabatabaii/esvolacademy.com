@@ -9,12 +9,11 @@ import InteractiveTool from "./SubModule3/InteractiveTool";
 import ExpertVideo from "./SubModule4/ExpertVideo";
 import Reading from "./SubModule5/Reading";
 import CaseStudy from "./SubModule6/CaseStudy";
-import QuizAddQuestions from "./SubModule7/QuizAddQuestions";
 
 import "./AdminMain.css";
 import HeaderBreadcrumb from "./HeaderBreadcrumb";
-import QuestionsSetting from "./QuestionsSetting/QuestionsSetting";
 import QuizAdmin from "./SubModule7/QuizAdmin";
+import TableSetting from "./QuestionsSetting/TableSetting";
 
 const { Content } = Layout;
 
@@ -110,7 +109,7 @@ class AdminMain extends Component {
               )}
 
               {adminActiveSubModule === "Questions Setting" && (
-                <QuestionsSetting
+                <TableSetting
                   adminActiveSubModule={"Quiz"}
                   adminActiveModule={adminActiveModule}
                 />
