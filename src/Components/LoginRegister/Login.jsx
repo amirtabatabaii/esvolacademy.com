@@ -36,17 +36,19 @@ class Login extends Component {
       // console.log(this.state.email);
       axios
         .post(
-          ApiUrlMain2 + "/v2/users/login", // /v2/users/login
+          "https://es-vol.herokuapp.com/login",
+          // ApiUrlMain2 + "/v2/users/login", // /v2/users/login
           {
-            email: this.state.email,
-            password: hashedPass,
-            // email: 'test@test.com',
-            // password: "f7c3bc1d808e04732adf679965ccc34ca7ae3441",
-          },
-          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
-          {
-            "Content-type": "application/json; charset=iso-8859-1",
+            // email: this.state.email,
+            // password: hashedPass,
+            email: "test@test.com",
+            password: "f7c3bc1d808e04732adf679965ccc34ca7ae3441",
           }
+          // ,
+          // (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+          // {
+          // "Content-type": "application/json; charset=iso-8859-1",
+          // }
         )
         .then((res) => {
           // if (res.status === 200) {
