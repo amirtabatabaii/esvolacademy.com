@@ -16,48 +16,56 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    var crypto = require("crypto");
-    var shasum = crypto
-      .createHash("sha1")
-      .update(this.state.password)
-      .digest("hex");
+    localStorage.setItem(
+      "UserInfo",
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiVVNFUiIsInN1YiI6InRlc3RAdGVzdC5jb20iLCJ1c2VyTmFtZSI6InRlc3RAdGVzdC5jb20iLCJleHAiOjE2MDUzNTE5MTcsInVzZXJJRCI6Im1yTGg3YXhObVVBUlc2YSJ9.nKMOk7HMP3xCqJui5k0RiHgGwh_PR7tGLtNSbjy1Vh4WgxbDr5BESWom0-uX25RDV7fqAnbjNanLOaamoZ2Q0g"
+    );
+    localStorage.setItem("UserID", "mrLh7axNmUARW6a");
 
-    const hashedPass = shasum;
-    // console.log(hashedPass);
-    // console.log(this.state.email);
-    axios
-      .post(
-        ApiUrlMain2 + "/users/login",
-        {
-          email: this.state.email,
-          password: hashedPass,
-        },
-        (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
-        // (axios.defaults.headers.common["Access-Control-Allow-Headers"] =
-        //   "Origin, X-Requested-With, Content-Type, Accept"),
-        {
-          "Content-type": "application/json; charset=iso-8859-1",
-          // "Access-Control-Allow-Origin": "*",
-        }
-      )
-      .then((res) => {
-        if (res.data.status === 200) {
-          console.log("res.status", res);
+    this.props.history.push(`/user`);
 
-          // localStorage.setItem("jwtToken", res.data.result);
-          // setAuthToken(res.data.result);
+    // if (this.state.EmailError === false) {
+    //   var crypto = require("crypto");
+    //   var shasum = crypto
+    //     .createHash("sha1")
+    //     .update(this.state.password)
+    //     .digest("hex");
 
-          // this.props.history.push(`/user`);
-          // document.getElementById("login-form").reset();
-        }
-        // else if (res.data.success === false) {
-        //   AuthError("error");
-        // }
-      });
-    // .catch((error) => {});
+    //   const hashedPass = shasum;
+    //   // console.log(hashedPass);
+    //   // console.log(this.state.email);
+    //   axios
+    //     .post(
+    //       ApiUrlMain2 + "/users/login",
+    //       {
+    //         email: this.state.email,
+    //         password: hashedPass,
+    //         // email: 'test@test.com',
+    //         // password: "f7c3bc1d808e04732adf679965ccc34ca7ae3441",
+    //       },
+    //       (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+    //       {
+    //         "Content-type": "application/json; charset=iso-8859-1",
+    //       }
+    //     )
+    //     .then((res) => {
+    //       if (res.status === 200) {
+    //         console.log("res.status", res);
+    //         // localStorage.setItem("jwtToken", res.data.result);
+    //         // setAuthToken(res.data.result);
+    //         // this.props.history.push(`/user`);
+    //         // document.getElementById("login-form").reset();
+    //       }
+    //       //
+    //       // else if (res.data.success === false) {
+    //       //   AuthError("error");
+    //       // }
+    //     });
+    //   // .catch((error) => {});
 
-    // localStorage.setItem("UserToken", "Test_User_Token");
-    // this.props.history.push(`/user`);
+    //   // localStorage.setItem("UserToken", "Test_User_Token");
+    //   // this.props.history.push(`/user`);
+    // }
   };
 
   componentDidMount() {

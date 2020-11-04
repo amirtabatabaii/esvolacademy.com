@@ -6,7 +6,7 @@ const UserPrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        localStorage.getItem("UserToken") ? (
+        localStorage.getItem("UserInfo") ? (
           <Component />
         ) : (
           <Redirect

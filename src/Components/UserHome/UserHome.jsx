@@ -17,6 +17,8 @@ import { Link } from "react-router-dom";
 import ProgressImage from "./ProgressImage";
 import UserModuleActivity from "./UserModuleActivity";
 import UserSubModuleActivity from "./UserSubModuleActivity";
+import axios from "axios";
+import { ApiUrlMain2 } from "../Utility/ApiUrl";
 
 const radioStyle = {
   display: "block",
@@ -69,8 +71,21 @@ class UserHome extends Component {
     });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     window.scrollTo(0, 0);
+
+    await axios
+      .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {
+        headers: {
+          Authorization: localStorage.getItem("UserInfo"),
+        },
+      })
+      .then((Response) => {
+        if (Response.status === 200) {
+          console.log(Response.data);
+        }
+      });
+
     this.showModal();
   }
 
