@@ -36,7 +36,7 @@ class Login extends Component {
       // console.log(this.state.email);
       axios
         .post(
-          ApiUrlMain2 + "/users/login",
+          ApiUrlMain2 + "/v2/users/login", // /v2/users/login
           {
             email: this.state.email,
             password: hashedPass,
@@ -50,7 +50,7 @@ class Login extends Component {
         )
         .then((res) => {
           // if (res.status === 200) {
-          console.log("res.status", res);
+          console.log("res =====> ", res);
           //         // localStorage.setItem("jwtToken", res.data.result);
           //         // setAuthToken(res.data.result);
           //         // this.props.history.push(`/user`);
