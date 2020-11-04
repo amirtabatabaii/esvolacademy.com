@@ -21,25 +21,25 @@ class Settings extends Component {
             <TranslateText txt='User-Setting' />
           </h3>
 
-          <Row className='w-100 m-auto bg-info'>
-            <Col lg={6} sm={12} md={12} className='bg-danger '>
-              <TranslateText txt='User-Name' />
-              <br />
-              <TranslateText txt='User-surName' />
-              <br />
-              <TranslateText txt='User-ChooseAvatar' />
-            </Col>
+          {/* <Row className='w-100 m-auto bg-info'> */}
+          {/* <Col lg={6} sm={12} md={12} className='bg-danger '> */}
+          <TranslateText txt='User-Name' />
+          <br />
+          <TranslateText txt='User-surName' />
+          <br />
+          <TranslateText txt='User-ChooseAvatar' />
+          <br />
+          <TranslateText txt='User-NewPass' />
+          <br />
+          <TranslateText txt='User-EducationWithTasks' />
+          {/* </Col> */}
 
-            <Col lg={6} sm={12} md={12} className=''>
-              <TranslateText txt='User-CurrentPass' />
-              <br />
+          {/* <Col lg={6} sm={12} md={12} className=''>
               <TranslateText txt='User-NewPass' />
               <br />
-              <TranslateText txt='User-ConfirmPass' />
-              <br />
               <TranslateText txt='User-EducationWithTasks' />
-            </Col>
-          </Row>
+            </Col> */}
+          {/* </Row> */}
         </Container>
 
         <Footer userActiveModule={userActiveModule} />
