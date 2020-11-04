@@ -199,6 +199,11 @@ class TableSetting extends Component {
     return (
       <>
         <div className='mt-4'>
+          <p>
+            View / Set Count of each question type in Quiz Section do you
+            have...
+          </p>
+
           <Table responsive striped bordered hover>
             <thead>
               <tr>
