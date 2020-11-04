@@ -11,7 +11,7 @@ import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import axios from "axios";
 
 class Login extends Component {
-  state = { PassError: null, EmailError: null, password: "", email: "" };
+  state = { PassError: false, EmailError: false, password: "", email: "" };
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -39,12 +39,26 @@ class Login extends Component {
           "https://es-vol.herokuapp.com/login",
           // ApiUrlMain2 + "/v2/users/login", // /v2/users/login
           {
-            // email: this.state.email,
-            // password: hashedPass,
-            email: "test@test.com",
-            password: "f7c3bc1d808e04732adf679965ccc34ca7ae3441",
+            email: this.state.email,
+            password: hashedPass,
+            // email: "test@test.com",
+            // password: "f7c3bc1d808e04732adf679965ccc34ca7ae3441",
           },
+          // {
+          //   "Access-Control-Allow-Origin": "*",
+          //   "Access-Control-Allow-Methods":
+          //     "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+          //   "Access-Control-Allow-Headers":
+          //     "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
+          //   "Access-Control-Max-Age": "1000",
+          // },
+
+          (axios.defaults.headers.common["Access-Control-Max-Age"] = "1000"),
           (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+          (axios.defaults.headers.common["Access-Control-Allow-Headers"] =
+            "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"),
+          (axios.defaults.headers.common["Access-Control-Allow-Methods"] =
+            "PUT, GET, POST, DELETE, OPTIONS"),
           {
             "Content-type": "application/json; charset=iso-8859-1",
           }
