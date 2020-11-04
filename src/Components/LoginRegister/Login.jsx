@@ -43,12 +43,11 @@ class Login extends Component {
             // password: hashedPass,
             email: "test@test.com",
             password: "f7c3bc1d808e04732adf679965ccc34ca7ae3441",
+          },
+          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+          {
+            "Content-type": "application/json; charset=iso-8859-1",
           }
-          // ,
-          // (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
-          // {
-          // "Content-type": "application/json; charset=iso-8859-1",
-          // }
         )
         .then((res) => {
           // if (res.status === 200) {
