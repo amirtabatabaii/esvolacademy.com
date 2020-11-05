@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Image } from "react-bootstrap";
-import { Modal, Radio } from "antd";
+import { Row, Col } from "react-bootstrap";
 
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -20,6 +19,11 @@ import UserSubModuleActivity from "./UserSubModuleActivity";
 import axios from "axios";
 import { ApiUrlMain2 } from "../Utility/ApiUrl";
 
+import { Switch } from "antd";
+import Settings from "./Settings";
+import { openNotificationWithIcon } from "../AdminSection/Utility/Error";
+import UserAvatarView from "./UserAvatarView";
+
 const radioStyle = {
   display: "block",
   height: "30px",
@@ -29,46 +33,139 @@ const radioStyle = {
 class UserHome extends Component {
   state = {
     visible: false,
-    value: this.props.EducationWithTasks
-      ? "CourseWithTasks"
-      : "CourseOnlyVideo",
+    SettingVisible: false,
+    AvatarVisible: false,
+    imageNum: "1",
+    firstName: "",
+    lastName: "",
+    password: "",
+    avatarStatus: false,
   };
 
   hideModal = () => {
     this.setState({
-      visible: false,
+      SettingVisible: false,
+      AvatarVisible: false,
     });
   };
 
-  showModal = () => {
+  SettingShowModal = () => {
     this.setState({
-      visible: true,
+      visible: false,
+      SettingVisible: true,
+      AvatarVisible: false,
     });
   };
 
-  handleOk = (e) => {
+  AvatarShowModal = () => {
+    this.setState({
+      visible: false,
+      SettingVisible: true,
+      AvatarVisible: true,
+    });
+  };
+
+  handleSettingChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSettingOk = (e) => {
+    if (this.state.firstName === "")
+      this.setState({
+        firstName: this.props.UserInfo.firstName,
+      });
+
+    if (this.state.lastName === "")
+      this.setState({
+        lastName: this.props.UserInfo.lastName,
+      });
+
     this.setState(
       {
-        visible: false,
+        // SettingVisible: false,
+        imageNum: this.state.imageNum,
       },
       () => {
-        if (this.state.value === "CourseWithTasks")
-          this.props.SetEducationWithTasks(true);
-        else this.props.SetEducationWithTasks(false);
+        if (this.state.password !== "") {
+          let pass = this.state.password;
+          let reg = /^[A-Z0-9a-z]\w{4,30}$/;
+          let test = reg.test(pass);
+          if (test) {
+            // alert("pass");
+            var crypto = require("crypto");
+            var shasum = crypto
+              .createHash("sha1")
+              .update(this.state.password)
+              .digest("hex");
+
+            const hashedPass = shasum;
+            this.setState({
+              password: hashedPass,
+            });
+          } else {
+            openNotificationWithIcon(
+              "error",
+              "Password Error",
+              "Password Has Error",
+              3
+            );
+          }
+        }
+
+        axios
+          .put(
+            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
+            {
+              firstName: this.state.firstName,
+              lastName: this.state.lastName,
+              password: this.state.password,
+              avatarNo: this.state.imageNum,
+              avatarStatus: this.state.avatarStatus,
+              isEasyModeActive: this.props.UserInfo.isEasyModeActive,
+            },
+
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              this.setState(
+                {
+                  SettingVisible: false,
+                },
+                () => {
+                  // window.location.reload(false);
+                  openNotificationWithIcon("success", "Update", "Update ok", 3);
+                }
+              );
+            }
+          });
       }
     );
   };
 
-  handleCancel = () => {
+  handleAvatarOk = (e) => {
     this.setState({
-      visible: false,
+      AvatarVisible: false,
     });
   };
 
-  onChange = (e) => {
+  handleCancel = () => {
     this.setState({
-      value: e.target.value,
+      SettingVisible: false,
+      AvatarVisible: false,
     });
+  };
+
+  handleImageSelect = (num) => {
+    this.setState({ imageNum: num });
   };
 
   async componentDidMount() {
@@ -87,7 +184,28 @@ class UserHome extends Component {
         }
       });
 
-    this.showModal();
+    // this.showModal();
+  }
+
+  async componentDidUpdate(previousProps, previousState) {
+    if (
+      previousProps.UserInfo.firstName !== previousState.firstName ||
+      previousProps.UserInfo.lastName !== previousState.lastName ||
+      previousProps.UserInfo.avatarNo !== previousState.avatarNo
+    ) {
+      await axios
+        .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {
+          headers: {
+            Authorization: localStorage.getItem("UserInfo"),
+          },
+        })
+        .then((Response) => {
+          if (Response.status === 200) {
+            //console.log(Response.data);
+            this.props.SetUserInfo(Response.data);
+          }
+        });
+    }
   }
 
   render() {
@@ -95,39 +213,13 @@ class UserHome extends Component {
     const {
       // userActiveModule,
       // userActiveSubModule,
-      EducationWithTasks,
+      // EducationWithTasks,
       UserInfo,
       UserStatus,
     } = this.props;
 
     return (
       <div className='main-bg-color'>
-        <Modal
-          title='I Perfer...'
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-        >
-          <Radio.Group
-            onChange={this.onChange}
-            defaultValue={
-              EducationWithTasks ? "CourseWithTasks" : "CourseOnlyVideo"
-            }
-            Value={value}
-          >
-            <Radio style={radioStyle} value='CourseWithTasks'>
-              <TranslateText txt='Course-With-Tasks' />
-            </Radio>
-            <Radio style={radioStyle} value='CourseOnlyVideo'>
-              <TranslateText txt='Course-Only-Video' />
-            </Radio>
-          </Radio.Group>
-
-          <p className='m-2 p-2 font-weight-bold'>
-            <TranslateText txt='Course-selection-note' />
-          </p>
-        </Modal>
-
         <div id='page-wrap' className='App'>
           <ModuleNavBar userActiveModule={UserStatus.currentModule} />
 
@@ -147,7 +239,7 @@ class UserHome extends Component {
                     sm={12}
                     className='p-3 m-auto text-lg-right'
                   >
-                    <Image src={avatar} alt='esvol' className='avatar-box' />
+                    <UserAvatarView avatarNo={UserInfo.avatarNo} />
                   </Col>
                   <Col
                     lg={6}
@@ -168,11 +260,42 @@ class UserHome extends Component {
                       {UserInfo.email}
                     </p>
 
-                    <Link to='/user/setting'>
-                      <button className='continue-Btn mt-5' type='submit'>
-                        <TranslateText txt='User-Edit-Btn' />
-                      </button>
-                    </Link>
+                    <div className='info-text'>
+                      <TranslateText txt='User-EasyMode' />
+                      <Switch
+                        className='ml-3'
+                        checked={UserInfo.isEasyModeActive == 1 ? true : false}
+                        className={
+                          UserInfo.isEasyModeActive == 1
+                            ? "bg-success"
+                            : "bg-mute"
+                        }
+                      />
+                    </div>
+
+                    {/* <Link to='/user/setting'> */}
+                    {/* <Link onClick={this.SettingShowModal}> */}
+                    <button
+                      className='continue-Btn mt-5'
+                      type='submit'
+                      onClick={this.SettingShowModal}
+                    >
+                      <TranslateText txt='User-Edit-Btn' />
+                    </button>
+                    {/* </Link> */}
+
+                    <Settings
+                      SettingVisible={this.state.SettingVisible}
+                      UserInfo={UserInfo}
+                      handleSettingOk={this.handleSettingOk}
+                      handleCancel={this.handleCancel}
+                      AvatarVisible={this.state.AvatarVisible}
+                      handleAvatarOk={this.handleAvatarOk}
+                      AvatarShowModal={this.AvatarShowModal}
+                      handleImageSelect={this.handleImageSelect}
+                      imageNum={this.state.imageNum}
+                      handleSettingChange={this.handleSettingChange}
+                    />
                   </Col>
                 </Row>
               </div>

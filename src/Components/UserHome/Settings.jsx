@@ -1,57 +1,125 @@
 import React, { Component } from "react";
-import Footer from "../Footer/Footer";
-import ModuleNavBar from "../Module/ModuleNavBar";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { Col, Container, Row } from "react-bootstrap";
 import TranslateText from "../Translate/TranslateText";
+import AvatarChange from "./AvatarChange";
+
+import TextField from "@material-ui/core/TextField";
+import { Form } from "react-bootstrap";
+import { ApiUrlMain2 } from "../Utility/ApiUrl";
+import axios from "axios";
+import { Switch, Modal } from "antd";
 
 class Settings extends Component {
   render() {
-    const { userActiveModule } = this.props;
+    const {
+      SettingVisible,
+      UserInfo,
+      handleSettingOk,
+      handleCancel,
+      AvatarVisible,
+      handleAvatarOk,
+      AvatarShowModal,
+      imageNum,
+      handleImageSelect,
+      handleSettingChange,
+    } = this.props;
 
     return (
-      <div className='main-bg-color'>
-        <div id='page-wrap' className='App'>
-          <ModuleNavBar userActiveModule={userActiveModule} />
+      <Modal
+        title={<TranslateText txt='User-Setting' />} //'Setting...'
+        visible={SettingVisible}
+        centered
+        // onOk={ handleSettingOk}
+        onCancel={handleCancel}
+        footer={[
+          <div className='text-center'>
+            <button
+              key='back'
+              className='save-Btn m-3'
+              onClick={handleSettingOk}
+            >
+              <TranslateText txt='User-SaveEdit' />
+            </button>
+            ,
+            <button
+              key='submit'
+              className='save-Btn m-3'
+              onClick={handleCancel}
+            >
+              <TranslateText txt='User-CancelEdit' />
+            </button>
+          </div>,
+        ]}
+      >
+        <Form
+          className='text-center'
+          id='LoginForm'
+          // onSubmit={this.handleSubmit}
+        >
+          <div className='m-auto'>
+            <TextField
+              className=''
+              label={<TranslateText txt='User-Name' />}
+              name='firstName'
+              onChange={handleSettingChange}
+              required
+              defaultValue={UserInfo.firstName}
+              error={false}
+              // helperText={<TranslateText txt='User-Name-HelperText' />}
+            />
+          </div>
+
+          <div className='m-auto'>
+            <TextField
+              className='mt-4'
+              label={<TranslateText txt='User-surName' />}
+              name='lastName'
+              onChange={handleSettingChange}
+              required
+              defaultValue={UserInfo.lastName}
+              error={false}
+              // helperText={<TranslateText txt='User-Name-HelperText' />}
+            />
+          </div>
+
+          <div className='m-auto'>
+            <TextField
+              className='m-4'
+              label={<TranslateText txt='User-NewPass' />}
+              name='password'
+              onChange={handleSettingChange}
+              //required
+              type='password'
+              error={false}
+            />
+          </div>
+
+          {/* <div className='m-4'>
+            <TranslateText txt='User-EducationWithTasks' />
+            <Switch
+              className='ml-3'
+              // checked={qst.activationStatus == 1 ? true : false}
+              // className={qst.activationStatus == 1 ? "bg-success" : "bg-mute"}
+            />
+          </div> */}
+        </Form>
+
+        <div className='text-center'>
+          <button className='avatar-Btn m-4' onClick={AvatarShowModal}>
+            <TranslateText txt='User-ChooseAvatar' />
+          </button>
+
+          <AvatarChange
+            AvatarVisible={AvatarVisible}
+            handleCancel={handleCancel}
+            handleAvatarOk={handleAvatarOk}
+            UserInfo={UserInfo}
+            imageNum={imageNum}
+            handleImageSelect={handleImageSelect}
+          />
         </div>
-
-        <Container>
-          <h3 className='p-5 text-left user-setting-head '>
-            <TranslateText txt='User-Setting' />
-          </h3>
-
-          {/* <Row className='w-100 m-auto bg-info'> */}
-          {/* <Col lg={6} sm={12} md={12} className='bg-danger '> */}
-          <TranslateText txt='User-Name' />
-          <br />
-          <TranslateText txt='User-surName' />
-          <br />
-          <TranslateText txt='User-ChooseAvatar' />
-          <br />
-          <TranslateText txt='User-NewPass' />
-          <br />
-          <TranslateText txt='User-EducationWithTasks' />
-          {/* </Col> */}
-
-          {/* <Col lg={6} sm={12} md={12} className=''>
-              <TranslateText txt='User-NewPass' />
-              <br />
-              <TranslateText txt='User-EducationWithTasks' />
-            </Col> */}
-          {/* </Row> */}
-        </Container>
-
-        <Footer userActiveModule={userActiveModule} />
-      </div>
+      </Modal>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  userActiveModule: state.userActiveModule,
-  userActiveSubModule: state.userActiveSubModule,
-  EducationWithTasks: state.EducationWithTasks,
-});
-
-export default connect(mapStateToProps, {})(withRouter(Settings));
+export default Settings;
