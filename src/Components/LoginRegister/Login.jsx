@@ -55,10 +55,11 @@ class Login extends Component {
 
           (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
           // (axios.defaults.headers.common["Access-Control-Max-Age"] = "1000"),
-          // (axios.defaults.headers.common["Access-Control-Allow-Headers"] =
-          //   "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"),
-          // (axios.defaults.headers.common["Access-Control-Allow-Methods"] =
-          //   "PUT, GET, POST, DELETE, OPTIONS"),
+          (axios.defaults.headers.common["Access-Control-Allow-Headers"] =
+            // "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"),
+            "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"),
+          (axios.defaults.headers.common["Access-Control-Allow-Methods"] =
+            "PUT, GET, POST, DELETE, OPTIONS"),
           {
             "Content-Type": "application/json",
           }
