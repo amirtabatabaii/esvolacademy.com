@@ -30,7 +30,7 @@ class SubModule2 extends Component {
       userActiveModule,
       SubModule2Detail,
       onClick,
-      EducationWithTasks,
+      isEasyModeActive,
     } = this.props;
 
     return (
@@ -68,8 +68,8 @@ class SubModule2 extends Component {
                 : false
             }
             className={`${userActiveModule}-next-btn m-3`}
-            condition={!EducationWithTasks}
-            EducationWithTasks={EducationWithTasks}
+            condition={isEasyModeActive}
+            isEasyModeActive={!isEasyModeActive}
             NormalNextSubModule='sub3'
             SubModule6Name='sub6'
             txt='SubModule2-Continue'

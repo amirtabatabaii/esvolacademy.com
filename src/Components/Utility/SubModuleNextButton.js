@@ -7,8 +7,11 @@ function SubModuleNextButton(props) {
       className={props.className}
       disabled={props.disabled}
       onClick={
+        // props.isEasyModeActive
+        //   ? () => props.onClick(props.SubModule6Name)
+        //   : () => props.onClick(props.NormalNextSubModule)
         props.condition
-          ? props.EducationWithTasks
+          ? props.isEasyModeActive
             ? () => props.onClick(props.NormalNextSubModule)
             : () => props.onClick(props.SubModule6Name)
           : () => props.onClick(props.NormalNextSubModule)

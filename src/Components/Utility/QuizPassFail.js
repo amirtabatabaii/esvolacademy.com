@@ -11,18 +11,21 @@ function QuizPassFail(props) {
     <Row className='w-100'>
       {/* {console.log(width, height)} */}
       {props.Passed && (
-        <Confetti
-          width={width / 2}
-          height={height}
-          confettiSource={{
-            w: width / 2,
-            h: height,
-            x: 10,
-            y: 10,
-          }}
-          recycle={false}
-          numberOfPieces={600}
-        />
+        <>
+          <Confetti
+            width={width / 2}
+            height={height}
+            confettiSource={{
+              w: width / 2,
+              h: height,
+              x: 10,
+              y: 10,
+            }}
+            recycle={false}
+            numberOfPieces={600}
+          />
+          {/* {props.onClickNextModule(props.userActiveModule, "sub1")} */}
+        </>
       )}
 
       <Col lg={6} md={6} sm={12} className='m-auto p-3'>

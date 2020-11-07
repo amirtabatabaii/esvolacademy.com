@@ -63,7 +63,7 @@ class SubModuleBtn extends Component {
       userActiveSubModule,
       userActiveModule,
       onClick,
-      EducationWithTasks,
+      isEasyModeActive,
     } = this.props;
 
     return (
@@ -135,7 +135,7 @@ class SubModuleBtn extends Component {
               normalImage={NormalSub3}
               subName='sub3'
               onClick={onClick}
-              EducationWithTasks={EducationWithTasks}
+              isEasyModeActive={isEasyModeActive}
             />
           </Col>
 

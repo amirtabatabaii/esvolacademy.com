@@ -35,11 +35,12 @@ class UserHome extends Component {
     visible: false,
     SettingVisible: false,
     AvatarVisible: false,
-    imageNum: "1",
-    firstName: "",
-    lastName: "",
+    imageNum: this.props.UserInfo.avatarNo,
+    firstName: this.props.UserInfo.firstName,
+    lastName: this.props.UserInfo.lastName,
     password: "",
     avatarStatus: false,
+    isEasyModeActive: null,
   };
 
   hideModal = () => {
@@ -70,86 +71,150 @@ class UserHome extends Component {
   };
 
   handleSettingOk = (e) => {
-    if (this.state.firstName === "")
-      this.setState({
-        firstName: this.props.UserInfo.firstName,
-      });
+    if (this.state.password !== "") {
+      let pass = this.state.password;
+      let reg = /^[A-Z0-9a-z]\w{4,30}$/;
+      let test = reg.test(pass);
+      if (test) {
+        // alert("pass");
+        var crypto = require("crypto");
+        var shasum = crypto
+          .createHash("sha1")
+          .update(this.state.password)
+          .digest("hex");
 
-    if (this.state.lastName === "")
-      this.setState({
-        lastName: this.props.UserInfo.lastName,
-      });
+        const hashedPass = shasum;
 
-    this.setState(
-      {
-        // SettingVisible: false,
-        imageNum: this.state.imageNum,
-      },
-      () => {
-        if (this.state.password !== "") {
-          let pass = this.state.password;
-          let reg = /^[A-Z0-9a-z]\w{4,30}$/;
-          let test = reg.test(pass);
-          if (test) {
-            // alert("pass");
-            var crypto = require("crypto");
-            var shasum = crypto
-              .createHash("sha1")
-              .update(this.state.password)
-              .digest("hex");
+        this.setState(
+          {
+            password: hashedPass,
+          },
+          () => {
+            axios
+              .put(
+                ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
+                {
+                  firstName:
+                    this.state.firstName === undefined
+                      ? this.props.UserInfo.firstName
+                      : this.state.firstName,
+                  lastName:
+                    this.state.lastName === undefined
+                      ? this.props.UserInfo.lastName
+                      : this.state.lastName,
+                  avatarNo:
+                    this.state.imageNum === undefined
+                      ? this.props.UserInfo.avatarNo
+                      : this.state.imageNum,
+                  password: this.state.password,
+                  avatarStatus: this.state.avatarStatus,
+                  isEasyModeActive: this.props.UserInfo.isEasyModeActive,
+                },
 
-            const hashedPass = shasum;
-            this.setState({
-              password: hashedPass,
-            });
-          } else {
-            openNotificationWithIcon(
-              "error",
-              "Password Error",
-              "Password Has Error",
-              3
+                (axios.defaults.headers.common[
+                  "Authorization"
+                ] = localStorage.getItem("UserInfo")),
+                (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+                  "*"),
+                {
+                  "Content-Type": "application/json",
+                }
+              )
+              .then((res) => {
+                // console.log("res =====> ", res);
+                if (res.status === 200) {
+                  this.setState(
+                    {
+                      SettingVisible: false,
+                    },
+                    () => {
+                      window.location.reload(false);
+                      //openNotificationWithIcon("success", "Update", "Update ok", 3);
+                    }
+                  );
+                }
+              });
+          }
+        );
+      } else {
+        openNotificationWithIcon(
+          "error",
+          "Password Error",
+          "Password Has Error",
+          3
+        );
+      }
+    } else {
+      axios
+        .put(
+          ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
+          {
+            firstName:
+              this.state.firstName === undefined
+                ? this.props.UserInfo.firstName
+                : this.state.firstName,
+            lastName:
+              this.state.lastName === undefined
+                ? this.props.UserInfo.lastName
+                : this.state.lastName,
+            avatarNo:
+              this.state.imageNum === undefined
+                ? this.props.UserInfo.avatarNo
+                : this.state.imageNum,
+            password: "", //this.state.password,
+            avatarStatus: this.state.avatarStatus,
+            isEasyModeActive: this.props.UserInfo.isEasyModeActive,
+          },
+
+          (axios.defaults.headers.common[
+            "Authorization"
+          ] = localStorage.getItem("UserInfo")),
+          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((res) => {
+          // console.log("res =====> ", res);
+          if (res.status === 200) {
+            this.setState(
+              {
+                SettingVisible: false,
+              },
+              () => {
+                window.location.reload(false);
+                //openNotificationWithIcon("success", "Update", "Update ok", 3);
+              }
             );
           }
-        }
-
-        axios
-          .put(
-            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
-            {
-              firstName: this.state.firstName,
-              lastName: this.state.lastName,
-              password: this.state.password,
-              avatarNo: this.state.imageNum,
-              avatarStatus: this.state.avatarStatus,
-              isEasyModeActive: this.props.UserInfo.isEasyModeActive,
-            },
-
-            (axios.defaults.headers.common[
-              "Authorization"
-            ] = localStorage.getItem("UserInfo")),
-            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-              "*"),
-            {
-              "Content-Type": "application/json",
-            }
-          )
-          .then((res) => {
-            // console.log("res =====> ", res);
-            if (res.status === 200) {
-              this.setState(
-                {
-                  SettingVisible: false,
-                },
-                () => {
-                  // window.location.reload(false);
-                  openNotificationWithIcon("success", "Update", "Update ok", 3);
-                }
-              );
-            }
-          });
-      }
-    );
+        });
+    }
   };
+
+  // async componentDidUpdate(previousProps, previousState) {
+  //   console.log(previousProps.UserInfo.firstName);
+  //   console.log(this.props.UserInfo.firstName);
+  //   if (
+  //     previousProps.UserInfo.firstName !== this.props.UserInfo.firstName ||
+  //     previousProps.UserInfo.lastName !== this.props.UserInfo.lastName ||
+  //     previousProps.UserInfo.avatarNo !== this.props.UserInfo.avatarNo
+  //   ) {
+  //     console.log("SSSSSSSSSSSSSSSSSsssssss");
+
+  //     // await axios
+  //     //   .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {
+  //     //     headers: {
+  //     //       Authorization: localStorage.getItem("UserInfo"),
+  //     //     },
+  //     //   })
+  //     //   .then((Response) => {
+  //     //     if (Response.status === 200) {
+  //     //       //console.log(Response.data);
+  //     //       this.props.SetUserInfo(Response.data);
+  //     //     }
+  //     //   });
+  //   }
+  // }
 
   handleAvatarOk = (e) => {
     this.setState({
@@ -187,29 +252,58 @@ class UserHome extends Component {
     // this.showModal();
   }
 
-  async componentDidUpdate(previousProps, previousState) {
-    if (
-      previousProps.UserInfo.firstName !== previousState.firstName ||
-      previousProps.UserInfo.lastName !== previousState.lastName ||
-      previousProps.UserInfo.avatarNo !== previousState.avatarNo
-    ) {
-      await axios
-        .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {
-          headers: {
-            Authorization: localStorage.getItem("UserInfo"),
-          },
-        })
-        .then((Response) => {
-          if (Response.status === 200) {
-            //console.log(Response.data);
-            this.props.SetUserInfo(Response.data);
-          }
-        });
-    }
-  }
+  // async componentDidUpdate(previousProps, previousState) {
+  //   console.log("previousProps", previousProps);
+  //   console.log("previousState", previousState);
+
+  //   console.log(previousProps.UserInfo.firstName);
+  //   console.log(this.state.firstName);
+  // }
+
+  handleEasyMode = (checked) => {
+    this.setState(
+      {
+        isEasyModeActive: checked,
+      },
+      () => {
+        if (
+          this.state.isEasyModeActive !== this.props.UserInfo.isEasyModeActive
+        ) {
+          // console.log(this.state.isEasyModeActive);
+          axios
+            .put(
+              ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
+              {
+                firstName: this.props.UserInfo.firstName,
+                lastName: this.props.UserInfo.lastName,
+                password: "",
+                avatarNo: this.props.UserInfo.avatarNo,
+                avatarStatus: this.props.UserInfo.avatarStatus,
+                isEasyModeActive: this.state.isEasyModeActive,
+              },
+
+              (axios.defaults.headers.common[
+                "Authorization"
+              ] = localStorage.getItem("UserInfo")),
+              (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+                "*"),
+              {
+                "Content-Type": "application/json",
+              }
+            )
+            .then((res) => {
+              // console.log("res =====> ", res);
+              if (res.status === 200) {
+                window.location.reload(false);
+                // openNotificationWithIcon("success", "Update", "Update ok", 3);
+              }
+            });
+        }
+      }
+    );
+  };
 
   render() {
-    const { value } = this.state;
     const {
       // userActiveModule,
       // userActiveSubModule,
@@ -262,13 +356,14 @@ class UserHome extends Component {
 
                     <div className='info-text'>
                       <TranslateText txt='User-EasyMode' />
+
                       <Switch
-                        className='ml-3'
+                        onChange={this.handleEasyMode}
                         checked={UserInfo.isEasyModeActive == 1 ? true : false}
                         className={
                           UserInfo.isEasyModeActive == 1
-                            ? "bg-success"
-                            : "bg-mute"
+                            ? "ml-3 bg-success"
+                            : "ml-3 bg-mute"
                         }
                       />
                     </div>

@@ -22,6 +22,7 @@ import {
   SubModule6ExpertVideoSection,
   SubModule1IntroductionVideoSection,
   SubModule2CourseVideoSection,
+  SetUserInfo,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -69,38 +70,121 @@ class ModuleHome extends Component {
   }
 
   handleOnClickSubModule = (ActiveSubName) => {
-    const UserActiveSubNumber = this.props.userActiveSubModule.substring(3);
+    const UserActiveSubNumber = this.props.UserStatus.currentSubModule.substring(
+      3
+    );
     const UserSelectedSubNumber = ActiveSubName.substring(3);
-
-    if (!this.props.EducationWithTasks) {
+    if (this.props.UserInfo.isEasyModeActive) {
       if (
         UserSelectedSubNumber === "1" ||
         UserSelectedSubNumber === "2" ||
         UserSelectedSubNumber === "6" ||
         UserSelectedSubNumber === "7"
       ) {
-        this.props.SelectedSubModule(ActiveSubName);
+        // this.props.SelectedSubModule(ActiveSubName);
+        axios
+          .put(
+            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+            {
+              userStatus: {
+                currentModule: this.props.UserStatus.currentModule,
+                currentSubModule: ActiveSubName,
+                score: "50",
+                badgeNo: "450",
+              },
+            },
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              window.location.reload(false);
+              //openNotificationWithIcon("success", "Update", "Update ok", 3);
+            }
+          });
       }
     } else {
       if (UserSelectedSubNumber <= UserActiveSubNumber)
-        this.props.SelectedSubModule(ActiveSubName);
+        ////this.props.SelectedSubModule(ActiveSubName);
+        axios
+          .put(
+            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+            {
+              userStatus: {
+                currentModule: this.props.UserStatus.currentModule,
+                currentSubModule: ActiveSubName,
+                score: "50",
+                badgeNo: "450",
+              },
+            },
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              window.location.reload(false);
+              //openNotificationWithIcon("success", "Update", "Update ok", 3);
+            }
+          });
+
       //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
     }
-  };
+  }; //ok
 
   handleClickSubModuleNext = (ActiveSubName) => {
-    this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
+    // this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
+    axios
+      .put(
+        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+        {
+          userStatus: {
+            currentModule: this.props.UserStatus.currentModule,
+            currentSubModule: "sub" + ActiveSubName.substring(3),
+            score: "50",
+            badgeNo: "450",
+          },
+        },
+
+        (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+          "UserInfo"
+        )),
+        (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((res) => {
+        // console.log("res =====> ", res);
+        if (res.status === 200) {
+          window.location.reload(false);
+          //openNotificationWithIcon("success", "Update", "Update ok", 3);
+        }
+      });
 
     this.setState({
       ExpertIndex: 0,
     });
-  };
+  }; //ok
 
   handleClickExpertVideo = () => {
     this.setState({
       ExpertIndex: this.state.ExpertIndex + 1,
     });
-  };
+  }; //ok
 
   handleClickModuleNext = (ActiveModuleName, ActiveSubName) => {
     const ModuleNumber = ActiveModuleName.substr(ActiveModuleName.length - 1);
@@ -108,27 +192,96 @@ class ModuleHome extends Component {
 
     this.props.SetEmptyRedux();
 
-    this.props.UserActiveModuleSubModule(
-      editedModuleName + (parseInt(ModuleNumber) + 1),
-      ActiveSubName
-    );
-  };
+    axios
+      .put(
+        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+        {
+          userStatus: {
+            currentModule: editedModuleName + (parseInt(ModuleNumber) + 1),
+            currentSubModule: ActiveSubName,
+            score: "50",
+            badgeNo: "450",
+          },
+        },
+
+        (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+          "UserInfo"
+        )),
+        (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((res) => {
+        // console.log("res =====> ", res);
+        if (res.status === 200) {
+          window.location.reload(false);
+          //openNotificationWithIcon("success", "Update", "Update ok", 3);
+        }
+      });
+
+    // this.props.UserActiveModuleSubModule(
+    //   editedModuleName + (parseInt(ModuleNumber) + 1),
+    //   ActiveSubName
+    // );
+  }; //ok
 
   async componentDidMount() {
-    if (!this.props.EducationWithTasks) {
+    await axios
+      .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {
+        headers: {
+          Authorization: localStorage.getItem("UserInfo"),
+        },
+      })
+      .then((Response) => {
+        if (Response.status === 200) {
+          // console.log(Response.data);
+          this.props.SetUserInfo(Response.data);
+        }
+      });
+
+    if (this.props.UserInfo.isEasyModeActive) {
       if (
-        this.props.userActiveSubModule === "sub3" ||
-        this.props.userActiveSubModule === "sub4" ||
-        this.props.userActiveSubModule === "sub5"
+        this.props.UserStatus.currentSubModule === "sub3" ||
+        this.props.UserStatus.currentSubModule === "sub4" ||
+        this.props.UserStatus.currentSubModule === "sub5"
       ) {
-        this.props.UserActiveModuleSubModule(
-          this.props.userActiveModule,
-          "sub6"
-        );
+        axios
+          .put(
+            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+            {
+              userStatus: {
+                currentModule: this.props.UserStatus.currentModule,
+                currentSubModule: "sub6",
+                score: "50",
+                badgeNo: "450",
+              },
+            },
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              window.location.reload(false);
+              //openNotificationWithIcon("success", "Update", "Update ok", 3);
+            }
+          });
+
+        // this.props.UserActiveModuleSubModule(
+        //   this.props.userActiveModule,
+        //   "sub6"
+        // );
       }
     }
 
-    if (this.props.userActiveSubModule === "sub1") {
+    if (this.props.UserStatus.currentSubModule === "sub1") {
       await axios
         .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
         .then((Response) => {
@@ -136,7 +289,7 @@ class ModuleHome extends Component {
         });
     }
 
-    if (this.props.userActiveSubModule === "sub2") {
+    if (this.props.UserStatus.currentSubModule === "sub2") {
       await axios
         .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
         .then((Response) => {
@@ -144,7 +297,7 @@ class ModuleHome extends Component {
         });
     }
 
-    if (this.props.userActiveSubModule === "sub4") {
+    if (this.props.UserStatus.currentSubModule === "sub4") {
       await axios
         .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
         .then((Response) => {
@@ -157,7 +310,7 @@ class ModuleHome extends Component {
         });
     }
 
-    if (this.props.userActiveSubModule === "sub5") {
+    if (this.props.UserStatus.currentSubModule === "sub5") {
       await axios
         .get(`https://run.mocky.io/v3/175b6331-58f4-4695-b280-46bc4d708be0`)
         .then((Response) => {
@@ -170,7 +323,7 @@ class ModuleHome extends Component {
         });
     }
 
-    if (this.props.userActiveSubModule === "sub6") {
+    if (this.props.UserStatus.currentSubModule === "sub6") {
       await axios
         .get(`https://run.mocky.io/v3/f91f7ece-7a02-4b5f-b70e-e695bf11fef3`)
         // .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
@@ -179,7 +332,7 @@ class ModuleHome extends Component {
         });
     }
 
-    if (this.props.userActiveSubModule === "sub7") {
+    if (this.props.UserStatus.currentSubModule === "sub7") {
       await axios
         .get(
           `https://run.mocky.io/v3/060f8d8a-ba8a-4d08-945b-e7ac1b188e36`
@@ -205,24 +358,56 @@ class ModuleHome extends Component {
           });
         });
     }
-  }
+  } //ok
 
   async componentDidUpdate(previousProps, previousState) {
-    if (!this.props.EducationWithTasks) {
+    if (this.props.UserInfo.isEasyModeActive) {
       if (
-        this.props.userActiveSubModule === "sub3" ||
-        this.props.userActiveSubModule === "sub4" ||
-        this.props.userActiveSubModule === "sub5"
+        this.props.UserStatus.currentSubModule === "sub3" ||
+        this.props.UserStatus.currentSubModule === "sub4" ||
+        this.props.UserStatus.currentSubModule === "sub5"
       ) {
-        this.props.UserActiveModuleSubModule(
-          this.props.userActiveModule,
-          "sub6"
-        );
+        axios
+          .put(
+            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+            {
+              userStatus: {
+                currentModule: this.props.UserStatus.currentModule,
+                currentSubModule: "sub6",
+                score: "50",
+                badgeNo: "450",
+              },
+            },
+
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              window.location.reload(false);
+              //openNotificationWithIcon("success", "Update", "Update ok", 3);
+            }
+          });
+
+        // this.props.UserActiveModuleSubModule(
+        //   this.props.userActiveModule,
+        //   "sub6"
+        // );
       }
     }
 
-    if (previousProps.userActiveSubModule !== this.props.userActiveSubModule) {
-      if (this.props.userActiveSubModule === "sub1") {
+    if (
+      previousProps.UserStatus.currentSubModule !==
+      this.props.UserStatus.currentSubModule
+    ) {
+      if (this.props.UserStatus.currentSubModule === "sub1") {
         await axios
           .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
           .then((Response) => {
@@ -232,7 +417,7 @@ class ModuleHome extends Component {
           });
       }
 
-      if (this.props.userActiveSubModule === "sub2") {
+      if (this.props.UserStatus.currentSubModule === "sub2") {
         await axios
           .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
           .then((Response) => {
@@ -240,7 +425,7 @@ class ModuleHome extends Component {
           });
       }
 
-      if (this.props.userActiveSubModule === "sub4") {
+      if (this.props.UserStatus.currentSubModule === "sub4") {
         await axios
           .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
           .then((Response) => {
@@ -253,7 +438,7 @@ class ModuleHome extends Component {
           });
       }
 
-      if (this.props.userActiveSubModule === "sub5") {
+      if (this.props.UserStatus.currentSubModule === "sub5") {
         await axios
           .get(`https://run.mocky.io/v3/175b6331-58f4-4695-b280-46bc4d708be0`)
           .then((Response) => {
@@ -266,7 +451,7 @@ class ModuleHome extends Component {
           });
       }
 
-      if (this.props.userActiveSubModule === "sub6") {
+      if (this.props.UserStatus.currentSubModule === "sub6") {
         await axios
           .get(`https://run.mocky.io/v3/f91f7ece-7a02-4b5f-b70e-e695bf11fef3`)
           // .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
@@ -275,7 +460,7 @@ class ModuleHome extends Component {
           });
       }
 
-      if (this.props.userActiveSubModule === "sub7") {
+      if (this.props.UserStatus.currentSubModule === "sub7") {
         await axios
           .get(
             `https://run.mocky.io/v3/060f8d8a-ba8a-4d08-945b-e7ac1b188e36`
@@ -289,6 +474,7 @@ class ModuleHome extends Component {
             // }
           )
           .then((Response) => {
+            // console.log("SSSSSSSSSSSSSSSSSSSSssss");
             this.props.SubModule1Quiz(Response.data.results);
 
             this.getRandomAnswer(
@@ -329,7 +515,10 @@ class ModuleHome extends Component {
         );
     }
 
-    if (previousProps.userActiveModule !== this.props.userActiveModule) {
+    if (
+      previousProps.UserStatus.currentModule !==
+      this.props.UserStatus.currentModule
+    ) {
       this.setState({
         SubModule7QuizQuestion: [],
         randomAnswers: [],
@@ -350,7 +539,7 @@ class ModuleHome extends Component {
         userScore: 0,
       });
     }
-  }
+  } //ok
 
   getRandomAnswer = (QuizQuestion, lng) => {
     let NewFilter = [];
@@ -938,26 +1127,25 @@ class ModuleHome extends Component {
               <div className='d-flex justify-content-start'>
                 {/* SubModule panel */}
                 <SubModuleBtn
-                  userActiveSubModule={userActiveSubModule}
+                  userActiveSubModule={UserStatus.currentSubModule}
                   userActiveModule={UserStatus.currentModule}
                   onClick={this.handleOnClickSubModule}
-                  EducationWithTasks={EducationWithTasks}
                 />
               </div>
 
               {/* SubModule Note Section */}
               <SubModuleNote
-                userActiveSubModule={userActiveSubModule}
+                userActiveSubModule={UserStatus.currentSubModule}
                 showResult={this.state.showResult}
                 takeQuiz={this.state.takeQuiz}
                 compareAnswer={this.state.compareAnswer}
-                EducationWithTasks={EducationWithTasks}
+                isEasyModeActive={UserInfo.isEasyModeActive}
               />
 
               {/* SubModule Section */}
               <SubModule
                 userActiveModule={UserStatus.currentModule}
-                userActiveSubModule={userActiveSubModule}
+                userActiveSubModule={UserStatus.currentSubModule}
                 SubModule1IntroductionVideo={SubModule1IntroductionVideo}
                 SubModule2CourseVideo={SubModule2CourseVideo}
                 SubModule6Detail={SubModule6ExpertVideo}
@@ -1015,7 +1203,7 @@ class ModuleHome extends Component {
                 HandleCompareAnswerQuestionResult={
                   this.HandleCompareAnswerQuestionResult
                 }
-                EducationWithTasks={EducationWithTasks}
+                isEasyModeActive={UserInfo.isEasyModeActive}
                 SubModule4ReadingFiltered={SubModule4ReadingFiltered}
                 SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
               />
@@ -1030,8 +1218,8 @@ class ModuleHome extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  userActiveModule: state.userActiveModule,
-  userActiveSubModule: state.userActiveSubModule,
+  // userActiveModule: state.userActiveModule,
+  // userActiveSubModule: state.userActiveSubModule,
   //
   SubModule1IntroductionVideo: state.SubModule1IntroductionVideo,
   SubModule2CourseVideo: state.SubModule2CourseVideo,
@@ -1073,4 +1261,5 @@ export default connect(mapStateToProps, {
   SubModule6ExpertVideoSection,
   SubModule1IntroductionVideoSection,
   SubModule2CourseVideoSection,
+  SetUserInfo,
 })(withRouter(ModuleHome));

@@ -10,7 +10,7 @@ class SubModule5 extends Component {
     const {
       userActiveModule,
       SubModule5CaseStudyFiltered,
-      EducationWithTasks,
+      isEasyModeActive,
       onClick,
     } = this.props;
 
@@ -29,8 +29,8 @@ class SubModule5 extends Component {
           <SubModuleNextButton
             // disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
             className={`${userActiveModule}-next-btn m-3`}
-            condition={!EducationWithTasks}
-            EducationWithTasks={!EducationWithTasks}
+            condition={!isEasyModeActive}
+            isEasyModeActive={!isEasyModeActive}
             NormalNextSubModule='sub6'
             SubModule6Name='sub6'
             txt='SubModule5-Continue'

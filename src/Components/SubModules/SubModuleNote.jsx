@@ -8,7 +8,7 @@ class SubModuleNote extends Component {
       showResult,
       takeQuiz,
       compareAnswer,
-      EducationWithTasks,
+      isEasyModeActive,
     } = this.props;
 
     return (
@@ -31,7 +31,7 @@ class SubModuleNote extends Component {
           </>
         )}
 
-        {userActiveSubModule === "sub3" && EducationWithTasks && (
+        {userActiveSubModule === "sub3" && isEasyModeActive && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule3-header' />
@@ -40,7 +40,7 @@ class SubModuleNote extends Component {
           </>
         )}
 
-        {userActiveSubModule === "sub4" && EducationWithTasks && (
+        {userActiveSubModule === "sub4" && isEasyModeActive && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule4-header' />
@@ -49,7 +49,7 @@ class SubModuleNote extends Component {
           </>
         )}
 
-        {userActiveSubModule === "sub5" && EducationWithTasks && (
+        {userActiveSubModule === "sub5" && isEasyModeActive && (
           <>
             <h4 className='font-weight-bold'>
               <TranslateText txt='SubModule5-header' />

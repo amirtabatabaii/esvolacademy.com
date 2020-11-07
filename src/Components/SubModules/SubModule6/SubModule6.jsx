@@ -39,7 +39,7 @@ class SubModule6 extends Component {
       onClick,
       handleClickExpertVideo,
       ExpertIndex,
-      EducationWithTasks,
+      isEasyModeActive,
     } = this.props;
 
     return (
@@ -70,8 +70,8 @@ class SubModule6 extends Component {
                   : false
               }
               className={`${userActiveModule}-next-btn m-3`}
-              condition={!EducationWithTasks}
-              EducationWithTasks={!EducationWithTasks}
+              condition={!isEasyModeActive}
+              isEasyModeActive={!isEasyModeActive}
               NormalNextSubModule='sub7'
               SubModule6Name='sub6'
               txt='SubModule6-NextVideo'
@@ -88,8 +88,8 @@ class SubModule6 extends Component {
                   : false
               }
               className={`${userActiveModule}-next-btn m-3`}
-              condition={!EducationWithTasks}
-              EducationWithTasks={!EducationWithTasks}
+              condition={!isEasyModeActive}
+              isEasyModeActive={!isEasyModeActive}
               NormalNextSubModule='sub7'
               SubModule6Name='sub6'
               txt='SubModule6-Continue'

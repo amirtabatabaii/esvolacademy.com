@@ -58,7 +58,7 @@ class SubModule extends Component {
       HandleCompareAnswerQuestionResult,
       SubModule7QuizQuestion,
       UserQuizAllAnswersLanguage,
-      EducationWithTasks,
+      isEasyModeActive,
       SubModule4ReadingFiltered,
       SubModule5CaseStudyFiltered,
     } = this.props;
@@ -71,7 +71,7 @@ class SubModule extends Component {
             userActiveSubModule={userActiveSubModule}
             SubModule1Detail={SubModule1IntroductionVideo}
             onClick={onClick}
-            EducationWithTasks={EducationWithTasks}
+            isEasyModeActive={isEasyModeActive}
           />
         )}
 
@@ -81,36 +81,36 @@ class SubModule extends Component {
             userActiveSubModule={userActiveSubModule}
             SubModule2Detail={SubModule2CourseVideo}
             onClick={onClick}
-            EducationWithTasks={EducationWithTasks}
+            isEasyModeActive={isEasyModeActive}
           />
         )}
 
-        {userActiveSubModule === "sub3" && EducationWithTasks && (
+        {userActiveSubModule === "sub3" && ( //isEasyModeActive && (
           <SubModule3
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
-            EducationWithTasks={EducationWithTasks}
+            isEasyModeActive={isEasyModeActive}
           />
         )}
 
-        {userActiveSubModule === "sub4" && EducationWithTasks && (
+        {userActiveSubModule === "sub4" && ( //isEasyModeActive && (
           <SubModule4
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
             SubModule4ReadingFiltered={SubModule4ReadingFiltered}
-            EducationWithTasks={EducationWithTasks}
+            isEasyModeActive={isEasyModeActive}
           />
         )}
 
-        {userActiveSubModule === "sub5" && EducationWithTasks && (
+        {userActiveSubModule === "sub5" && ( //isEasyModeActive && (
           <SubModule5
             userActiveModule={userActiveModule}
             userActiveSubModule={userActiveSubModule}
             onClick={onClick}
             SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
-            EducationWithTasks={EducationWithTasks}
+            isEasyModeActive={isEasyModeActive}
           />
         )}
 
@@ -122,7 +122,7 @@ class SubModule extends Component {
             ExpertIndex={ExpertIndex}
             onClick={onClick}
             handleClickExpertVideo={handleClickExpertVideo}
-            EducationWithTasks={EducationWithTasks}
+            isEasyModeActive={isEasyModeActive}
           />
         )}
 
