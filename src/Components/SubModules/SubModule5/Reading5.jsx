@@ -20,6 +20,9 @@ class Reading5 extends Component {
             {this.props.type === "pdf" ? (
               <TranslateText txt='SubModule4-ReadPdf' />
             ) : null}
+            {this.props.type === "video" ? (
+              <TranslateText txt='SubModule4-watchVideo' />
+            ) : null}
 
             {/* {this.props.type === "website" ? "Open Website" : null}
             {this.props.type === "pdf" ? "Read pdf" : null} */}
