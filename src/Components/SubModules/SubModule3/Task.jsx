@@ -21,19 +21,19 @@ class Task extends Component {
         <div
           className={`mt-4 ${this.props.userActiveModule}-answer-textbox text-center`}
         >
-          <form noValidate autoComplete='off'>
-            <TextField
-              id='standard-multiline-static'
-              variant='standard'
-              label='Your Answer '
-              required
-              multiline
-              rows={6}
-              style={{ width: "97%" }}
-              name={this.props.TextFieldName}
-              onChange={this.props.onChange}
-            />
-          </form>
+          {/* <form noValidate autoComplete='off'> */}
+          <TextField
+            id='standard-multiline-static'
+            variant='standard'
+            label='Your Answer '
+            required
+            multiline
+            rows={6}
+            style={{ width: "97%" }}
+            name={this.props.TextFieldName}
+            onChange={this.props.onChange}
+          />
+          {/* </form> */}
         </div>
       </div>
     );

@@ -299,27 +299,49 @@ class ModuleHome extends Component {
 
     if (this.props.UserStatus.currentSubModule === "sub4") {
       await axios
-        .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
+        .get(
+          ApiUrlMain2 +
+            `/api/sublevels/search?moduleName=${this.props.UserStatus.currentModule}&subModuleType=Reading`
+          // , {
+          // headers: {
+          //   Authorization: localStorage.getItem("UserInfo"),
+          // },
+          // }
+        )
         .then((Response) => {
-          this.props.SubModule4ReadingSection(Response.data.results);
+          if (Response.status === 200) {
+            // console.log("Response.data", Response.data);
+            this.props.SubModule4ReadingSection(Response.data);
 
-          this.HandleReadingCaseStudy(
-            this.props.SubModule4Reading,
-            this.props.selectedLanguage
-          );
+            this.HandleReadingCaseStudy(
+              this.props.SubModule4Reading,
+              this.props.selectedLanguage
+            );
+          }
         });
     }
 
     if (this.props.UserStatus.currentSubModule === "sub5") {
       await axios
-        .get(`https://run.mocky.io/v3/175b6331-58f4-4695-b280-46bc4d708be0`)
+        .get(
+          ApiUrlMain2 +
+            `/api/sublevels/search?moduleName=${this.props.UserStatus.currentModule}&subModuleType=Case Study`
+          // , {
+          // headers: {
+          //   Authorization: localStorage.getItem("UserInfo"),
+          // },
+          // }
+        )
         .then((Response) => {
-          this.props.SubModule5CaseStudySection(Response.data.results);
+          if (Response.status === 200) {
+            // console.log("Response.data", Response.data);
+            this.props.SubModule5CaseStudySection(Response.data);
 
-          this.HandleReadingCaseStudy(
-            this.props.SubModule5CaseStudy,
-            this.props.selectedLanguage
-          );
+            this.HandleReadingCaseStudy(
+              this.props.SubModule5CaseStudy,
+              this.props.selectedLanguage
+            );
+          }
         });
     }
 
@@ -427,27 +449,49 @@ class ModuleHome extends Component {
 
       if (this.props.UserStatus.currentSubModule === "sub4") {
         await axios
-          .get(`https://run.mocky.io/v3/0af73f89-7f70-4523-9e29-f6cb742b6405`)
+          .get(
+            ApiUrlMain2 +
+              `/api/sublevels/search?moduleName=${this.props.UserStatus.currentModule}&subModuleType=Reading`
+            // , {
+            // headers: {
+            //   Authorization: localStorage.getItem("UserInfo"),
+            // },
+            // }
+          )
           .then((Response) => {
-            this.props.SubModule4ReadingSection(Response.data.results);
+            if (Response.status === 200) {
+              // console.log("Response.data", Response.data);
+              this.props.SubModule4ReadingSection(Response.data);
 
-            this.HandleReadingCaseStudy(
-              this.props.SubModule4Reading,
-              this.props.selectedLanguage
-            );
+              this.HandleReadingCaseStudy(
+                this.props.SubModule4Reading,
+                this.props.selectedLanguage
+              );
+            }
           });
       }
 
       if (this.props.UserStatus.currentSubModule === "sub5") {
         await axios
-          .get(`https://run.mocky.io/v3/175b6331-58f4-4695-b280-46bc4d708be0`)
+          .get(
+            ApiUrlMain2 +
+              `/api/sublevels/search?moduleName=${this.props.UserStatus.currentModule}&subModuleType=Case Study`
+            // , {
+            // headers: {
+            //   Authorization: localStorage.getItem("UserInfo"),
+            // },
+            // }
+          )
           .then((Response) => {
-            this.props.SubModule5CaseStudySection(Response.data.results);
+            if (Response.status === 200) {
+              // console.log("Response.data", Response.data);
+              this.props.SubModule5CaseStudySection(Response.data);
 
-            this.HandleReadingCaseStudy(
-              this.props.SubModule5CaseStudy,
-              this.props.selectedLanguage
-            );
+              this.HandleReadingCaseStudy(
+                this.props.SubModule5CaseStudy,
+                this.props.selectedLanguage
+              );
+            }
           });
       }
 
@@ -1067,7 +1111,7 @@ class ModuleHome extends Component {
 
   HandleReadingCaseStudy = (List, lng) => {
     let NewFilter = [];
-
+    console.log(List);
     for (let i = 0; i < List.length; i++) {
       NewFilter = [
         ...NewFilter,
