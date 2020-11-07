@@ -12,12 +12,15 @@ import SaveIcon from "@material-ui/icons/Save";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { openNotificationWithIcon } from "../../Utility/Error";
+import axios from "axios";
+import { ApiUrlMain2 } from "../../../Utility/ApiUrl";
 
 function ReadingAddItem(props) {
   const [inputList, setInputList] = useState([
     {
       language: "",
       title: "",
+      interactiveQuestion: "",
     },
   ]);
 
@@ -57,7 +60,29 @@ function ReadingAddItem(props) {
       subLevelTranslations: inputList,
     });
 
-    openNotificationWithIcon("success", "Reading", "Reading", 10);
+    axios
+      .post(
+        ApiUrlMain2 + `/api/sublevels`,
+        {
+          moduleName: props.adminActiveModule,
+          subModuleType: props.adminActiveSubModule,
+          taskUrl: ActiveModule.taskUrl,
+          urlFormat: ActiveModule.urlFormat,
+          subLevelTranslations: inputList,
+        }
+        // , {
+        // headers: {
+        //   Authorization: localStorage.getItem("UserInfo"),
+        // },
+        // }
+      )
+      .then((Response) => {
+        if (Response.status === 200) {
+          // console.log(Response.data);
+          //this.props.SetUserInfo(Response.data);
+          openNotificationWithIcon("success", "Reading", "Reading", 10);
+        }
+      });
   };
 
   const handleChangeReading = (e) => {
@@ -188,9 +213,9 @@ function ReadingAddItem(props) {
         </div>
       </Form>
 
-      <div style={{ marginTop: 20 }}>
+      {/* <div style={{ marginTop: 20 }}>
         <pre>{JSON.stringify(ActiveModule, null, 2)}</pre>
-      </div>
+      </div> */}
     </div>
   );
 }
