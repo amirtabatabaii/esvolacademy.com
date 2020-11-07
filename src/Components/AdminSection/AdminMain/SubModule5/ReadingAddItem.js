@@ -106,6 +106,7 @@ function ReadingAddItem(props) {
             >
               <MenuItem value={"pdf"}>PDF</MenuItem>
               <MenuItem value={"site"}>Website</MenuItem>
+              <MenuItem value={"video"}>Video</MenuItem>
             </Select>
           </FormControl>
 
