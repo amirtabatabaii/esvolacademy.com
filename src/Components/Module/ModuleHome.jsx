@@ -496,19 +496,19 @@ class ModuleHome extends Component {
         userAnswer: "",
       });
 
-      if (this.props.userActiveSubModule === "sub7")
+      if (this.props.UserStatus.currentSubModule === "sub7")
         this.getRandomAnswer(
           this.props.SubModule7QuizQuestion,
           this.props.selectedLanguage
         );
 
-      if (this.props.userActiveSubModule === "sub4")
+      if (this.props.UserStatus.currentSubModule === "sub4")
         this.HandleReadingCaseStudy(
           this.props.SubModule4Reading,
           this.props.selectedLanguage
         );
 
-      if (this.props.userActiveSubModule === "sub5")
+      if (this.props.UserStatus.currentSubModule === "sub5")
         this.HandleReadingCaseStudy(
           this.props.SubModule5CaseStudy,
           this.props.selectedLanguage
@@ -1082,9 +1082,9 @@ class ModuleHome extends Component {
         },
       ];
     }
-    if (this.props.userActiveSubModule === "sub4")
+    if (this.props.UserStatus.currentSubModule === "sub4")
       this.props.SubModule4ReadingSectionFiltered(NewFilter);
-    if (this.props.userActiveSubModule === "sub5")
+    if (this.props.UserStatus.currentSubModule === "sub5")
       this.props.SubModule5CaseStudySectionFiltered(NewFilter);
   };
 
