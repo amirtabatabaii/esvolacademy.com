@@ -554,9 +554,9 @@ function QuizAddQuestions(props) {
 
       {/* <Divider className='bg-info' /> */}
 
-      <div style={{ marginTop: 20 }}>
+      {/* <div style={{ marginTop: 20 }}>
         <pre>{JSON.stringify(Quiz, null, 2)}</pre>
-      </div>
+      </div> */}
     </div>
   );
 }
