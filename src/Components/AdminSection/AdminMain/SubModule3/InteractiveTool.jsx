@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import InteractiveToolAddItem from "../../Utility/InteractiveToolAddItem";
+import InteractiveToolAddItem from "./InteractiveToolAddItem";
 
 class InteractiveTool extends Component {
   render() {

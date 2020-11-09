@@ -319,7 +319,7 @@ class ModuleHome extends Component {
             );
           }
         });
-    }
+    } //ok
 
     if (this.props.UserStatus.currentSubModule === "sub5") {
       await axios
@@ -343,7 +343,7 @@ class ModuleHome extends Component {
             );
           }
         });
-    }
+    } //ok
 
     if (this.props.UserStatus.currentSubModule === "sub6") {
       await axios
@@ -469,7 +469,7 @@ class ModuleHome extends Component {
               );
             }
           });
-      }
+      } //ok
 
       if (this.props.UserStatus.currentSubModule === "sub5") {
         await axios
@@ -493,7 +493,7 @@ class ModuleHome extends Component {
               );
             }
           });
-      }
+      } //ok
 
       if (this.props.UserStatus.currentSubModule === "sub6") {
         await axios

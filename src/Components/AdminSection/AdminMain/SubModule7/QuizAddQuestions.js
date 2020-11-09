@@ -46,6 +46,8 @@ function QuizAddQuestions(props) {
     {
       questionText: "",
       language: "",
+      interactiveTitle: "",
+      interactiveText: "",
     },
   ]);
 
@@ -64,6 +66,8 @@ function QuizAddQuestions(props) {
     NumberOfBlank: 1,
     questionDictionaries: [],
     answers: [],
+    interactiveUrl: "",
+    interactiveUrlFormat: "",
   });
 
   const handleQstListChange = (e, index) => {
@@ -125,6 +129,8 @@ function QuizAddQuestions(props) {
       {
         questionText: "",
         language: "",
+        interactiveTitle: "",
+        interactiveText: "",
       },
     ]);
   };
@@ -185,6 +191,8 @@ function QuizAddQuestions(props) {
       {
         questionText: "",
         language: "",
+        interactiveTitle: "",
+        interactiveText: "",
       },
     ]);
 
@@ -219,6 +227,8 @@ function QuizAddQuestions(props) {
         activationStatus: true,
         questionDictionaries: [...QstList],
         answers: [...AnsList],
+        interactiveUrl: "",
+        interactiveUrlFormat: "",
       });
       axios
         .post(
@@ -227,8 +237,8 @@ function QuizAddQuestions(props) {
             point: Quiz.point,
             type: Quiz.questionType,
             moduleName: props.adminActiveModule,
-            // interactiveUrl: "",
-            // interactiveUrlFormat: "",
+            interactiveUrl: "",
+            interactiveUrlFormat: "",
             activationStatus: true,
             numberOfBlank: Quiz.NumberOfBlank,
             questionDictionaries: [...QstList],
@@ -279,6 +289,8 @@ function QuizAddQuestions(props) {
             activationStatus: true,
             questionDictionaries: [...QstList],
             answers: [...AnsList],
+            interactiveUrl: "",
+            interactiveUrlFormat: "",
           });
 
           axios
@@ -288,8 +300,8 @@ function QuizAddQuestions(props) {
                 point: Quiz.point,
                 type: Quiz.questionType,
                 moduleName: props.adminActiveModule,
-                // interactiveUrl: "",
-                // interactiveUrlFormat: "",
+                interactiveUrl: "",
+                interactiveUrlFormat: "",
                 activationStatus: true,
                 numberOfBlank: Quiz.NumberOfBlank,
                 questionDictionaries: [...QstList],
@@ -319,6 +331,8 @@ function QuizAddQuestions(props) {
           activationStatus: true,
           questionDictionaries: [...QstList],
           answers: [...AnsList],
+          interactiveUrl: "",
+          interactiveUrlFormat: "",
         });
 
         axios
@@ -328,8 +342,8 @@ function QuizAddQuestions(props) {
               point: Quiz.point,
               type: Quiz.questionType,
               moduleName: props.adminActiveModule,
-              // interactiveUrl: "",
-              // interactiveUrlFormat: "",
+              interactiveUrl: "",
+              interactiveUrlFormat: "",
               activationStatus: true,
               numberOfBlank: Quiz.NumberOfBlank,
               questionDictionaries: [...QstList],
@@ -540,9 +554,9 @@ function QuizAddQuestions(props) {
 
       {/* <Divider className='bg-info' /> */}
 
-      {/* <div style={{ marginTop: 20 }}>
+      <div style={{ marginTop: 20 }}>
         <pre>{JSON.stringify(Quiz, null, 2)}</pre>
-      </div> */}
+      </div>
     </div>
   );
 }
