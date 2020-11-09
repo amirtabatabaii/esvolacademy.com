@@ -210,7 +210,7 @@ function CaseStudyAddItem(props) {
             size='large'
             startIcon={<SaveIcon />}
           >
-            Save Question
+            Save Case Study
           </Button>
         </div>
       </Form>
