@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import TranslateText from "../../Translate/TranslateText";
 
+let userAllAns = [];
+
 class CompareAnswers extends Component {
   constructor(props) {
     super(props);
@@ -26,12 +28,21 @@ class CompareAnswers extends Component {
     const AllAnswersLanguage = this.props.UserQuizAllAnswersLanguage;
     // console.log(AllAnswersLanguage);
 
+    for (let i = 0; i < this.props.UserQuizAllAnswers.length; i++) {
+      userAllAns[i] = this.props.UserQuizAllAnswers[i].split("!,!")[1];
+    }
+    // console.log(userAns);
+
     for (let i = 0; i < QuizQuestion.length; i++) {
       incorrectAnswers.push(
-        QuizQuestion[i].answers.filter((ans) => ans.isCorrectAnswer === false)
+        QuizQuestion[i].question.answers.filter(
+          (ans) => ans.isCorrectAnswer === false
+        )
       );
       correctAnswers.push(
-        QuizQuestion[i].answers.filter((ans) => ans.isCorrectAnswer === true)
+        QuizQuestion[i].question.answers.filter(
+          (ans) => ans.isCorrectAnswer === true
+        )
       );
       // userAllAnswers.push([]);
     }
@@ -82,7 +93,7 @@ class CompareAnswers extends Component {
         }
       } else {
         // correctAnswers2[k][0] = QuizQuestion[k].answers
-        correctAnswers2[k] = QuizQuestion[k].answers
+        correctAnswers2[k] = QuizQuestion[k].question.answers
           .filter((ans) => ans.isCorrectAnswer === true)[0]
           .questionAnswersDictionaries.filter(
             (ans) => ans.language === AllAnswersLanguage[k]
@@ -96,20 +107,20 @@ class CompareAnswers extends Component {
       NewFilter = [
         ...NewFilter,
         {
-          point: QuizQuestion[i].point,
+          point: QuizQuestion[i].question.point,
           correctAnswers: correctAnswers2[i],
           incorrectAnswers: incorrectAnswers2[i],
-          question: QuizQuestion[i].questionDictionaries.filter(
+          question: QuizQuestion[i].question.questionDictionaries.filter(
             (qst) => qst.language === AllAnswersLanguage[i]
           )[0].questionText,
-          questionType: QuizQuestion[i].questionType,
-          moduleName: QuizQuestion[i].moduleName,
-          NumberOfBlank: QuizQuestion[i].NumberOfBlank,
+          questionType: QuizQuestion[i].question.type,
+          moduleName: QuizQuestion[i].question.moduleName,
+          NumberOfBlank: QuizQuestion[i].question.NumberOfBlank,
         },
       ];
     }
 
-    // console.log("NewFilter222 ", NewFilter);
+    console.log("NewFilter222 ", NewFilter);
     this.setState({ ViewFilteredQuestion: NewFilter });
   }
 
@@ -252,7 +263,7 @@ class CompareAnswers extends Component {
                 {ViewFilteredQuestion[questionIndex].question}
                 {"    "}
                 {ViewFilteredQuestion[questionIndex].correctAnswers ===
-                UserQuizAllAnswers[questionIndex] ? (
+                userAllAns[questionIndex] ? (
                   <FontAwesomeIcon
                     className='m-2'
                     icon={faCheckCircle}
@@ -290,7 +301,7 @@ class CompareAnswers extends Component {
                   ViewFilteredQuestion[questionIndex].incorrectAnswers.map(
                     (answers, index) => (
                       <>
-                        {UserQuizAllAnswers[questionIndex] === answers ? (
+                        {userAllAns[questionIndex] === answers ? (
                           <div
                             className='p-2 m-1 answers'
                             style={{
@@ -300,7 +311,7 @@ class CompareAnswers extends Component {
                               backgroundColor: "#FFE0DA",
                             }}
                           >
-                            {UserQuizAllAnswers[questionIndex]}
+                            {userAllAns[questionIndex]}
                           </div>
                         ) : (
                           <div key={index} className='p-2 m-1 answers'>

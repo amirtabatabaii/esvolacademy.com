@@ -39,6 +39,9 @@ class SubModule7 extends Component {
       HandleCompareAnswerQuestionResult,
       handleBlankAnswerInputChange,
       UserQuizAllAnswersLanguage,
+      SubModule7QuizQuestionFiltered,
+      UserInfo,
+      UserStatus,
     } = this.props;
 
     return (
@@ -52,6 +55,9 @@ class SubModule7 extends Component {
               userQuizScore={userQuizScore}
               QuizScore={QuizScore}
               HandleCompareAnswer={HandleCompareAnswer}
+              UserQuizAllAnswers={UserQuizAllAnswers}
+              UserInfo={UserInfo}
+              UserStatus={UserStatus}
             />
           )}
 

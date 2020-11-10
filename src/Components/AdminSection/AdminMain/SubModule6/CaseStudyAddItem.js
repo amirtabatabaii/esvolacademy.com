@@ -80,11 +80,10 @@ function CaseStudyAddItem(props) {
         if (Response.status === 200) {
           console.log(Response.data);
           //this.props.SetUserInfo(Response.data);
-          openNotificationWithIcon("success", "Reading", "Reading", 10);
+          // openNotificationWithIcon("success", "Reading", "Reading", 10);
+          openNotificationWithIcon("success", "CaseStudy", "CaseStudy", 10);
         }
       });
-
-    openNotificationWithIcon("success", "CaseStudy", "CaseStudy", 10);
   };
 
   const handleChangeReading = (e) => {

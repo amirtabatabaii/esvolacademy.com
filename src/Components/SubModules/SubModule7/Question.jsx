@@ -55,14 +55,14 @@ class Question extends Component {
       userMultipleChoiceAnswer,
       HandleYesNoAnswerChange,
       HandleMultipleChoiceAnswerChange,
+      SubModule7QuizQuestionFiltered,
     } = this.props;
 
     return (
       <>
         <div>
           {SubModule7QuizQuestionText !== undefined &&
-            SubModule7QuizQuestion[questionIndex].questionType ===
-              "MultipleChoice" && (
+            AllQuestions[questionIndex].questionType === "MultipleChoice" && (
               <div>
                 <div className='m-5 text-left'>
                   <div className='question font-weight-bold'>
@@ -115,8 +115,7 @@ class Question extends Component {
             )}
 
           {SubModule7QuizQuestionText !== undefined &&
-            SubModule7QuizQuestion[questionIndex].questionType ===
-              "Boolean" && (
+            AllQuestions[questionIndex].questionType === "Boolean" && (
               <div>
                 <div className='m-5 text-left'>
                   <div className='question font-weight-bold'>
@@ -169,8 +168,7 @@ class Question extends Component {
             )}
 
           {SubModule7QuizQuestionText !== undefined &&
-            SubModule7QuizQuestion[questionIndex].questionType ===
-              "Filling" && (
+            AllQuestions[questionIndex].questionType === "Filling" && (
               <div>
                 <div className='m-5 text-left'>
                   <div className='question font-weight-bold'>
@@ -217,7 +215,7 @@ class Question extends Component {
             )}
 
           {SubModule7QuizQuestionText !== undefined &&
-            SubModule7QuizQuestion[questionIndex].questionType === "Blank" && (
+            AllQuestions[questionIndex].questionType === "Blank" && (
               <div className='m-5 text-left'>
                 <div className='question font-weight-bold'>
                   {questionIndex + 1}.{" "}

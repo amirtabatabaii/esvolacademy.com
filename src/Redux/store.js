@@ -62,6 +62,8 @@ export const initialState = {
   //
   EducationWithTasks: true,
   //
+  SubModule3Interactive: [],
+  SubModule3InteractiveQuestion: [],
   SubModule4Reading: [],
   SubModule4ReadingFiltered: [],
   SubModule5CaseStudy: [],
@@ -103,9 +105,8 @@ const store = createStore(
   // persistedState,
   initialState,
   compose(
-    applyMiddleware(...middleware)
-    // ,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

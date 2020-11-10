@@ -20,6 +20,7 @@ import {
   SUBMODULE_1_INTRO_VIDEO,
   SUBMODULE_2_COURSE_VIDEO,
   USER_INFO,
+  SUBMODULE_3_INTERACTIVE_TOOL,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -228,5 +229,17 @@ export const SetUserInfo = (UserInfo) => (dispatch) => {
   dispatch({
     type: USER_INFO,
     payload: { UserInfo },
+  });
+};
+
+// SUBMODULE_3_INTERACTIVE_TOOL
+export const SubModule3InteractiveSection = (SubModule3Interactive) => (
+  dispatch
+) => {
+  dispatch({
+    type: SUBMODULE_3_INTERACTIVE_TOOL,
+    payload: {
+      SubModule3Interactive,
+    },
   });
 };

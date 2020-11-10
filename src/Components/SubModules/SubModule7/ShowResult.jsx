@@ -5,12 +5,103 @@ import TranslateText from "../../Translate/TranslateText";
 import StarFull from "../../../assets/img/starFull.png";
 import Retake from "../../../assets/img/retake.png";
 import QuizPassFail from "../../Utility/QuizPassFail";
+import axios from "axios";
+import { ApiUrlMain2 } from "../../Utility/ApiUrl";
+
+let userAns = [];
 
 class ShowResult extends Component {
+  state = { minQuizScore: "" };
+
   percentageQuizScore = (QuizScore) => {
-    if (QuizScore !== 0) return (QuizScore * 70) / 100;
+    if (QuizScore !== 0)
+      return (QuizScore * parseInt(this.state.minQuizScore)) / 100;
     //if (QuizScore !== 0) return (QuizScore * 5) / 100;
   };
+
+  async componentDidMount() {
+    await axios
+      .get(ApiUrlMain2 + `/api/modules/${this.props.userActiveModule}`)
+      .then((Response) => {
+        this.setState({
+          minQuizScore: Response.data.minQuizScore,
+        });
+      });
+
+    // console.log(this.props.UserQuizAllAnswers);
+    for (let i = 0; i < this.props.UserQuizAllAnswers.length; i++) {
+      userAns[i] = {
+        userAnswerId: this.props.UserQuizAllAnswers[i].split("!,!")[0],
+        userAnswer: this.props.UserQuizAllAnswers[i].split("!,!")[1],
+      };
+    }
+    // console.log(userAns);
+  }
+
+  componentDidUpdate() {
+    if (
+      this.props.userQuizScore >= this.percentageQuizScore(this.props.QuizScore)
+    ) {
+      {
+        axios
+          .put(
+            ApiUrlMain2 +
+              `/users/${this.props.UserInfo.userId}/questions/answers`,
+            {
+              userAnswers: userAns,
+            },
+
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              axios
+                .put(
+                  ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+                  {
+                    userStatus: {
+                      currentModule:
+                        "Module" +
+                        parseInt(
+                          this.props.UserStatus.currentModule.substring(6) + 1
+                        ),
+                      currentSubModule: "sub1",
+                      score: "50",
+                      badgeNo: "450",
+                    },
+                  },
+                  (axios.defaults.headers.common[
+                    "Authorization"
+                  ] = localStorage.getItem("UserInfo")),
+                  (axios.defaults.headers.common[
+                    "Access-Control-Allow-Origin"
+                  ] = "*"),
+                  {
+                    "Content-Type": "application/json",
+                  }
+                )
+                .then((res) => {
+                  // console.log("res =====> ", res);
+                  // if (res.status === 200) {
+                  //   // window.location.reload(false);
+                  //   //openNotificationWithIcon("success", "Update", "Update ok", 3);
+                  // }
+                });
+              // window.location.reload(false);
+              //openNotificationWithIcon("success", "Update", "Update ok", 3);
+            }
+          });
+      }
+    }
+  }
 
   render() {
     const {
@@ -20,6 +111,9 @@ class ShowResult extends Component {
       userQuizScore,
       QuizScore,
       HandleCompareAnswer,
+      UserQuizAllAnswers,
+      UserInfo,
+      UserStatus,
     } = this.props;
 
     return (

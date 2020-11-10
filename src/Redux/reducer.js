@@ -20,6 +20,7 @@ import {
   SUBMODULE_1_INTRO_VIDEO,
   SUBMODULE_2_COURSE_VIDEO,
   USER_INFO,
+  SUBMODULE_3_INTERACTIVE_TOOL,
 } from "./types";
 
 import initialState from "./store";
@@ -195,6 +196,14 @@ export default function (state = initialState, action) {
         ...state,
         UserInfo: action.payload.UserInfo,
         UserStatus: action.payload.UserInfo.userStatus,
+      };
+
+    case SUBMODULE_3_INTERACTIVE_TOOL:
+      return {
+        ...state,
+        SubModule3Interactive: action.payload.SubModule3Interactive,
+        // SubModule3InteractiveQuestion:
+        //   action.payload.SubModule3Interactive.questionDictionaries,
       };
 
     default:

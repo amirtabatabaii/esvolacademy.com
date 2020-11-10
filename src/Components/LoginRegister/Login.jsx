@@ -9,6 +9,7 @@ import TranslateText from "../Translate/TranslateText";
 import { Form } from "react-bootstrap";
 import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 class Login extends Component {
   state = { PassError: false, EmailError: false, password: "", email: "" };
@@ -32,46 +33,26 @@ class Login extends Component {
         .digest("hex");
 
       const hashedPass = shasum;
-      // console.log(hashedPass);
-      // console.log(this.state.email);
+
       axios
         .post(
-          "https://es-vol.herokuapp.com/login",
-          // ApiUrlMain2 + "/v2/users/login", // /v2/users/login
+          ApiUrlMain2 + "/users/login",
           {
             email: this.state.email,
             password: hashedPass,
-            // email: "test@test.com",
-            // password: "f7c3bc1d808e04732adf679965ccc34ca7ae3441",
           },
-          // {
-          //   "Access-Control-Allow-Origin": "*",
-          //   "Access-Control-Allow-Methods":
-          //     "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-          //   "Access-Control-Allow-Headers":
-          //     "x-requested-with, Content-Type, origin, authorization, accept, client-security-token",
-          //   "Access-Control-Max-Age": "1000",
-          // },
-
-          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
-          // (axios.defaults.headers.common["Access-Control-Max-Age"] = "1000"),
-          (axios.defaults.headers.common["Access-Control-Allow-Headers"] =
-            // "x-requested-with, Content-Type, origin, authorization, accept, client-security-token"),
-            "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"),
-          (axios.defaults.headers.common["Access-Control-Allow-Methods"] =
-            "PUT, GET, POST, DELETE, OPTIONS"),
-          {
-            "Content-Type": "application/json",
-          }
+          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*")
         )
         .then((res) => {
-          // if (res.status === 200) {
-          console.log("res =====> ", res);
-          //         // localStorage.setItem("jwtToken", res.data.result);
-          //         // setAuthToken(res.data.result);
-          //         // this.props.history.push(`/user`);
-          //         // document.getElementById("login-form").reset();
-          // }
+          if (res.status === 200) {
+            localStorage.setItem("UserInfo", res.data);
+
+            const decoded = jwt_decode(res.data);
+            // console.log(decoded);
+            localStorage.setItem("UserID", decoded.userID);
+            this.props.history.push(`/user`);
+            //         // document.getElementById("login-form").reset();
+          }
           //       //
           //       // else if (res.data.success === false) {
           //       //   AuthError("error");

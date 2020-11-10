@@ -24,6 +24,7 @@ function QuizPassFail(props) {
             recycle={false}
             numberOfPieces={600}
           />
+          {/* {console.log("PASSSSSSSSSSSSSSSSSSSSSSSSSSS")} */}
           {/* {props.onClickNextModule(props.userActiveModule, "sub1")} */}
         </>
       )}

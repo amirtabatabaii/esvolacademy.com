@@ -85,43 +85,43 @@ function InteractiveToolAddItem(props) {
       ],
     });
 
-    // axios
-    //   .post(
-    //     ApiUrlMain2 + `/api/sublevels`,
-    //     {
-    //       point: "0",
-    //       type: props.adminActiveSubModule,
-    //       moduleName: props.adminActiveModule,
-    //       interactiveUrl: ActiveModule.interactiveUrl,
-    //       interactiveUrlFormat: ActiveModule.interactiveUrlFormat,
-    //       activationStatus: true,
-    //       numberOfBlank: 0,
-    //       questionDictionaries: inputList,
-    //       answers: [
-    //         {
-    //           isCorrectAnswer: false,
-    //           questionAnswersDictionaries: [
-    //             {
-    //               answerText: "",
-    //               language: "",
-    //             },
-    //           ],
-    //         },
-    //       ],
-    //     }
-    //     // , {
-    //     // headers: {
-    //     //   Authorization: localStorage.getItem("UserInfo"),
-    //     // },
-    //     // }
-    //   )
-    //   .then((Response) => {
-    //     if (Response.status === 200) {
-    //       // console.log(Response.data);
-    //       //this.props.SetUserInfo(Response.data);
-    //       openNotificationWithIcon("success", "Reading", "Reading", 10);
-    //     }
-    //   });
+    axios
+      .post(
+        ApiUrlMain2 + `/api/exam/quiz/questions`,
+        {
+          point: "0",
+          type: "Interactive",
+          moduleName: props.adminActiveModule,
+          interactiveUrl: ActiveModule.interactiveUrl,
+          interactiveUrlFormat: ActiveModule.interactiveUrlFormat,
+          activationStatus: true,
+          numberOfBlank: 0,
+          questionDictionaries: inputList,
+          answers: [
+            {
+              isCorrectAnswer: false,
+              questionAnswersDictionaries: [
+                {
+                  answerText: "",
+                  language: "",
+                },
+              ],
+            },
+          ],
+        }
+        // , {
+        // headers: {
+        //   Authorization: localStorage.getItem("UserInfo"),
+        // },
+        // }
+      )
+      .then((Response) => {
+        if (Response.status === 200) {
+          console.log(Response.data);
+          //this.props.SetUserInfo(Response.data);
+          openNotificationWithIcon("success", "Reading", "Reading", 10);
+        }
+      });
   };
 
   const handleChangeReading = (e) => {
@@ -203,7 +203,11 @@ function InteractiveToolAddItem(props) {
                   <Button
                     variant='contained'
                     color='secondary'
-                    className='ml-5 p-3 bg-danger'
+                    className={
+                      inputList.length !== 1
+                        ? "ml-5 p-3 bg-danger"
+                        : "ml-2 p-3 bg-danger"
+                    }
                     onClick={() => handleRemoveClick(i)}
                     startIcon={<DeleteIcon />}
                   >
@@ -215,7 +219,11 @@ function InteractiveToolAddItem(props) {
                   <Button
                     variant='contained'
                     color='secondary'
-                    className='ml-5 p-3 bg-success'
+                    className={
+                      inputList.length !== 1
+                        ? "ml-2 p-3 bg-success"
+                        : "ml-5 p-3 bg-success"
+                    }
                     onClick={handleAddClick}
                     startIcon={<AddBoxIcon />}
                   >
@@ -225,7 +233,7 @@ function InteractiveToolAddItem(props) {
 
                 <TextField
                   // style={{ width: "80%" }}
-                  className='w-100 mt-2 mb-2'
+                  className='w-100 mt-3 mb-3'
                   variant='outlined'
                   label={"Interactive Title"}
                   name='interactiveTitle'
