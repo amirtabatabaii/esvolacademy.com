@@ -271,9 +271,9 @@ function InteractiveToolAddItem(props) {
         </div>
       </Form>
 
-      <div style={{ marginTop: 20 }}>
+      {/* <div style={{ marginTop: 20 }}>
         <pre>{JSON.stringify(ActiveModule, null, 2)}</pre>
-      </div>
+      </div> */}
     </div>
   );
 }

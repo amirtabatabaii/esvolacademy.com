@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import InsertVideo from "../../Utility/InsertVideo";
+import { Form } from "react-bootstrap";
+import { Button } from "@material-ui/core";
+import SaveIcon from "@material-ui/icons/Save";
 
 class IntroductionVideo extends Component {
   state = {
     video_url: "",
     video_ratio: "",
-    video_score: "",
     active_subModule: "",
     active_module: "",
     videoInfo: {},
@@ -20,7 +22,6 @@ class IntroductionVideo extends Component {
       videoInfo: {
         video_url: this.state.video_url,
         video_ratio: this.state.video_ratio,
-        video_score: this.state.video_score,
         active_subModule: this.props.adminActiveSubModule,
         active_module: this.props.adminActiveModule,
       },
@@ -34,12 +35,29 @@ class IntroductionVideo extends Component {
   render() {
     return (
       <>
-        <InsertVideo
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
+        <Form className='text-left' onSubmit={this.handleSubmit}>
+          <InsertVideo
+            handleChange={this.handleChange}
+            videoUrlName='video_url'
+            ratioName='video_ratio'
+          />
+
+          <div className='m-5'>
+            <Button
+              variant='contained'
+              color='primary'
+              type='submit'
+              className='p-3 w-100'
+              size='large'
+              startIcon={<SaveIcon />}
+            >
+              Save Video
+            </Button>
+          </div>
+        </Form>
+
         <div style={{ marginTop: 20 }}>
-          {JSON.stringify(this.state.videoInfo)}
+          <pre>{JSON.stringify(this.state.videoInfo, null, 2)}</pre>
         </div>
       </>
     );
