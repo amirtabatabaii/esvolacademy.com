@@ -57,6 +57,8 @@ function QuizFilling(props) {
               required
               multiline
               rows={5}
+              inputProps={{ maxLength: 500 }}
+              helperText='Maximum Character Number : 500 char'
               onChange={(e) => props.handleQstListChange(e, i)}
             />
 
