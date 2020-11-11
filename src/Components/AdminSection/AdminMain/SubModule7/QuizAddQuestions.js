@@ -313,7 +313,7 @@ function QuizAddQuestions(props) {
               { "Content-type": "application/json; charset=iso-8859-1" }
             )
             .then((res) => {
-              // console.log("Success res ========>", res);
+              console.log("Success res ========>", res);
               openNotificationWithIcon(
                 "success",
                 " TrueCount = 1 ",

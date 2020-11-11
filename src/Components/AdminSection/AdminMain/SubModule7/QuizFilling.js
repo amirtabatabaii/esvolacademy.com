@@ -55,6 +55,8 @@ function QuizFilling(props) {
               name='questionText'
               value={qst.questionText}
               required
+              multiline
+              rows={5}
               onChange={(e) => props.handleQstListChange(e, i)}
             />
 
