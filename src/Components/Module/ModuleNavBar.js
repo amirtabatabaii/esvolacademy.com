@@ -15,7 +15,8 @@ import { withRouter } from "react-router-dom";
 
 class ModuleNavBar extends Component {
   handleClick = () => {
-    localStorage.removeItem("UserToken");
+    localStorage.removeItem("UserID");
+    localStorage.removeItem("UserInfo");
     this.props.history.push(`/login`);
   };
 
