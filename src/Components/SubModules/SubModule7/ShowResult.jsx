@@ -63,19 +63,29 @@ class ShowResult extends Component {
           .then((res) => {
             // console.log("res =====> ", res);
             if (res.status === 200) {
+              const ModuleNumber = this.props.UserStatus.currentModule.substr(
+                this.props.UserStatus.currentModule.length - 1
+              );
+              const editedModuleName = this.props.UserStatus.currentModule.slice(
+                0,
+                -1
+              );
+
               axios
                 .put(
                   ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
                   {
                     userStatus: {
                       currentModule:
-                        "Module" +
-                        parseInt(
-                          this.props.UserStatus.currentModule.substring(6) + 1
-                        ),
+                        editedModuleName + (parseInt(ModuleNumber) + 1),
                       currentSubModule: "sub1",
-                      score: "50",
-                      badgeNo: "450",
+                      score:
+                        parseInt(this.props.UserStatus.score) +
+                        Math.round(
+                          (parseInt(this.props.userQuizScore) * 100) /
+                            parseInt(this.props.QuizScore)
+                        ),
+                      badgeNo: "0",
                     },
                   },
                   (axios.defaults.headers.common[
@@ -89,7 +99,7 @@ class ShowResult extends Component {
                   }
                 )
                 .then((res) => {
-                  // console.log("res =====> ", res);
+                  console.log("res =====> ", res);
                   // if (res.status === 200) {
                   //   // window.location.reload(false);
                   //   //openNotificationWithIcon("success", "Update", "Update ok", 3);

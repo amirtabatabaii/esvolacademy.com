@@ -50,7 +50,10 @@ function QuizPassFail(props) {
         </div>
 
         <div style={{ color: props.Passed ? "green" : "#C70039" }}>
-          {props.userQuizScore} / {props.QuizScore}
+          {Math.round(
+            (parseInt(props.userQuizScore) * 100) / parseInt(props.QuizScore)
+          )}
+          /{" 100"}
         </div>
       </Col>
 

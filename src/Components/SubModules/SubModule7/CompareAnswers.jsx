@@ -81,8 +81,8 @@ class CompareAnswers extends Component {
       // Manage correctAnswers
       if (
         correctAnswers[k].length >= 1 &&
-        (QuizQuestion[k].questionType === "Filling" ||
-          QuizQuestion[k].questionType === "Blank")
+        (QuizQuestion[k].question.type === "Filling" ||
+          QuizQuestion[k].question.type === "Blank")
       ) {
         for (let q = 0; q < correctAnswers[k].length; q++) {
           correctAnswers2[k].push(
@@ -129,9 +129,9 @@ class CompareAnswers extends Component {
       this.state.ViewFilteredQuestion[this.props.questionIndex].questionType ===
       "Filling"
     ) {
-      let Str = this.props.UserQuizAllAnswers[
-        this.props.questionIndex
-      ].toLowerCase();
+      let Str = this.props.UserQuizAllAnswers[this.props.questionIndex]
+        .toLowerCase()
+        .split("!,!")[1];
 
       let Arr = this.state.ViewFilteredQuestion[this.props.questionIndex]
         .correctAnswers;
@@ -147,14 +147,20 @@ class CompareAnswers extends Component {
       if (previousState.FillingStr === "" || previousState.FillingStr !== Str) {
         this.setState({
           FillingStr: Str,
+          FillingIconType: false,
         });
       }
 
+      // console.log("previousState", previousState.FillingIconType);
+      // console.log("this.state", this.state.FillingIconType);
       if (
         previousState.FillingIconType === null ||
         previousState.FillingIconType !== this.state.FillingIconType
       ) {
-        if (count >= Math.round((Arr.length * 70) / 100)) {
+        // console.log("count", count);
+        // console.log("Math", Math.round((Arr.length * 65) / 100));
+        // console.log("iffff", count >= Math.round((Arr.length * 65) / 100));
+        if (count >= Math.round((Arr.length * 65) / 100)) {
           this.setState({
             FillingIconType: true,
           });
@@ -172,7 +178,9 @@ class CompareAnswers extends Component {
 
     const Answers = this.state.ViewFilteredQuestion[this.props.questionIndex]
       .correctAnswers;
-    const UserAns = this.props.UserQuizAllAnswers[this.props.questionIndex];
+    const UserAns = this.props.UserQuizAllAnswers[this.props.questionIndex]
+      .split("!,!")[1]
+      .split(",");
 
     let qstInput = [];
     for (let i = 0; i < qstArr.length; i++) {
@@ -186,7 +194,7 @@ class CompareAnswers extends Component {
             <>
               {UserAns[i].toLowerCase() === Answers[i].toLowerCase() ? (
                 <label
-                  className='mt-2 ml-2 mr-2'
+                  className='mt-2 ml-2 mr-2 p-1'
                   style={{
                     width: "auto",
                     border: "2px solid #A2D87A",

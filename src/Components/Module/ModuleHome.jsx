@@ -70,81 +70,83 @@ class ModuleHome extends Component {
     };
   }
 
-  handleOnClickSubModule = (ActiveSubName) => {
-    const UserActiveSubNumber = this.props.UserStatus.currentSubModule.substring(
-      3
-    );
-    const UserSelectedSubNumber = ActiveSubName.substring(3);
-    if (this.props.UserInfo.isEasyModeActive) {
-      if (
-        UserSelectedSubNumber === "1" ||
-        UserSelectedSubNumber === "2" ||
-        UserSelectedSubNumber === "6" ||
-        UserSelectedSubNumber === "7"
-      ) {
-        // this.props.SelectedSubModule(ActiveSubName);
-        axios
-          .put(
-            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
-            {
-              userStatus: {
-                currentModule: this.props.UserStatus.currentModule,
-                currentSubModule: ActiveSubName,
-                score: "50",
-                badgeNo: "450",
-              },
-            },
-            (axios.defaults.headers.common[
-              "Authorization"
-            ] = localStorage.getItem("UserInfo")),
-            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-              "*"),
-            {
-              "Content-Type": "application/json",
-            }
-          )
-          .then((res) => {
-            // console.log("res =====> ", res);
-            if (res.status === 200) {
-              window.location.reload(false);
-              //openNotificationWithIcon("success", "Update", "Update ok", 3);
-            }
-          });
-      }
-    } else {
-      if (UserSelectedSubNumber <= UserActiveSubNumber)
-        ////this.props.SelectedSubModule(ActiveSubName);
-        axios
-          .put(
-            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
-            {
-              userStatus: {
-                currentModule: this.props.UserStatus.currentModule,
-                currentSubModule: ActiveSubName,
-                score: "50",
-                badgeNo: "450",
-              },
-            },
-            (axios.defaults.headers.common[
-              "Authorization"
-            ] = localStorage.getItem("UserInfo")),
-            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-              "*"),
-            {
-              "Content-Type": "application/json",
-            }
-          )
-          .then((res) => {
-            // console.log("res =====> ", res);
-            if (res.status === 200) {
-              window.location.reload(false);
-              //openNotificationWithIcon("success", "Update", "Update ok", 3);
-            }
-          });
+  handleOnClickSubModule = () => {};
 
-      //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
-    }
-  }; //ok
+  // handleOnClickSubModule = (ActiveSubName) => {
+  //   const UserActiveSubNumber = this.props.UserStatus.currentSubModule.substring(
+  //     3
+  //   );
+  //   const UserSelectedSubNumber = ActiveSubName.substring(3);
+  //   if (this.props.UserInfo.isEasyModeActive) {
+  //     if (
+  //       UserSelectedSubNumber === "1" ||
+  //       UserSelectedSubNumber === "2" ||
+  //       UserSelectedSubNumber === "6" ||
+  //       UserSelectedSubNumber === "7"
+  //     ) {
+  //       // this.props.SelectedSubModule(ActiveSubName);
+  //       axios
+  //         .put(
+  //           ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+  //           {
+  //             userStatus: {
+  //               currentModule: this.props.UserStatus.currentModule,
+  //               currentSubModule: ActiveSubName,
+  //               score: this.props.UserStatus.score,
+  //               badgeNo: "0",
+  //             },
+  //           },
+  //           (axios.defaults.headers.common[
+  //             "Authorization"
+  //           ] = localStorage.getItem("UserInfo")),
+  //           (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+  //             "*"),
+  //           {
+  //             "Content-Type": "application/json",
+  //           }
+  //         )
+  //         .then((res) => {
+  //           // console.log("res =====> ", res);
+  //           if (res.status === 200) {
+  //             window.location.reload(false);
+  //             //openNotificationWithIcon("success", "Update", "Update ok", 3);
+  //           }
+  //         });
+  //     }
+  //   } else {
+  //     if (UserSelectedSubNumber <= UserActiveSubNumber)
+  //       ////this.props.SelectedSubModule(ActiveSubName);
+  //       axios
+  //         .put(
+  //           ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+  //           {
+  //             userStatus: {
+  //               currentModule: this.props.UserStatus.currentModule,
+  //               currentSubModule: ActiveSubName,
+  //               score: this.props.UserStatus.score,
+  //               badgeNo: "0",
+  //             },
+  //           },
+  //           (axios.defaults.headers.common[
+  //             "Authorization"
+  //           ] = localStorage.getItem("UserInfo")),
+  //           (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+  //             "*"),
+  //           {
+  //             "Content-Type": "application/json",
+  //           }
+  //         )
+  //         .then((res) => {
+  //           // console.log("res =====> ", res);
+  //           if (res.status === 200) {
+  //             window.location.reload(false);
+  //             //openNotificationWithIcon("success", "Update", "Update ok", 3);
+  //           }
+  //         });
+
+  //     //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
+  //   }
+  // }; //ok
 
   handleClickSubModuleNext = (ActiveSubName) => {
     // this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
@@ -156,8 +158,8 @@ class ModuleHome extends Component {
           userStatus: {
             currentModule: this.props.UserStatus.currentModule,
             currentSubModule: "sub" + ActiveSubName.substring(3),
-            score: "50",
-            badgeNo: "450",
+            score: this.props.UserStatus.score,
+            badgeNo: "0",
           },
         },
 
@@ -189,38 +191,40 @@ class ModuleHome extends Component {
   }; //ok
 
   handleClickModuleNext = (ActiveModuleName, ActiveSubName) => {
-    const ModuleNumber = ActiveModuleName.substr(ActiveModuleName.length - 1);
-    const editedModuleName = ActiveModuleName.slice(0, -1);
+    window.location.reload(false);
+
+    // const ModuleNumber = ActiveModuleName.substr(ActiveModuleName.length - 1);
+    // const editedModuleName = ActiveModuleName.slice(0, -1);
 
     this.props.SetEmptyRedux();
 
-    axios
-      .put(
-        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
-        {
-          userStatus: {
-            currentModule: editedModuleName + (parseInt(ModuleNumber) + 1),
-            currentSubModule: ActiveSubName,
-            score: "50",
-            badgeNo: "450",
-          },
-        },
+    // axios
+    //   .put(
+    //     ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+    //     {
+    //       userStatus: {
+    //         currentModule: editedModuleName + (parseInt(ModuleNumber) + 1),
+    //         currentSubModule: ActiveSubName,
+    //         score: this.props.UserStatus.score,
+    //         badgeNo: "0",
+    //       },
+    //     },
 
-        (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-          "UserInfo"
-        )),
-        (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
-        {
-          "Content-Type": "application/json",
-        }
-      )
-      .then((res) => {
-        // console.log("res =====> ", res);
-        if (res.status === 200) {
-          window.location.reload(false);
-          //openNotificationWithIcon("success", "Update", "Update ok", 3);
-        }
-      });
+    //     (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+    //       "UserInfo"
+    //     )),
+    //     (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+    //     {
+    //       "Content-Type": "application/json",
+    //     }
+    //   )
+    //   .then((res) => {
+    //     // console.log("res =====> ", res);
+    //     if (res.status === 200) {
+    //       window.location.reload(false);
+    //       //openNotificationWithIcon("success", "Update", "Update ok", 3);
+    //     }
+    //   });
 
     // this.props.UserActiveModuleSubModule(
     //   editedModuleName + (parseInt(ModuleNumber) + 1),
@@ -255,8 +259,8 @@ class ModuleHome extends Component {
               userStatus: {
                 currentModule: this.props.UserStatus.currentModule,
                 currentSubModule: "sub6",
-                score: "50",
-                badgeNo: "450",
+                score: this.props.UserStatus.score,
+                badgeNo: "0",
               },
             },
             (axios.defaults.headers.common[
@@ -415,7 +419,7 @@ class ModuleHome extends Component {
           });
         });
     }
-  } //ok
+  }
 
   // async componentDidUpdate(previousProps, previousState) {
   //   if (this.props.UserInfo.isEasyModeActive) {
@@ -431,8 +435,8 @@ class ModuleHome extends Component {
   //             userStatus: {
   //               currentModule: this.props.UserStatus.currentModule,
   //               currentSubModule: "sub6",
-  //               score: "50",
-  //               badgeNo: "450",
+  //               score: this.props.UserStatus.score,
+  //               badgeNo: "0",
   //             },
   //           },
 
@@ -666,7 +670,7 @@ class ModuleHome extends Component {
           (ans) => ans.isCorrectAnswer === true
         )
       );
-      // userAllAnswers.push([]);
+      // console.log("correctAnswers", correctAnswers);
     }
 
     let incorrectAnswers2 = [];
@@ -703,8 +707,8 @@ class ModuleHome extends Component {
       // Manage correctAnswers
       if (
         correctAnswers[k].length >= 1 &&
-        (QuizQuestion[k].questionType === "Filling" ||
-          QuizQuestion[k].questionType === "Blank")
+        (QuizQuestion[k].question.type === "Filling" ||
+          QuizQuestion[k].question.type === "Blank")
       ) {
         for (let q = 0; q < correctAnswers[k].length; q++) {
           correctAnswers2[k].push(
@@ -723,7 +727,7 @@ class ModuleHome extends Component {
       }
     }
     // console.log(" correctAnswers2 ", correctAnswers2);
-    // console.log("incorrectAnswers2 ", incorrectAnswers2);
+    //console.log("incorrectAnswers2 ", incorrectAnswers2);
 
     for (let i = 0; i < QuizQuestion.length; i++) {
       NewFilter = [
@@ -766,7 +770,7 @@ class ModuleHome extends Component {
       AllQuestions: NewFilter,
       // questionIndex:0
     });
-  };
+  }; //ok
 
   HandleMultipleChoiceAnswerChange = (e) => {
     this.setState(
@@ -785,7 +789,7 @@ class ModuleHome extends Component {
         // console.log(userAllAnswersLanguage);
       }
     );
-  };
+  }; //ok
 
   HandleYesNoAnswerChange = (e) => {
     this.setState(
@@ -804,7 +808,7 @@ class ModuleHome extends Component {
         // console.log(userAllAnswersLanguage);
       }
     );
-  };
+  }; //ok
 
   HandleQuestionFillingAnswerChange = (e) => {
     this.setState(
@@ -812,7 +816,10 @@ class ModuleHome extends Component {
         userFillingAnswer: e.target.value,
       },
       () => {
-        userAllAnswers[this.state.questionIndex] = this.state.userFillingAnswer;
+        userAllAnswers[this.state.questionIndex] =
+          this.state.AllQuestions[this.state.questionIndex].AnsId +
+          "!,!" +
+          this.state.userFillingAnswer;
         userAllAnswersLanguage[
           this.state.questionIndex
         ] = this.props.selectedLanguage;
@@ -820,7 +827,7 @@ class ModuleHome extends Component {
         // console.log(userAllAnswersLanguage);
       }
     );
-  };
+  }; //ok
 
   HandleNextQuestion = () => {
     // let answer = userAllAnswers[this.state.questionIndex].substring(2);
@@ -849,10 +856,14 @@ class ModuleHome extends Component {
         );
       }
     );
-  };
+  }; //ok
 
   HandleFillingNextQuestion = () => {
-    let Str = this.state.userFillingAnswer.toLowerCase();
+    document.getElementById("fillingText").value = "";
+    let Str =
+      this.state.AllQuestions[this.state.questionIndex].AnsId +
+      "!,!" +
+      this.state.userFillingAnswer.toLowerCase();
 
     let Arr = this.props.SubModule7QuizQuestionFiltered[
       this.state.questionIndex
@@ -863,7 +874,7 @@ class ModuleHome extends Component {
       if (Str.includes(Arr[i].toLowerCase())) count += 1;
     }
 
-    if (count >= Math.round((Arr.length * 70) / 100)) {
+    if (count >= Math.round((Arr.length * 65) / 100)) {
       this.setState({
         userScore:
           parseInt(this.state.userScore) +
@@ -883,27 +894,34 @@ class ModuleHome extends Component {
         );
       }
     );
-  };
+  }; //ok
 
   handleBlankAnswerInputChange = (e, i) => {
     userBlankAnswers[i] = e.target.value;
 
+    // console.log("userBlankAnswers[i]", userBlankAnswers[i]);
     this.setState(
       {
         userBlankAnswer: userBlankAnswers, //.join(" , "),
       },
       () => {
-        userAllAnswers[this.state.questionIndex] = this.state.userBlankAnswer;
+        userAllAnswers[this.state.questionIndex] =
+          this.state.AllQuestions[this.state.questionIndex].AnsId +
+          "!,!" +
+          this.state.userBlankAnswer;
         userAllAnswersLanguage[
           this.state.questionIndex
         ] = this.props.selectedLanguage;
-        // console.log(userAllAnswers);
+
+        // console.log("userAllAnswers", userAllAnswers);
         // console.log(userAllAnswersLanguage);
       }
     );
-  };
+  }; //ok
 
   HandleBlankNextQuestion = () => {
+    document.getElementById("blankAnswer").value = "";
+
     let point = this.props.SubModule7QuizQuestionFiltered[
       this.state.questionIndex
     ].point;
@@ -914,9 +932,12 @@ class ModuleHome extends Component {
 
     let count = 0;
     for (let m = 0; m < ansArr.length; m++) {
+      // console.log("userBlankAnswers", userBlankAnswers[m].toLowerCase());
+      // console.log("ansArr", ansArr[m].toLowerCase());
       if (userBlankAnswers[m] === undefined) userBlankAnswers[m] = "";
       else if (userBlankAnswers[m].toLowerCase() === ansArr[m].toLowerCase()) {
         count += 1;
+        // console.log(count);
       }
     }
 
@@ -944,7 +965,7 @@ class ModuleHome extends Component {
         );
       }
     );
-  };
+  }; //ok
 
   HandlePrevQuestion = () => {
     this.setState(
@@ -959,7 +980,7 @@ class ModuleHome extends Component {
         );
       }
     );
-  };
+  }; //ok
 
   HandleQuestionResult = () => {
     let sumPoint = 0;
@@ -1016,7 +1037,7 @@ class ModuleHome extends Component {
         if (Str.includes(Arr[i].toLowerCase())) count += 1;
       }
 
-      if (count >= Math.round((Arr.length * 70) / 100)) {
+      if (count >= Math.round((Arr.length * 65) / 100)) {
         this.setState(
           {
             userScore:
@@ -1085,7 +1106,7 @@ class ModuleHome extends Component {
       takeQuiz: false,
       questionIndex: 0,
     });
-  };
+  }; //ok
 
   HandleRetakeQuiz = () => {
     userAllAnswers = [];
@@ -1132,19 +1153,19 @@ class ModuleHome extends Component {
       takeQuiz: false,
       compareAnswer: true,
     });
-  };
+  }; //ok
 
   HandleCompareAnswerNextQuestion = () => {
     this.setState({
       questionIndex: this.state.questionIndex + 1,
     });
-  };
+  }; //ok
 
   HandleCompareAnswerPrevQuestion = () => {
     this.setState({
       questionIndex: this.state.questionIndex - 1,
     });
-  };
+  }; //ok
 
   HandleCompareAnswerQuestionResult = () => {
     this.setState({
@@ -1153,7 +1174,7 @@ class ModuleHome extends Component {
       compareAnswer: false,
       questionIndex: 0,
     });
-  };
+  }; //ok
 
   HandleReadingCaseStudy = (List, lng) => {
     let NewFilter = [];

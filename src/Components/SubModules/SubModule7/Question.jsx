@@ -20,6 +20,7 @@ class Question extends Component {
               className='w-25 mt-2 ml-1 mr-1'
               variant='outlined'
               name='blankAnswer'
+              id='blankAnswer'
               onChange={(e) => this.props.handleBlankAnswerInputChange(e, i)}
             />
           )}
@@ -181,7 +182,7 @@ class Question extends Component {
                     <div>
                       <TextField
                         className='w-100'
-                        id='standard-multiline-static'
+                        id='fillingText'
                         multiline
                         rows={7}
                         onChange={HandleQuestionFillingAnswerChange}
