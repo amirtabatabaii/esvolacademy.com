@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import CloudDoneIcon from "@material-ui/icons/CloudDone";
+import ErrorIcon from "@material-ui/icons/Error";
 import { Form } from "react-bootstrap";
 import {
   TextField,
@@ -9,7 +10,7 @@ import {
   FormControl,
 } from "@material-ui/core";
 
-class InsertVideo extends Component {
+class UploadVideo extends Component {
   render() {
     return (
       <div className='border border-secondary p-3 m-3'>
@@ -37,17 +38,6 @@ class InsertVideo extends Component {
 
         <Form.Group className='mt-4'>
           <TextField
-            className='w-75'
-            variant='outlined'
-            label={"Video URL"}
-            name={this.props.videoUrlName} //'video_url'
-            onChange={this.props.handleChange}
-            required
-            error={false}
-            helperText={"Insert Video URL"}
-          />
-
-          <TextField
             className='w-20 ml-2'
             variant='outlined'
             label={"Complation Ratio"}
@@ -58,9 +48,40 @@ class InsertVideo extends Component {
             error={false}
             helperText={"Insert Complation Ratio"}
           />
+
+          <div className='text-center mt-4'>
+            <input
+              type='file'
+              className='form-control w-75 m-auto'
+              name='file'
+              onChange={this.props.handleSubmitUpload}
+            />
+            <div className='m-auto progress w-75'>
+              <div
+                className='progress-bar progress-bar-striped bg-success'
+                role='progressbar'
+                style={{ width: `${this.props.percentage}%` }}
+              >
+                {this.props.percentage}%
+              </div>
+            </div>
+
+            {this.props.uploaded ? (
+              <>
+                fileName : {this.props.fileName}
+                <br />
+                url : {this.props.url}
+                <br />
+                <CloudDoneIcon color='primary' fontSize='large' />
+              </>
+            ) : (
+              <ErrorIcon color='error' fontSize='large' />
+            )}
+          </div>
         </Form.Group>
       </div>
     );
   }
 }
-export default InsertVideo;
+
+export default UploadVideo;

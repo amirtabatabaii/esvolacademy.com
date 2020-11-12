@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InsertVideo from "../../Utility/InsertVideo";
+import UploadVideo from "../../Utility/UploadVideo";
 import { Form } from "react-bootstrap";
 import {
   TextField,
@@ -10,56 +11,105 @@ import {
   Button,
 } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
+import axios from "axios";
+import { ApiUrlMain2 } from "../../../Utility/ApiUrl";
+import { openNotificationWithIcon } from "../../Utility/Error";
 
 class ExpertVideo extends Component {
   state = {
-    video_url1: "",
-    video_ratio1: "",
-    video_url2: "",
-    video_ratio2: "",
-    active_subModule: "",
-    active_module: "",
-    videoNum: 1,
-    videoInfo1: [{}],
-    videoInfo2: [{}, {}],
+    url: "",
+    completionRatio: "",
+    videoType: "LinkVideo",
+    uploaded: false,
+    language: "",
+    percentage: 0,
+    fileName: "",
   };
 
-  handleSubmit = (event) => {
+  // https://www.cluemediator.com/add-or-remove-input-fields-dynamically-with-reactjs
+
+  handleSubmitLink = (event) => {
     event.preventDefault();
-
-    if (this.state.videoNum === 1)
-      this.setState({
-        videoInfo1: [
-          {
-            video_url: this.state.video_url1,
-            video_ratio: this.state.video_ratio1,
-            active_subModule: this.props.adminActiveSubModule,
-            active_module: this.props.adminActiveModule,
-          },
-        ],
+    axios
+      .post(
+        ApiUrlMain2 + `/api/courses/videos`,
+        {
+          courseName: this.props.adminActiveModule,
+          url: this.state.url,
+          completionRatio: this.state.completionRatio,
+          type: "ExpertVideo", //this.props.adminActiveSubModule,
+        },
+        {
+          "Access-Control-Allow-Origin": "*",
+        }
+      )
+      .then((res) => {
+        console.log("res ===> ", res);
       });
+  };
 
-    if (this.state.videoNum === 2)
-      this.setState({
-        videoInfo2: [
+  handleSubmitUpload = (event) => {
+    if (
+      parseInt(parseInt(event.target.files[0].size) / parseInt(1024)) >
+      370000000
+    ) {
+      openNotificationWithIcon("error", "SizeError", "Size Err", 5);
+    } else {
+      this.setState({ uploaded: false });
+
+      const formData = new FormData();
+      for (let i = 0; i < event.target.files.length; i++) {
+        formData.append("file", event.target.files[i]);
+      }
+      axios
+        .post(
+          `http://31.210.91.44:8080/fileup/saveFile?module=${
+            this.props.adminActiveModule
+          }&subModule=${this.state.language + "ExpertVideo"}`,
+          formData,
+
           {
-            video_url: this.state.video_url1,
-            video_ratio: this.state.video_ratio1,
-            active_subModule: this.props.adminActiveSubModule,
-            active_module: this.props.adminActiveModule,
-          },
-          {
-            video_url: this.state.video_url2,
-            video_ratio: this.state.video_ratio2,
-            active_subModule: this.props.adminActiveSubModule,
-            active_module: this.props.adminActiveModule,
-          },
-        ],
-      });
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+            onUploadProgress: (progressEvent) => {
+              this.setState({
+                percentage: parseInt(
+                  Math.round((progressEvent.loaded * 100) / progressEvent.total)
+                ),
+              });
+            },
+          }
+        )
+        .then((res) => {
+          //console.log("res ====> ", res);
+          if (res.status === 200) {
+            this.setState({
+              uploaded: true,
+              url: res.data.filePath,
+              fileName: res.data.fileName,
+            });
+          } else {
+            this.setState({ uploaded: false });
+          }
+        });
+    }
   };
 
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    if (event.target.name === "videoType") {
+      if (this.state.videoType !== event.target.name) {
+        this.setState({
+          url: "",
+          completionRatio: "",
+          videoType: event.target.value,
+          uploaded: false,
+          language: "",
+          percentage: 0,
+          fileName: "",
+        });
+      }
+    } else this.setState({ [event.target.name]: event.target.value });
   };
 
   render() {
@@ -70,73 +120,75 @@ class ExpertVideo extends Component {
           style={{ width: "15%" }}
           className='ml-1 mr-1'
         >
-          <InputLabel id='forVideoNum'>Number Of Video</InputLabel>
+          <InputLabel id='forVideoType'>Video Type</InputLabel>
           <Select
             className='bg-light text-danger font-weight-bold'
-            labelId='forVideoNum'
+            labelId='forVideoType'
             // value={x.language}
-            label='Number Of Video'
-            name='videoNum'
+            label='Type Of Video'
+            name='videoType'
             required
             error={false}
-            helperText={"Number Of Video"}
-            defaultValue={1}
+            defaultValue={"LinkVideo"}
             onChange={(e) => this.handleChange(e)}
           >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={"LinkVideo"}>Insert Video Link</MenuItem>
+            <MenuItem value={"UploadVideo"}>Upload Video</MenuItem>
           </Select>
         </FormControl>
 
-        <Form className='text-left' onSubmit={this.handleSubmit}>
-          {this.state.videoNum === 1 && (
+        {this.state.videoType === "LinkVideo" && (
+          <Form className='text-left' onSubmit={this.handleSubmitLink}>
             <InsertVideo
               handleChange={this.handleChange}
-              videoUrlName='video_url1'
-              ratioName='video_ratio1'
+              videoUrlName='url'
+              ratioName='completionRatio'
+              language='language'
             />
-          )}
 
-          {this.state.videoNum === 2 && (
-            <>
-              <InsertVideo
-                handleChange={this.handleChange}
-                videoUrlName='video_url1'
-                ratioName='video_ratio1'
-              />
-
-              <InsertVideo
-                handleChange={this.handleChange}
-                videoUrlName='video_url2'
-                ratioName='video_ratio2'
-              />
-            </>
-          )}
-
-          <div className='m-5'>
-            <Button
-              variant='contained'
-              color='primary'
-              type='submit'
-              className='p-3 w-100'
-              size='large'
-              startIcon={<SaveIcon />}
-            >
-              Save Video
-            </Button>
-          </div>
-        </Form>
-
-        {this.state.videoNum === 1 && (
-          <div style={{ marginTop: 20 }}>
-            <pre>{JSON.stringify(this.state.videoInfo1, null, 2)}</pre>
-          </div>
+            <div className='m-5'>
+              <Button
+                variant='contained'
+                color='primary'
+                type='submit'
+                className='p-3 w-100'
+                size='large'
+                startIcon={<SaveIcon />}
+              >
+                Save Video
+              </Button>
+            </div>
+          </Form>
         )}
 
-        {this.state.videoNum === 2 && (
-          <div style={{ marginTop: 20 }}>
-            <pre>{JSON.stringify(this.state.videoInfo2, null, 2)}</pre>
-          </div>
+        {this.state.videoType === "UploadVideo" && (
+          <Form className='text-left' onSubmit={this.handleSubmitLink}>
+            <UploadVideo
+              adminActiveSubModule={this.props.adminActiveSubModule}
+              adminActiveModule={this.props.adminActiveModule}
+              ratioName='completionRatio'
+              language='language'
+              uploaded={this.state.uploaded}
+              handleChange={this.handleChange}
+              handleSubmitUpload={this.handleSubmitUpload}
+              percentage={this.state.percentage}
+              url={this.state.url}
+              fileName={this.state.fileName}
+            />
+
+            <div className='m-5'>
+              <Button
+                variant='contained'
+                color='primary'
+                type='submit'
+                className='p-3 w-100'
+                size='large'
+                startIcon={<SaveIcon />}
+              >
+                Save Video
+              </Button>
+            </div>
+          </Form>
         )}
       </>
     );
