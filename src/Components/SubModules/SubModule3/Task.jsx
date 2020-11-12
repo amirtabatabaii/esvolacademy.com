@@ -11,8 +11,29 @@ class Task extends Component {
           <div className='task-note font-weight-bold'>{this.props.note}</div>
 
           {this.props.Link !== " " && (
-            <a target='_blank' href={this.props.Link} rel='noopener noreferrer'>
-              <button
+            <a
+              className='text-decoration-none'
+              target='_blank'
+              href={this.props.Link}
+              rel='noopener noreferrer'
+            >
+              <p
+                className={`mt-4 ${this.props.userActiveModule}-video-link-btn`}
+              >
+                <div className='m-auto p-2'>
+                  {this.props.type === "site" ? (
+                    <TranslateText txt='SubModule4-OpenSite' />
+                  ) : null}
+                  {this.props.type === "pdf" ? (
+                    <TranslateText txt='SubModule4-ReadPdf' />
+                  ) : null}
+                  {this.props.type === "video" ? (
+                    <TranslateText txt='SubModule4-watchVideo' />
+                  ) : null}
+                </div>
+              </p>
+
+              {/* <button
                 className={`mt-4 ${this.props.userActiveModule}-video-link-btn`}
               >
                 {this.props.type === "site" ? (
@@ -24,7 +45,7 @@ class Task extends Component {
                 {this.props.type === "video" ? (
                   <TranslateText txt='SubModule4-watchVideo' />
                 ) : null}
-              </button>
+              </button> */}
             </a>
           )}
 
