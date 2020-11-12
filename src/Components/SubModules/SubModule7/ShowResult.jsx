@@ -99,7 +99,7 @@ class ShowResult extends Component {
                   }
                 )
                 .then((res) => {
-                  console.log("res =====> ", res);
+                  // console.log("res =====> ", res);
                   // if (res.status === 200) {
                   //   // window.location.reload(false);
                   //   //openNotificationWithIcon("success", "Update", "Update ok", 3);
