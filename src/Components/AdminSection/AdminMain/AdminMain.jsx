@@ -14,6 +14,7 @@ import "./AdminMain.css";
 import HeaderBreadcrumb from "./HeaderBreadcrumb";
 import QuizAdmin from "./SubModule7/QuizAdmin";
 import TableSetting from "./QuestionsSetting/TableSetting";
+import IntroductionVideoMain from "./SubModule1/IntroductionVideoMain";
 
 const { Content } = Layout;
 
@@ -60,7 +61,7 @@ class AdminMain extends Component {
               style={{ padding: 24, minHeight: 360 }}
             >
               {adminActiveSubModule === SubModule1Name && (
-                <IntroductionVideo
+                <IntroductionVideoMain
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
