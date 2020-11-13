@@ -45,6 +45,7 @@ class IntroductionVideo extends Component {
               videoUrlName='url'
               ratioName='completionRatio'
               language='language'
+              index={this.props.index}
             />
           )}
 
@@ -60,6 +61,7 @@ class IntroductionVideo extends Component {
               percentage={this.props.percentage}
               url={this.props.url}
               fileName={this.props.fileName}
+              index={this.props.index}
             />
           )}
 

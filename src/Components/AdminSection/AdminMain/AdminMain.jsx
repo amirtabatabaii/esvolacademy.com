@@ -64,13 +64,15 @@ class AdminMain extends Component {
                 <IntroductionVideoMain
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
+                  subModuleType='IntroductionVideo'
                 />
               )}
 
               {adminActiveSubModule === SubModule2Name && (
-                <CourseVideo
+                <IntroductionVideoMain
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
+                  subModuleType='CourseVideo'
                 />
               )}
 
@@ -96,9 +98,10 @@ class AdminMain extends Component {
               )}
 
               {adminActiveSubModule === SubModule6Name && (
-                <ExpertVideo
+                <IntroductionVideoMain
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
+                  subModuleType='ExpertVideo'
                 />
               )}
 

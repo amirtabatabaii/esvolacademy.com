@@ -5,28 +5,52 @@ import TableIntroductionVideo from "./TableIntroductionVideo";
 import { ApiUrlMainVideo, ApiUrlMain2 } from "../../../Utility/ApiUrl";
 import axios from "axios";
 import { openNotificationWithIcon } from "../../Utility/Error";
+import TableLinkIntroductionVideo from "./TableLinkIntroductionVideo";
 
 const { Panel } = Collapse;
 
 class IntroductionVideoMain extends Component {
   state = {
     VideoList: [],
+    VideoLinkList: [],
     url: "",
     completionRatio: "",
     videoType: "LinkVideo",
     uploaded: false,
-    language: "",
+    language: "En",
     percentage: 0,
     fileName: "",
   };
 
   componentDidMount = (e) => {
+    this.setState({
+      VideoLinkList: [],
+    });
+
     axios
       .get(ApiUrlMainVideo + `/fileup/${this.props.adminActiveModule}`)
       .then((Response) => {
         if (Response.status === 200) {
           // console.log("Success res ========>", Response.data.result);
           this.setState({ VideoList: Response.data.result });
+        }
+      });
+
+    axios
+      .get(
+        ApiUrlMain2 + `/api/courses/${this.props.adminActiveModule}/videos/` //${this.props.subModuleType}`
+      )
+      .then((Response) => {
+        // console.log(
+        //   "Success res ========>",
+        //   Response.data
+        // );
+        if (Response.status === 200) {
+          this.setState({
+            VideoLinkList: Response.data.filter(
+              (video) => video.type === this.props.subModuleType
+            ),
+          });
         }
       });
   };
@@ -39,6 +63,12 @@ class IntroductionVideoMain extends Component {
       .then((Response) => {
         // console.log("Success res ========>", Response);
         if (Response.status === 200) {
+          openNotificationWithIcon(
+            "success",
+            "delete video",
+            "delete video",
+            5
+          );
           axios
             .get(ApiUrlMainVideo + `/fileup/${this.props.adminActiveModule}`)
             .then((Response) => {
@@ -53,6 +83,7 @@ class IntroductionVideoMain extends Component {
 
   handleSubmitLink = (event) => {
     event.preventDefault();
+
     axios
       .post(
         ApiUrlMain2 + `/api/courses/videos`,
@@ -60,21 +91,44 @@ class IntroductionVideoMain extends Component {
           courseName: this.props.adminActiveModule,
           url: this.state.url,
           completionRatio: this.state.completionRatio,
-          type: "IntroductionVideo", //this.props.adminActiveSubModule,
+          type: this.props.subModuleType, //this.props.adminActiveSubModule,
         },
         {
           "Access-Control-Allow-Origin": "*",
         }
       )
       .then((res) => {
-        console.log("res ===> ", res);
+        // console.log("res ===> ", res);
+        if (res.status === 200) {
+          openNotificationWithIcon(
+            "success",
+            "insert video",
+            "insert video",
+            5
+          );
+          axios
+            .get(
+              ApiUrlMain2 +
+                `/api/courses/${this.props.adminActiveModule}/videos/` //${this.props.subModuleType}`
+            )
+            .then((Response) => {
+              // console.log("Success res ========>", Response);
+              if (Response.status === 200) {
+                this.setState({
+                  VideoLinkList: Response.data.filter(
+                    (video) => video.type === this.props.subModuleType
+                  ),
+                });
+              }
+            });
+        }
       });
   };
 
-  handleSubmitUpload = (event) => {
+  handleSubmitUpload = (event, index) => {
     if (
-      parseInt(parseInt(event.target.files[0].size) / parseInt(1024)) >
-      370000000
+      parseInt(parseInt(event.target.files[0].size) / parseInt(1024 * 1024)) >
+      400
     ) {
       openNotificationWithIcon("error", "SizeError", "Size Err", 5);
     } else {
@@ -88,9 +142,10 @@ class IntroductionVideoMain extends Component {
         .post(
           `http://31.210.91.44:8080/fileup/saveFile?module=${
             this.props.adminActiveModule
-          }&subModule=${this.state.language + "IntroductionVideo"}`,
+          }&subModule=${
+            this.state.language + "_" + this.props.subModuleType + index
+          }`,
           formData,
-
           {
             headers: {
               "Access-Control-Allow-Origin": "*",
@@ -109,9 +164,11 @@ class IntroductionVideoMain extends Component {
           if (res.status === 200) {
             this.setState({
               uploaded: true,
-              url: res.data.filePath,
+              url:
+                "https://kastanjetextile.com" + res.data.filePath.substring(25),
               fileName: res.data.fileName,
             });
+
             axios
               .get(ApiUrlMainVideo + `/fileup/${this.props.adminActiveModule}`)
               .then((Response) => {
@@ -135,7 +192,7 @@ class IntroductionVideoMain extends Component {
           completionRatio: "",
           videoType: event.target.value,
           uploaded: false,
-          language: "",
+          language: "En",
           percentage: 0,
           fileName: "",
         });
@@ -161,16 +218,51 @@ class IntroductionVideoMain extends Component {
               language={this.state.language}
               percentage={this.state.percentage}
               fileName={this.state.fileName}
+              index={"1"}
             />
           </Panel>
         </Collapse>
 
+        {this.props.subModuleType === "ExpertVideo" && (
+          <Collapse className='mb-3'>
+            <Panel header='Add Second Video Section' key='1'>
+              <IntroductionVideo
+                adminActiveSubModule={this.props.adminActiveSubModule}
+                adminActiveModule={this.props.adminActiveModule}
+                handleSubmitLink={this.handleSubmitLink}
+                handleSubmitUpload={this.handleSubmitUpload}
+                handleChange={this.handleChange}
+                url={this.state.url}
+                completionRatio={this.state.completionRatio}
+                videoType={this.state.videoType}
+                uploaded={this.state.uploaded}
+                language={this.state.language}
+                percentage={this.state.percentage}
+                fileName={this.state.fileName}
+                index={"2"}
+              />
+            </Panel>
+          </Collapse>
+        )}
+
         <Divider className='bg-info' />
 
+        <h5>Video List</h5>
+        <TableLinkIntroductionVideo
+          adminActiveModule={this.props.adminActiveModule}
+          handleDeleteVideo={this.handleDeleteVideo}
+          VideoLinkList={this.state.VideoLinkList}
+          subModuleType={this.props.subModuleType}
+        />
+
+        <Divider className='bg-info' />
+
+        <h5>Uploaded Video List in Server</h5>
         <TableIntroductionVideo
           adminActiveModule={this.props.adminActiveModule}
           handleDeleteVideo={this.handleDeleteVideo}
           VideoList={this.state.VideoList}
+          subModuleType={this.props.subModuleType}
         />
       </div>
     );

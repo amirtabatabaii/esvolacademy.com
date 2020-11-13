@@ -30,6 +30,7 @@ class UploadVideo extends Component {
             error={false}
             helperText={"Select Language"}
             onChange={this.props.handleChange}
+            defaultValue={"En"}
           >
             <MenuItem value={"En"}>En</MenuItem>
             <MenuItem value={"Tr"}>Tr</MenuItem>
@@ -54,7 +55,9 @@ class UploadVideo extends Component {
               type='file'
               className='form-control w-75 m-auto'
               name='file'
-              onChange={this.props.handleSubmitUpload}
+              onChange={(event) =>
+                this.props.handleSubmitUpload(event, this.props.index)
+              }
             />
             <div className='m-auto progress w-75'>
               <div

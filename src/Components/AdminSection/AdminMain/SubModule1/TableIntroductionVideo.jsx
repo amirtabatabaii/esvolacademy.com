@@ -5,6 +5,7 @@ import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 class TableIntroductionVideo extends Component {
   render() {
@@ -16,30 +17,49 @@ class TableIntroductionVideo extends Component {
               <thead>
                 <tr>
                   <th>#</th>
+                  <th>SubModule Type</th>
+                  <th>Language</th>
                   <th>File Name</th>
                   <th>Delete</th>
                 </tr>
               </thead>
 
               <tbody>
-                {this.props.VideoList.map((video, index) => (
+                {this.props.VideoList.filter((name) =>
+                  name.includes(this.props.subModuleType.toLowerCase())
+                ).map((video, index) => (
                   <tr key={video.id}>
                     <td>{index + 1}</td>
+                    <td>
+                      {video.substring(3).split(".")[0] === "coursevideo1"
+                        ? "Course Video"
+                        : video.substring(3).split(".")[0] ===
+                          "introductionvideo1"
+                        ? "Introduction Video"
+                        : video.substring(3).split(".")[0] === "expertvideo1"
+                        ? "Expert Video 1"
+                        : video.substring(3).split(".")[0] === "expertvideo2"
+                        ? "Expert Video 2"
+                        : ""}
+                    </td>
+                    <td>{video.substring(0, 2).toUpperCase()}</td>
                     <td>{video}</td>
                     <td>
-                      <Popconfirm
-                        title={`Are you sure DELETE this Video?`}
-                        onConfirm={() => this.props.handleDeleteVideo(video)}
-                        okText='Yes'
-                        cancelText='No'
-                      >
-                        <FontAwesomeIcon
-                          className='text-danger ml-2 mr-4'
-                          icon={faTrash}
-                          transform='grow-15'
-                          fixedWidth
-                        />
-                      </Popconfirm>
+                      <Link>
+                        <Popconfirm
+                          title={`Are you sure DELETE this Video?`}
+                          onConfirm={() => this.props.handleDeleteVideo(video)}
+                          okText='Yes'
+                          cancelText='No'
+                        >
+                          <FontAwesomeIcon
+                            className='text-danger ml-2 mr-4'
+                            icon={faTrash}
+                            transform='grow-15'
+                            fixedWidth
+                          />
+                        </Popconfirm>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -48,7 +68,7 @@ class TableIntroductionVideo extends Component {
           </>
         ) : (
           <Empty
-            description='Empty List...'
+            description='Empty Video List...'
             style={{ margin: "5%", zoom: "120%" }}
           />
         )}

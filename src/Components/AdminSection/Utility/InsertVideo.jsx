@@ -28,6 +28,7 @@ class InsertVideo extends Component {
             required
             error={false}
             helperText={"Select Language"}
+            defaultValue={"En"}
             onChange={this.props.handleChange}
           >
             <MenuItem value={"En"}>En</MenuItem>
