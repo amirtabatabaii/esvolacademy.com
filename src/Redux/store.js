@@ -24,23 +24,20 @@ export const initialState = {
   userActiveModule: "Module1",
   userActiveSubModule: "sub1",
   //
-  SubModule1IntroductionVideo: [
-    {
-      courseName: "",
-      url: "",
-      completionRatio: "",
-      type: "",
-    },
-  ],
+  SubModule1IntroductionVideo: {
+    courseName: "",
+    url: "",
+    completionRatio: "",
+    type: "",
+  },
 
-  SubModule2CourseVideo: [
-    {
-      courseName: "",
-      url: "",
-      completionRatio: "",
-      type: "",
-    },
-  ],
+  SubModule2CourseVideo: {
+    courseName: "",
+    url: "",
+    completionRatio: "",
+    type: "",
+  },
+
   //
   SubModule6ExpertVideo: [
     {

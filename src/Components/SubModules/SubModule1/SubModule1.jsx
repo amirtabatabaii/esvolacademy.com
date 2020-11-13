@@ -39,7 +39,7 @@ class SubModule1 extends Component {
         <section className='section'>
           <div className='player-wrapper'>
             <ReactPlayer
-              url={SubModule1Detail[0].url}
+              url={SubModule1Detail.url}
               // url={SubModuleUrl}
               className='react-player'
               width='100%'
@@ -64,7 +64,7 @@ class SubModule1 extends Component {
         <Row className='w-100 d-flex justify-content-around'>
           <SubModuleNextButton
             disabled={
-              played.toFixed(2) * 100 <= SubModule1Detail[0].completionRatio
+              played.toFixed(2) * 100 <= SubModule1Detail.completionRatio
                 ? true
                 : false
             }

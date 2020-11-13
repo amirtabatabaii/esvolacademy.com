@@ -81,8 +81,8 @@ class SubModule3 extends Component {
                   userStatus: {
                     currentModule: this.props.UserStatus.currentModule,
                     currentSubModule: "sub" + ActiveSubName.substring(3),
-                    score: "50",
-                    badgeNo: "450",
+                    score: this.props.UserStatus.score,
+                    badgeNo: "0",
                   },
                 },
 

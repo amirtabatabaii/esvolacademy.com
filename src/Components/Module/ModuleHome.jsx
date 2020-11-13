@@ -289,11 +289,41 @@ class ModuleHome extends Component {
 
     if (this.props.UserStatus.currentSubModule === "sub1") {
       await axios
-        .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+        .get(
+          ApiUrlMain2 +
+            `/api/courses/${this.props.UserStatus.currentModule}/videos/IntroductionVideo`
+          // , {
+          // headers: {
+          //   Authorization: localStorage.getItem("UserInfo"),
+          // },
+          // }
+        )
         .then((Response) => {
-          this.props.SubModule1IntroductionVideoSection(Response.data.results);
+          if (Response.status === 200) {
+            // console.log("Response.data", Response.data);
+            this.props.SubModule1IntroductionVideoSection(Response.data);
+          }
         });
-    }
+    } //ok
+
+    if (this.props.UserStatus.currentSubModule === "sub2") {
+      await axios
+        .get(
+          ApiUrlMain2 +
+            `/api/courses/${this.props.UserStatus.currentModule}/videos/CourseVideo`
+          // , {
+          // headers: {
+          //   Authorization: localStorage.getItem("UserInfo"),
+          // },
+          // }
+        )
+        .then((Response) => {
+          if (Response.status === 200) {
+            // console.log("Response.data", Response.data);
+            this.props.SubModule2CourseVideoSection(Response.data);
+          }
+        });
+    } //ok
 
     if (this.props.UserStatus.currentSubModule === "sub3") {
       await axios
@@ -324,14 +354,6 @@ class ModuleHome extends Component {
           this.props.SubModule3InteractiveSection(QstArray2);
         });
     } //ok
-
-    if (this.props.UserStatus.currentSubModule === "sub2") {
-      await axios
-        .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
-        .then((Response) => {
-          this.props.SubModule2CourseVideoSection(Response.data.results);
-        });
-    }
 
     if (this.props.UserStatus.currentSubModule === "sub4") {
       await axios
@@ -383,12 +405,24 @@ class ModuleHome extends Component {
 
     if (this.props.UserStatus.currentSubModule === "sub6") {
       await axios
-        .get(`https://run.mocky.io/v3/f91f7ece-7a02-4b5f-b70e-e695bf11fef3`)
-        // .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+        .get(
+          ApiUrlMain2 +
+            `/api/courses/${this.props.UserStatus.currentModule}/videos/`
+          // , {
+          // headers: {
+          //   Authorization: localStorage.getItem("UserInfo"),
+          // },
+          // }
+        )
         .then((Response) => {
-          this.props.SubModule6ExpertVideoSection(Response.data.results);
+          if (Response.status === 200) {
+            // console.log("Response.data", Response.data);
+            this.props.SubModule6ExpertVideoSection(
+              Response.data.filter((video) => video.type === "ExpertVideo")
+            );
+          }
         });
-    }
+    } //ok
 
     if (this.props.UserStatus.currentSubModule === "sub7") {
       await axios
@@ -418,8 +452,8 @@ class ModuleHome extends Component {
             questionCount: this.props.SubModule7QuizQuestion.length - 1,
           });
         });
-    }
-  }
+    } //ok
+  } //ok
 
   async componentDidUpdate(previousProps, previousState) {
     if (this.props.UserInfo.isEasyModeActive) {
@@ -470,13 +504,41 @@ class ModuleHome extends Component {
     ) {
       if (this.props.UserStatus.currentSubModule === "sub1") {
         await axios
-          .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+          .get(
+            ApiUrlMain2 +
+              `/api/courses/${this.props.UserStatus.currentModule}/videos/IntroductionVideo`
+            // , {
+            // headers: {
+            //   Authorization: localStorage.getItem("UserInfo"),
+            // },
+            // }
+          )
           .then((Response) => {
-            this.props.SubModule1IntroductionVideoSection(
-              Response.data.results
-            );
+            if (Response.status === 200) {
+              // console.log("Response.data", Response.data);
+              this.props.SubModule1IntroductionVideoSection(Response.data);
+            }
           });
-      }
+      } //ok
+
+      if (this.props.UserStatus.currentSubModule === "sub2") {
+        await axios
+          .get(
+            ApiUrlMain2 +
+              `/api/courses/${this.props.UserStatus.currentModule}/videos/CourseVideo`
+            // , {
+            // headers: {
+            //   Authorization: localStorage.getItem("UserInfo"),
+            // },
+            // }
+          )
+          .then((Response) => {
+            if (Response.status === 200) {
+              // console.log("Response.data", Response.data);
+              this.props.SubModule2CourseVideoSection(Response.data);
+            }
+          });
+      } //ok
 
       if (this.props.UserStatus.currentSubModule === "sub3") {
         await axios
@@ -507,14 +569,6 @@ class ModuleHome extends Component {
             this.props.SubModule3InteractiveSection(QstArray2);
           });
       } //ok
-
-      if (this.props.UserStatus.currentSubModule === "sub2") {
-        await axios
-          .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
-          .then((Response) => {
-            this.props.SubModule2CourseVideoSection(Response.data.results);
-          });
-      }
 
       if (this.props.UserStatus.currentSubModule === "sub4") {
         await axios
@@ -566,12 +620,24 @@ class ModuleHome extends Component {
 
       if (this.props.UserStatus.currentSubModule === "sub6") {
         await axios
-          .get(`https://run.mocky.io/v3/f91f7ece-7a02-4b5f-b70e-e695bf11fef3`)
-          // .get(`https://run.mocky.io/v3/07b42135-156e-4a57-8928-1353008de88e`)
+          .get(
+            ApiUrlMain2 +
+              `/api/courses/${this.props.UserStatus.currentModule}/videos/`
+            // , {
+            // headers: {
+            //   Authorization: localStorage.getItem("UserInfo"),
+            // },
+            // }
+          )
           .then((Response) => {
-            this.props.SubModule6ExpertVideoSection(Response.data.results);
+            if (Response.status === 200) {
+              // console.log("Response.data", Response.data);
+              this.props.SubModule6ExpertVideoSection(
+                Response.data.filter((video) => video.type === "ExpertVideo")
+              );
+            }
           });
-      }
+      } //ok
 
       if (this.props.UserStatus.currentSubModule === "sub7") {
         await axios
@@ -601,7 +667,7 @@ class ModuleHome extends Component {
               questionCount: this.props.SubModule7QuizQuestion.length - 1,
             });
           });
-      }
+      } //ok
     }
 
     if (previousProps.selectedLanguage !== this.props.selectedLanguage) {
@@ -1147,7 +1213,7 @@ class ModuleHome extends Component {
     //   this.props.SubModule7QuizQuestion,
     //   this.props.selectedLanguage
     // );
-  };
+  }; //ok
 
   HandleCompareAnswer = () => {
     this.setState({
