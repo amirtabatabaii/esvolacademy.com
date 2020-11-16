@@ -439,6 +439,17 @@ class UserHome extends Component {
                         <TranslateText txt='User-Continue-Btn' />
                       </button>
                     </Link>
+
+                    {/* {userActiveModule === "Module5" && (
+                      <Link
+                        to='/certificate'
+                        className='Menu-text ml-4 text-decoration-none'
+                      >
+                        <button className={`${userActiveModule}-next-btn m-4`}>
+                          <TranslateText txt='SubModule7-FinishModule' />
+                        </button>
+                      </Link>
+                    )} */}
                   </Col>
                 </Row>
               </div>

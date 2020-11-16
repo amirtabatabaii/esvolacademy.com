@@ -1265,7 +1265,7 @@ class ModuleHome extends Component {
       this.props.SubModule4ReadingSectionFiltered(NewFilter);
     if (this.props.UserStatus.currentSubModule === "sub5")
       this.props.SubModule5CaseStudySectionFiltered(NewFilter);
-  };
+  }; //ok
 
   render() {
     const {
