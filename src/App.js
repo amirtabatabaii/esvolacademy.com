@@ -14,6 +14,24 @@ import UserPrivateRoute from "./Components/UserHome/UserPrivateRoute";
 import ModuleFinished from "./Components/Module/ModuleFinished";
 import Settings from "./Components/UserHome/Settings";
 
+// window.onload = () => {
+//   // Clear localStorage
+//   if (localStorage.getItem("UserID") === null) {
+//     localStorage.removeItem("UserID");
+//     localStorage.removeItem("firstName");
+//     localStorage.removeItem("lastName");
+//     localStorage.removeItem("UserInfo");
+//     // Show them the sign in form
+//   }
+// };
+
+// window.onload = () => {
+// localStorage.removeItem("UserID");
+// localStorage.removeItem("firstName");
+// localStorage.removeItem("lastName");
+// localStorage.removeItem("UserInfo");
+// };
+
 function App() {
   return (
     <Suspense fallback={null}>

@@ -10,12 +10,18 @@ import {
   Font,
 } from "@react-pdf/renderer";
 import { PDFViewer } from "@react-pdf/renderer";
-import bgtest from "../../assets/bgtest.png";
+import bgImage from "../../assets/esvol_sertifikalar.png";
+// import fnt from "../../assets/EBGaramond-VariableFont_wght.ttf";
 
 Font.register({
-  family: "Oswald",
-  src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
+  family: "EB Garamond",
+  src: "https://kastanjetextile.com/static/css/fonts/EBGaramond.ttf",
 });
+
+// Font.register({
+//   family: "Oswald",
+//   src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
+// });
 
 const styles = StyleSheet.create({
   body: {
@@ -26,7 +32,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     textAlign: "center",
-    fontFamily: "Oswald",
+    fontFamily: "EB Garamond",
   },
   pageBackground: {
     position: "absolute",
@@ -37,17 +43,20 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   text: {
-    marginLeft: 60,
-    marginRight: 60,
-    fontSize: 16,
+    marginLeft: 200,
+    marginRight: 200,
+    fontSize: 20,
     textAlign: "justify",
-    fontFamily: "Times-Roman",
+    fontFamily: "EB Garamond",
+    lineHeight: 1.5,
   },
   header: {
-    margin: 60,
-    fontSize: 25,
+    marginTop: 180,
+    marginBottom: 60,
+    fontSize: 30,
     textAlign: "center",
     color: "black",
+    fontFamily: "EB Garamond",
   },
 });
 
@@ -63,8 +72,10 @@ class ModuleFinished extends Component {
           <PDFViewer style={{ width: "100%", height: 600 }}>
             <Document title='ESVOL'>
               <Page size='A4' orientation='landscape'>
-                <Image src={bgtest} style={styles.pageBackground} />
-                <Text style={styles.header}>Certificate of Completion </Text>
+                <Image src={bgImage} style={styles.pageBackground} />
+                <Text style={styles.header}>
+                  {"Certificate of Completion".toUpperCase()}
+                </Text>
                 <Text style={styles.text}>
                   This is to certify that{" "}
                   {localStorage.getItem("firstName").toUpperCase()}{" "}
