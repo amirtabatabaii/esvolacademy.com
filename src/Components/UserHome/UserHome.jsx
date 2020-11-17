@@ -247,6 +247,10 @@ class UserHome extends Component {
           // console.log(Response.data);
           localStorage.setItem("firstName", Response.data.firstName);
           localStorage.setItem("lastName", Response.data.lastName);
+          localStorage.setItem(
+            "UserModule",
+            Response.data.userStatus.currentModule
+          );
           this.props.SetUserInfo(Response.data);
         }
       });

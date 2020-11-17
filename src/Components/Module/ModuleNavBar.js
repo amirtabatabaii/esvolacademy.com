@@ -19,6 +19,7 @@ class ModuleNavBar extends Component {
     localStorage.removeItem("UserInfo");
     localStorage.removeItem("firstName");
     localStorage.removeItem("lastName");
+    localStorage.removeItem("UserModule");
     this.props.history.push(`/login`);
   };
 

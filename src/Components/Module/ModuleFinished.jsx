@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     paddingBottom: 65,
     paddingHorizontal: 35,
   },
-
   pageBackground: {
     position: "absolute",
     minWidth: "100%",
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
   text: {
     marginLeft: 200,
     marginRight: 200,
-    fontSize: 20,
+    fontSize: 21,
     textAlign: "justify",
     fontFamily: "Times-Roman",
     lineHeight: 1.5,
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
   header: {
     marginTop: 180,
     marginBottom: 60,
-    fontSize: 30,
+    fontSize: 32,
     textAlign: "center",
     color: "black",
     fontFamily: "Times-Roman",
@@ -60,7 +59,14 @@ class ModuleFinished extends Component {
           <ModuleNavBar userActiveModule='Module1' />
 
           <PDFViewer style={{ width: "100%", height: 600 }}>
-            <Document title='ESVOL'>
+            <Document
+              title={
+                localStorage.getItem("firstName").toUpperCase() +
+                " " +
+                localStorage.getItem("lastName").toUpperCase() +
+                " ESVOL CERTIFICATE"
+              }
+            >
               <Page size='A4' orientation='landscape'>
                 <Image src={bgImage} style={styles.pageBackground} />
                 <Text style={styles.header}>

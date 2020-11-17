@@ -13,6 +13,7 @@ import UserHome from "./Components/UserHome/UserHome";
 import UserPrivateRoute from "./Components/UserHome/UserPrivateRoute";
 import ModuleFinished from "./Components/Module/ModuleFinished";
 import Settings from "./Components/UserHome/Settings";
+import UserSertificatePrivateRoute from "./Components/UserHome/UserSertificatePrivateRoute";
 
 // window.onload = () => {
 //   // Clear localStorage
@@ -62,7 +63,7 @@ function App() {
           />
 
           {/* User Certificate */}
-          <UserPrivateRoute
+          <UserSertificatePrivateRoute
             exact
             path={process.env.PUBLIC_URL + "/certificate"}
             component={ModuleFinished}

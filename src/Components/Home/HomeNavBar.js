@@ -12,6 +12,7 @@ const handleClick = () => {
   localStorage.removeItem("UserInfo");
   localStorage.removeItem("firstName");
   localStorage.removeItem("lastName");
+  localStorage.removeItem("UserModule");
 };
 
 function NavBar(props) {
