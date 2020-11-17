@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 const handleClick = () => {
   localStorage.removeItem("UserID");
   localStorage.removeItem("UserInfo");
+  localStorage.removeItem("firstName");
+  localStorage.removeItem("lastName");
 };
 
 function NavBar(props) {

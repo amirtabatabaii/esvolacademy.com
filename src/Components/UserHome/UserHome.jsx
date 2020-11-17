@@ -245,6 +245,8 @@ class UserHome extends Component {
       .then((Response) => {
         if (Response.status === 200) {
           // console.log(Response.data);
+          localStorage.setItem("firstName", Response.data.firstName);
+          localStorage.setItem("lastName", Response.data.lastName);
           this.props.SetUserInfo(Response.data);
         }
       });

@@ -12,15 +12,6 @@ import {
 import { PDFViewer } from "@react-pdf/renderer";
 import bgtest from "../../assets/bgtest.png";
 
-const Quixote = () => (
-  <Document title='ESVOL'>
-    <Page size='A4' orientation='landscape'>
-      <Image src={bgtest} style={styles.pageBackground} />
-      <Text style={styles.text}>TEST TEST</Text>
-    </Page>
-  </Document>
-);
-
 Font.register({
   family: "Oswald",
   src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
@@ -46,16 +37,17 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   text: {
-    margin: 60,
-    fontSize: 14,
+    marginLeft: 60,
+    marginRight: 60,
+    fontSize: 16,
     textAlign: "justify",
     fontFamily: "Times-Roman",
   },
   header: {
-    fontSize: 12,
-    marginBottom: 20,
+    margin: 60,
+    fontSize: 25,
     textAlign: "center",
-    color: "grey",
+    color: "black",
   },
 });
 
@@ -69,7 +61,19 @@ class ModuleFinished extends Component {
           <ModuleNavBar userActiveModule='Module1' />
 
           <PDFViewer style={{ width: "100%", height: 600 }}>
-            <Quixote />
+            <Document title='ESVOL'>
+              <Page size='A4' orientation='landscape'>
+                <Image src={bgtest} style={styles.pageBackground} />
+                <Text style={styles.header}>Certificate of Completion </Text>
+                <Text style={styles.text}>
+                  This is to certify that{" "}
+                  {localStorage.getItem("firstName").toUpperCase()}{" "}
+                  {localStorage.getItem("lastName").toUpperCase()} has
+                  successfully completed the online course on Social Leadership
+                  and Social Innovation for Sport Volunteers.
+                </Text>
+              </Page>
+            </Document>
           </PDFViewer>
 
           <Footer userActiveModule={"Main"} />
@@ -78,4 +82,5 @@ class ModuleFinished extends Component {
     );
   }
 }
+
 export default ModuleFinished;

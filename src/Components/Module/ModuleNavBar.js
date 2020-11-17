@@ -17,6 +17,8 @@ class ModuleNavBar extends Component {
   handleClick = () => {
     localStorage.removeItem("UserID");
     localStorage.removeItem("UserInfo");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
     this.props.history.push(`/login`);
   };
 
