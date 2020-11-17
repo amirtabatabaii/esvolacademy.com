@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   text: {
     marginLeft: 200,
     marginRight: 200,
-    fontSize: 21,
+    fontSize: 20,
     textAlign: "justify",
     fontFamily: "Times-Roman",
     lineHeight: 1.5,
