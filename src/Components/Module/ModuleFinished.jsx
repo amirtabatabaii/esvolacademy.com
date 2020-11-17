@@ -13,10 +13,10 @@ import { PDFViewer } from "@react-pdf/renderer";
 import bgtest from "../../assets/bgtest.png";
 
 const Quixote = () => (
-  <Document>
-    <Page size='A4' orientation='portrait'>
+  <Document title='ESVOL'>
+    <Page size='A4' orientation='landscape'>
       <Image src={bgtest} style={styles.pageBackground} />
-      <Text style={styles.text}>TEST</Text>
+      <Text style={styles.text}>TEST TEST</Text>
     </Page>
   </Document>
 );

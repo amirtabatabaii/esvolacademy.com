@@ -58,6 +58,7 @@ export const initialState = {
   UserQuizAllAnswersLanguage: [],
   //
   EducationWithTasks: true,
+  passed: false,
   //
   SubModule3Interactive: [],
   SubModule3InteractiveQuestion: [],

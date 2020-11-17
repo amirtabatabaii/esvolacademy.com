@@ -112,7 +112,10 @@
   "SubModule7-Failed": "Sorry!",
   "SubModule7-Failed2": "You couldn’t pass your exam. ",
   "SubModule7-FinishModule": "Finish",
+  "SubModule7-FinishModuleNote1": "Congratulations!",
+  "SubModule7-FinishModuleNote2": "You Finish all Stages!",
   "SubModule7-RetakeQuiz": "Retake Quiz",
+  "SubModule7-Certificate": "Certificate",
   "SubModule4-ReadPdf": "Read Pdf",
   "SubModule4-OpenSite": "Open Site",
   "SubModule4-watchVideo": "Watch Video"

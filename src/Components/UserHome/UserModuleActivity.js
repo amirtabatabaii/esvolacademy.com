@@ -11,6 +11,9 @@ function UserModuleActivity(props) {
       {userActiveModule === "Module3" && <TranslateText txt='Module3-text' />}
       {userActiveModule === "Module4" && <TranslateText txt='Module4-text' />}
       {userActiveModule === "Module5" && <TranslateText txt='Module5-text' />}
+      {userActiveModule === "Module6" && (
+        <TranslateText txt='SubModule7-FinishModuleNote1' />
+      )}
     </>
   );
 }

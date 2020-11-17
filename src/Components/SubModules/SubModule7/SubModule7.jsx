@@ -42,6 +42,8 @@ class SubModule7 extends Component {
       SubModule7QuizQuestionFiltered,
       UserInfo,
       UserStatus,
+      passed,
+      SetUserPassed,
     } = this.props;
 
     return (
@@ -58,6 +60,8 @@ class SubModule7 extends Component {
               UserQuizAllAnswers={UserQuizAllAnswers}
               UserInfo={UserInfo}
               UserStatus={UserStatus}
+              passed={passed}
+              SetUserPassed={SetUserPassed}
             />
           )}
 

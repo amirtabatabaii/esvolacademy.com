@@ -63,6 +63,9 @@ class ShowResult extends Component {
           .then((res) => {
             // console.log("res =====> ", res);
             if (res.status === 200) {
+              // if (this.props.UserStatus.currentModule === "Module5") {
+              //   this.props.SetUserPassed(true);
+              // } else {
               const ModuleNumber = this.props.UserStatus.currentModule.substr(
                 this.props.UserStatus.currentModule.length - 1
               );
@@ -108,6 +111,7 @@ class ShowResult extends Component {
               // window.location.reload(false);
               //openNotificationWithIcon("success", "Update", "Update ok", 3);
             }
+            // }
           });
       }
     }

@@ -24,6 +24,7 @@ import {
   SubModule2CourseVideoSection,
   SetUserInfo,
   SubModule3InteractiveSection,
+  SetUserPassed,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -1289,6 +1290,8 @@ class ModuleHome extends Component {
       UserStatus,
       SubModule3Interactive,
       SubModule3InteractiveQuestion,
+      SetUserPassed,
+      passed,
     } = this.props;
 
     const { randomAnswers } = this.state;
@@ -1390,6 +1393,8 @@ class ModuleHome extends Component {
                 SubModule3InteractiveQuestion={SubModule3InteractiveQuestion}
                 UserInfo={UserInfo}
                 UserStatus={UserStatus}
+                passed={passed}
+                SetUserPassed={SetUserPassed}
               />
             </Col>
           </Row>
@@ -1426,6 +1431,7 @@ const mapStateToProps = (state) => ({
   SubModule5CaseStudy: state.SubModule5CaseStudy,
   SubModule5CaseStudyFiltered: state.SubModule5CaseStudyFiltered,
   //
+  passed: state.passed,
   UserInfo: state.UserInfo,
   UserStatus: state.UserStatus,
   //
@@ -1450,4 +1456,5 @@ export default connect(mapStateToProps, {
   SubModule2CourseVideoSection,
   SetUserInfo,
   SubModule3InteractiveSection,
+  SetUserPassed,
 })(withRouter(ModuleHome));

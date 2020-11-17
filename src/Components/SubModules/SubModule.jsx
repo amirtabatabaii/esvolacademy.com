@@ -65,6 +65,8 @@ class SubModule extends Component {
       SubModule3InteractiveQuestion,
       UserInfo,
       UserStatus,
+      passed,
+      SetUserPassed,
     } = this.props;
 
     return (
@@ -183,6 +185,8 @@ class SubModule extends Component {
             SubModule7QuizQuestion={SubModule7QuizQuestion}
             UserInfo={UserInfo}
             UserStatus={UserStatus}
+            passed={passed}
+            SetUserPassed={SetUserPassed}
           />
         )}
       </div>

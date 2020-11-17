@@ -21,6 +21,7 @@ import {
   SUBMODULE_2_COURSE_VIDEO,
   USER_INFO,
   SUBMODULE_3_INTERACTIVE_TOOL,
+  USER_PASSED,
 } from "./types";
 
 // Admin Active Module SubModule
@@ -229,6 +230,14 @@ export const SetUserInfo = (UserInfo) => (dispatch) => {
   dispatch({
     type: USER_INFO,
     payload: { UserInfo },
+  });
+};
+
+// USER_PASSED
+export const SetUserPassed = (passed) => (dispatch) => {
+  dispatch({
+    type: USER_PASSED,
+    payload: { passed },
   });
 };
 

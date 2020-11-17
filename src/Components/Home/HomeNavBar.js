@@ -7,7 +7,12 @@ import TranslateText from "../Translate/TranslateText";
 import EsvolLogo from "../../assets/img/esvol_black.png";
 import { Link } from "react-router-dom";
 
-function NavBar() {
+const handleClick = () => {
+  localStorage.removeItem("UserID");
+  localStorage.removeItem("UserInfo");
+};
+
+function NavBar(props) {
   return (
     <div style={{ marginLeft: "3%", marginRight: "3%" }}>
       <Navbar
@@ -35,23 +40,49 @@ function NavBar() {
               </Link>
             </Nav.Link>
 
-            <Nav.Link>
-              <Link
-                to='/register'
-                className='Menu-text ml-4 text-decoration-none'
-              >
-                <TranslateText txt='MenuItem-Kayit' />
-              </Link>
-            </Nav.Link>
+            {!props.isUserOnline && (
+              <>
+                <Nav.Link>
+                  <Link
+                    to='/register'
+                    className='Menu-text ml-4 text-decoration-none'
+                  >
+                    <TranslateText txt='MenuItem-Kayit' />
+                  </Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <Link
+                    to='/login'
+                    className=' Menu-text ml-4 text-decoration-none'
+                  >
+                    <TranslateText txt='MenuItem-Giris' />
+                  </Link>
+                </Nav.Link>
+              </>
+            )}
 
-            <Nav.Link>
-              <Link
-                to='/login'
-                className=' Menu-text ml-4 text-decoration-none'
-              >
-                <TranslateText txt='MenuItem-Giris' />
-              </Link>
-            </Nav.Link>
+            {props.isUserOnline && (
+              <>
+                <Nav.Link>
+                  <Link
+                    to='/user'
+                    className='Menu-text ml-4 text-decoration-none'
+                  >
+                    <TranslateText txt='MenuItem-Profil' />
+                  </Link>
+                </Nav.Link>
+
+                <Nav.Link>
+                  <Link
+                    //to='/user'
+                    onClick={handleClick}
+                    className='Menu-text ml-4 text-decoration-none'
+                  >
+                    <TranslateText txt='MenuItem-Logout' />
+                  </Link>
+                </Nav.Link>
+              </>
+            )}
 
             <Nav.Link className='ml-4'>
               <LanguageSelector />

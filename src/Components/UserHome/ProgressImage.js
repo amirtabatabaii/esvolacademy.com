@@ -189,6 +189,13 @@ class ProgressImage extends Component {
             <Image src={module_4} alt='esvol' className='chart-box' />
           </>
         )}
+
+        {userActiveModule === "Module6" && (
+          <>
+            <Image src={m5s7} alt='esvol' className='chart-box' />
+            <Image src={module_5} alt='esvol' className='chart-box' />
+          </>
+        )}
       </>
     );
   }

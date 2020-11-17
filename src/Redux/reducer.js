@@ -21,6 +21,7 @@ import {
   SUBMODULE_2_COURSE_VIDEO,
   USER_INFO,
   SUBMODULE_3_INTERACTIVE_TOOL,
+  USER_PASSED,
 } from "./types";
 
 import initialState from "./store";
@@ -196,6 +197,12 @@ export default function (state = initialState, action) {
         ...state,
         UserInfo: action.payload.UserInfo,
         UserStatus: action.payload.UserInfo.userStatus,
+      };
+
+    case USER_PASSED:
+      return {
+        ...state,
+        passed: action.payload.passed,
       };
 
     case SUBMODULE_3_INTERACTIVE_TOOL:

@@ -315,7 +315,13 @@ class UserHome extends Component {
     return (
       <div className='main-bg-color'>
         <div id='page-wrap' className='App'>
-          <ModuleNavBar userActiveModule={UserStatus.currentModule} />
+          <ModuleNavBar
+            userActiveModule={
+              UserStatus.currentModule === "Module6"
+                ? "Module1"
+                : UserStatus.currentModule
+            }
+          />
 
           {/* <Container> */}
           <p className='messageTxt text-left pt-5 pl-5'>
@@ -355,17 +361,23 @@ class UserHome extends Component {
                     </p>
 
                     <div className='info-text'>
-                      <TranslateText txt='User-EasyMode' />
+                      {UserStatus.currentModule !== "Module6" && (
+                        <>
+                          <TranslateText txt='User-EasyMode' />
 
-                      <Switch
-                        onChange={this.handleEasyMode}
-                        checked={UserInfo.isEasyModeActive == 1 ? true : false}
-                        className={
-                          UserInfo.isEasyModeActive == 1
-                            ? "ml-3 bg-success"
-                            : "ml-3 bg-mute"
-                        }
-                      />
+                          <Switch
+                            onChange={this.handleEasyMode}
+                            checked={
+                              UserInfo.isEasyModeActive == 1 ? true : false
+                            }
+                            className={
+                              UserInfo.isEasyModeActive == 1
+                                ? "ml-3 bg-success"
+                                : "ml-3 bg-mute"
+                            }
+                          />
+                        </>
+                      )}
                     </div>
 
                     {/* <Link to='/user/setting'> */}
@@ -427,6 +439,7 @@ class UserHome extends Component {
                     <p className='info-text'>
                       <UserSubModuleActivity
                         userActiveSubModule={UserStatus.currentSubModule}
+                        userActiveModule={UserStatus.currentModule}
                       />
                     </p>
                     <p className='info-text'>
@@ -434,22 +447,24 @@ class UserHome extends Component {
                       {" : " + UserStatus.score}
                     </p>
 
-                    <Link to='/modules'>
-                      <button className='continue-Btn mt-5' type='submit'>
-                        <TranslateText txt='User-Continue-Btn' />
-                      </button>
-                    </Link>
+                    {UserStatus.currentModule !== "Module6" && (
+                      <Link to='/modules'>
+                        <button className='continue-Btn mt-5' type='submit'>
+                          <TranslateText txt='User-Continue-Btn' />
+                        </button>
+                      </Link>
+                    )}
 
-                    {/* {userActiveModule === "Module5" && (
+                    {UserStatus.currentModule === "Module6" && (
                       <Link
                         to='/certificate'
                         className='Menu-text ml-4 text-decoration-none'
                       >
-                        <button className={`${userActiveModule}-next-btn m-4`}>
-                          <TranslateText txt='SubModule7-FinishModule' />
+                        <button className={`continue-Btn mt-5`}>
+                          <TranslateText txt='SubModule7-Certificate' />
                         </button>
                       </Link>
-                    )} */}
+                    )}
                   </Col>
                 </Row>
               </div>
@@ -464,7 +479,13 @@ class UserHome extends Component {
           {/* </Container> */}
         </div>
 
-        <Footer userActiveModule={UserStatus.currentModule} />
+        <Footer
+          userActiveModule={
+            UserStatus.currentModule === "Module6"
+              ? "Module1"
+              : UserStatus.currentModule
+          }
+        />
       </div>
     );
   }
