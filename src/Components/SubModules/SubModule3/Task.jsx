@@ -8,7 +8,9 @@ class Task extends Component {
     return (
       <>
         <div className='p-3 text-left'>
-          <div className='task-note font-weight-bold'>{this.props.note}</div>
+          <div className='task-note font-weight-bold'>
+            Task{this.props.index + 1}: {this.props.note}
+          </div>
 
           {this.props.Link !== " " && (
             <a
