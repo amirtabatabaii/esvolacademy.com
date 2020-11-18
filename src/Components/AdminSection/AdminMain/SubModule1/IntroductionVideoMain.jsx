@@ -140,11 +140,12 @@ class IntroductionVideoMain extends Component {
       }
       axios
         .post(
-          `http://31.210.91.44:8080/fileup/saveFile?module=${
-            this.props.adminActiveModule
-          }&subModule=${
-            this.state.language + "_" + this.props.subModuleType + index
-          }`,
+          ApiUrlMainVideo +
+            `/fileup/saveFile?module=${
+              this.props.adminActiveModule
+            }&subModule=${
+              this.state.language + "_" + this.props.subModuleType + index
+            }`,
           formData,
           {
             headers: {
