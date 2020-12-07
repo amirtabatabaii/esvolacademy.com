@@ -71,83 +71,118 @@ class ModuleHome extends Component {
     };
   }
 
-  handleOnClickSubModule = () => {};
+  handleOnClickModule = (ActiveModuleName) => {
+    const UserActiveNumber = this.props.UserStatus.currentModule.substring(6);
+    const UserSelectedModuleNumber = ActiveModuleName.substring(6);
 
-  // handleOnClickSubModule = (ActiveSubName) => {
-  //   const UserActiveSubNumber = this.props.UserStatus.currentSubModule.substring(
-  //     3
-  //   );
-  //   const UserSelectedSubNumber = ActiveSubName.substring(3);
-  //   if (this.props.UserInfo.isEasyModeActive) {
-  //     if (
-  //       UserSelectedSubNumber === "1" ||
-  //       UserSelectedSubNumber === "2" ||
-  //       UserSelectedSubNumber === "6" ||
-  //       UserSelectedSubNumber === "7"
-  //     ) {
-  //       // this.props.SelectedSubModule(ActiveSubName);
-  //       axios
-  //         .put(
-  //           ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
-  //           {
-  //             userStatus: {
-  //               currentModule: this.props.UserStatus.currentModule,
-  //               currentSubModule: ActiveSubName,
-  //               score: this.props.UserStatus.score,
-  //               badgeNo: "0",
-  //             },
-  //           },
-  //           (axios.defaults.headers.common[
-  //             "Authorization"
-  //           ] = localStorage.getItem("UserInfo")),
-  //           (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-  //             "*"),
-  //           {
-  //             "Content-Type": "application/json",
-  //           }
-  //         )
-  //         .then((res) => {
-  //           // console.log("res =====> ", res);
-  //           if (res.status === 200) {
-  //             window.location.reload(false);
-  //             //openNotificationWithIcon("success", "Update", "Update ok", 3);
-  //           }
-  //         });
-  //     }
-  //   } else {
-  //     if (UserSelectedSubNumber <= UserActiveSubNumber)
-  //       ////this.props.SelectedSubModule(ActiveSubName);
-  //       axios
-  //         .put(
-  //           ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
-  //           {
-  //             userStatus: {
-  //               currentModule: this.props.UserStatus.currentModule,
-  //               currentSubModule: ActiveSubName,
-  //               score: this.props.UserStatus.score,
-  //               badgeNo: "0",
-  //             },
-  //           },
-  //           (axios.defaults.headers.common[
-  //             "Authorization"
-  //           ] = localStorage.getItem("UserInfo")),
-  //           (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-  //             "*"),
-  //           {
-  //             "Content-Type": "application/json",
-  //           }
-  //         )
-  //         .then((res) => {
-  //           // console.log("res =====> ", res);
-  //           if (res.status === 200) {
-  //             window.location.reload(false);
-  //             //openNotificationWithIcon("success", "Update", "Update ok", 3);
-  //           }
-  //         });
+    // console.log(UserActiveNumber, UserSelectedModuleNumber);
+    if (UserSelectedModuleNumber <= UserActiveNumber) {
+      //console.log(" <= ");
+      axios
+        .put(
+          ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+          {
+            userStatus: {
+              currentModule: ActiveModuleName,
+              currentSubModule: "sub1",
+              score: this.props.UserStatus.score,
+              badgeNo: "0",
+            },
+          },
+          (axios.defaults.headers.common[
+            "Authorization"
+          ] = localStorage.getItem("UserInfo")),
+          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((res) => {
+          // console.log("res =====> ", res);
+          if (res.status === 200) {
+            window.location.reload(false);
+            //openNotificationWithIcon("success", "Update", "Update ok", 3);
+          }
+        });
+    } //else console.log("YOU CAN NOT ENTER THIS SUBMODULE !!");
+  };
 
-  //     //else alert("YOU CAN NOT ENTER THIS SUBMODULE !!");
-  //   }
-  // }; //ok
+  handleOnClickSubModule = (ActiveSubName) => {
+    const UserActiveSubNumber = this.props.UserStatus.currentSubModule.substring(
+      3
+    );
+    const UserSelectedSubNumber = ActiveSubName.substring(3);
+
+    if (this.props.UserInfo.isEasyModeActive) {
+      if (
+        (UserSelectedSubNumber === "1" ||
+          UserSelectedSubNumber === "2" ||
+          UserSelectedSubNumber === "6" ||
+          UserSelectedSubNumber === "7") &&
+        UserSelectedSubNumber < UserActiveSubNumber
+      ) {
+        //console.log("sub 1 2 6 7");
+        axios
+          .put(
+            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+            {
+              userStatus: {
+                currentModule: this.props.UserStatus.currentModule,
+                currentSubModule: ActiveSubName,
+                score: this.props.UserStatus.score,
+                badgeNo: "0",
+              },
+            },
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              window.location.reload(false);
+              //openNotificationWithIcon("success", "Update", "Update ok", 3);
+            }
+          });
+      }
+    } else {
+      if (UserSelectedSubNumber <= UserActiveSubNumber) {
+        //console.log(" <= ");
+        axios
+          .put(
+            ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+            {
+              userStatus: {
+                currentModule: this.props.UserStatus.currentModule,
+                currentSubModule: ActiveSubName,
+                score: this.props.UserStatus.score,
+                badgeNo: "0",
+              },
+            },
+            (axios.defaults.headers.common[
+              "Authorization"
+            ] = localStorage.getItem("UserInfo")),
+            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+              "*"),
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((res) => {
+            // console.log("res =====> ", res);
+            if (res.status === 200) {
+              window.location.reload(false);
+              //openNotificationWithIcon("success", "Update", "Update ok", 3);
+            }
+          });
+      } //else console.log("YOU CAN NOT ENTER THIS SUBMODULE !!");
+    }
+  };
 
   handleClickSubModuleNext = (ActiveSubName) => {
     // this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
@@ -1304,7 +1339,10 @@ class ModuleHome extends Component {
           <Row className='w-100 pt-5 pb-5'>
             {/* Module panel */}
             <Col lg={2} className='d-flex justify-content-end'>
-              <ModuleStagesName userActiveModule={UserStatus.currentModule} />
+              <ModuleStagesName
+                userActiveModule={UserStatus.currentModule}
+                handleOnClickModule={this.handleOnClickModule}
+              />
             </Col>
 
             <Col lg={10}>

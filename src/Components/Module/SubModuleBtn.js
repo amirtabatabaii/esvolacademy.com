@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
+import { Tooltip } from "antd";
 
 import NormalSub1 from "../../assets/img/submodules/s1.png";
 import NormalSub2 from "../../assets/img/submodules/s2.png";
@@ -71,6 +72,7 @@ class SubModuleBtn extends Component {
         <Row className='w-100 m-2'>
           <Col>
             <SubModuleBtnImage
+              hoverTitle='SubModule1-mHover'
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
@@ -94,6 +96,7 @@ class SubModuleBtn extends Component {
 
           <Col>
             <SubModuleBtnImage
+              hoverTitle='SubModule2-mHover'
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
@@ -117,6 +120,7 @@ class SubModuleBtn extends Component {
 
           <Col>
             <SubModuleBtnImage
+              hoverTitle='SubModule3-mHover'
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
@@ -141,6 +145,7 @@ class SubModuleBtn extends Component {
 
           <Col>
             <SubModuleBtnImage
+              hoverTitle='SubModule4-mHover'
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
@@ -164,6 +169,7 @@ class SubModuleBtn extends Component {
 
           <Col>
             <SubModuleBtnImage
+              hoverTitle='SubModule5-mHover'
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
@@ -187,6 +193,7 @@ class SubModuleBtn extends Component {
 
           <Col>
             <SubModuleBtnImage
+              hoverTitle='SubModule6-mHover'
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
@@ -210,6 +217,7 @@ class SubModuleBtn extends Component {
 
           <Col>
             <SubModuleBtnImage
+              hoverTitle='SubModule7-mHover'
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
