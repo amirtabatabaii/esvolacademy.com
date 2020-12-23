@@ -72,21 +72,22 @@ class ModuleHome extends Component {
   }
 
   handleOnClickModule = (ActiveModuleName) => {
-    const UserActiveNumber = this.props.UserStatus.currentModule.substring(6);
+    const UserActiveNumber = localStorage.getItem("UserModule").substring(6);
     const UserSelectedModuleNumber = ActiveModuleName.substring(6);
 
-    // console.log(UserActiveNumber, UserSelectedModuleNumber);
-    if (UserSelectedModuleNumber <= UserActiveNumber) {
-      //console.log(" <= ");
+    localStorage.setItem("UserTempModule", ActiveModuleName);
+
+    if (UserSelectedModuleNumber === UserActiveNumber) {
+      //console.log(UserSelectedModuleNumber, " = ", UserActiveNumber);
       axios
         .put(
           ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
           {
             userStatus: {
-              currentModule: ActiveModuleName,
-              currentSubModule: "sub1",
+              currentModule: localStorage.getItem("UserModule"),
+              currentSubModule: localStorage.getItem("UserSubModule"), //"sub1",
               score: this.props.UserStatus.score,
-              badgeNo: "0",
+              badgeNo: this.props.UserStatus.badgeNo,
             },
           },
           (axios.defaults.headers.common[
@@ -104,7 +105,39 @@ class ModuleHome extends Component {
             //openNotificationWithIcon("success", "Update", "Update ok", 3);
           }
         });
-    } //else console.log("YOU CAN NOT ENTER THIS SUBMODULE !!");
+    } else if (UserSelectedModuleNumber < UserActiveNumber) {
+      //console.log(UserSelectedModuleNumber, " < ", UserActiveNumber);
+      axios
+        .put(
+          ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+          {
+            userStatus: {
+              currentModule: ActiveModuleName,
+              currentSubModule: "sub1",
+              score: this.props.UserStatus.score,
+              badgeNo: this.props.UserStatus.badgeNo,
+            },
+          },
+          (axios.defaults.headers.common[
+            "Authorization"
+          ] = localStorage.getItem("UserInfo")),
+          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((res) => {
+          // console.log("res =====> ", res);
+          if (res.status === 200) {
+            window.location.reload(false);
+            //openNotificationWithIcon("success", "Update", "Update ok", 3);
+          }
+        });
+    } else {
+      // console.log(UserSelectedModuleNumber, " > ", UserActiveNumber);
+    }
+
+    // //else console.log("YOU CAN NOT ENTER THIS SUBMODULE !!");
   };
 
   handleOnClickSubModule = (ActiveSubName) => {
@@ -1333,7 +1366,10 @@ class ModuleHome extends Component {
 
     return (
       <div className='main-bg-color'>
-        <ModuleNavBar userActiveModule={UserStatus.currentModule} />
+        <ModuleNavBar
+          userActiveModule={UserStatus.currentModule}
+          // UserStatus={UserStatus}
+        />
 
         <Container>
           <Row className='w-100 pt-5 pb-5'>

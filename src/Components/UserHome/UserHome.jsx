@@ -9,8 +9,11 @@ import Footer from "../Footer/Footer";
 import TranslateText from "../Translate/TranslateText";
 
 import "./userHome.css";
-import { SetEducationWithTasks, SetUserInfo } from "../../Redux/action";
-import avatar from "../../assets/img/img_avatar.png";
+import {
+  SetEducationWithTasks,
+  SetUserInfo,
+  UserActiveModuleSubModule,
+} from "../../Redux/action";
 import { Link } from "react-router-dom";
 
 import ProgressImage from "./ProgressImage";
@@ -233,6 +236,7 @@ class UserHome extends Component {
     this.setState({ imageNum: num });
   };
 
+  // async componentWillMount() {
   async componentDidMount() {
     window.scrollTo(0, 0);
 
@@ -244,26 +248,62 @@ class UserHome extends Component {
       })
       .then((Response) => {
         if (Response.status === 200) {
-          // console.log(Response.data);
+          // console.log("GET ", Response.data.userStatus);
+
           localStorage.setItem("firstName", Response.data.firstName);
           localStorage.setItem("lastName", Response.data.lastName);
           localStorage.setItem(
             "UserModule",
             Response.data.userStatus.currentModule
           );
+          localStorage.setItem(
+            "UserSubModule",
+            Response.data.userStatus.currentSubModule
+          );
+          localStorage.setItem(
+            "UserTempModule",
+            Response.data.userStatus.currentModule
+          );
           this.props.SetUserInfo(Response.data);
+          this.props.UserActiveModuleSubModule(
+            Response.data.userStatus.currentModule,
+            Response.data.userStatus.currentSubModule
+          );
         }
       });
-
-    // this.showModal();
   }
 
-  // async componentDidUpdate(previousProps, previousState) {
-  //   console.log("previousProps", previousProps);
-  //   console.log("previousState", previousState);
+  // async componentDidMount() {
+  //   window.scrollTo(0, 0);
 
-  //   console.log(previousProps.UserInfo.firstName);
-  //   console.log(this.state.firstName);
+  //   await axios;
+  //   axios
+  //     .put(
+  //       ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}/status`,
+  //       {
+  //         userStatus: {
+  //           currentModule: localStorage.getItem("UserModule"),
+  //           currentSubModule: this.props.UserStatus.currentSubModule,
+  //           score: this.props.UserStatus.score,
+  //           badgeNo: this.props.UserStatus.score,
+  //         },
+  //       },
+  //       (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+  //         "UserInfo"
+  //       )),
+  //       (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+  //       {
+  //         "Content-Type": "application/json",
+  //       }
+  //     )
+  //     .then((res) => {
+  //       // console.log("res =====> ", res);
+  //       if (res.status === 200) {
+  //         //  window.location.reload(false);
+  //         console.log(res.data);
+  //         //openNotificationWithIcon("success", "Update", "Update ok", 3);
+  //       }
+  //     });
   // }
 
   handleEasyMode = (checked) => {
@@ -505,6 +545,8 @@ const mapStateToProps = (state) => ({
   UserStatus: state.UserStatus,
 });
 
-export default connect(mapStateToProps, { SetEducationWithTasks, SetUserInfo })(
-  withRouter(UserHome)
-);
+export default connect(mapStateToProps, {
+  SetEducationWithTasks,
+  SetUserInfo,
+  UserActiveModuleSubModule,
+})(withRouter(UserHome));

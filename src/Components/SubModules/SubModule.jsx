@@ -78,6 +78,7 @@ class SubModule extends Component {
             SubModule1Detail={SubModule1IntroductionVideo}
             onClick={onClick}
             isEasyModeActive={isEasyModeActive}
+            selectedLanguage={selectedLanguage}
           />
         )}
 
@@ -88,6 +89,7 @@ class SubModule extends Component {
             SubModule2Detail={SubModule2CourseVideo}
             onClick={onClick}
             isEasyModeActive={isEasyModeActive}
+            selectedLanguage={selectedLanguage}
           />
         )}
 
