@@ -25,6 +25,11 @@
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
+  cursor: pointer;
+}
+
+.Module-text-hand {
+  cursor: pointer;
 }
 
 .Module-text-active {
@@ -68,6 +73,17 @@ button[disabled] {
   font-weight: 300;
   line-height: 25px;
   text-align: left;
+}
+
+.task-note-error {
+  /* width: 963px;
+  height: 25px; */
+  color: #525252;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 25px;
+  text-align: center;
 }
 
 /* ----------------------------------------------- */
