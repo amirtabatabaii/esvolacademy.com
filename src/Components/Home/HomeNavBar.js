@@ -13,6 +13,8 @@ const handleClick = () => {
   localStorage.removeItem("firstName");
   localStorage.removeItem("lastName");
   localStorage.removeItem("UserModule");
+  localStorage.removeItem("UserSubModule");
+  localStorage.removeItem("UserTempModule");
 };
 
 function NavBar(props) {
