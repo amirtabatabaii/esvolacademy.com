@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Layout } from "antd";
 import { Menu } from "antd";
 import { FolderOutlined } from "@ant-design/icons";
@@ -12,12 +12,38 @@ import MenuItem from "../Utility/MenuItem";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
+const rootSubmenuKeys = ["1", "2", "3", "4", "5"];
 
 class SubModuleList extends Component {
+  state = {
+    openKeys: [""],
+  };
+
   handleOnClick(Module, subModule) {
-    // console.log(Module, subModule);
+    //console.log(Module, subModule);
     this.props.AdminActiveModuleSubModule(Module, subModule);
   }
+
+  onOpenChange = (keys) => {
+    const latestOpenKey = keys.find(
+      (key) => this.state.openKeys.indexOf(key) === -1
+    );
+
+    if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      this.setState({
+        openKeys: keys,
+      });
+    } else {
+      if (latestOpenKey !== null)
+        this.setState({
+          openKeys: [latestOpenKey],
+        });
+      else
+        this.setState({
+          openKeys: [],
+        });
+    }
+  };
 
   render() {
     const {
@@ -42,8 +68,19 @@ class SubModuleList extends Component {
         onCollapse={this.props.onCollapse}
       >
         <div className='logo' />
-        <Menu theme='dark' defaultSelectedKeys={["1"]} mode='inline'>
-          <SubMenu key='1' icon={<FolderOutlined />} title={Module1Name}>
+        <Menu
+          theme='dark'
+          defaultSelectedKeys={["1"]}
+          mode='inline'
+          onOpenChange={this.onOpenChange}
+          openKeys={this.state.openKeys}
+        >
+          <SubMenu
+            key='1'
+            icon={<FolderOutlined />}
+            title={Module1Name}
+            onTitleClick={() => this.handleOnClick(Module1Name, "")}
+          >
             <Menu.Item>
               <MenuItem
                 key='11'
@@ -111,7 +148,12 @@ class SubModuleList extends Component {
             </Menu.Item>
           </SubMenu>
 
-          <SubMenu key='2' icon={<FolderOutlined />} title={Module2Name}>
+          <SubMenu
+            key='2'
+            icon={<FolderOutlined />}
+            title={Module2Name}
+            onTitleClick={() => this.handleOnClick(Module2Name, "")}
+          >
             <Menu.Item>
               <MenuItem
                 key='21'
@@ -179,7 +221,12 @@ class SubModuleList extends Component {
             </Menu.Item>
           </SubMenu>
 
-          <SubMenu key='3' icon={<FolderOutlined />} title={Module3Name}>
+          <SubMenu
+            key='3'
+            icon={<FolderOutlined />}
+            title={Module3Name}
+            onTitleClick={() => this.handleOnClick(Module3Name, "")}
+          >
             <Menu.Item>
               <MenuItem
                 key='31'
@@ -247,7 +294,12 @@ class SubModuleList extends Component {
             </Menu.Item>
           </SubMenu>
 
-          <SubMenu key='4' icon={<FolderOutlined />} title={Module4Name}>
+          <SubMenu
+            key='4'
+            icon={<FolderOutlined />}
+            title={Module4Name}
+            onTitleClick={() => this.handleOnClick(Module4Name, "")}
+          >
             <Menu.Item>
               <MenuItem
                 key='41'
@@ -315,7 +367,12 @@ class SubModuleList extends Component {
             </Menu.Item>
           </SubMenu>
 
-          <SubMenu key='5' icon={<FolderOutlined />} title={Module5Name}>
+          <SubMenu
+            key='5'
+            icon={<FolderOutlined />}
+            title={Module5Name}
+            onTitleClick={() => this.handleOnClick(Module5Name, "")}
+          >
             <Menu.Item>
               <MenuItem
                 key='51'

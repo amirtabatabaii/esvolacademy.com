@@ -20,7 +20,7 @@ class TableIntroductionVideo extends Component {
                   <th>SubModule Type</th>
                   <th>Language</th>
                   <th>File Name</th>
-                  <th>Delete</th>
+                  <th>Copy Link / Delete</th>
                 </tr>
               </thead>
 

@@ -201,6 +201,17 @@ class IntroductionVideoMain extends Component {
     } else this.setState({ [event.target.name]: event.target.value });
   };
 
+  componentDidUpdate(previousProps, previousState) {
+    // console.log("previousProps", previousProps);
+    // console.log("previousState", previousState);
+    // console.log("Props", this.props);
+
+    if (previousProps.adminActiveModule !== this.props.adminActiveModule) {
+      // console.log(" !== ");
+      // window.location.reload();
+    }
+  }
+
   render() {
     return (
       <div>
