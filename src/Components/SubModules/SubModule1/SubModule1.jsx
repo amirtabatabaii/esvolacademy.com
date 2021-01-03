@@ -10,13 +10,15 @@ import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 
 // import subtitlesEn from "../../../assets/subtitle/Module5/sub1En.vtt";
 // import subtitlesTr from "../../../assets/subtitle/Module5/sub1Tr.vtt";
+let subtitlesEn = "";
+let subtitlesTr = "";
 
 class SubModule1 extends Component {
   state = {
     played: 0,
     duration: 0,
-    subtitlesEn: `https://kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`,
-    subtitlesTr: `https://kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
+    subtitlesTr: `http://esvol.kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
+    subtitlesEn: `http://esvol.kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`,
   };
 
   async componentDidMount() {
@@ -28,8 +30,8 @@ class SubModule1 extends Component {
       `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`
     );
 
-    // subtitlesEn = subtitlesEn2.default;
-    // subtitlesTr = subtitlesTr2.default;
+    subtitlesEn = subtitlesEn2.default;
+    subtitlesTr = subtitlesTr2.default;
   }
 
   handleDuration = (duration) => {
