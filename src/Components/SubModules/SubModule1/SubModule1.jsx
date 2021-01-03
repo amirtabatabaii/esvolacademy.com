@@ -10,25 +10,26 @@ import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 
 // import subtitlesEn from "../../../assets/subtitle/Module5/sub1En.vtt";
 // import subtitlesTr from "../../../assets/subtitle/Module5/sub1Tr.vtt";
-let subtitlesEn = "";
-let subtitlesTr = "";
 
 class SubModule1 extends Component {
   state = {
     played: 0,
     duration: 0,
+    subtitlesEn: `https://kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`,
+    subtitlesTr: `https://kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
   };
 
   async componentDidMount() {
     const subtitlesEn2 = await import(
       `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`
     );
+
     const subtitlesTr2 = await import(
       `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`
     );
 
-    subtitlesEn = subtitlesEn2.default;
-    subtitlesTr = subtitlesTr2.default;
+    // subtitlesEn = subtitlesEn2.default;
+    // subtitlesTr = subtitlesTr2.default;
   }
 
   handleDuration = (duration) => {
@@ -63,14 +64,17 @@ class SubModule1 extends Component {
                   tracks: [
                     {
                       kind: "subtitles",
-                      src: subtitlesEn,
+                      src: this.state.subtitlesEn,
+                      // src:
+                      //   "https://kastanjetextile.com/esvolSubtitles/Module3/sub1En.vtt",
                       srcLang: "En",
                       //default: selectedLanguage === "En" && true,
                       //default: true,
                     },
                     {
                       kind: "subtitles",
-                      src: subtitlesTr,
+                      src: this.state.subtitlesTr,
+                      // src: `https://kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
                       srcLang: "Tr",
                       //default: selectedLanguage === "Tr" && true,
                       default: true,
