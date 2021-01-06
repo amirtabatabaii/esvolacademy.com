@@ -5,16 +5,19 @@ import { connect } from "react-redux";
 import SubModuleList from "./SubModuleList";
 import IntroductionVideo from "./SubModule1/IntroductionVideo";
 import CourseVideo from "./SubModule2/CourseVideo";
-import InteractiveTool from "./SubModule3/InteractiveTool";
+import InteractiveTool from "./SubModule3/TableInteractiveTool";
 import ExpertVideo from "./SubModule4/ExpertVideo";
-import Reading from "./SubModule5/Reading";
-import CaseStudy from "./SubModule6/CaseStudy";
+import Reading from "./SubModule5/TableReading";
+import CaseStudy from "./SubModule6/TableCaseStudy";
 
 import "./AdminMain.css";
 import HeaderBreadcrumb from "./HeaderBreadcrumb";
 import QuizAdmin from "./SubModule7/QuizAdmin";
 import TableSetting from "./QuestionsSetting/TableSetting";
 import IntroductionVideoMain from "./SubModule1/IntroductionVideoMain";
+import InteractiveMain from "./SubModule3/InteractiveMain";
+import ReadingMain from "./SubModule5/ReadingMain";
+import CaseStudyMain from "./SubModule6/CaseStudyMain";
 
 const { Content } = Layout;
 
@@ -77,21 +80,21 @@ class AdminMain extends Component {
               )}
 
               {adminActiveSubModule === SubModule3Name && (
-                <InteractiveTool
+                <InteractiveMain
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
               )}
 
               {adminActiveSubModule === SubModule4Name && (
-                <Reading
+                <ReadingMain
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
               )}
 
               {adminActiveSubModule === SubModule5Name && (
-                <CaseStudy
+                <CaseStudyMain
                   adminActiveSubModule={adminActiveSubModule}
                   adminActiveModule={adminActiveModule}
                 />
