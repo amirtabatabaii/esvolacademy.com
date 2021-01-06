@@ -165,7 +165,7 @@ function CaseStudyAddItem(props) {
                   style={{ width: "65%" }}
                   className='ml-1 mr-1'
                   variant='outlined'
-                  label={"Reading title"}
+                  label={"CaseStudy title"}
                   name='title'
                   value={x.title}
                   required
