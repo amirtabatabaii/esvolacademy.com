@@ -41,10 +41,7 @@ class IntroductionVideoMain extends Component {
         ApiUrlMain2 + `/api/courses/${this.props.adminActiveModule}/videos/` //${this.props.subModuleType}`
       )
       .then((Response) => {
-        // console.log(
-        //   "Success res ========>",
-        //   Response.data
-        // );
+        // console.log("Success res ========>", Response.data);
         if (Response.status === 200) {
           this.setState({
             VideoLinkList: Response.data.filter(
@@ -144,7 +141,8 @@ class IntroductionVideoMain extends Component {
             `/fileup/saveFile?module=${
               this.props.adminActiveModule
             }&subModule=${
-              this.state.language + "_" + this.props.subModuleType + index
+              // this.state.language + "_" + this.props.subModuleType + index
+              this.props.subModuleType + index
             }`,
           formData,
           {
@@ -200,17 +198,6 @@ class IntroductionVideoMain extends Component {
       }
     } else this.setState({ [event.target.name]: event.target.value });
   };
-
-  componentDidUpdate(previousProps, previousState) {
-    // console.log("previousProps", previousProps);
-    // console.log("previousState", previousState);
-    // console.log("Props", this.props);
-
-    if (previousProps.adminActiveModule !== this.props.adminActiveModule) {
-      // console.log(" !== ");
-      // window.location.reload();
-    }
-  }
 
   render() {
     return (

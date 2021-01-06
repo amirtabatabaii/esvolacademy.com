@@ -18,9 +18,9 @@ class TableIntroductionVideo extends Component {
                 <tr>
                   <th>#</th>
                   <th>SubModule Type</th>
-                  <th>Language</th>
+                  {/* <th>Language</th> */}
                   <th>File Name</th>
-                  <th>Copy Link / Delete</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
 
@@ -31,18 +31,18 @@ class TableIntroductionVideo extends Component {
                   <tr key={video.id}>
                     <td>{index + 1}</td>
                     <td>
-                      {video.substring(3).split(".")[0] === "coursevideo1"
+                      {/* .substring(3) */}
+                      {video.split(".")[0] === "coursevideo1"
                         ? "Course Video"
-                        : video.substring(3).split(".")[0] ===
-                          "introductionvideo1"
+                        : video.split(".")[0] === "introductionvideo1"
                         ? "Introduction Video"
-                        : video.substring(3).split(".")[0] === "expertvideo1"
+                        : video.split(".")[0] === "expertvideo1"
                         ? "Expert Video 1"
-                        : video.substring(3).split(".")[0] === "expertvideo2"
+                        : video.split(".")[0] === "expertvideo2"
                         ? "Expert Video 2"
                         : ""}
                     </td>
-                    <td>{video.substring(0, 2).toUpperCase()}</td>
+                    {/* <td>{video.substring(0, 2).toUpperCase()}</td> */}
                     <td>{video}</td>
                     <td>
                       <Link>
