@@ -13,7 +13,7 @@ class InsertVideo extends Component {
   render() {
     return (
       <div className='border border-secondary p-3 m-3'>
-        <FormControl
+        {/* <FormControl
           variant='outlined'
           style={{ width: "9%" }}
           className='ml-1 mr-1'
@@ -34,7 +34,7 @@ class InsertVideo extends Component {
             <MenuItem value={"En"}>En</MenuItem>
             <MenuItem value={"Tr"}>Tr</MenuItem>
           </Select>
-        </FormControl>
+        </FormControl> */}
 
         <Form.Group className='mt-4'>
           <TextField
