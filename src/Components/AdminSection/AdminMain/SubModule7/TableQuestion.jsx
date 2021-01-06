@@ -133,7 +133,7 @@ class TableQuestion extends Component {
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Question Title</th>
+                    <th className='w-50'>Question Title</th>
                     {/* <th>Is Active?</th> */}
                     <th>Created Date</th>
                     <th>Deactive / Active</th>
