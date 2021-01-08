@@ -193,7 +193,7 @@ class TableQuestion extends Component {
                           DrawerType='View'
                           title='View Detail'
                           placement='left'
-                          width={800}
+                          width={1200}
                           FltQst={this.state.FltQst}
                         />
 
@@ -213,7 +213,7 @@ class TableQuestion extends Component {
                               DrawerType='Edit'
                               title={"Edit Detail"}
                               placement='right'
-                              width={800}
+                              width={1200}
                               FltQst={this.state.FltQst}
                             />
                           </>
