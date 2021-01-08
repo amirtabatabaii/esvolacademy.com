@@ -11,28 +11,30 @@ class TableCaseStudy extends Component {
   state = {
     ViewVisible: false,
     EditVisible: false,
-    QST: [],
-    FltQst: {},
+    CaseStudyList: [],
+    FltCaseStudyList: {},
   };
 
   showViewDrawer = (id) => {
+    // console.log(this.props.CaseStudyList);
     this.setState(
       {
         ViewVisible: true,
-        // FltQst: this.state.QST.filter(
-        //   (qsts) => parseInt(qsts.id) == parseInt(id)
-        // )[0],
+        FltCaseStudyList: this.props.CaseStudyList.filter(
+          (qsts) => parseInt(qsts.id) == parseInt(id)
+        )[0],
       }
-      // () => console.log(this.state.FltQst)
+      //,
+      //() => console.log(this.state.FltCaseStudyList)
     );
   };
 
   showEditDrawer = (id) => {
     this.setState({
       EditVisible: true,
-      // FltQst: this.state.QST.filter(
-      //   (qsts) => parseInt(qsts.id) == parseInt(id)
-      // )[0],
+      FltCaseStudyList: this.props.CaseStudyList.filter(
+        (qsts) => parseInt(qsts.id) == parseInt(id)
+      )[0],
     });
   };
 
@@ -85,8 +87,8 @@ class TableCaseStudy extends Component {
                         DrawerType='View'
                         title='View Detail'
                         placement='left'
-                        width={800}
-                        // FltQst={this.state.FltQst}
+                        width={1200}
+                        FltCaseStudyList={this.state.FltCaseStudyList}
                       />
                     )}
 
@@ -105,8 +107,8 @@ class TableCaseStudy extends Component {
                         DrawerType='Edit'
                         title={"Edit Detail"}
                         placement='right'
-                        width={800}
-                        // FltQst={this.state.FltQst}
+                        width={1200}
+                        FltCaseStudyList={this.state.FltCaseStudyList}
                       />
                     )}
 
