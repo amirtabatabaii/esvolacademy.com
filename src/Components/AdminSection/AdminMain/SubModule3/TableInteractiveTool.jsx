@@ -11,35 +11,39 @@ class TableInteractiveTool extends Component {
   state = {
     ViewVisible: false,
     EditVisible: false,
-    QST: [],
-    FltQst: {},
+    InteractiveList: [],
+    FltInteractiveList: {},
   };
 
   showViewDrawer = (id) => {
     this.setState(
       {
         ViewVisible: true,
-        // FltQst: this.state.QST.filter(
-        //   (qsts) => parseInt(qsts.id) == parseInt(id)
-        // )[0],
+        FltInteractiveList: this.props.InteractiveList.filter(
+          (qsts) => parseInt(qsts.id) == parseInt(id)
+        )[0],
       }
-      // () => console.log(this.state.FltQst)
+      //,
+      //() => console.log(this.state.FltInteractiveList)
     );
   };
 
   showEditDrawer = (id) => {
     this.setState({
       EditVisible: true,
-      // FltQst: this.state.QST.filter(
-      //   (qsts) => parseInt(qsts.id) == parseInt(id)
-      // )[0],
+      FltInteractiveList: this.props.InteractiveList.filter(
+        (qsts) => parseInt(qsts.id) == parseInt(id)
+      )[0],
     });
   };
 
-  onClose = () => {
+  onClose = (id) => {
     this.setState({
       ViewVisible: false,
       EditVisible: false,
+      FltInteractiveList: this.props.InteractiveList.filter(
+        (qsts) => parseInt(qsts.id) == parseInt(id)
+      )[0],
     });
   };
 
@@ -85,12 +89,12 @@ class TableInteractiveTool extends Component {
                     {this.state.ViewVisible && (
                       <DrawerTask
                         visible={this.state.ViewVisible}
-                        onClose={this.onClose}
+                        onClose={() => this.onClose(task.id)}
                         DrawerType='View'
                         title='View Detail'
                         placement='left'
-                        width={800}
-                        // FltQst={this.state.FltQst}
+                        width={1000}
+                        FltInteractiveList={this.state.FltInteractiveList}
                       />
                     )}
 
@@ -109,8 +113,8 @@ class TableInteractiveTool extends Component {
                         DrawerType='Edit'
                         title={"Edit Detail"}
                         placement='right'
-                        width={800}
-                        // FltQst={this.state.FltQst}
+                        width={1000}
+                        FltInteractiveList={this.state.FltInteractiveList}
                       />
                     )}
 

@@ -14,6 +14,7 @@ import AddBoxIcon from "@material-ui/icons/AddBox";
 import { openNotificationWithIcon } from "../../Utility/Error";
 import axios from "axios";
 import { ApiUrlMain2 } from "../../../Utility/ApiUrl";
+import { LanguageList } from "../../Utility/AdminUtility";
 
 function InteractiveToolAddItem(props) {
   const [inputList, setInputList] = useState([
@@ -38,8 +39,26 @@ function InteractiveToolAddItem(props) {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
-    list[index][name] = value;
-    setInputList(list);
+
+    if (name === "language") {
+      if (list.find((p) => p.language === value)) {
+        openNotificationWithIcon(
+          "error",
+          " exists  > 1 ",
+          " exists  >>> 111",
+          5
+        );
+      } else {
+        list[index][name] = value;
+        setInputList(list);
+      }
+    } else {
+      list[index][name] = value;
+      setInputList(list);
+    }
+
+    // list[index][name] = value;
+    // setInputList(list);
   };
 
   const handleRemoveClick = (index) => {
@@ -194,8 +213,13 @@ function InteractiveToolAddItem(props) {
                     helperText={"Select Language"}
                     onChange={(e) => handleInputChange(e, i)}
                   >
-                    <MenuItem value={"En"}>En</MenuItem>
-                    <MenuItem value={"Tr"}>Tr</MenuItem>
+                    {LanguageList.map((lng, i) => {
+                      return (
+                        <MenuItem key={i} value={lng}>
+                          {lng}
+                        </MenuItem>
+                      );
+                    })}
                   </Select>
                 </FormControl>
 
