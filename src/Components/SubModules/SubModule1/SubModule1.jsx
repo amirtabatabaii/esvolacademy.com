@@ -22,16 +22,14 @@ class SubModule1 extends Component {
   };
 
   async componentDidMount() {
-    const subtitlesEn2 = await import(
-      `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`
-    );
-
-    const subtitlesTr2 = await import(
-      `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`
-    );
-
-    subtitlesEn = subtitlesEn2.default;
-    subtitlesTr = subtitlesTr2.default;
+    // const subtitlesEn2 = await import(
+    //   `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`
+    // );
+    // const subtitlesTr2 = await import(
+    //   `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`
+    // );
+    // subtitlesEn = subtitlesEn2.default;
+    // subtitlesTr = subtitlesTr2.default;
   }
 
   handleDuration = (duration) => {
