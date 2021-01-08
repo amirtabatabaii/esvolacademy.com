@@ -407,23 +407,23 @@ class UserHome extends Component {
                     </p>
 
                     <div className='info-text'>
-                      {UserStatus.currentModule !== "Module6" && (
-                        <>
-                          <TranslateText txt='User-EasyMode' />
+                      {/* {UserStatus.currentModule !== "Module6" && ( */}
+                      <>
+                        <TranslateText txt='User-EasyMode' />
 
-                          <Switch
-                            onChange={this.handleEasyMode}
-                            checked={
-                              UserInfo.isEasyModeActive == 1 ? true : false
-                            }
-                            className={
-                              UserInfo.isEasyModeActive == 1
-                                ? "ml-3 bg-success"
-                                : "ml-3 bg-mute"
-                            }
-                          />
-                        </>
-                      )}
+                        <Switch
+                          onChange={this.handleEasyMode}
+                          checked={
+                            UserInfo.isEasyModeActive == 1 ? true : false
+                          }
+                          className={
+                            UserInfo.isEasyModeActive == 1
+                              ? "ml-3 bg-success"
+                              : "ml-3 bg-mute"
+                          }
+                        />
+                      </>
+                      {/* )} */}
                     </div>
 
                     {/* <Link to='/user/setting'> */}

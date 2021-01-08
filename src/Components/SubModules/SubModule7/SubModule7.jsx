@@ -54,6 +54,10 @@ class SubModule7 extends Component {
       });
   };
 
+  handleContinueUser = () => {
+    this.props.history.push("/user");
+  };
+
   render() {
     const {
       randomAnswers,
@@ -104,12 +108,23 @@ class SubModule7 extends Component {
                 <TranslateText txt='SubModule7-error' />
               </div>
 
-              <button
-                className={`${userActiveModule}-next-btn m-3`}
-                onClick={() => this.handleContinue(UserTempModule)}
-              >
-                <TranslateText txt='SubModule3-Continue' />
-              </button>
+              {UserTempModule !== "Module5" && (
+                <button
+                  className={`${userActiveModule}-next-btn m-3`}
+                  onClick={() => this.handleContinue(UserTempModule)}
+                >
+                  <TranslateText txt='SubModule3-Continue' />
+                </button>
+              )}
+
+              {UserTempModule === "Module5" && (
+                <button
+                  className={`${userActiveModule}-next-btn m-3`}
+                  onClick={() => this.handleContinue("Module0")}
+                >
+                  <TranslateText txt='SubModule3-Continue' />
+                </button>
+              )}
             </div>
           ) : (
             <>
