@@ -214,7 +214,7 @@ class TableSetting extends Component {
                 <th>Blank</th>
                 <th>Interactive</th>
                 <th>minQuizScore</th>
-                <th>Update</th>
+                {!this.state.EditVisible && <th>Update</th>}
               </tr>
             </thead>
             <tbody>
@@ -291,16 +291,18 @@ class TableSetting extends Component {
                     onChange={(e) => this.handleSettingChange(e)}
                   />
                 </td>
-                <td>
-                  <Link onClick={() => this.showEditSection()}>
-                    <FontAwesomeIcon
-                      className='text-primary ml-2'
-                      icon={faEdit}
-                      transform='grow-15'
-                      fixedWidth
-                    />
-                  </Link>
-                </td>
+                {!this.state.EditVisible && (
+                  <td>
+                    <Link onClick={() => this.showEditSection()}>
+                      <FontAwesomeIcon
+                        className='text-primary ml-2'
+                        icon={faEdit}
+                        transform='grow-15'
+                        fixedWidth
+                      />
+                    </Link>
+                  </td>
+                )}
               </tr>
             </tbody>
           </Table>
