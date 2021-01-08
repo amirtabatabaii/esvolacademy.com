@@ -136,7 +136,7 @@ function InteractiveToolAddItem(props) {
       )
       .then((Response) => {
         if (Response.status === 200) {
-          console.log(Response.data);
+          //console.log(Response.data);
           //this.props.SetUserInfo(Response.data);
           openNotificationWithIcon("success", "Reading", "Reading", 10);
         }
@@ -297,7 +297,7 @@ function InteractiveToolAddItem(props) {
 
       {/* <div style={{ marginTop: 20 }}>
         <pre>{JSON.stringify(ActiveModule, null, 2)}</pre>
-      </div> */}
+      </div>  */}
     </div>
   );
 }

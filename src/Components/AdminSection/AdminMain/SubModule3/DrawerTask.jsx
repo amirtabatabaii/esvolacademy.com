@@ -94,27 +94,27 @@ function DrawerTask(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // setActiveModule({
-    //   point: FltInteractiveList.question.point,
-    //   type: FltInteractiveList.question.type,
-    //   moduleName: FltInteractiveList.question.moduleName,
-    //   interactiveUrl: ActiveModule.interactiveUrl,
-    //   interactiveUrlFormat: ActiveModule.interactiveUrlFormat,
-    //   activationStatus: true,
-    //   numberOfBlank: 0,
-    //   questionDictionaries: [...OldInputList, ...inputList],
-    //   answers: [
-    //     {
-    //       isCorrectAnswer: false,
-    //       questionAnswersDictionaries: [
-    //         {
-    //           answerText: "",
-    //           language: "",
-    //         },
-    //       ],
-    //     },
-    //   ],
-    // });
+    setActiveModule({
+      point: FltInteractiveList.question.point,
+      type: FltInteractiveList.question.type,
+      moduleName: FltInteractiveList.question.moduleName,
+      interactiveUrl: ActiveModule.interactiveUrl,
+      interactiveUrlFormat: ActiveModule.interactiveUrlFormat,
+      activationStatus: true,
+      numberOfBlank: 0,
+      questionDictionaries: [...OldInputList, ...inputList],
+      answers: [
+        {
+          isCorrectAnswer: false,
+          questionAnswersDictionaries: [
+            {
+              answerText: "",
+              language: "",
+            },
+          ],
+        },
+      ],
+    });
   };
 
   const handleChangeReading = (e) => {

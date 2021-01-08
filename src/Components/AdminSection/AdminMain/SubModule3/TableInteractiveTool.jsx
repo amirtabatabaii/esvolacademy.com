@@ -37,13 +37,10 @@ class TableInteractiveTool extends Component {
     });
   };
 
-  onClose = (id) => {
+  onClose = () => {
     this.setState({
       ViewVisible: false,
       EditVisible: false,
-      FltInteractiveList: this.props.InteractiveList.filter(
-        (qsts) => parseInt(qsts.id) == parseInt(id)
-      )[0],
     });
   };
 
@@ -89,11 +86,11 @@ class TableInteractiveTool extends Component {
                     {this.state.ViewVisible && (
                       <DrawerTask
                         visible={this.state.ViewVisible}
-                        onClose={() => this.onClose(task.id)}
+                        onClose={this.onClose}
                         DrawerType='View'
                         title='View Detail'
                         placement='left'
-                        width={1000}
+                        width={1200}
                         FltInteractiveList={this.state.FltInteractiveList}
                       />
                     )}
@@ -113,7 +110,7 @@ class TableInteractiveTool extends Component {
                         DrawerType='Edit'
                         title={"Edit Detail"}
                         placement='right'
-                        width={1000}
+                        width={1200}
                         FltInteractiveList={this.state.FltInteractiveList}
                       />
                     )}
