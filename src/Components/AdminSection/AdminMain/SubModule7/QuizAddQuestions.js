@@ -74,9 +74,26 @@ function QuizAddQuestions(props) {
     const { name, value } = e.target;
     const list = [...QstList];
 
-    if (name === "language") list[index]["language"] = value;
-    if (name === "questionText") list[index]["questionText"] = value;
-    setQstList(list);
+    if (name === "language") {
+      const tmpList = [...QstList];
+      if (tmpList.find((p) => p.language === value)) {
+        openNotificationWithIcon(
+          "error",
+          " exists  > 1 ",
+          " exists  >>> 111",
+          5
+        );
+      } else {
+        list[index][name] = value;
+        setQstList(list);
+      }
+    } else {
+      list[index][name] = value;
+      setQstList(list);
+    }
+    // if (name === "language") list[index]["language"] = value;
+    // if (name === "questionText") list[index]["questionText"] = value;
+    // setQstList(list);
   };
 
   const handleAnsListDetailChange = (e, index, questionType, p) => {
@@ -90,11 +107,32 @@ function QuizAddQuestions(props) {
       if (name === "isTrue") list2[p]["isCorrectAnswer"] = e.target.checked;
     }
 
-    if (name === "language")
-      list2[p]["questionAnswersDictionaries"][index]["language"] = value;
-    if (name === "answerText")
-      list2[p]["questionAnswersDictionaries"][index]["answerText"] = value;
-    setAnsList(list2);
+    if (name === "language") {
+      if (
+        list2[p]["questionAnswersDictionaries"].find(
+          (q) => q.language === value
+        )
+      ) {
+        openNotificationWithIcon(
+          "error",
+          " exists  > 1 ",
+          " exists  >>> 111",
+          5
+        );
+      } else {
+        list2[p]["questionAnswersDictionaries"][index][name] = value;
+        setAnsList(list2);
+      }
+    } else {
+      list2[p]["questionAnswersDictionaries"][index][name] = value;
+      setAnsList(list2);
+    }
+
+    // if (name === "language")
+    //   list2[p]["questionAnswersDictionaries"][index]["language"] = value;
+    // if (name === "answerText")
+    //   list2[p]["questionAnswersDictionaries"][index]["answerText"] = value;
+    // setAnsList(list2);
 
     // console.log(list2);
     // for (let i = 0; i <= p; i++) {
