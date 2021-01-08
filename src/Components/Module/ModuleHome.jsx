@@ -301,6 +301,12 @@ class ModuleHome extends Component {
     // );
   }; //ok
 
+  componentWillMount() {
+    if (this.props.UserStatus.currentModule === "Module6") {
+      this.handleOnClickModule("Module1");
+    }
+  }
+
   async componentDidMount() {
     await axios
       .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {

@@ -36,9 +36,9 @@ class ModuleNavBar extends Component {
     let UserModule = "";
     let OldUserModule = localStorage.getItem("UserModule");
     let OldUserSubModule = localStorage.getItem("UserSubModule");
+    let OldUserTempModule = localStorage.getItem("UserTempModule");
     let OldUserInfo = localStorage.getItem("UserInfo");
     let OldUserID = localStorage.getItem("UserID");
-    let OldUserTempModule = localStorage.getItem("UserTempModule");
     let NewUserModule = this.props.UserStatus.currentModule;
     let NewUserSubModule = this.props.UserStatus.currentSubModule;
 

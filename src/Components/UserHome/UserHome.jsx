@@ -502,14 +502,25 @@ class UserHome extends Component {
                     )}
 
                     {UserStatus.currentModule === "Module6" && (
-                      <Link
-                        to='/certificate'
-                        className='Menu-text ml-4 text-decoration-none'
-                      >
-                        <button className={`continue-Btn mt-5`}>
-                          <TranslateText txt='SubModule7-Certificate' />
-                        </button>
-                      </Link>
+                      <>
+                        <Link
+                          to='/certificate'
+                          className='Menu-text ml-4 text-decoration-none'
+                        >
+                          <button className={`continue-Btn mt-5`}>
+                            <TranslateText txt='SubModule7-Certificate' />
+                          </button>
+                        </Link>
+
+                        <Link
+                          to='/modules'
+                          className='Menu-text ml-4 text-decoration-none'
+                        >
+                          <button className='continue-Btn mt-2' type='submit'>
+                            <TranslateText txt='User-Review-Btn' />
+                          </button>
+                        </Link>
+                      </>
                     )}
                   </Col>
                 </Row>
