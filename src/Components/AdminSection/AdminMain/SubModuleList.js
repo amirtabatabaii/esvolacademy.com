@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { Layout } from "antd";
 import { Menu } from "antd";
-import { FolderOutlined } from "@ant-design/icons";
+import { FolderOutlined, LogoutOutlined } from "@ant-design/icons";
 
 import { withRouter } from "react-router-dom";
 import { AdminActiveModuleSubModule } from "../../../Redux/action";
@@ -17,6 +17,11 @@ const rootSubmenuKeys = ["1", "2", "3", "4", "5"];
 class SubModuleList extends Component {
   state = {
     openKeys: [""],
+  };
+
+  handleLogoutClick = () => {
+    localStorage.removeItem("administratorToken");
+    this.props.history.push("/site/admin-page");
   };
 
   handleOnClick(Module, subModule) {
@@ -68,6 +73,7 @@ class SubModuleList extends Component {
         onCollapse={this.props.onCollapse}
       >
         <div className='logo' />
+
         <Menu
           theme='dark'
           defaultSelectedKeys={["1"]}
@@ -439,6 +445,15 @@ class SubModuleList extends Component {
               />
             </Menu.Item>
           </SubMenu>
+
+          <Menu.Item
+            className='font-weight-bold '
+            key='6'
+            icon={<LogoutOutlined />}
+            onClick={this.handleLogoutClick}
+          >
+            LogOut
+          </Menu.Item>
         </Menu>
       </Sider>
     );
