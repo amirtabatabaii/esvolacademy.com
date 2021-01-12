@@ -51,21 +51,19 @@ class TableQuestion extends Component {
   };
 
   showEditDrawer = (id) => {
-    this.setState(
-      {
-        EditVisible: true,
-        FltQst: this.state.QST.filter(
-          (qsts) => parseInt(qsts.id) == parseInt(id)
-        )[0],
-      }
-      // () => console.log(this.state.FltQst)
-    );
+    this.setState({
+      EditVisible: true,
+      FltQst: this.state.QST.filter(
+        (qsts) => parseInt(qsts.id) == parseInt(id)
+      )[0],
+    });
   };
 
   onClose = () => {
     this.setState({
       ViewVisible: false,
       EditVisible: false,
+      FltQst: {},
     });
   };
 
@@ -195,6 +193,7 @@ class TableQuestion extends Component {
                           placement='left'
                           width={1200}
                           FltQst={this.state.FltQst}
+                          adminActiveModule={this.props.adminActiveModule}
                         />
 
                         {qst.activationStatus && (
@@ -215,6 +214,7 @@ class TableQuestion extends Component {
                               placement='right'
                               width={1200}
                               FltQst={this.state.FltQst}
+                              adminActiveModule={this.props.adminActiveModule}
                             />
                           </>
                         )}

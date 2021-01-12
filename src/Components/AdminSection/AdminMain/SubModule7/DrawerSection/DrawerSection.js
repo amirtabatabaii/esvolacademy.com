@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Drawer } from "antd";
 import LanguageSelector from "../../../../Translate/LanguageSelector";
-import { Form } from "react-bootstrap";
 
 import Multiple from "./Multiple";
 import Filling from "./Filling";
@@ -18,6 +17,7 @@ class DrawerSection extends Component {
       placement,
       DrawerType,
       FltQst,
+      adminActiveModule,
     } = this.props;
 
     return (
@@ -35,32 +35,33 @@ class DrawerSection extends Component {
               textAlign: "center",
             }}
           >
-            <button>{DrawerType}</button>
+            <button onClick={onClose}>
+              {"Close " + DrawerType + " Section"}
+            </button>
           </div>
         }
       >
-        <Form id='InsertForm' className='text-left'>
-          {/* onSubmit={handleSubmit}> */}
-          {
-            <div className='m-auto'>
-              {FltQst.type === "MultipleChoice" && (
-                <Multiple FltQst={FltQst} DrawerType={DrawerType} />
-              )}
+        <div className='m-auto'>
+          {FltQst.type === "MultipleChoice" && (
+            <Multiple
+              FltQst={FltQst}
+              DrawerType={DrawerType}
+              adminActiveModule={adminActiveModule}
+            />
+          )}
 
-              {FltQst.type === "Boolean" && (
-                <Boolean FltQst={FltQst} DrawerType={DrawerType} />
-              )}
+          {FltQst.type === "Boolean" && (
+            <Boolean FltQst={FltQst} DrawerType={DrawerType} />
+          )}
 
-              {FltQst.type === "Filling" && (
-                <Filling FltQst={FltQst} DrawerType={DrawerType} />
-              )}
+          {FltQst.type === "Filling" && (
+            <Filling FltQst={FltQst} DrawerType={DrawerType} />
+          )}
 
-              {FltQst.type === "Blank" && (
-                <Blank FltQst={FltQst} DrawerType={DrawerType} />
-              )}
-            </div>
-          }
-        </Form>
+          {FltQst.type === "Blank" && (
+            <Blank FltQst={FltQst} DrawerType={DrawerType} />
+          )}
+        </div>
       </Drawer>
     );
   }
