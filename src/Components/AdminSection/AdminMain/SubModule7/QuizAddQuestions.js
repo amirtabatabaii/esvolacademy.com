@@ -61,7 +61,7 @@ function QuizAddQuestions(props) {
   const [Quiz, setQuiz] = useState({
     point: null,
     activationStatus: true,
-    questionType: "",
+    questionType: "MultipleChoice",
     moduleName: props.adminActiveModule,
     NumberOfBlank: 1,
     questionDictionaries: [],
@@ -426,7 +426,7 @@ function QuizAddQuestions(props) {
     <div>
       <Form id='InsertForm' className='text-left' onSubmit={handleSubmit}>
         <div className='m-auto'>
-          <FormControl variant='outlined' style={{ width: "15%" }}>
+          {/* <FormControl variant='outlined' style={{ width: "15%" }}>
             <InputLabel id='demo-simple-select-outlined-label'>
               Question Type
             </InputLabel>
@@ -453,7 +453,7 @@ function QuizAddQuestions(props) {
                 Blank
               </MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
 
           <TextField
             className='ml-1 mr-1'
