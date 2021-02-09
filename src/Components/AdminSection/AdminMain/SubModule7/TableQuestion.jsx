@@ -19,17 +19,19 @@ class TableQuestion extends Component {
     FltQst: {},
   };
 
-  handleTableChange = (e) => {
+  // handleTableChange = (e) => {
+  componentDidMount = (e) => {
     this.setState(
       {
-        questionType: e.target.value,
+        questionType: "MultipleChoice", //e.target.value,
       },
       () =>
         axios
           .get(
             ApiUrlMain2 +
               ApiUrlQuestion +
-              `?moduleName=${this.props.adminActiveModule}&questionType=${this.state.questionType}`
+              // `?moduleName=${this.props.adminActiveModule}&questionType=${this.state.questionType}`
+              `?moduleName=${this.props.adminActiveModule}&questionType=MultipleChoice`
           )
           .then((Response) => {
             // console.log("Success res ========>", Response.data);
@@ -97,7 +99,7 @@ class TableQuestion extends Component {
   render() {
     return (
       <div>
-        <FormControl variant='outlined' style={{ width: "15%" }}>
+        {/* <FormControl variant='outlined' style={{ width: "15%" }}>
           <InputLabel id='demo-simple-select-outlined-label'>
             Question Type
           </InputLabel>
@@ -122,7 +124,7 @@ class TableQuestion extends Component {
               Blank
             </MenuItem>
           </Select>
-        </FormControl>
+        </FormControl> */}
 
         <div className='mt-4'>
           {this.state.QST.length !== 0 ? (
