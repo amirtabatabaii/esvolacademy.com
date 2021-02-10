@@ -13,10 +13,11 @@ class YesNoQst extends Component {
       // <Row className='w-100'>
       //   <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
       <FormControl variant='outlined' required className='w-100'>
-        <InputLabel id={name}>
+        <InputLabel id={name} className='mr-5'>
           <TranslateText txt={qstText} />
         </InputLabel>
         <Select
+          className='p-2'
           labelId={name}
           onChange={handleInputChange}
           name={name}
