@@ -369,6 +369,8 @@ class UserHome extends Component {
             }
           />
 
+          {/* {UserStatus.currentModule !== "Module1" && UserStatus.score !== "0" && ( */}
+          {/* <> */}
           {/* <Container> */}
           <p className='messageTxt text-left pt-5 pl-5'>
             <TranslateText txt='User-Hello-Message' />
@@ -534,6 +536,8 @@ class UserHome extends Component {
             </div>
           </Row>
           {/* </Container> */}
+          {/* </>
+          )} */}
         </div>
 
         <Footer

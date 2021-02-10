@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Footer from "../Footer/Footer";
 import ModuleNavBar from "./ModuleNavBar";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import {
   Document,
   Page,
@@ -11,6 +13,7 @@ import {
 } from "@react-pdf/renderer";
 import { PDFViewer } from "@react-pdf/renderer";
 import bgImage from "../../assets/esvol_sertifikalar.png";
+import FinalTest from "../SubModules/PreFinalTest/FinalTest";
 
 Font.register({
   family: "Oswald",
@@ -51,6 +54,13 @@ const styles = StyleSheet.create({
 
 class ModuleFinished extends Component {
   render() {
+    const {
+      // userActiveModule,
+      // userActiveSubModule,
+      // EducationWithTasks,
+      UserInfo,
+      UserStatus,
+    } = this.props;
     // const { userActiveModule } = this.props;
 
     return (
@@ -58,31 +68,38 @@ class ModuleFinished extends Component {
         <div id='page-wrap' className='App'>
           <ModuleNavBar userActiveModule='Module1' />
 
-          <PDFViewer style={{ width: "100%", height: 600 }}>
-            <Document
-              title={
-                localStorage.getItem("firstName").toUpperCase() +
-                " " +
-                localStorage.getItem("lastName").toUpperCase() +
-                " ESVOL CERTIFICATE"
-              }
-            >
-              <Page size='A4' orientation='landscape'>
-                <Image src={bgImage} style={styles.pageBackground} />
-                <Text style={styles.header}>
-                  {"Certificate of Completion".toUpperCase()}
-                </Text>
-                <Text style={styles.text}>
-                  This is to certify that{" "}
-                  {localStorage.getItem("firstName").toUpperCase()}{" "}
-                  {localStorage.getItem("lastName").toUpperCase()} has
-                  successfully completed the online course on Social Leadership
-                  and Social Innovation for Sport Volunteers.
-                </Text>
-              </Page>
-            </Document>
-          </PDFViewer>
+          {UserStatus.currentModule === "Module6" && (
+            // UserInfo.finalTest === "false"
+            <FinalTest />
+          )}
 
+          {UserStatus.currentModule === "Module6" && (
+            // UserInfo.finalTest === "true" &&
+            <PDFViewer style={{ width: "100%", height: 600 }}>
+              <Document
+                title={
+                  localStorage.getItem("firstName").toUpperCase() +
+                  " " +
+                  localStorage.getItem("lastName").toUpperCase() +
+                  " ESVOL CERTIFICATE"
+                }
+              >
+                <Page size='A4' orientation='landscape'>
+                  <Image src={bgImage} style={styles.pageBackground} />
+                  <Text style={styles.header}>
+                    {"Certificate of Completion".toUpperCase()}
+                  </Text>
+                  <Text style={styles.text}>
+                    This is to certify that{" "}
+                    {localStorage.getItem("firstName").toUpperCase()}{" "}
+                    {localStorage.getItem("lastName").toUpperCase()} has
+                    successfully completed the online course on Social
+                    Leadership and Social Innovation for Sport Volunteers.
+                  </Text>
+                </Page>
+              </Document>
+            </PDFViewer>
+          )}
           <Footer userActiveModule={"Main"} />
         </div>
       </div>
@@ -90,4 +107,9 @@ class ModuleFinished extends Component {
   }
 }
 
-export default ModuleFinished;
+const mapStateToProps = (state) => ({
+  UserInfo: state.UserInfo,
+  UserStatus: state.UserStatus,
+});
+
+export default connect(mapStateToProps, {})(withRouter(ModuleFinished));

@@ -1,3 +1,33 @@
+/* Pre Test */
+
+.pretest-menu-text {
+  color: #fa5406 !important;
+  font-size: 35px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.pretest-Btn {
+  width: 35%;
+  height: auto;
+  border-radius: 12px;
+  background: #f1f1f1;
+  border: none !important;
+  outline: none !important;
+  box-shadow: 30px 30px 80px rgba(55, 84, 170, 0.1), -30px -30px 80px #ffffff,
+    5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
+  color: #fc8657;
+  font-family: "Open Sans";
+  text-shadow: -2px -2px 6px rgba(254, 118, 53, 0.23);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 49px;
+  margin: 15px;
+  padding: 10px;
+}
+
+/* ----------------------------------------------- */
+
 /* Module1 */
 
 .Module1-menu-text {
