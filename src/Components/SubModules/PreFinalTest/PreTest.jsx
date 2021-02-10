@@ -36,7 +36,7 @@ class PreTest extends Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
 
     console.log(this.state);
   };
@@ -45,7 +45,7 @@ class PreTest extends Component {
     const { UserStatus, UserInfo } = this.props;
 
     return (
-      <div className='m-5'>
+      <div className='p-2 m-auto'>
         <h2 className='pretest-menu-text pb-3'>
           <TranslateText txt='PreTestQst-title' /> ({UserInfo.firstName}{" "}
           {UserInfo.lastName})
