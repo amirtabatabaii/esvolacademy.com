@@ -61,38 +61,38 @@ class ModuleFinished extends Component {
         <div id='page-wrap' className='App'>
           <ModuleNavBar userActiveModule='Module1' />
 
-          {UserStatus.currentModule === "Module6" && (
-            // UserInfo.finalTest === "false"
-            <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
-          )}
+          {/* {UserStatus.currentModule === "Module6" &&
+            UserInfo.finalTest === "false" && ( */}
+          <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
+          {/* )} */}
 
-          {UserStatus.currentModule === "Module6" && (
-            // UserInfo.finalTest === "true" &&
-            <PDFViewer style={{ width: "100%", height: 600 }}>
-              <Document
-                title={
-                  localStorage.getItem("firstName").toUpperCase() +
-                  " " +
-                  localStorage.getItem("lastName").toUpperCase() +
-                  " ESVOL CERTIFICATE"
-                }
-              >
-                <Page size='A4' orientation='landscape'>
-                  <Image src={bgImage} style={styles.pageBackground} />
-                  <Text style={styles.header}>
-                    {"Certificate of Completion".toUpperCase()}
-                  </Text>
-                  <Text style={styles.text}>
-                    This is to certify that{" "}
-                    {localStorage.getItem("firstName").toUpperCase()}{" "}
-                    {localStorage.getItem("lastName").toUpperCase()} has
-                    successfully completed the online course on Social
-                    Leadership and Social Innovation for Sport Volunteers.
-                  </Text>
-                </Page>
-              </Document>
-            </PDFViewer>
-          )}
+          {/* {UserStatus.currentModule === "Module6" &&
+            UserInfo.finalTest === "true" && ( */}
+          <PDFViewer style={{ width: "100%", height: 600 }}>
+            <Document
+              title={
+                localStorage.getItem("firstName").toUpperCase() +
+                " " +
+                localStorage.getItem("lastName").toUpperCase() +
+                " ESVOL CERTIFICATE"
+              }
+            >
+              <Page size='A4' orientation='landscape'>
+                <Image src={bgImage} style={styles.pageBackground} />
+                <Text style={styles.header}>
+                  {"Certificate of Completion".toUpperCase()}
+                </Text>
+                <Text style={styles.text}>
+                  This is to certify that{" "}
+                  {localStorage.getItem("firstName").toUpperCase()}{" "}
+                  {localStorage.getItem("lastName").toUpperCase()} has
+                  successfully completed the online course on Social Leadership
+                  and Social Innovation for Sport Volunteers.
+                </Text>
+              </Page>
+            </Document>
+          </PDFViewer>
+          {/* )} */}
           <Footer userActiveModule={"Main"} />
         </div>
       </div>
