@@ -54,14 +54,7 @@ const styles = StyleSheet.create({
 
 class ModuleFinished extends Component {
   render() {
-    const {
-      // userActiveModule,
-      // userActiveSubModule,
-      // EducationWithTasks,
-      UserInfo,
-      UserStatus,
-    } = this.props;
-    // const { userActiveModule } = this.props;
+    const { UserInfo, UserStatus } = this.props;
 
     return (
       <div className='main-bg-color'>
@@ -70,7 +63,7 @@ class ModuleFinished extends Component {
 
           {UserStatus.currentModule === "Module6" && (
             // UserInfo.finalTest === "false"
-            <FinalTest />
+            <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
           )}
 
           {UserStatus.currentModule === "Module6" && (
