@@ -9,9 +9,8 @@ class DrawerFinalTestAns extends Component {
     return (
       <div>
         <Drawer
-        style={{width:"80%"}}
           title={<h4>User Final-Test</h4>}
-          width={1200}
+          width={1280}
           onClose={onClose}
           visible={visible}
           bodyStyle={{ paddingBottom: 80 }}
