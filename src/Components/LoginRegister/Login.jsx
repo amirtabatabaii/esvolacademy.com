@@ -10,6 +10,7 @@ import { Form } from "react-bootstrap";
 import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { openNotificationWithIcon } from "../AdminSection/Utility/Error";
 
 class Login extends Component {
   state = { PassError: false, EmailError: false, password: "", email: "" };
@@ -46,22 +47,19 @@ class Login extends Component {
         .then((res) => {
           if (res.status === 200) {
             localStorage.setItem("UserInfo", res.data);
-
             const decoded = jwt_decode(res.data);
-            // console.log(decoded);
             localStorage.setItem("UserID", decoded.userID);
             this.props.history.push(`/user`);
-            //         // document.getElementById("login-form").reset();
           }
-          //       //
-          //       // else if (res.data.success === false) {
-          //       //   AuthError("error");
-          //       // }
+        })
+        .catch((error) => {
+          openNotificationWithIcon(
+            "error",
+            <TranslateText txt='Login-Error1'/>,
+            <TranslateText txt='Login-Error2'/>, 
+            3
+          );
         });
-      //   // .catch((error) => {});
-
-      //   // localStorage.setItem("UserToken", "Test_User_Token");
-      //   // this.props.history.push(`/user`);
     }
   };
 
@@ -121,9 +119,10 @@ class Login extends Component {
                   // variant='outlined'
                   label={<TranslateText txt='Login-email' />}
                   name='email'
+                  type='email'
                   onChange={this.handleEmailChange}
                   required
-                  error={false}
+                  error={this.state.EmailError}
                   helperText={<TranslateText txt='Login-email-HelperText' />}
                 />
               </div>
