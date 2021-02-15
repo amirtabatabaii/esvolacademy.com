@@ -84,9 +84,13 @@ class ViewerMain extends Component {
 
     return (
       <div>
-        <div className='p-4 bg-info'>
-          <h2>Viewer Main</h2>
-          <Button onClick={this.handleLogoutClick}>Logout</Button>
+        <div className='p-3 bg-info'>
+          <span className='h3 pr-3 m-auto'>Viewer Main</span>
+          <span className='pl-3 m-auto'>
+            <Button className='bg-danger' onClick={this.handleLogoutClick}>
+              Logout
+            </Button>
+          </span>
         </div>
         <div className='m-2 p-2'>
           <Table responsive striped bordered hover>
