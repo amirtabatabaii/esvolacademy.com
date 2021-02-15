@@ -76,10 +76,9 @@ class UserHome extends Component {
   handleSettingOk = (e) => {
     if (this.state.password !== "") {
       let pass = this.state.password;
-      let reg = /^[A-Z0-9a-z]\w{4,30}$/;
+      let reg = /^[a-z0-9A-Z]\w{4,30}$/;
       let test = reg.test(pass);
       if (test) {
-        // alert("pass");
         var crypto = require("crypto");
         var shasum = crypto
           .createHash("sha1")
@@ -131,8 +130,17 @@ class UserHome extends Component {
                       SettingVisible: false,
                     },
                     () => {
-                      window.location.reload(false);
-                      //openNotificationWithIcon("success", "Update", "Update ok", 3);
+                      // window.location.reload(false);
+                      openNotificationWithIcon(
+                        "success",
+                        <TranslateText txt='User-PassChange1' />,
+                        <TranslateText txt='User-PassChange2' />,
+                        3
+                      );
+                      document.getElementById("LoginForm").reset();
+                      this.setState({
+                        password: "",
+                      });
                     }
                   );
                 }
@@ -142,8 +150,8 @@ class UserHome extends Component {
       } else {
         openNotificationWithIcon(
           "error",
-          "Password Error",
-          "Password Has Error",
+          <TranslateText txt='User-PassError1' />,
+          <TranslateText txt='User-PassError2' />,
           3
         );
       }
@@ -229,6 +237,7 @@ class UserHome extends Component {
     this.setState({
       SettingVisible: false,
       AvatarVisible: false,
+      password: "",
     });
   };
 
