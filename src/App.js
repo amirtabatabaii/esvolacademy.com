@@ -14,6 +14,10 @@ import UserPrivateRoute from "./Components/UserHome/UserPrivateRoute";
 import ModuleFinished from "./Components/Module/ModuleFinished";
 import Settings from "./Components/UserHome/Settings";
 import UserSertificatePrivateRoute from "./Components/UserHome/UserSertificatePrivateRoute";
+import PrivateRouteViewer from "./Components/ViewerSection/Utility/PrivateRouteViewer";
+import ViewerLogin from "./Components/ViewerSection/Login/ViewerLogin";
+import ViewerMain from "./Components/ViewerSection/ViewerMain/ViewerMain";
+import Error404Page from "./Components/Utility/Error404Page";
 
 // window.onload = () => {
 //   // Clear localStorage
@@ -95,6 +99,32 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/site/admin-page/main"}
             component={AdminMain}
+          />
+
+          {/* Viewer Login */}
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/site/viewer-page"}
+            component={ViewerLogin}
+          />
+
+          {/* Viewer Page */}
+          <PrivateRouteViewer
+            exact
+            path={process.env.PUBLIC_URL + "/site/viewer-page/main"}
+            component={ViewerMain}
+          />
+
+          <Route
+            path={process.env.PUBLIC_URL + "*"}
+            //component={Error404Page}
+            render={() => (
+              <Error404Page
+                status='404'
+                title='<h3>404</h3>'
+                subTitle='<h4>Sorry, the page you visited does not exist.</h4>'
+              />
+            )}
           />
         </Switch>
       </Router>
