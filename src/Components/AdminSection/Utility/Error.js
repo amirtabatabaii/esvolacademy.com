@@ -10,5 +10,6 @@ export const openNotificationWithIcon = (
     message: message,
     description: description,
     duration: duration,
+    top: 75,
   });
 };
