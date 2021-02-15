@@ -10,7 +10,7 @@ class DrawerModuleActivity extends Component {
       <div>
         <Drawer
           title={<h4>User Module Activity</h4>}
-          width={1300}
+          width={1280}
           onClose={onClose}
           visible={visible}
           bodyStyle={{ paddingBottom: 80 }}
