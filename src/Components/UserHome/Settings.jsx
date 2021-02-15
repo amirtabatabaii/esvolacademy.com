@@ -84,6 +84,7 @@ class Settings extends Component {
           <div className='m-auto'>
             <TextField
               className='m-4'
+              id='PassChange'
               label={<TranslateText txt='User-NewPass' />}
               name='password'
               onChange={handleSettingChange}
