@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Drawer } from "antd";
-import { Button } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 class DrawerPreTestAns extends Component {
   render() {
@@ -25,21 +25,88 @@ class DrawerPreTestAns extends Component {
             </div>
           }
         >
-            <h5 className='p-2 m-auto'>Age</h5>
-            <h5 className='p-2 m-auto'>Gender</h5>
-            <h5 className='p-2 m-auto'>Occupation</h5>
-            <h5 className='p-2 m-auto'>Professional Experience (years)</h5>
-            <h5 className='p-2 m-auto'>Country</h5>
-            <h5 className='p-2 m-auto'>Have you completed an online training on volunteering before?</h5>
-            <h5 className='p-2 m-auto'>Have you ever had a gamification-based online training?</h5>
-            <h5 className='p-2 m-auto'>Have you completed an online training before and received a certificate?</h5>
-            <h5 className='p-2 m-auto'>Do you have any knowledge about social leadership and volunteering in sport?</h5>
-            <h5 className='p-2 m-auto'>Do you have any knowledge about social innovation in/through sport?</h5>
-            <h5 className='p-2 m-auto'>Do you have any knowledge about social inclusion in sport?</h5>
-            <h5 className='p-2 m-auto'>Do you have any knowledge on social equality in sport?</h5>
-            <h5 className='p-2 m-auto'>Do you have any knowledge on good governance, safety and security in sport events?</h5>
-            <h5 className='p-2 m-auto'>What do you think about your level of knowledge and skills in social innovation and leadership in sports?</h5>
-         </Drawer>
+          <Table responsive striped bordered hover>
+            <tr>
+              <th>Question</th>
+              <th>Answer</th>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>Gender</td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>Occupation</td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>Professional Experience (years)</td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>Country</td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>
+                Have you completed an online training on volunteering before?
+              </td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>Have you ever had a gamification-based online training?</td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>
+                Have you completed an online training before and received a
+                certificate?
+              </td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>
+                Do you have any knowledge about social leadership and
+                volunteering in sport?
+              </td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>
+                Do you have any knowledge about social innovation in/through
+                sport?
+              </td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>
+                Do you have any knowledge about social inclusion in sport?
+              </td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td> Do you have any knowledge on social equality in sport?</td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>
+                Do you have any knowledge on good governance, safety and
+                security in sport events?
+              </td>
+              <td>-Answer-</td>
+            </tr>
+            <tr>
+              <td>
+                What do you think about your level of knowledge and skills in
+                social innovation and leadership in sports?
+              </td>
+              <td>-Answer-</td>
+            </tr>
+          </Table>
+        </Drawer>
       </div>
     );
   }
