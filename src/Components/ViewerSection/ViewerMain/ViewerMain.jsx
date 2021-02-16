@@ -96,19 +96,12 @@ class ViewerMain extends Component {
           <Table responsive striped bordered hover>
             <thead>
               <tr>
-                <th style={{ width: "1%", fontSize: "large" }}>#</th>
-                <th style={{ width: "18%", fontSize: "large" }}>
-                  Name Surname
-                </th>
-                <th style={{ width: "7%", fontSize: "large" }}>
-                  Active Module
-                </th>
-                <th style={{ width: "7%", fontSize: "large" }}>Score</th>
-                <th style={{ width: "10%", fontSize: "large" }}>Pre Test</th>
-                <th style={{ width: "10%", fontSize: "large" }}>Final Test</th>
-                <th style={{ width: "10%", fontSize: "large" }}>
-                  Modules Activity
-                </th>
+                <th style={{ width: "1%" }}>#</th>
+                <th style={{ width: "14%" }}>Name Surname</th>
+                <th style={{ width: "10%" }}>Active Module</th>
+                <th style={{ width: "6%" }}>Pre Test</th>
+                <th style={{ width: "6%" }}>Modules Activity</th>
+                <th style={{ width: "6%" }}>Final Test</th>
               </tr>
             </thead>
             <tbody>
@@ -125,8 +118,7 @@ class ViewerMain extends Component {
                     />
                   )}
                 </td>
-                <td>Module1</td>
-                <td>0</td>
+                <td>Module1 - Introduction Video</td>
                 <td>
                   <Link onClick={() => this.showPreTest()}>View Answers</Link>
                   {this.state.PreTest && (
@@ -138,23 +130,23 @@ class ViewerMain extends Component {
                   )}
                 </td>
                 <td>
-                  <Link onClick={() => this.showFinalTest()}>View Answers</Link>
-                  {this.state.FinalTest && (
-                    <DrawerFinalTestAns
-                      onClose={this.onClose}
-                      visible={this.state.FinalTest}
-                      // FltCaseStudyList={this.state.FltCaseStudyList}
-                    />
-                  )}
-                </td>
-                <td>
                   <Link onClick={() => this.showModuleActivity()}>
-                    View Details...
+                    View Details
                   </Link>
                   {this.state.ModuleActivity && (
                     <DrawerModuleActivity
                       onClose={this.onClose}
                       visible={this.state.ModuleActivity}
+                      // FltCaseStudyList={this.state.FltCaseStudyList}
+                    />
+                  )}
+                </td>
+                <td>
+                  <Link onClick={() => this.showFinalTest()}>View Answers</Link>
+                  {this.state.FinalTest && (
+                    <DrawerFinalTestAns
+                      onClose={this.onClose}
+                      visible={this.state.FinalTest}
                       // FltCaseStudyList={this.state.FltCaseStudyList}
                     />
                   )}

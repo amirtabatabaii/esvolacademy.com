@@ -4,6 +4,13 @@ import { Button } from "react-bootstrap";
 import { Collapse } from "antd";
 
 const { Panel } = Collapse;
+// const Modules = [
+//   { name: "Module1", color: "" },
+//   { name: "Module2", color: "" },
+//   { name: "Module3", color: "" },
+//   { name: "Module4", color: "" },
+//   { name: "Module5", color: "" },
+// ];
 
 class DrawerModuleActivity extends Component {
   render() {
@@ -34,7 +41,7 @@ class DrawerModuleActivity extends Component {
             <Panel
               header='Module1'
               key='1'
-              style={{ backgroundColor: "#fac2a7" }}
+              style={{ backgroundColor: "#fad8c8" }}
             >
               <Collapse accordion>
                 <Panel header='Interactive Tools' key='1'>
@@ -50,7 +57,7 @@ class DrawerModuleActivity extends Component {
             <Panel
               header='Module2'
               key='2'
-              style={{ backgroundColor: "#faa5a7" }}
+              style={{ backgroundColor: "#fac8c9" }}
             >
               <Collapse accordion>
                 <Panel header='Interactive Tools' key='1'>
@@ -82,7 +89,7 @@ class DrawerModuleActivity extends Component {
             <Panel
               header='Module4'
               key='4'
-              style={{ backgroundColor: "#dda2fa" }}
+              style={{ backgroundColor: "#eccffa" }}
             >
               <Collapse accordion>
                 <Panel header='Interactive Tools' key='1'>
@@ -98,7 +105,7 @@ class DrawerModuleActivity extends Component {
             <Panel
               header='Module5'
               key='5'
-              style={{ backgroundColor: "#9cc5f7" }}
+              style={{ backgroundColor: "#bbd8fa" }}
             >
               <Collapse accordion>
                 <Panel header='Interactive Tools' key='1'>
