@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Drawer } from "antd";
 import { Button, Table } from "react-bootstrap";
+import UserAvatar from "../../Utility/UserAvatar";
 
 class DrawerUserInfo extends Component {
   render() {
@@ -64,7 +65,9 @@ class DrawerUserInfo extends Component {
             </tr>
             <tr>
               <td>Avatar</td>
-              <td>-avatar-</td>
+              <td>
+                <UserAvatar avatarNo='1' />
+              </td>
             </tr>
           </tbody>
         </Table>
