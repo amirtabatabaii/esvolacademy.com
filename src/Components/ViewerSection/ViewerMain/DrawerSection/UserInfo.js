@@ -13,7 +13,7 @@ class DrawerUserInfo extends Component {
         width={1280}
         onClose={onClose}
         visible={visible}
-        bodyStyle={{ paddingBottom: 80 }}
+        // bodyStyle={{ paddingBottom: 80 }}
         placement='right'
         footer={
           <div
