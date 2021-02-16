@@ -209,9 +209,9 @@ class TableSetting extends Component {
               <tr>
                 {/* <th>#</th> */}
                 <th>Multiple Choice</th>
-                <th>Filling</th>
+                {/* <th>Filling</th>
                 <th>Boolean</th>
-                <th>Blank</th>
+                <th>Blank</th> */}
                 <th>Interactive</th>
                 <th>minQuizScore</th>
                 {!this.state.EditVisible && <th>Update</th>}
@@ -231,7 +231,7 @@ class TableSetting extends Component {
                     onChange={(e) => this.handleSettingChange(e)}
                   />
                 </td>
-                <td>
+                {/* <td>
                   <TextField
                     style={{ width: "70px" }}
                     variant='outlined'
@@ -266,7 +266,7 @@ class TableSetting extends Component {
                     disabled={!this.state.EditVisible}
                     onChange={(e) => this.handleSettingChange(e)}
                   />
-                </td>
+                </td> */}
                 <td>
                   <TextField
                     style={{ width: "70px" }}
