@@ -235,7 +235,11 @@ class FinalTest extends Component {
                 className='w-100'
                 name='FinalQst20'
                 onChange={this.handleInputChange}
-                label={<TranslateText txt='FinalTestQst-20' />}
+                label={
+                  // <span className=''>
+                  <TranslateText txt='FinalTestQst-20' />
+                  // </span>
+                }
                 variant='outlined'
                 multiline
                 rows={2}
