@@ -27,7 +27,7 @@ class DrawerUserInfo extends Component {
       >
         <Table responsive striped bordered hover>
           <tbody>
-            <tr>
+            <tr className='bg-secondary text-white'>
               <th style={{ width: "30%" }}>Title</th>
               <th>Info</th>
             </tr>
@@ -49,7 +49,7 @@ class DrawerUserInfo extends Component {
             </tr>
             <tr>
               <td>Active SubModule</td>
-              <td>-Sub1-</td>
+              <td>-Introduction Video-</td>
             </tr>
             <tr>
               <td>Score</td>
