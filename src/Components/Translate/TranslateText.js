@@ -5,11 +5,7 @@ const TranslateText = (props) => {
   const { t } = useTranslation();
 
   // return <>{t(props.txt)}</>;
-  return (
-    <>
-      <span dangerouslySetInnerHTML={{ __html: t(props.txt) }} />
-    </>
-  );
+  return <span dangerouslySetInnerHTML={{ __html: t(props.txt) }} />;
 };
 
 export default TranslateText;
