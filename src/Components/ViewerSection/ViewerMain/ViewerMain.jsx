@@ -95,7 +95,7 @@ class ViewerMain extends Component {
         <div className='m-2 p-2'>
           <Table responsive striped bordered hover>
             <thead>
-              <tr>
+              <tr className='bg-secondary text-white'>
                 <th style={{ width: "1%" }}>#</th>
                 <th style={{ width: "14%" }}>Name Surname</th>
                 <th style={{ width: "10%" }}>Active Module</th>
@@ -107,7 +107,7 @@ class ViewerMain extends Component {
             <tbody>
               {/* <tr key={id}> */}
               <tr className='font-weight-bold'>
-                <td>1</td>
+                <td className='bg-secondary text-white'>1</td>
                 <td>
                   <Link onClick={() => this.showUserInfo()}>Cagla Oktar</Link>
                   {this.state.UserInfo && (
@@ -151,6 +151,22 @@ class ViewerMain extends Component {
                     />
                   )}
                 </td>
+              </tr>
+              <tr>
+                <td className='bg-secondary text-white'>2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td className='bg-secondary text-white'>3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
             </tbody>
           </Table>
