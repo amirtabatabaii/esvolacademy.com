@@ -26,7 +26,7 @@ class DrawerPreTestAns extends Component {
       >
         <Table responsive striped bordered hover>
           <tbody>
-            <tr>
+            <tr className='bg-secondary text-white'>
               <th style={{ width: "1%" }}>#</th>
               <th>Question</th>
               <th>Answer</th>
