@@ -106,7 +106,7 @@ class ViewerMain extends Component {
             </thead>
             <tbody>
               {/* <tr key={id}> */}
-              <tr className='font-weight-bold'>
+              <tr>
                 <td className='bg-secondary text-white'>1</td>
                 <td>
                   <Link onClick={() => this.showUserInfo()}>Cagla Oktar</Link>
