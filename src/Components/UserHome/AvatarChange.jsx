@@ -34,7 +34,7 @@ class AvatarChange extends Component {
             >
               <TranslateText txt='User-SaveEdit' />
             </button>
-            ,
+
             <button
               key='submit'
               className='save-Btn m-3'
