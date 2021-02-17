@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import YesNoQst from "./YesNoQst";
-import LikeQst from "./LikeQst";
 import TranslateText from "../../Translate/TranslateText";
 
 class FinalTest extends Component {
@@ -235,11 +230,7 @@ class FinalTest extends Component {
                 className='w-100'
                 name='FinalQst20'
                 onChange={this.handleInputChange}
-                label={
-                  // <span className=''>
-                  <TranslateText txt='FinalTestQst-20' />
-                  // </span>
-                }
+                label={<TranslateText txt='FinalTestQst-20' />}
                 variant='outlined'
                 multiline
                 rows={2}
