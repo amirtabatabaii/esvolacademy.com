@@ -1,15 +1,25 @@
 import React from "react";
 import { Image } from "react-bootstrap";
-import esvol1 from "../../assets/img/user/avatar/1.png";
-import esvol2 from "../../assets/img/user/avatar/2.png";
-import esvol3 from "../../assets/img/user/avatar/3.png";
-import esvol4 from "../../assets/img/user/avatar/4.png";
-import esvol5 from "../../assets/img/user/avatar/5.png";
-import esvol6 from "../../assets/img/user/avatar/6.png";
-import esvol7 from "../../assets/img/user/avatar/7.png";
-import esvol8 from "../../assets/img/user/avatar/8.png";
-import esvol9 from "../../assets/img/user/avatar/9.png";
-import esvol10 from "../../assets/img/user/avatar/10.png";
+// import esvol1 from "../../assets/img/user/avatar/1.png";
+// import esvol2 from "../../assets/img/user/avatar/2.png";
+// import esvol3 from "../../assets/img/user/avatar/3.png";
+// import esvol4 from "../../assets/img/user/avatar/4.png";
+// import esvol5 from "../../assets/img/user/avatar/5.png";
+// import esvol6 from "../../assets/img/user/avatar/6.png";
+// import esvol7 from "../../assets/img/user/avatar/7.png";
+// import esvol8 from "../../assets/img/user/avatar/8.png";
+// import esvol9 from "../../assets/img/user/avatar/9.png";
+// import esvol10 from "../../assets/img/user/avatar/10.png";
+import esvol1 from "../../assets/img/user/avatar/1.svg";
+import esvol2 from "../../assets/img/user/avatar/2.svg";
+import esvol3 from "../../assets/img/user/avatar/3.svg";
+import esvol4 from "../../assets/img/user/avatar/4.svg";
+import esvol5 from "../../assets/img/user/avatar/5.svg";
+import esvol6 from "../../assets/img/user/avatar/6.svg";
+import esvol7 from "../../assets/img/user/avatar/7.svg";
+import esvol8 from "../../assets/img/user/avatar/8.svg";
+import esvol9 from "../../assets/img/user/avatar/9.svg";
+import esvol10 from "../../assets/img/user/avatar/10.svg";
 
 function UserAvatarView(props) {
   const { avatarNo } = props;
