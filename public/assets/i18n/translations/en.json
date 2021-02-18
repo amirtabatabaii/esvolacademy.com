@@ -74,6 +74,7 @@
   "User-PassError3": "Your password and confirmation password do not match.",
   "User-PassError4": "<b><ul><li>Your password and confirmation password must be match.</li></ul></b>",
   "User-EasyMode": "Easy Mode?",
+  "User-EasyModeInfo": "You can only watch the Videos and take the exam.",
   "User-SaveEdit": "Save",
   "User-CancelEdit": "Cancel",
   "Avatar-Setting": "Choose Avatar",
