@@ -441,7 +441,13 @@ class UserHome extends Component {
                     <div className='info-text'>
                       {/* {UserStatus.currentModule !== "Module6" && ( */}
                       <>
+                        {/* <span>
+                          <abbr
+                            title={<TranslateText txt='User-EasyModeInfo' />}
+                          > */}
                         <TranslateText txt='User-EasyMode' />
+                        {/* </abbr>
+                        </span> */}
 
                         <Switch
                           onChange={this.handleEasyMode}
