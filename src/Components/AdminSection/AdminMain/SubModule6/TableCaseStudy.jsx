@@ -4,7 +4,6 @@ import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { TextField, Button } from "@material-ui/core";
 import DrawerCaseStudy from "./DrawerCaseStudy";
 
 class TableCaseStudy extends Component {
@@ -66,7 +65,11 @@ class TableCaseStudy extends Component {
                   <td>{task.urlFormat}</td>
                   <td>
                     {
-                      <a href={task.taskUrl} target='_Blank'>
+                      <a
+                        href={task.taskUrl}
+                        target='_Blank'
+                        rel='noopener noreferrer'
+                      >
                         <b>Open CaseStudy Link</b>
                       </a>
                     }

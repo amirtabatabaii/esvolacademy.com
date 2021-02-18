@@ -4,7 +4,6 @@ import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { TextField, Button } from "@material-ui/core";
 import DrawerTask from "./DrawerTask";
 
 class TableInteractiveTool extends Component {
@@ -68,7 +67,11 @@ class TableInteractiveTool extends Component {
                     {task.question.interactiveUrl === " " ? (
                       " No Link"
                     ) : (
-                      <a href={task.question.interactiveUrl} target='_Blank'>
+                      <a
+                        href={task.question.interactiveUrl}
+                        target='_Blank'
+                        rel='noopener noreferrer'
+                      >
                         <b>Open Task Link</b>
                       </a>
                     )}

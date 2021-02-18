@@ -38,7 +38,7 @@ class Question extends Component {
     };
 
     const {
-      SubModule7QuizQuestion,
+      // SubModule7QuizQuestion,
       userActiveModule,
       randomAnswers,
       SubModule7QuizQuestionText,
@@ -56,7 +56,7 @@ class Question extends Component {
       userMultipleChoiceAnswer,
       HandleYesNoAnswerChange,
       HandleMultipleChoiceAnswerChange,
-      SubModule7QuizQuestionFiltered,
+      // SubModule7QuizQuestionFiltered,
     } = this.props;
 
     return (

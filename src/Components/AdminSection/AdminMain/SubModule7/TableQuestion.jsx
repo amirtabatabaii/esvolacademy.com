@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { MenuItem, Select, InputLabel, FormControl } from "@material-ui/core";
 import { ApiUrlMain2, ApiUrlQuestion } from "../../../Utility/ApiUrl";
 import axios from "axios";
-import { Empty, Popconfirm, Switch, Tooltip } from "antd";
+import { Empty, Popconfirm, Switch } from "antd";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

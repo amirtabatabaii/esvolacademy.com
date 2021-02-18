@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 
 import { Navbar, Image, Nav } from "react-bootstrap";
 import LanguageSelector from "../Translate/LanguageSelector";

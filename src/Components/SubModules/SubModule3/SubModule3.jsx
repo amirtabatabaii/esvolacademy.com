@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 
 import Scroll from "../../Utility/Scroll";
-import SubModuleNextButton from "../../Utility/SubModuleNextButton";
+// import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 import Task from "./Task";
 import { Form } from "react-bootstrap";
-import SubModule3NextButton from "./SubModule3NextButton";
+// import SubModule3NextButton from "./SubModule3NextButton";
 import TranslateText from "../../Translate/TranslateText";
 import axios from "axios";
 import {
   ApiUrlMain2,
-  ApiUrlGetQuestion,
-  ApiUrlQuestion,
+  // ApiUrlGetQuestion,
+  // ApiUrlQuestion,
 } from "../../Utility/ApiUrl";
 
 let userAns = [];
@@ -146,10 +146,10 @@ class SubModule3 extends Component {
     const {
       userActiveModule,
       isEasyModeActive,
-      SubModuleRatio,
-      onClick,
+      // SubModuleRatio,
+      // onClick,
       SubModule3Interactive,
-      SubModule3NextOnClick,
+      // SubModule3NextOnClick,
     } = this.props;
 
     return (

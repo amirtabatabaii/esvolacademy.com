@@ -27,11 +27,11 @@ import Settings from "./Settings";
 import { openNotificationWithIcon } from "../AdminSection/Utility/Error";
 import UserAvatarView from "./UserAvatarView";
 
-const radioStyle = {
-  display: "block",
-  height: "30px",
-  lineHeight: "30px",
-};
+// const radioStyle = {
+//   display: "block",
+//   height: "30px",
+//   lineHeight: "30px",
+// };
 
 class UserHome extends Component {
   state = {

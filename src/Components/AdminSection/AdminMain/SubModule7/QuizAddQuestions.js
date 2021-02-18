@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
-import {
-  TextField,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
-  Button,
-} from "@material-ui/core";
+import { TextField, Button } from "@material-ui/core";
 import SaveIcon from "@material-ui/icons/Save";
 
 import QuizMultipleChoice from "./QuizMultipleChoice";

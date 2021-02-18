@@ -42,78 +42,74 @@ class ShowResult extends Component {
     if (
       this.props.userQuizScore >= this.percentageQuizScore(this.props.QuizScore)
     ) {
-      {
-        axios
-          .put(
-            ApiUrlMain2 +
-              `/users/${this.props.UserInfo.userId}/questions/answers`,
-            {
-              userAnswers: userAns,
-            },
+      axios
+        .put(
+          ApiUrlMain2 +
+            `/users/${this.props.UserInfo.userId}/questions/answers`,
+          {
+            userAnswers: userAns,
+          },
 
-            (axios.defaults.headers.common[
-              "Authorization"
-            ] = localStorage.getItem("UserInfo")),
-            (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-              "*"),
-            {
-              "Content-Type": "application/json",
-            }
-          )
-          .then((res) => {
-            // console.log("res =====> ", res);
-            if (res.status === 200) {
-              // if (this.props.UserStatus.currentModule === "Module5") {
-              //   this.props.SetUserPassed(true);
-              // } else {
-              const ModuleNumber = this.props.UserStatus.currentModule.substr(
-                this.props.UserStatus.currentModule.length - 1
-              );
-              const editedModuleName = this.props.UserStatus.currentModule.slice(
-                0,
-                -1
-              );
+          (axios.defaults.headers.common[
+            "Authorization"
+          ] = localStorage.getItem("UserInfo")),
+          (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((res) => {
+          // console.log("res =====> ", res);
+          if (res.status === 200) {
+            // if (this.props.UserStatus.currentModule === "Module5") {
+            //   this.props.SetUserPassed(true);
+            // } else {
+            const ModuleNumber = this.props.UserStatus.currentModule.substr(
+              this.props.UserStatus.currentModule.length - 1
+            );
+            const editedModuleName = this.props.UserStatus.currentModule.slice(
+              0,
+              -1
+            );
 
-              axios
-                .put(
-                  ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
-                  {
-                    userStatus: {
-                      currentModule:
-                        editedModuleName + (parseInt(ModuleNumber) + 1),
-                      currentSubModule: "sub1",
-                      score:
-                        parseInt(this.props.UserStatus.score) +
-                        Math.round(
-                          (parseInt(this.props.userQuizScore) * 100) /
-                            parseInt(this.props.QuizScore)
-                        ),
-                      badgeNo: "0",
-                    },
+            axios
+              .put(
+                ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+                {
+                  userStatus: {
+                    currentModule:
+                      editedModuleName + (parseInt(ModuleNumber) + 1),
+                    currentSubModule: "sub1",
+                    score:
+                      parseInt(this.props.UserStatus.score) +
+                      Math.round(
+                        (parseInt(this.props.userQuizScore) * 100) /
+                          parseInt(this.props.QuizScore)
+                      ),
+                    badgeNo: "0",
                   },
-                  (axios.defaults.headers.common[
-                    "Authorization"
-                  ] = localStorage.getItem("UserInfo")),
-                  (axios.defaults.headers.common[
-                    "Access-Control-Allow-Origin"
-                  ] = "*"),
-                  {
-                    "Content-Type": "application/json",
-                  }
-                )
-                .then((res) => {
-                  // console.log("res =====> ", res);
-                  // if (res.status === 200) {
-                  //   // window.location.reload(false);
-                  //   //openNotificationWithIcon("success", "Update", "Update ok", 3);
-                  // }
-                });
-              // window.location.reload(false);
-              //openNotificationWithIcon("success", "Update", "Update ok", 3);
-            }
-            // }
-          });
-      }
+                },
+                (axios.defaults.headers.common[
+                  "Authorization"
+                ] = localStorage.getItem("UserInfo")),
+                (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+                  "*"),
+                {
+                  "Content-Type": "application/json",
+                }
+              )
+              .then((res) => {
+                // console.log("res =====> ", res);
+                // if (res.status === 200) {
+                //   // window.location.reload(false);
+                //   //openNotificationWithIcon("success", "Update", "Update ok", 3);
+                // }
+              });
+            // window.location.reload(false);
+            //openNotificationWithIcon("success", "Update", "Update ok", 3);
+          }
+          // }
+        });
     }
   }
 
@@ -125,9 +121,9 @@ class ShowResult extends Component {
       userQuizScore,
       QuizScore,
       HandleCompareAnswer,
-      UserQuizAllAnswers,
-      UserInfo,
-      UserStatus,
+      // UserQuizAllAnswers,
+      // UserInfo,
+      // UserStatus,
     } = this.props;
 
     return (

@@ -31,11 +31,7 @@ import Footer from "../Footer/Footer";
 import SubModule from "../SubModules/SubModule";
 import ModuleStagesName from "./ModuleStagesName";
 import SubModuleNote from "../SubModules/SubModuleNote";
-import {
-  ApiUrlMain2,
-  ApiUrlGetQuestion,
-  ApiUrlQuestion,
-} from "../Utility/ApiUrl";
+import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import PreTest from "../SubModules/PreFinalTest/PreTest";
 
 let userAllAnswers = [];
@@ -1345,8 +1341,8 @@ class ModuleHome extends Component {
 
   render() {
     const {
-      userActiveModule,
-      userActiveSubModule,
+      // userActiveModule,
+      // userActiveSubModule,
       SubModule1IntroductionVideo,
       SubModule2CourseVideo,
       SubModule6ExpertVideo,
@@ -1358,7 +1354,7 @@ class ModuleHome extends Component {
       UserQuizAllAnswers,
       selectedLanguage,
       UserQuizAllAnswersLanguage,
-      EducationWithTasks,
+      // EducationWithTasks,
       SubModule4ReadingFiltered,
       SubModule5CaseStudyFiltered,
       UserInfo,

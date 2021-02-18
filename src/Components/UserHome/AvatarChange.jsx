@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import TranslateText from "../Translate/TranslateText";
 
-import TextField from "@material-ui/core/TextField";
-import { Col, Form, Row } from "react-bootstrap";
-import { ApiUrlMain2 } from "../Utility/ApiUrl";
-import axios from "axios";
-import { Switch, Modal } from "antd";
-import { Link } from "react-router-dom";
+import { Row } from "react-bootstrap";
+import { Modal } from "antd";
 
 class AvatarChange extends Component {
   render() {

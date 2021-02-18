@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
-import { Tooltip } from "antd";
+// import { Tooltip } from "antd";
 
 import NormalSub1 from "../../assets/img/submodules/s1.png";
 import NormalSub2 from "../../assets/img/submodules/s2.png";

@@ -10,8 +10,8 @@ import SubModuleNextButton from "../../Utility/SubModuleNextButton";
 
 // import subtitlesEn from "../../../assets/subtitle/Module5/sub1En.vtt";
 // import subtitlesTr from "../../../assets/subtitle/Module5/sub1Tr.vtt";
-let subtitlesEn = "";
-let subtitlesTr = "";
+// let subtitlesEn = "";
+// let subtitlesTr = "";
 
 class SubModule1 extends Component {
   state = {
@@ -49,8 +49,8 @@ class SubModule1 extends Component {
       SubModule1Detail,
       onClick,
       isEasyModeActive,
-      NormalNextSubModule,
-      selectedLanguage,
+      // NormalNextSubModule,
+      // selectedLanguage,
     } = this.props;
 
     return (

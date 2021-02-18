@@ -92,7 +92,6 @@ class SubModule7 extends Component {
       HandleCompareAnswerQuestionResult,
       handleBlankAnswerInputChange,
       UserQuizAllAnswersLanguage,
-      SubModule7QuizQuestionFiltered,
       UserInfo,
       UserStatus,
       passed,

@@ -2,13 +2,7 @@ import React, { Component } from "react";
 import CloudDoneIcon from "@material-ui/icons/CloudDone";
 import ErrorIcon from "@material-ui/icons/Error";
 import { Form } from "react-bootstrap";
-import {
-  TextField,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
-} from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 class UploadVideo extends Component {
   render() {

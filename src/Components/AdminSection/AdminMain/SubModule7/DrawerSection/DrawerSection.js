@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Drawer } from "antd";
-import LanguageSelector from "../../../../Translate/LanguageSelector";
+// import LanguageSelector from "../../../../Translate/LanguageSelector";
 
 import Multiple from "./Multiple";
 import Filling from "./Filling";

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-import { Empty, Popconfirm } from "antd";
+import { Empty } from "antd";
 import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 class TableLinkIntroductionVideo extends Component {
   state = {
@@ -44,7 +44,7 @@ class TableLinkIntroductionVideo extends Component {
   };
 
   render() {
-    const { VideoLinkList } = this.props;
+    // const { VideoLinkList } = this.props;
 
     return (
       <div className='mt-4'>

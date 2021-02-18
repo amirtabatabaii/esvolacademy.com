@@ -5,12 +5,11 @@ import {
   Select,
   InputLabel,
   FormControl,
-  Button,
 } from "@material-ui/core";
 
 class Blank extends Component {
   render() {
-    const { FltQst, DrawerType, index } = this.props;
+    const { FltQst, DrawerType } = this.props;
 
     return (
       <div>

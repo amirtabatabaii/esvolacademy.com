@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 
 import { Form } from "react-bootstrap";
-import {
-  TextField,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
-} from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 class InsertVideo extends Component {
   render() {

@@ -247,7 +247,7 @@ class CompareAnswers extends Component {
 
   render() {
     const {
-      UserQuizAllAnswers,
+      // UserQuizAllAnswers,
       userActiveModule,
       questionCount,
       questionIndex,

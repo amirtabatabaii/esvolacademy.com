@@ -4,9 +4,7 @@ import AvatarChange from "./AvatarChange";
 
 import TextField from "@material-ui/core/TextField";
 import { Form } from "react-bootstrap";
-import { ApiUrlMain2 } from "../Utility/ApiUrl";
-import axios from "axios";
-import { Switch, Modal } from "antd";
+import { Modal } from "antd";
 
 class Settings extends Component {
   render() {

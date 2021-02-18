@@ -43,7 +43,7 @@ class FinalTest extends Component {
   };
 
   render() {
-    const { UserStatus, UserInfo } = this.props;
+    const { UserInfo } = this.props;
 
     return (
       <div className='m-2'>

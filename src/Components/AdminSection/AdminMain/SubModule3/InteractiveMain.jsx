@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Divider, Collapse } from "antd";
-import { ApiUrlMainVideo, ApiUrlMain2 } from "../../../Utility/ApiUrl";
+import { ApiUrlMain2 } from "../../../Utility/ApiUrl";
 import axios from "axios";
-import { openNotificationWithIcon } from "../../Utility/Error";
+// import { openNotificationWithIcon } from "../../Utility/Error";
 
 import InteractiveToolAddItem from "./InteractiveToolAddItem";
 import TableInteractiveTool from "./TableInteractiveTool";

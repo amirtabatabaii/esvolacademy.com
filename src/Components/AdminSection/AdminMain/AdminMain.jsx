@@ -3,12 +3,6 @@ import { Layout } from "antd";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import SubModuleList from "./SubModuleList";
-import IntroductionVideo from "./SubModule1/IntroductionVideo";
-import CourseVideo from "./SubModule2/CourseVideo";
-import InteractiveTool from "./SubModule3/TableInteractiveTool";
-import ExpertVideo from "./SubModule4/ExpertVideo";
-import Reading from "./SubModule5/TableReading";
-import CaseStudy from "./SubModule6/TableCaseStudy";
 
 import "./AdminMain.css";
 import HeaderBreadcrumb from "./HeaderBreadcrumb";

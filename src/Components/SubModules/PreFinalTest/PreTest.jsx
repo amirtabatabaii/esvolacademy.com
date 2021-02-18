@@ -42,7 +42,7 @@ class PreTest extends Component {
   };
 
   render() {
-    const { UserStatus, UserInfo } = this.props;
+    const { UserInfo } = this.props;
 
     return (
       <div className='p-2 m-auto'>
