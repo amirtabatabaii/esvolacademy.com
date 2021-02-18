@@ -107,8 +107,8 @@
   height: 40px;
   border-radius: 12px;
   background: #f2f3f7;
-  margin-top: 55px !important;
-  margin-bottom: 55px !important;
+  /* margin-top: 55px !important;
+  margin-bottom: 55px !important; */
   border: none !important;
   outline: none !important;
   box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
@@ -127,8 +127,8 @@
   height: 50px;
   border-radius: 12px;
   background: #f2f3f7;
-  margin-top: 55px !important;
-  margin-bottom: 55px !important;
+  /* margin-top: 55px !important;
+  margin-bottom: 55px !important; */
   border: none !important;
   outline: none !important;
   box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
