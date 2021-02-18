@@ -93,6 +93,18 @@ class Settings extends Component {
               error={false}
             />
           </div>
+          <div>
+            <TextField
+              className='mb-4'
+              id='PassChange'
+              label={<TranslateText txt='User-ConfirmPass' />}
+              name='confirmPassword'
+              onChange={handleSettingChange}
+              //required
+              type='password'
+              error={false}
+            />
+          </div>
 
           {/* <div className='m-4'>
             <TranslateText txt='User-EducationWithTasks' />

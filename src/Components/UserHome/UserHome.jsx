@@ -42,6 +42,7 @@ class UserHome extends Component {
     firstName: this.props.UserInfo.firstName,
     lastName: this.props.UserInfo.lastName,
     password: "",
+    confirmPassword: "",
     avatarStatus: false,
     isEasyModeActive: null,
   };
@@ -70,92 +71,112 @@ class UserHome extends Component {
   };
 
   handleSettingChange = (e) => {
+    // const { name, value } = e.target;
+    // console.log(name, value);
     this.setState({ [e.target.name]: e.target.value });
+    // if (name === "firstName" || name === "lastName") {
+    //   this.setState({ [e.target.name]: e.target.value });
+    // } else if (name === "password" || name === "confirmPassword") {
+    //   console.log("sssssss", this.state.password, this.state.confirmPassword);
+    //   if (this.state.firstName === this.state.confirmPassword) {
+    //     console.log(this.state.firstName, this.state.lastName);
+    //   }
+    // }
   };
 
   handleSettingOk = (e) => {
-    if (this.state.password !== "") {
-      let pass = this.state.password;
-      let reg = /^[a-z0-9A-Z]\w{4,30}$/;
-      let test = reg.test(pass);
-      if (test) {
-        var crypto = require("crypto");
-        var shasum = crypto
-          .createHash("sha1")
-          .update(this.state.password)
-          .digest("hex");
+    if (this.state.password !== "" && this.state.confirmPassword !== "")
+      if (this.state.password === this.state.confirmPassword) {
+        let pass = this.state.password;
+        let reg = /^[a-z0-9A-Z]\w{5,30}$/;
+        let test = reg.test(pass);
+        if (test) {
+          var crypto = require("crypto");
+          var shasum = crypto
+            .createHash("sha1")
+            .update(this.state.password)
+            .digest("hex");
 
-        const hashedPass = shasum;
+          const hashedPass = shasum;
 
-        this.setState(
-          {
-            password: hashedPass,
-          },
-          () => {
-            axios
-              .put(
-                ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
-                {
-                  firstName:
-                    this.state.firstName === undefined
-                      ? this.props.UserInfo.firstName
-                      : this.state.firstName,
-                  lastName:
-                    this.state.lastName === undefined
-                      ? this.props.UserInfo.lastName
-                      : this.state.lastName,
-                  avatarNo:
-                    this.state.imageNum === undefined
-                      ? this.props.UserInfo.avatarNo
-                      : this.state.imageNum,
-                  password: this.state.password,
-                  avatarStatus: this.state.avatarStatus,
-                  isEasyModeActive: this.props.UserInfo.isEasyModeActive,
-                },
+          this.setState(
+            {
+              password: hashedPass,
+            },
+            () => {
+              axios
+                .put(
+                  ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
+                  {
+                    firstName:
+                      this.state.firstName === undefined
+                        ? this.props.UserInfo.firstName
+                        : this.state.firstName,
+                    lastName:
+                      this.state.lastName === undefined
+                        ? this.props.UserInfo.lastName
+                        : this.state.lastName,
+                    avatarNo:
+                      this.state.imageNum === undefined
+                        ? this.props.UserInfo.avatarNo
+                        : this.state.imageNum,
+                    password: this.state.password,
+                    avatarStatus: this.state.avatarStatus,
+                    isEasyModeActive: this.props.UserInfo.isEasyModeActive,
+                  },
 
-                (axios.defaults.headers.common[
-                  "Authorization"
-                ] = localStorage.getItem("UserInfo")),
-                (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-                  "*"),
-                {
-                  "Content-Type": "application/json",
-                }
-              )
-              .then((res) => {
-                // console.log("res =====> ", res);
-                if (res.status === 200) {
-                  this.setState(
-                    {
-                      SettingVisible: false,
-                    },
-                    () => {
-                      // window.location.reload(false);
-                      openNotificationWithIcon(
-                        "success",
-                        <TranslateText txt='User-PassChange1' />,
-                        <TranslateText txt='User-PassChange2' />,
-                        3
-                      );
-                      document.getElementById("LoginForm").reset();
-                      this.setState({
-                        password: "",
-                      });
-                    }
-                  );
-                }
-              });
-          }
-        );
+                  (axios.defaults.headers.common[
+                    "Authorization"
+                  ] = localStorage.getItem("UserInfo")),
+                  (axios.defaults.headers.common[
+                    "Access-Control-Allow-Origin"
+                  ] = "*"),
+                  {
+                    "Content-Type": "application/json",
+                  }
+                )
+                .then((res) => {
+                  // console.log("res =====> ", res);
+                  if (res.status === 200) {
+                    this.setState(
+                      {
+                        SettingVisible: false,
+                      },
+                      () => {
+                        // window.location.reload(false);
+                        openNotificationWithIcon(
+                          "success",
+                          <TranslateText txt='User-PassChange1' />,
+                          <TranslateText txt='User-PassChange2' />,
+                          3
+                        );
+                        document.getElementById("LoginForm").reset();
+                        this.setState({
+                          password: "",
+                        });
+                      }
+                    );
+                  }
+                });
+            }
+          );
+        } else {
+          openNotificationWithIcon(
+            "error",
+            <TranslateText txt='User-PassError1' />,
+            <TranslateText txt='User-PassError2' />,
+            3
+          );
+        }
       } else {
         openNotificationWithIcon(
           "error",
-          <TranslateText txt='User-PassError1' />,
-          <TranslateText txt='User-PassError2' />,
+          <TranslateText txt='User-PassError3' />,
+          <TranslateText txt='User-PassError4' />,
           3
         );
       }
-    } else {
+    else {
       axios
         .put(
           ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
@@ -538,11 +559,11 @@ class UserHome extends Component {
               </div>
             </Col>
 
-            <div className='w-100 text-center'>
+            {/* <div className='w-100 text-center'>
               <button className='esvolon-Btn' disabled>
                 <TranslateText txt='User-Start-Esvolon' />
               </button>
-            </div>
+            </div> */}
           </Row>
           {/* </Container> */}
           {/* </>
