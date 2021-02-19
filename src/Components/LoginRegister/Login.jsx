@@ -55,8 +55,8 @@ class Login extends Component {
         .catch((error) => {
           openNotificationWithIcon(
             "error",
-            <TranslateText txt='Login-Error1'/>,
-            <TranslateText txt='Login-Error2'/>, 
+            <TranslateText txt='Login-Error1' />,
+            <TranslateText txt='Login-Error2' />,
             3
           );
         });
