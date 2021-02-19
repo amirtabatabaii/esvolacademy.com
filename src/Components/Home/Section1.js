@@ -38,8 +38,8 @@ function Section1() {
                     <TranslateText txt='Start-Button' />
                   ) : (
                     <span>
-                      <TranslateText txt='Continue-Button' /> (
-                      {localStorage.getItem("firstName")})
+                      <TranslateText txt='Continue-Button' />
+                      {/* ({localStorage.getItem("firstName")}) */}
                     </span>
                   )}
                 </button>
