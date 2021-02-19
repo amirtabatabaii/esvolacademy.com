@@ -10,7 +10,10 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 const LanguageSelector = (props) => {
-  const [language, setLanguage] = useState("EN");
+  // const [language, setLanguage] = useState("EN");
+  const [language, setLanguage] = useState(
+    props.selectedLanguage.toUpperCase()
+  );
 
   const { i18n } = useTranslation();
 
