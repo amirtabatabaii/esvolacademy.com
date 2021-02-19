@@ -98,9 +98,9 @@ class TableLinkIntroductionVideo extends Component {
                     {!this.state.EditVisible && (
                       <Link onClick={() => this.showEditSection()}>
                         <FontAwesomeIcon
-                          className='text-success ml-2 mr-4'
+                          className='text-success mr-2'
                           icon={faEdit}
-                          transform='grow-15'
+                          transform='grow-8'
                           fixedWidth
                         />
                       </Link>
@@ -110,9 +110,9 @@ class TableLinkIntroductionVideo extends Component {
                       <Link onClick={() => this.EditRatio()}>
                         <FontAwesomeIcon
                           // className='text-info m-3'
-                          className='text-info ml-2 mr-4'
+                          className='text-info ml-2 mr-2'
                           icon={faSave}
-                          transform='grow-15'
+                          transform='grow-8'
                           fixedWidth
                         />
                       </Link>
@@ -121,9 +121,9 @@ class TableLinkIntroductionVideo extends Component {
                     <Link>
                       {/* onClick={() => this.showEditDrawer(qst.id)}> */}
                       <FontAwesomeIcon
-                        className='text-danger ml-3 mr-4'
+                        className='text-danger ml-2 mr-2'
                         icon={faTrash}
-                        transform='grow-15'
+                        transform='grow-8'
                         fixedWidth
                       />
                     </Link>

@@ -66,7 +66,7 @@ class DrawerUserInfo extends Component {
             <tr>
               <td>Avatar</td>
               <td>
-                <UserAvatar avatarNo='1' />
+                <UserAvatar avatarNo='10' />
               </td>
             </tr>
           </tbody>

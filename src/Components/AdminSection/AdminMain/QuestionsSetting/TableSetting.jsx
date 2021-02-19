@@ -295,9 +295,9 @@ class TableSetting extends Component {
                   <td>
                     <Link onClick={() => this.showEditSection()}>
                       <FontAwesomeIcon
-                        className='text-primary ml-2'
+                        className='text-primary'
                         icon={faEdit}
-                        transform='grow-15'
+                        transform='grow-8'
                         fixedWidth
                       />
                     </Link>

@@ -77,9 +77,9 @@ class TableCaseStudy extends Component {
                   <td>
                     <Link onClick={() => this.showViewDrawer(task.id)}>
                       <FontAwesomeIcon
-                        className='text-success mr-5'
+                        className='text-success mr-2'
                         icon={faEye}
-                        transform='grow-15'
+                        transform='grow-8'
                         fixedWidth
                       />
                     </Link>
@@ -97,9 +97,9 @@ class TableCaseStudy extends Component {
 
                     <Link onClick={() => this.showEditDrawer(task.id)}>
                       <FontAwesomeIcon
-                        className='text-primary mr-5'
+                        className='text-primary mr-2 ml-3'
                         icon={faEdit}
-                        transform='grow-15'
+                        transform='grow-8'
                         fixedWidth
                       />
                     </Link>
@@ -123,9 +123,9 @@ class TableCaseStudy extends Component {
                         cancelText='No'
                       >
                         <FontAwesomeIcon
-                          className='text-danger'
+                          className='text-danger mr-2 ml-3'
                           icon={faTrash}
-                          transform='grow-15'
+                          transform='grow-8'
                           fixedWidth
                         />
                       </Popconfirm>

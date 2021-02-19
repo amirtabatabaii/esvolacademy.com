@@ -180,9 +180,9 @@ class TableQuestion extends Component {
                       <td>
                         <Link onClick={() => this.showViewDrawer(qst.id)}>
                           <FontAwesomeIcon
-                            className='text-success ml-2 mr-4'
+                            className='text-success mr-2'
                             icon={faEye}
-                            transform='grow-15'
+                            transform='grow-10'
                             fixedWidth
                           />
                         </Link>
@@ -201,9 +201,9 @@ class TableQuestion extends Component {
                           <>
                             <Link onClick={() => this.showEditDrawer(qst.id)}>
                               <FontAwesomeIcon
-                                className='text-primary mr-4'
+                                className='text-primary mr-2 ml-3'
                                 icon={faEdit}
-                                transform='grow-15'
+                                transform='grow-10'
                                 fixedWidth
                               />
                             </Link>

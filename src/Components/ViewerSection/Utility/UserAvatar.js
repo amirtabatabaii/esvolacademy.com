@@ -18,25 +18,16 @@ function UserAvatar(props) {
 
   return (
     <>
-      {avatarNo === "1" && <Image src={esvol1} alt='esvol' />}
-
-      {avatarNo === "2" && <Image src={esvol2} alt='esvol' />}
-
-      {avatarNo === "3" && <Image src={esvol3} alt='esvol' />}
-
-      {avatarNo === "4" && <Image src={esvol4} alt='esvol' />}
-
-      {avatarNo === "5" && <Image src={esvol5} alt='esvol' />}
-
-      {avatarNo === "6" && <Image src={esvol6} alt='esvol' />}
-
-      {avatarNo === "7" && <Image src={esvol7} alt='esvol' />}
-
-      {avatarNo === "8" && <Image src={esvol8} alt='esvol' />}
-
-      {avatarNo === "9" && <Image src={esvol9} alt='esvol' />}
-
-      {avatarNo === "10" && <Image src={esvol10} alt='esvol' />}
+      {avatarNo === "1" && <Image src={esvol1} alt='esvol' width='150' />}
+      {avatarNo === "2" && <Image src={esvol2} alt='esvol' width='150' />}
+      {avatarNo === "3" && <Image src={esvol3} alt='esvol' width='150' />}
+      {avatarNo === "4" && <Image src={esvol4} alt='esvol' width='150' />}
+      {avatarNo === "5" && <Image src={esvol5} alt='esvol' width='150' />}
+      {avatarNo === "6" && <Image src={esvol6} alt='esvol' width='150' />}
+      {avatarNo === "7" && <Image src={esvol7} alt='esvol' width='150' />}
+      {avatarNo === "8" && <Image src={esvol8} alt='esvol' width='150' />}
+      {avatarNo === "9" && <Image src={esvol9} alt='esvol' width='150' />}
+      {avatarNo === "10" && <Image src={esvol10} alt='esvol' width='150' />}
     </>
   );
 }

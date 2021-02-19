@@ -53,9 +53,9 @@ class TableIntroductionVideo extends Component {
                           cancelText='No'
                         >
                           <FontAwesomeIcon
-                            className='text-danger ml-2 mr-4'
+                            className='text-danger'
                             icon={faTrash}
-                            transform='grow-15'
+                            transform='grow-8'
                             fixedWidth
                           />
                         </Popconfirm>
