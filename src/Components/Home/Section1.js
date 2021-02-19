@@ -34,7 +34,14 @@ function Section1() {
                 }
               >
                 <button className='button'>
-                  <TranslateText txt='Start-Button' />
+                  {localStorage.getItem("firstName") === null ? (
+                    <TranslateText txt='Start-Button' />
+                  ) : (
+                    <span>
+                      <TranslateText txt='Continue-Button' /> (
+                      {localStorage.getItem("firstName")})
+                    </span>
+                  )}
                 </button>
               </Link>
             </Animated>
