@@ -159,6 +159,8 @@
   "PreTestQst-No": "No",
   "PreTestQst-male": "Male",
   "PreTestQst-female": "Female",
+  "PreTestQst-AnsOK": "Successfully Submitted.",
+  "PreTestQst-AnsOK2": "Thank you for answers!",
   "FinalTestQst-title": "Final Test",
   "FinalTestQst-1": "I can describe basic concepts regarding volunteering",
   "FinalTestQst-2": "I can explain the sports leader-volunteer role",
