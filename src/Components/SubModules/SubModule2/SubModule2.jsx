@@ -17,18 +17,19 @@ class SubModule2 extends Component {
   state = {
     played: 0,
     duration: 0,
+    subtitlesTr: `http://esvol.kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
+    subtitlesEn: `http://esvol.kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`,
   };
 
   async componentDidMount() {
-    const subtitlesEn2 = await import(
-      `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`
-    );
-    const subtitlesTr2 = await import(
-      `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`
-    );
-
-    subtitlesEn = subtitlesEn2.default;
-    subtitlesTr = subtitlesTr2.default;
+    // const subtitlesEn2 = await import(
+    //   `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`
+    // );
+    // const subtitlesTr2 = await import(
+    //   `../../../assets/subtitle/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`
+    // );
+    // subtitlesEn = subtitlesEn2.default;
+    // subtitlesTr = subtitlesTr2.default;
   }
 
   handleDuration = (duration) => {
@@ -61,18 +62,31 @@ class SubModule2 extends Component {
                 file: {
                   tracks: [
                     {
+                      // kind: "subtitles",
+                      // src: subtitlesEn,
+                      // srcLang: "En",
+                      // default: selectedLanguage === "En" && true,
+                      // // default: true,
                       kind: "subtitles",
-                      src: subtitlesEn,
+                      src: this.state.subtitlesEn,
+                      // src:
+                      //   "https://kastanjetextile.com/esvolSubtitles/Module3/sub1En.vtt",
                       srcLang: "En",
-                      default: selectedLanguage === "En" && true,
-                      // default: true,
+                      //default: selectedLanguage === "En" && true,
+                      //default: true,
                     },
                     {
+                      // kind: "subtitles",
+                      // src: subtitlesTr,
+                      // srcLang: "Tr",
+                      // default: selectedLanguage === "Tr" && true,
+                      // //default: true,
                       kind: "subtitles",
-                      src: subtitlesTr,
+                      src: this.state.subtitlesTr,
+                      // src: `https://kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
                       srcLang: "Tr",
-                      default: selectedLanguage === "Tr" && true,
-                      //default: true,
+                      //default: selectedLanguage === "Tr" && true,
+                      default: true,
                     },
                   ],
                 },
