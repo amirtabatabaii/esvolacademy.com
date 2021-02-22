@@ -46,7 +46,7 @@ class FinalTest extends Component {
     const { UserInfo } = this.props;
 
     return (
-      <div className='m-2'>
+      <div className={`PreTest-panel mt-4 mb-5 app p-4`}>
         <h2 className='pretest-menu-text pb-3'>
           <TranslateText txt='FinalTestQst-title' /> ({UserInfo.firstName}{" "}
           {UserInfo.lastName})
@@ -54,7 +54,7 @@ class FinalTest extends Component {
 
         <Form>
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-1'
                 name='FinalQst1'
@@ -62,7 +62,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-2'
                 name='FinalQst2'
@@ -72,7 +72,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-3'
                 name='FinalQst3'
@@ -80,7 +80,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-4'
                 name='FinalQst4'
@@ -90,7 +90,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-5'
                 name='FinalQst5'
@@ -98,7 +98,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-6'
                 name='FinalQst6'
@@ -108,7 +108,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-7'
                 name='FinalQst7'
@@ -116,7 +116,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-8'
                 name='FinalQst8'
@@ -126,7 +126,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-9'
                 name='FinalQst9'
@@ -134,7 +134,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-10'
                 name='FinalQst10'
@@ -144,7 +144,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-11'
                 name='FinalQst11'
@@ -152,7 +152,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-12'
                 name='FinalQst12'
@@ -162,7 +162,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-13'
                 name='FinalQst13'
@@ -170,7 +170,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-14'
                 name='FinalQst14'
@@ -180,7 +180,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-15'
                 name='FinalQst15'
@@ -188,7 +188,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-16'
                 name='FinalQst16'
@@ -198,7 +198,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-17'
                 name='FinalQst17'
@@ -206,7 +206,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-18'
                 name='FinalQst18'
@@ -216,7 +216,7 @@ class FinalTest extends Component {
           </Row>
 
           <Row className='w-100'>
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
                 qstText='FinalTestQst-19'
                 name='FinalQst19'
@@ -224,7 +224,7 @@ class FinalTest extends Component {
               />
             </Col>
 
-            <Col lg={6} md={12} sm={12} className='p-3 m-auto text-center'>
+            <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <TextField
                 required
                 className='w-100'
