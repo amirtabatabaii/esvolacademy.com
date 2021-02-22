@@ -159,6 +159,8 @@
   "PreTestQst-No": "Hayır",
   "PreTestQst-male": "Erkek",
   "PreTestQst-female": "Kadın",
+  "PreTestQst-AnsOK": "Başarıyla gönderildi.",
+  "PreTestQst-AnsOK2": "Cevaplar için teşekkür ederiz!",
   "FinalTestQst-title": "Son Sorular",
   "FinalTestQst-1": "Gönüllülükle ilgili temel kavramları tanımlayabilirim.",
   "FinalTestQst-2": "Spor lideri-gönüllü rolünü açıklayabilirim.",
