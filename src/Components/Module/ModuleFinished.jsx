@@ -61,10 +61,10 @@ class ModuleFinished extends Component {
         <div id='page-wrap' className='App'>
           <ModuleNavBar userActiveModule='Module1' />
 
-          {/* {UserStatus.currentModule === "Module6" &&
-            UserInfo.finalTest === "false" && ( */}
-          <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
-          {/* )} */}
+          {UserStatus.currentModule === "Module6" &&
+            UserInfo.avatarStatus === false && (
+              <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
+            )}
 
           {/* {UserStatus.currentModule === "Module6" &&
             UserInfo.finalTest === "true" && ( */}
