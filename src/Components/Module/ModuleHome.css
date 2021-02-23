@@ -697,18 +697,18 @@ button[disabled] {
 
   .Module-text-active {
     font-family: "Open Sans", sans-serif;
-    font-size: 12px;
-    /* font-weight: 700; */
-    line-height: 33px;
+    font-size: 14px;
+    font-weight: bolder;
+    line-height: 60px;
     text-align: center !important;
     padding-top: 1vh;
   }
 
   .Module-text {
     font-family: "Open Sans", sans-serif;
-    font-size: 12px;
-    /* font-weight: 700; */
-    line-height: 33px;
+    font-size: 14px;
+    font-weight: bolder;
+    line-height: 60px;
     text-align: center !important;
     padding-top: 1vh;
     background: #f2f3f7;
