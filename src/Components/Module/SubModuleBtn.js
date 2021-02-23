@@ -68,7 +68,8 @@ class SubModuleBtn extends Component {
     } = this.props;
 
     return (
-      <div className={`d-none d-lg-block Sub${userActiveModule}-panel`}>
+      // <div className={`d-none d-lg-block Sub${userActiveModule}-panel`}>
+      <div className={`Sub${userActiveModule}-panel`}>
         <Row className='w-100 m-2'>
           <Col>
             <SubModuleBtnImage

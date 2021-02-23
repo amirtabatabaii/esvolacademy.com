@@ -30,6 +30,7 @@ import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
 import SubModule from "../SubModules/SubModule";
 import ModuleStagesName from "./ModuleStagesName";
+import ModuleStagesNameSmall from "./ModuleStagesNameSmall";
 import SubModuleNote from "../SubModules/SubModuleNote";
 import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import PreTest from "../SubModules/PreFinalTest/PreTest";
@@ -1397,6 +1398,16 @@ class ModuleHome extends Component {
                 {/* Module panel */}
                 <Col lg={2} className='d-flex justify-content-end'>
                   <ModuleStagesName
+                    userActiveModule={UserStatus.currentModule}
+                    handleOnClickModule={this.handleOnClickModule}
+                  />
+                </Col>
+
+                <Col
+                  lg={2}
+                  className='d-lg-none d-md-block d-flex justify-content-start mb-3'
+                >
+                  <ModuleStagesNameSmall
                     userActiveModule={UserStatus.currentModule}
                     handleOnClickModule={this.handleOnClickModule}
                   />
