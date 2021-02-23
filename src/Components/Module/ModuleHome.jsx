@@ -1405,7 +1405,7 @@ class ModuleHome extends Component {
 
                 <Col
                   lg={2}
-                  className='d-lg-none d-md-block d-flex justify-content-start mb-3'
+                  className='d-lg-none d-md-block d-flex justify-content-start mb-4'
                 >
                   <ModuleStagesNameSmall
                     userActiveModule={UserStatus.currentModule}
