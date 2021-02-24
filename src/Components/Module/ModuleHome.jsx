@@ -1403,10 +1403,7 @@ class ModuleHome extends Component {
                   />
                 </Col>
 
-                <Col
-                  lg={2}
-                  className='d-lg-none d-md-block d-flex justify-content-start mb-4'
-                >
+                <Col className='d-lg-none d-md-block d-flex justify-content-start mb-4'>
                   <ModuleStagesNameSmall
                     userActiveModule={UserStatus.currentModule}
                     handleOnClickModule={this.handleOnClickModule}
