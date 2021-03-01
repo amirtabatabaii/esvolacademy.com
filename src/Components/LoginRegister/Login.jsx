@@ -11,10 +11,6 @@ import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { openNotificationWithIcon } from "../AdminSection/Utility/Error";
-import GoogleLogin from "react-google-login";
-import FacebookLogin from "react-facebook-login";
-import { faGoogle, faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Login extends Component {
   state = { PassError: false, EmailError: false, password: "", email: "" };
@@ -102,14 +98,6 @@ class Login extends Component {
     }
   };
 
-  responseGoogle = (response) => {
-    console.log(response);
-  };
-
-  componentClicked = () => console.log("clicked!");
-
-  responseFacebook = (response) => console.log(response);
-
   render() {
     return (
       <div className='main-bg-color'>
@@ -118,66 +106,6 @@ class Login extends Component {
           <p className='login-head text-center pt-2'>
             <TranslateText txt='Login-text' />
           </p>
-
-          <div className='text-center p-4'>
-            <p>
-              <TranslateText txt='Login-note' />
-            </p>
-            <Row className='w-lg-50 d-inline-flex'>
-              <Col lg={6} md={12} sm={12}>
-                <GoogleLogin
-                  clientId='191838383366-2ruv1ocvbd7a81sbq7sr3ggd0jnq496n.apps.googleusercontent.com'
-                  render={(renderProps) => (
-                    <button
-                      onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                      className='google-Btn'
-                    >
-                      <FontAwesomeIcon
-                        className='m-2'
-                        icon={faGoogle}
-                        style={{ color: "#db4437" }}
-                        transform='down-2 grow-8'
-                        fixedWidth
-                      />
-                      oogle
-                    </button>
-                  )}
-                  // buttonText='Login with Google'
-                  onSuccess={this.responseGoogle}
-                  onFailure={this.responseGoogle}
-                  // className='my-google-button-class'
-                />
-              </Col>
-              <Col lg={6} md={12} sm={12}>
-                <FacebookLogin
-                  textButton={"acebook"}
-                  appId='388024745493898'
-                  autoLoad={true}
-                  fields='name,email,picture'
-                  onClick={this.componentClicked}
-                  callback={this.responseFacebook}
-                  cssClass='facebook-Btn'
-                  // icon='fa-facebook'
-                  icon={
-                    <FontAwesomeIcon
-                      className='mb-2'
-                      icon={faFacebookF}
-                      style={{ color: "#4267b2" }}
-                      transform='down-2 grow-8'
-                      fixedWidth
-                    />
-                  }
-                />
-              </Col>
-            </Row>
-          </div>
-
-          <div class='my-divider'>
-            <span></span>
-            <TranslateText txt='Login-OR' />
-            <span></span>
-          </div>
 
           <Form
             className='text-center'
