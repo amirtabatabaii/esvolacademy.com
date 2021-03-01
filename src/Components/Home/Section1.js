@@ -30,7 +30,9 @@ function Section1() {
             <Animated animationIn='shake' animationInDuration={1500}>
               <Link
                 to={
-                  localStorage.getItem("UserInfo") === null ? "/login" : "/user"
+                  localStorage.getItem("UserInfo") === null
+                    ? "/register"
+                    : "/user"
                 }
               >
                 <button className='button'>
