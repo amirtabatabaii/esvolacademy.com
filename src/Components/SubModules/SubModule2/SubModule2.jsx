@@ -17,8 +17,8 @@ class SubModule2 extends Component {
   state = {
     played: 0,
     duration: 0,
-    subtitlesTr: `http://esvol.kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
-    subtitlesEn: `http://esvol.kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`,
+    subtitlesTr: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
+    subtitlesEn: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`,
   };
 
   async componentDidMount() {
