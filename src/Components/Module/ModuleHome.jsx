@@ -77,7 +77,7 @@ class ModuleHome extends Component {
     localStorage.setItem("UserTempModule", ActiveModuleName);
 
     if (UserSelectedModuleNumber === UserActiveNumber) {
-      //console.log(UserSelectedModuleNumber, " = ", UserActiveNumber);
+      // console.log(UserSelectedModuleNumber, " = ", UserActiveNumber);
       axios
         .put(
           ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
@@ -87,6 +87,8 @@ class ModuleHome extends Component {
               currentSubModule: localStorage.getItem("UserSubModule"), //"sub1",
               score: this.props.UserStatus.score,
               badgeNo: this.props.UserStatus.badgeNo,
+              isPreTestDone: this.props.UserStatus.isPreTestDone,
+              isFinalTestDone: this.props.UserStatus.isFinalTestDone,
             },
           },
           (axios.defaults.headers.common[
@@ -115,6 +117,8 @@ class ModuleHome extends Component {
               currentSubModule: "sub1",
               score: this.props.UserStatus.score,
               badgeNo: this.props.UserStatus.badgeNo,
+              isPreTestDone: this.props.UserStatus.isPreTestDone,
+              isFinalTestDone: this.props.UserStatus.isFinalTestDone,
             },
           },
           (axios.defaults.headers.common[
@@ -163,6 +167,8 @@ class ModuleHome extends Component {
                 currentSubModule: ActiveSubName,
                 score: this.props.UserStatus.score,
                 badgeNo: "0",
+                isPreTestDone: this.props.UserStatus.isPreTestDone,
+                isFinalTestDone: this.props.UserStatus.isFinalTestDone,
               },
             },
             (axios.defaults.headers.common[
@@ -194,6 +200,8 @@ class ModuleHome extends Component {
                 currentSubModule: ActiveSubName,
                 score: this.props.UserStatus.score,
                 badgeNo: "0",
+                isPreTestDone: this.props.UserStatus.isPreTestDone,
+                isFinalTestDone: this.props.UserStatus.isFinalTestDone,
               },
             },
             (axios.defaults.headers.common[
@@ -228,6 +236,8 @@ class ModuleHome extends Component {
             currentSubModule: "sub" + ActiveSubName.substring(3),
             score: this.props.UserStatus.score,
             badgeNo: "0",
+            isPreTestDone: this.props.UserStatus.isPreTestDone,
+            isFinalTestDone: this.props.UserStatus.isFinalTestDone,
           },
         },
 
@@ -275,6 +285,8 @@ class ModuleHome extends Component {
     //         currentSubModule: ActiveSubName,
     //         score: this.props.UserStatus.score,
     //         badgeNo: "0",
+    // isPreTestDone: this.props.UserStatus.isPreTestDone,
+    //           isFinalTestDone: this.props.UserStatus.isFinalTestDone,
     //       },
     //     },
 
@@ -301,6 +313,36 @@ class ModuleHome extends Component {
   }; //ok
 
   componentWillMount() {
+    // axios
+    //   .put(
+    //     ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+    //     {
+    //       userStatus: {
+    //         currentModule: this.props.UserStatus.currentModule,
+    //         currentSubModule: this.props.UserStatus.currentSubModule,
+    //         score: this.props.UserStatus.score,
+    //         badgeNo: "0",
+    //         isPreTestDone: true,
+    //         isFinalTestDone: true,
+    //       },
+    //     },
+
+    //     (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+    //       "UserInfo"
+    //     )),
+    //     (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+    //     {
+    //       "Content-Type": "application/json",
+    //     }
+    //   )
+    //   .then((res) => {
+    //     // console.log("res =====> ", res);
+    //     if (res.status === 200) {
+    //       window.location.reload(false);
+    //       //openNotificationWithIcon("success", "Update", "Update ok", 3);
+    //     }
+    //   });
+
     if (this.props.UserStatus.currentModule === "Module6") {
       this.handleOnClickModule("Module1");
     }
@@ -319,8 +361,32 @@ class ModuleHome extends Component {
         if (Response.status === 200) {
           // console.log(Response.data);
           this.props.SetUserInfo(Response.data);
+          // localStorage.setItem(
+          //   "UserModule",
+          //   Response.data.userStatus.currentModule
+          // );
+          // localStorage.setItem(
+          //   "UserSubModule",
+          //   Response.data.userStatus.currentSubModule
+          // );
+          // localStorage.setItem(
+          //   "UserTempModule",
+          //   Response.data.userStatus.currentModule
+          // );
         }
       });
+
+    // localStorage.setItem("UserModule", this.props.UserStatus.currentModule);
+    // localStorage.setItem(
+    //   "UserSubModule",
+    //   this.props.UserStatus.currentSubModule
+    // );
+    // localStorage.setItem("UserTempModule", this.props.UserStatus.currentModule);
+
+    // console.log("userStatus", this.props.UserStatus);
+    // console.log("UserModule", this.props.userStatus.currentModule);
+    // console.log("UserSubModule", this.props.userStatus.currentSubModule);
+    // console.log("UserTempModule", this.props.userStatus.currentModule);
 
     if (this.props.UserInfo.isEasyModeActive) {
       if (
@@ -337,6 +403,8 @@ class ModuleHome extends Component {
                 currentSubModule: "sub6",
                 score: this.props.UserStatus.score,
                 badgeNo: "0",
+                isPreTestDone: this.props.UserStatus.isPreTestDone,
+                isFinalTestDone: this.props.UserStatus.isFinalTestDone,
               },
             },
             (axios.defaults.headers.common[
@@ -547,6 +615,8 @@ class ModuleHome extends Component {
                 currentSubModule: "sub6",
                 score: this.props.UserStatus.score,
                 badgeNo: "0",
+                isPreTestDone: this.props.UserStatus.isPreTestDone,
+                isFinalTestDone: this.props.UserStatus.isFinalTestDone,
               },
             },
 
@@ -1378,137 +1448,131 @@ class ModuleHome extends Component {
           // UserStatus={UserStatus}
         />
 
-        {
-          // UserStatus.currentModule === "Module1" &&
-          //   UserStatus.score === "0" &&
-          //   UserStatus.currentSubModule === "sub1" &&
-          UserInfo.avatarStatus === false && (
+        {/* {
+          UserStatus.isPreTestDone === false && (
             <PreTest UserStatus={UserStatus} UserInfo={UserInfo} />
           )
-        }
+        } */}
 
         {
           // (
           // (UserStatus.currentModule === "Module1" &&
           // UserStatus.currentSubModule !== "sub1") ||
           // UserStatus.currentModule !== "Module1") &&
-          UserInfo.avatarStatus === true && (
-            <Container>
-              <Row className='w-100 pt-5 pb-5'>
-                {/* Module panel */}
-                <Col lg={2} className='d-flex justify-content-end'>
-                  <ModuleStagesName
-                    userActiveModule={UserStatus.currentModule}
-                    handleOnClickModule={this.handleOnClickModule}
-                  />
-                </Col>
 
-                <Col className='d-lg-none d-md-block d-flex justify-content-start mb-4'>
-                  <ModuleStagesNameSmall
-                    userActiveModule={UserStatus.currentModule}
-                    handleOnClickModule={this.handleOnClickModule}
-                  />
-                </Col>
+          // UserStatus.isPreTestDone === true && (
+          <Container>
+            <Row className='w-100 pt-5 pb-5'>
+              {/* Module panel */}
+              <Col lg={2} className='d-flex justify-content-end'>
+                <ModuleStagesName
+                  userActiveModule={UserStatus.currentModule}
+                  handleOnClickModule={this.handleOnClickModule}
+                />
+              </Col>
 
-                <Col lg={10}>
-                  <div className='d-flex justify-content-start'>
-                    {/* SubModule panel */}
-                    <SubModuleBtn
-                      userActiveSubModule={UserStatus.currentSubModule}
-                      userActiveModule={UserStatus.currentModule}
-                      onClick={this.handleOnClickSubModule}
-                    />
-                  </div>
+              <Col className='d-lg-none d-md-block d-flex justify-content-start mb-4'>
+                <ModuleStagesNameSmall
+                  userActiveModule={UserStatus.currentModule}
+                  handleOnClickModule={this.handleOnClickModule}
+                />
+              </Col>
 
-                  {/* SubModule Note Section */}
-                  <SubModuleNote
+              <Col lg={10}>
+                <div className='d-flex justify-content-start'>
+                  {/* SubModule panel */}
+                  <SubModuleBtn
                     userActiveSubModule={UserStatus.currentSubModule}
-                    showResult={this.state.showResult}
-                    takeQuiz={this.state.takeQuiz}
-                    compareAnswer={this.state.compareAnswer}
-                    isEasyModeActive={UserInfo.isEasyModeActive}
-                  />
-
-                  {/* SubModule Section */}
-                  <SubModule
                     userActiveModule={UserStatus.currentModule}
-                    userActiveSubModule={UserStatus.currentSubModule}
-                    SubModule1IntroductionVideo={SubModule1IntroductionVideo}
-                    SubModule2CourseVideo={SubModule2CourseVideo}
-                    SubModule6Detail={SubModule6ExpertVideo}
-                    SubModule7QuizQuestionText={
-                      SubModule7QuizQuestionFiltered[this.state.questionIndex]
-                    }
-                    questionIndex={this.state.questionIndex}
-                    questionCount={this.state.questionCount}
-                    userAnswer={this.state.userAnswer}
-                    userFillingAnswer={this.state.userFillingAnswer}
-                    userBlankAnswer={this.state.userBlankAnswer}
-                    userYesNoAnswer={this.state.userYesNoAnswer}
-                    userMultipleChoiceAnswer={
-                      this.state.userMultipleChoiceAnswer
-                    }
-                    HandleYesNoAnswerChange={this.HandleYesNoAnswerChange}
-                    HandleMultipleChoiceAnswerChange={
-                      this.HandleMultipleChoiceAnswerChange
-                    }
-                    HandleBlankNextQuestion={this.HandleBlankNextQuestion}
-                    showResult={this.state.showResult}
-                    correctAnswerCount={this.state.correctAnswerCount}
-                    randomAnswers={randomAnswers}
-                    AllQuestions={SubModule7QuizQuestionFiltered}
-                    SubModule7QuizQuestion={SubModule7QuizQuestion}
-                    takeQuiz={this.state.takeQuiz}
-                    onClick={this.handleClickSubModuleNext}
-                    ExpertIndex={this.state.ExpertIndex}
-                    handleClickExpertVideo={this.handleClickExpertVideo}
-                    onClickNextModule={this.handleClickModuleNext}
-                    getRandomAnswer={this.getRandomAnswer}
-                    HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
-                    HandleQuestionFillingAnswerChange={
-                      this.HandleQuestionFillingAnswerChange
-                    }
-                    HandleNextQuestion={this.HandleNextQuestion}
-                    HandleFillingNextQuestion={this.HandleFillingNextQuestion}
-                    handleBlankAnswerInputChange={
-                      this.handleBlankAnswerInputChange
-                    }
-                    HandlePrevQuestion={this.HandlePrevQuestion}
-                    HandleQuestionResult={this.HandleQuestionResult}
-                    HandleRetakeQuiz={this.HandleRetakeQuiz}
-                    //
-                    selectedLanguage={selectedLanguage}
-                    userQuizScore={userQuizScore}
-                    QuizScore={QuizScore}
-                    UserQuizAllAnswers={UserQuizAllAnswers}
-                    UserQuizAllAnswersLanguage={UserQuizAllAnswersLanguage}
-                    HandleCompareAnswer={this.HandleCompareAnswer}
-                    CompareAnswer={this.state.compareAnswer}
-                    HandleCompareAnswerNextQuestion={
-                      this.HandleCompareAnswerNextQuestion
-                    }
-                    HandleCompareAnswerPrevQuestion={
-                      this.HandleCompareAnswerPrevQuestion
-                    }
-                    HandleCompareAnswerQuestionResult={
-                      this.HandleCompareAnswerQuestionResult
-                    }
-                    isEasyModeActive={UserInfo.isEasyModeActive}
-                    SubModule4ReadingFiltered={SubModule4ReadingFiltered}
-                    SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
-                    SubModule3Interactive={SubModule3Interactive}
-                    SubModule3InteractiveQuestion={
-                      SubModule3InteractiveQuestion
-                    }
-                    UserInfo={UserInfo}
-                    UserStatus={UserStatus}
-                    passed={passed}
-                    SetUserPassed={SetUserPassed}
+                    onClick={this.handleOnClickSubModule}
                   />
-                </Col>
-              </Row>
-            </Container>
-          )
+                </div>
+
+                {/* SubModule Note Section */}
+                <SubModuleNote
+                  userActiveSubModule={UserStatus.currentSubModule}
+                  showResult={this.state.showResult}
+                  takeQuiz={this.state.takeQuiz}
+                  compareAnswer={this.state.compareAnswer}
+                  isEasyModeActive={UserInfo.isEasyModeActive}
+                />
+
+                {/* SubModule Section */}
+                <SubModule
+                  userActiveModule={UserStatus.currentModule}
+                  userActiveSubModule={UserStatus.currentSubModule}
+                  SubModule1IntroductionVideo={SubModule1IntroductionVideo}
+                  SubModule2CourseVideo={SubModule2CourseVideo}
+                  SubModule6Detail={SubModule6ExpertVideo}
+                  SubModule7QuizQuestionText={
+                    SubModule7QuizQuestionFiltered[this.state.questionIndex]
+                  }
+                  questionIndex={this.state.questionIndex}
+                  questionCount={this.state.questionCount}
+                  userAnswer={this.state.userAnswer}
+                  userFillingAnswer={this.state.userFillingAnswer}
+                  userBlankAnswer={this.state.userBlankAnswer}
+                  userYesNoAnswer={this.state.userYesNoAnswer}
+                  userMultipleChoiceAnswer={this.state.userMultipleChoiceAnswer}
+                  HandleYesNoAnswerChange={this.HandleYesNoAnswerChange}
+                  HandleMultipleChoiceAnswerChange={
+                    this.HandleMultipleChoiceAnswerChange
+                  }
+                  HandleBlankNextQuestion={this.HandleBlankNextQuestion}
+                  showResult={this.state.showResult}
+                  correctAnswerCount={this.state.correctAnswerCount}
+                  randomAnswers={randomAnswers}
+                  AllQuestions={SubModule7QuizQuestionFiltered}
+                  SubModule7QuizQuestion={SubModule7QuizQuestion}
+                  takeQuiz={this.state.takeQuiz}
+                  onClick={this.handleClickSubModuleNext}
+                  ExpertIndex={this.state.ExpertIndex}
+                  handleClickExpertVideo={this.handleClickExpertVideo}
+                  onClickNextModule={this.handleClickModuleNext}
+                  getRandomAnswer={this.getRandomAnswer}
+                  HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
+                  HandleQuestionFillingAnswerChange={
+                    this.HandleQuestionFillingAnswerChange
+                  }
+                  HandleNextQuestion={this.HandleNextQuestion}
+                  HandleFillingNextQuestion={this.HandleFillingNextQuestion}
+                  handleBlankAnswerInputChange={
+                    this.handleBlankAnswerInputChange
+                  }
+                  HandlePrevQuestion={this.HandlePrevQuestion}
+                  HandleQuestionResult={this.HandleQuestionResult}
+                  HandleRetakeQuiz={this.HandleRetakeQuiz}
+                  //
+                  selectedLanguage={selectedLanguage}
+                  userQuizScore={userQuizScore}
+                  QuizScore={QuizScore}
+                  UserQuizAllAnswers={UserQuizAllAnswers}
+                  UserQuizAllAnswersLanguage={UserQuizAllAnswersLanguage}
+                  HandleCompareAnswer={this.HandleCompareAnswer}
+                  CompareAnswer={this.state.compareAnswer}
+                  HandleCompareAnswerNextQuestion={
+                    this.HandleCompareAnswerNextQuestion
+                  }
+                  HandleCompareAnswerPrevQuestion={
+                    this.HandleCompareAnswerPrevQuestion
+                  }
+                  HandleCompareAnswerQuestionResult={
+                    this.HandleCompareAnswerQuestionResult
+                  }
+                  isEasyModeActive={UserInfo.isEasyModeActive}
+                  SubModule4ReadingFiltered={SubModule4ReadingFiltered}
+                  SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
+                  SubModule3Interactive={SubModule3Interactive}
+                  SubModule3InteractiveQuestion={SubModule3InteractiveQuestion}
+                  UserInfo={UserInfo}
+                  UserStatus={UserStatus}
+                  passed={passed}
+                  SetUserPassed={SetUserPassed}
+                />
+              </Col>
+            </Row>
+          </Container>
+          // )
         }
         <Footer userActiveModule={UserStatus.currentModule} />
       </div>
