@@ -62,7 +62,7 @@ class ModuleFinished extends Component {
           <ModuleNavBar userActiveModule='Module1' />
 
           {UserStatus.currentModule === "Module6" &&
-            UserInfo.avatarStatus === false && (
+            UserInfo.isFinalTestDone === false && (
               <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
             )}
 
