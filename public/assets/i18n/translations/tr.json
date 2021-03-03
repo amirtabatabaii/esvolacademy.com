@@ -50,6 +50,8 @@
   "Register-BtnText": "Kayıt Ol",
   "Register1": "Başarıyla Kaydoldunuz.",
   "Register2": "Başarıyla Kaydoldunuz.",
+  "RegisterError1": "User Already Exist.",
+  "RegisterError2": "User Already Exist.",
   "MenuItem-Anasayfa": "Anasayfa",
   "MenuItem-Profil": "Profil",
   "MenuItem-Logout": "Çıkış",
