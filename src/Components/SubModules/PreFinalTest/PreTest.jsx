@@ -84,19 +84,12 @@ class PreTest extends Component {
         PreQst9: this.state.PreQst9,
       },
     };
-    // console.log(userPreQst);
+    console.log(userPreQst);
 
     axios
       .put(
-        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}`,
-        {
-          firstName: this.props.UserInfo.firstName,
-          lastName: this.props.UserInfo.lastName,
-          password: "",
-          avatarNo: this.props.UserInfo.avatarNo,
-          avatarStatus: true, //changeeeeee
-          isEasyModeActive: this.state.isEasyModeActive,
-        },
+        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/pretest`,
+        userPreQst,
         (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
           "UserInfo"
         )),
