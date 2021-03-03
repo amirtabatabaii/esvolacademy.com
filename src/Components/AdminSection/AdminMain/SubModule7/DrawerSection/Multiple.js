@@ -18,6 +18,9 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import { Checkbox } from "antd";
+import axios from "axios";
+import { ApiUrlMain2 } from "../../../../Utility/ApiUrl";
+import TranslateText from "../../../../Translate/TranslateText";
 
 const { Panel } = Collapse;
 
@@ -36,7 +39,7 @@ function Multiple(props) {
   // ]);
 
   const [Quiz, setQuiz] = useState({
-    point: null,
+    point: FltQst.point,
     activationStatus: true,
     questionType: "",
     moduleName: props.adminActiveModule,
@@ -211,6 +214,44 @@ function Multiple(props) {
       interactiveUrl: "",
       interactiveUrlFormat: "",
     });
+
+    // console.log("qstId", FltQst.id);
+
+    // axios
+    //   .put(
+    //     // "https://biyoteknik.com:1443/esvol/api/exam/quiz/questions/1",
+    //     // ApiUrlMain2 + `/api/exam/quiz/questions/${FltQst.id}`,
+    //     {
+    //       point: Quiz.point,
+    //       NumberOfBlank: Quiz.NumberOfBlank,
+    //       moduleName: props.adminActiveModule,
+    //       questionType: FltQst.type,
+    //       activationStatus: FltQst.activationStatus,
+    //       questionDictionaries: [...OldQstList, ...QstList],
+    //       answers: [...OldAnsList],
+    //       interactiveUrl: "",
+    //       interactiveUrlFormat: "",
+    //     },
+
+    //     (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+    //       "administratorToken"
+    //     )),
+    //     (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+    //     {
+    //       "Content-Type": "application/json",
+    //     }
+    //   )
+    //   .then((res) => {
+    //     console.log("res =====> ", res);
+    //     if (res.status === 200) {
+    //       openNotificationWithIcon(
+    //         "success",
+    //         "<TranslateText txt=User-PassChange1 />",
+    //         "<TranslateText txt=User-PassChange2 />",
+    //         3
+    //       );
+    //     }
+    //   });
   };
 
   return (
