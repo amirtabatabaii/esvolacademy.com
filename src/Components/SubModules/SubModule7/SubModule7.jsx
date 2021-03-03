@@ -33,6 +33,8 @@ class SubModule7 extends Component {
                 : "sub1",
             score: this.props.UserStatus.score,
             badgeNo: this.props.UserStatus.badgeNo,
+            isPreTestDone: this.props.UserStatus.isPreTestDone,
+            isFinalTestDone: this.props.UserStatus.isFinalTestDone,
           },
         },
 
