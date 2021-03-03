@@ -79,6 +79,8 @@ class ModuleNavBar extends Component {
               currentSubModule: UserSubModule, //this.props.UserStatus.currentSubModule,
               score: this.props.UserStatus.score,
               badgeNo: this.props.UserStatus.badgeNo,
+              isPreTestDone: this.props.UserStatus.isPreTestDone,
+              isFinalTestDone: this.props.UserStatus.isFinalTestDone,
             },
           },
           (axios.defaults.headers.common[
