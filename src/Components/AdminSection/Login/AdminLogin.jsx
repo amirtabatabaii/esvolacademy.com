@@ -19,22 +19,22 @@ import "../../../css/MyAntd.css";
 // };
 
 class AdminLogin extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = {
-  //       username: "",
-  //       password: "",
-  //       errors: {
-  //         username: null,
-  //         password: null,
-  //       },
-  //       isAuthenticated: "false",
-  //     };
-  //     this.handleSubmit = this.handleSubmit.bind(this);
-  //   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: "",
+      errors: {
+        username: null,
+        password: null,
+      },
+      isAuthenticated: "false",
+    };
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleChange = (event) => {
-    // this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   //   handleSubmit = (event) => {
@@ -94,8 +94,15 @@ class AdminLogin extends Component {
   //   };
 
   handleSubmit = (event) => {
-    localStorage.setItem("administratorToken", "Test_Administrator_Token");
-    this.props.history.push(`/site/admin-page/main`);
+    event.preventDefault();
+
+    if (
+      this.state.username === "test@test.com" &&
+      this.state.password === "qweqwe"
+    ) {
+      localStorage.setItem("administratorToken", "Test_Administrator_Token");
+      this.props.history.push(`/site/admin-page/main`);
+    }
   };
 
   componentDidMount() {
@@ -124,7 +131,7 @@ class AdminLogin extends Component {
                           name='username'
                           className='form-control'
                           placeholder='Username'
-                          //   onChange={this.handleChange}
+                          onChange={this.handleChange}
                           required
                         />
                       </div>
@@ -135,7 +142,7 @@ class AdminLogin extends Component {
                           className='form-control'
                           name='password'
                           placeholder='Password'
-                          //   onChange={this.handleChange}
+                          onChange={this.handleChange}
                           required
                         />
                       </div>
