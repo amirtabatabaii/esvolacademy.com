@@ -87,6 +87,8 @@ class ShowResult extends Component {
                           parseInt(this.props.QuizScore)
                       ),
                     badgeNo: "0",
+                    isPreTestDone: this.props.UserStatus.isPreTestDone,
+                    isFinalTestDone: this.props.UserStatus.isFinalTestDone,
                   },
                 },
                 (axios.defaults.headers.common[
