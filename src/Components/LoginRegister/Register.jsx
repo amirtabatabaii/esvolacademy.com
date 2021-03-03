@@ -27,11 +27,17 @@ class Register extends Component {
     confirmPassword: "",
     EmailError: null,
     socialRegister: false,
+    captchaError: null,
   };
 
-  onChange(value) {
-    console.log("Captcha value:", value);
-  }
+  CaptchaOnChange = (value) => {
+    // console.log("Captcha value:", value);
+    if (value === null) {
+      this.setState({ captchaError: true });
+    } else {
+      this.setState({ captchaError: false });
+    }
+  };
 
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -67,141 +73,110 @@ class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    if (this.state.password === this.state.confirmPassword) {
-      let pass = this.state.password;
-      // let reg = /^[a-z0-9A-Z]\w{5,30}$/;
-      let reg = /^[a-z0-9A-Z\s\S\w]{5,30}$/;
-      let test = reg.test(pass);
-      if (test) {
-        var crypto = require("crypto");
-        var shasum = crypto
-          .createHash("sha1")
-          .update(this.state.password)
-          .digest("hex");
+    if (this.state.EmailError === false) {
+      if (this.state.captchaError === false) {
+        if (this.state.password === this.state.confirmPassword) {
+          let pass = this.state.password;
+          // let reg = /^[a-z0-9A-Z]\w{5,30}$/;
+          let reg = /^[a-z0-9A-Z\s\S\w]{5,30}$/;
+          let test = reg.test(pass);
+          if (test) {
+            var crypto = require("crypto");
+            var shasum = crypto
+              .createHash("sha1")
+              .update(this.state.password)
+              .digest("hex");
 
-        const hashedPass = shasum;
+            const hashedPass = shasum;
 
-        this.setState(
-          {
-            password: hashedPass,
-          },
-          () => {
-            axios
-              .post(
-                this.state.socialRegister
-                  ? ApiUrlMain2 + "/users/signup"
-                  : ApiUrlMain2 + "/users",
-                {
-                  firstName: this.state.firstName,
-                  lastName: this.state.lastName,
-                  email: this.state.email,
-                  password: this.state.password,
-                },
+            this.setState(
+              {
+                password: hashedPass,
+              },
+              () => {
+                axios
+                  .post(
+                    this.state.socialRegister
+                      ? ApiUrlMain2 + "/users/signup"
+                      : ApiUrlMain2 + "/users",
+                    {
+                      firstName: this.state.firstName,
+                      lastName: this.state.lastName,
+                      email: this.state.email,
+                      password: this.state.password,
+                    },
 
-                (axios.defaults.headers.common[
-                  "Authorization"
-                ] = localStorage.getItem("UserInfo")),
-                (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-                  "*"),
-                {
-                  "Content-Type": "application/json",
-                }
-              )
-              .then((res) => {
-                // console.log("res =====> ", res);
-                if (res.status === 200) {
-                  openNotificationWithIcon(
-                    "success",
-                    <TranslateText txt='Register1' />,
-                    <TranslateText txt='Register2' />,
-                    3
-                  );
-                  setTimeout(() => {
-                    this.props.history.push("/login");
-                  }, 1000);
-                }
-              })
-              .catch((err) => {
-                console.log(err);
-                openNotificationWithIcon(
-                  "success",
-                  <TranslateText txt='RegisterError1' />,
-                  <TranslateText txt='RegisterError1' />,
-                  3
-                );
-              });
+                    (axios.defaults.headers.common[
+                      "Authorization"
+                    ] = localStorage.getItem("UserInfo")),
+                    (axios.defaults.headers.common[
+                      "Access-Control-Allow-Origin"
+                    ] = "*"),
+                    {
+                      "Content-Type": "application/json",
+                    }
+                  )
+                  .then((res) => {
+                    // console.log("res =====> ", res);
+                    if (res.status === 200) {
+                      openNotificationWithIcon(
+                        "success",
+                        <TranslateText txt='Register1' />,
+                        <TranslateText txt='Register2' />,
+                        3
+                      );
+                      setTimeout(() => {
+                        this.props.history.push("/login");
+                      }, 1000);
+                    }
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                    openNotificationWithIcon(
+                      "error",
+                      <TranslateText txt='RegisterError1' />,
+                      <TranslateText txt='RegisterError1' />,
+                      3
+                    );
+                  });
+              }
+            );
+          } else {
+            openNotificationWithIcon(
+              "error",
+              <TranslateText txt='User-PassError1' />,
+              <TranslateText txt='User-PassError2' />,
+              3
+            );
           }
-        );
+        } else {
+          openNotificationWithIcon(
+            "error",
+            <TranslateText txt='User-PassError3' />,
+            <TranslateText txt='User-PassError4' />,
+            3
+          );
+        }
       } else {
         openNotificationWithIcon(
           "error",
-          <TranslateText txt='User-PassError1' />,
-          <TranslateText txt='User-PassError2' />,
+          <TranslateText txt='captchaError' />,
+          <TranslateText txt='captchaError' />,
           3
         );
       }
     } else {
       openNotificationWithIcon(
         "error",
-        <TranslateText txt='User-PassError3' />,
-        <TranslateText txt='User-PassError4' />,
+        <TranslateText txt='RegisterEmailError1' />,
+        <TranslateText txt='RegisterEmailError1' />,
         3
       );
     }
-
-    // if (this.state.EmailError === false) {
-    //   let pass = this.state.password;
-    //   let reg = /^[A-Z0-9a-z]\w{4,30}$/;
-    //   let test = reg.test(pass);
-    //   if (test) {
-    //     // alert("pass");
-    //     var crypto = require("crypto");
-    //     var shasum = crypto
-    //       .createHash("sha1")
-    //       .update(this.state.password)
-    //       .digest("hex");
-
-    //     const hashedPass = shasum;
-    //     //console.log(shasum);
-    //     axios
-    //       .post(
-    //         ApiUrlMain2 + "/users",
-    //         {
-    //           firstName: this.state.firstName,
-    //           lastName: this.state.lastName,
-    //           email: this.state.email,
-    //           password: hashedPass,
-    //         },
-    //         // (axios.defaults.headers.common[
-    //         //   "Authorization"
-    //         // ] = this.state.Authorization),
-    //         { "Content-type": "application/json; charset=iso-8859-1" }
-    //       )
-    //       .then((Response) => {
-    //         // console.log("Success res ========>", Response);
-    //         if (Response.status === 200) {
-    //           openNotificationWithIcon("success", "Register", "Register", 10);
-    //           this.setState({ EmailError: null });
-    //           document.getElementById("InsertForm").reset();
-    //         } else {
-    //           openNotificationWithIcon("error", "Error!", "Error!", 3);
-    //         }
-    //       });
-    //   } else {
-    //     openNotificationWithIcon(
-    //       "error",
-    //       "Password Error",
-    //       "Password Has Error",
-    //       3
-    //     );
-    //   }
-    // } else {
-    //   openNotificationWithIcon("error", "Email Error", "Email Has Error", 3);
-    // }
   };
 
   responseGoogle = (response) => {
-    console.log(response);
+    // console.log(response);
     const decoded = jwt_decode(response.tokenId);
     //  console.log(decoded);
     this.setState({
@@ -375,7 +350,7 @@ class Register extends Component {
                   <TextField
                     className='register-textField'
                     // variant='outlined'
-                    label={<TranslateText txt='Register-password' />}
+                    label={<TranslateText txt='Register-ConfirmPassword' />}
                     name='confirmPassword'
                     onChange={this.handleRegister}
                     required
@@ -390,8 +365,8 @@ class Register extends Component {
 
               <div className='d-flex justify-content-center pt-4'>
                 <ReCAPTCHA
-                  sitekey='6LeTc28aAAAAABB_zfUAUtaZJE4CQUh0FV42_BOL'
-                  onChange={this.onChange}
+                  sitekey='6Ldi-m8aAAAAAK1qlOdb7OHXdbNZuFuey456nTPA'
+                  onChange={this.CaptchaOnChange}
                 />
               </div>
 
