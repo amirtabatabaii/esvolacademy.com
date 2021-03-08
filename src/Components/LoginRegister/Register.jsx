@@ -162,8 +162,8 @@ class Register extends Component {
       } else {
         openNotificationWithIcon(
           "error",
-          <TranslateText txt='captchaError' />,
-          <TranslateText txt='captchaError' />,
+          <TranslateText txt='RegisterCaptchaError1' />,
+          <TranslateText txt='RegisterCaptchaError2' />,
           3
         );
       }
