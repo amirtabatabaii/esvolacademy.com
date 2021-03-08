@@ -96,9 +96,10 @@ class Register extends Component {
               () => {
                 axios
                   .post(
-                    this.state.socialRegister
-                      ? ApiUrlMain2 + "/users/signup"
-                      : ApiUrlMain2 + "/users",
+                    ApiUrlMain2 + "/users/signup",
+                    // this.state.socialRegister
+                    //   ? ApiUrlMain2 + "/users/signup"
+                    //   : ApiUrlMain2 + "/users",
                     {
                       firstName: this.state.firstName,
                       lastName: this.state.lastName,
@@ -131,7 +132,7 @@ class Register extends Component {
                     }
                   })
                   .catch((err) => {
-                    console.log(err);
+                    // console.log(err);
                     openNotificationWithIcon(
                       "error",
                       <TranslateText txt='RegisterError1' />,
@@ -184,6 +185,7 @@ class Register extends Component {
       lastName: decoded.family_name,
       email: decoded.email,
       socialRegister: true,
+      EmailError: false,
     });
     // this.props.history.push("/user/setpassword");
   };
@@ -195,6 +197,7 @@ class Register extends Component {
       lastName: response.name.split(" ")[1],
       email: response.email,
       socialRegister: true,
+      EmailError: false,
     });
     // this.props.history.push("/user/setpassword");
   };
@@ -457,6 +460,14 @@ class Register extends Component {
                   />
                 </div>
               </Form.Group>
+
+              <div className='d-flex justify-content-center pt-4'>
+                <ReCAPTCHA
+                  sitekey='6Ldi-m8aAAAAAK1qlOdb7OHXdbNZuFuey456nTPA'
+                  onChange={this.CaptchaOnChange}
+                />
+              </div>
+
               <div className='m-auto'>
                 <button className='register-Btn' type='submit'>
                   <TranslateText txt='Register-BtnText' />
