@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Redirect } from "react-router";
 
 import Home from "./Components/Home/Home";
 import module from "./Components/Module/ModuleHome";
@@ -114,6 +115,14 @@ function App() {
             path={process.env.PUBLIC_URL + "/site/viewer-page/main"}
             component={ViewerMain}
           />
+
+          {/* Other Route */}
+          <Route exact path={process.env.PUBLIC_URL + "/contact-1"}>
+            {<Redirect to='/' />}
+          </Route>
+          <Route exact path={process.env.PUBLIC_URL + "/about-us"}>
+            {<Redirect to='/' />}
+          </Route>
 
           <Route
             path={process.env.PUBLIC_URL + "*"}
