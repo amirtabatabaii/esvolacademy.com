@@ -55,6 +55,8 @@
   "RegisterError2": "User Already Exist.",
   "RegisterEmailError1": "Please enter email.",
   "RegisterEmailError2": "Please enter email.",
+  "RegisterCaptchaError1": "Captcha Error",
+  "RegisterCaptchaError2": "Are You Human?",
   "MenuItem-Anasayfa": "Anasayfa",
   "MenuItem-Profil": "Profil",
   "MenuItem-Logout": "Çıkış",
