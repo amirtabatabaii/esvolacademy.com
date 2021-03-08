@@ -72,6 +72,7 @@ class Register extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    // console.log(this.state);
 
     if (this.state.EmailError === false) {
       if (this.state.captchaError === false) {
@@ -179,7 +180,6 @@ class Register extends Component {
   responseGoogle = (response) => {
     // console.log(response);
     const decoded = jwt_decode(response.tokenId);
-    //  console.log(decoded);
     this.setState({
       firstName: decoded.given_name,
       lastName: decoded.family_name,
@@ -187,7 +187,6 @@ class Register extends Component {
       socialRegister: true,
       EmailError: false,
     });
-    // this.props.history.push("/user/setpassword");
   };
 
   responseFacebook = (response) => {
@@ -199,7 +198,6 @@ class Register extends Component {
       socialRegister: true,
       EmailError: false,
     });
-    // this.props.history.push("/user/setpassword");
   };
 
   render() {
@@ -448,7 +446,7 @@ class Register extends Component {
                   <TextField
                     className='register-textField'
                     // variant='outlined'
-                    label={<TranslateText txt='Register-password' />}
+                    label={<TranslateText txt='Register-ConfirmPassword' />}
                     name='confirmPassword'
                     onChange={this.handleRegister}
                     required
