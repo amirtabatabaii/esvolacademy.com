@@ -38,30 +38,30 @@ class PreTest extends Component {
       [e.target.name]: e.target.value,
     });
 
-    if (
-      this.state.age !== "" &&
-      this.state.gender !== "" &&
-      this.state.occupation !== "" &&
-      this.state.experience !== "" &&
-      this.state.country !== "" &&
-      this.state.PreQst1 !== "" &&
-      this.state.PreQst2 !== "" &&
-      this.state.PreQst3 !== "" &&
-      this.state.PreQst4 !== "" &&
-      this.state.PreQst5 !== "" &&
-      this.state.PreQst6 !== "" &&
-      this.state.PreQst7 !== "" &&
-      this.state.PreQst8 !== "" &&
-      this.state.PreQst9 !== ""
-    ) {
-      this.setState({
-        btnEnable: false,
-      });
-    } else {
-      this.setState({
-        btnEnable: true,
-      });
-    }
+    // if (
+    //   this.state.age !== "" &&
+    //   this.state.gender !== "" &&
+    //   this.state.occupation !== "" &&
+    //   this.state.experience !== "" &&
+    //   this.state.country !== "" &&
+    //   this.state.PreQst1 !== "" &&
+    //   this.state.PreQst2 !== "" &&
+    //   this.state.PreQst3 !== "" &&
+    //   this.state.PreQst4 !== "" &&
+    //   this.state.PreQst5 !== "" &&
+    //   this.state.PreQst6 !== "" &&
+    //   this.state.PreQst7 !== "" &&
+    //   this.state.PreQst8 !== "" &&
+    //   this.state.PreQst9 !== ""
+    // ) {
+    //   this.setState({
+    //     btnEnable: false,
+    //   });
+    // } else {
+    //   this.setState({
+    //     btnEnable: true,
+    //   });
+    // }
   };
 
   handleSubmit = (e) => {
@@ -99,20 +99,20 @@ class PreTest extends Component {
         }
       )
       .then((res) => {
-        // console.log("res =====> ", res);
-        if (res.status === 200) {
-          window.scrollTo(0, 0);
+        console.log("res =====> ", res);
+        // if (res.status === 200) {
+        //   window.scrollTo(0, 0);
 
-          openNotificationWithIcon(
-            "success",
-            <TranslateText txt='PreTestQst-AnsOK' />,
-            <TranslateText txt='PreTestQst-AnsOK2' />,
-            3
-          );
-          setTimeout(() => {
-            window.location.reload(false);
-          }, 1000);
-        }
+        //   openNotificationWithIcon(
+        //     "success",
+        //     <TranslateText txt='PreTestQst-AnsOK' />,
+        //     <TranslateText txt='PreTestQst-AnsOK2' />,
+        //     3
+        //   );
+        //   setTimeout(() => {
+        //     window.location.reload(false);
+        //   }, 1000);
+        // }
       });
   };
 
@@ -290,7 +290,7 @@ class PreTest extends Component {
               className='pretest-Btn'
               type='submit'
               onClick={this.handleSubmit}
-              disabled={this.state.btnEnable}
+              // disabled={this.state.btnEnable}
             >
               <TranslateText txt='PreTestQst-Btn' />
             </button>
