@@ -20,6 +20,10 @@ const LanguageSelector = (props) => {
   const changeLanguage = (event) => {
     if (event.value === "en") setLanguage("EN");
     if (event.value === "tr") setLanguage("TR");
+    if (event.value === "bg") setLanguage("BG");
+    if (event.value === "it") setLanguage("IT");
+    if (event.value === "es") setLanguage("ES");
+    if (event.value === "gr") setLanguage("GR");
     i18n.changeLanguage(event.value);
 
     // const lng = event.value.toUpperCase();
@@ -30,6 +34,10 @@ const LanguageSelector = (props) => {
   const options = [
     { value: "en", label: "EN" },
     { value: "tr", label: "TR" },
+    { value: "bg", label: "BG" },
+    { value: "it", label: "IT" },
+    { value: "es", label: "ES" },
+    { value: "gr", label: "GR" },
   ];
 
   return (
