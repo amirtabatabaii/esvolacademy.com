@@ -40,6 +40,8 @@ import m5s5 from "../../assets/img/progress_chart/33.png";
 import m5s6 from "../../assets/img/progress_chart/34.png";
 import m5s7 from "../../assets/img/progress_chart/35.png";
 
+import m6s1 from "../../assets/img/progress_chart/36.png";
+
 import module_0 from "../../assets/img/user/module_0.png";
 import module_1 from "../../assets/img/user/module_1.png";
 import module_2 from "../../assets/img/user/module_2.png";
@@ -192,7 +194,7 @@ class ProgressImage extends Component {
 
         {userActiveModule === "Module6" && (
           <>
-            <Image src={m5s7} alt='esvol' className='chart-box' />
+            <Image src={m6s1} alt='esvol' className='chart-box' />
             <Image src={module_5} alt='esvol' className='chart-box' />
           </>
         )}
