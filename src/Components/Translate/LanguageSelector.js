@@ -11,19 +11,28 @@ import { withRouter } from "react-router-dom";
 
 const LanguageSelector = (props) => {
   // const [language, setLanguage] = useState("EN");
+  const lang = props.selectedLanguage;
+  let languages = "English";
+  if (lang === "en") languages = "English";
+  if (lang === "tr") languages = "Turkçe";
+  if (lang === "bg") languages = "български";
+  if (lang === "it") languages = "italiano";
+  if (lang === "es") languages = "Español";
+  if (lang === "gr") languages = "Ελληνικά";
   const [language, setLanguage] = useState(
-    props.selectedLanguage.toUpperCase()
+    // props.selectedLanguage.toUpperCase()
+    languages
   );
 
   const { i18n } = useTranslation();
 
   const changeLanguage = (event) => {
-    if (event.value === "en") setLanguage("EN");
-    if (event.value === "tr") setLanguage("TR");
-    if (event.value === "bg") setLanguage("BG");
-    if (event.value === "it") setLanguage("IT");
-    if (event.value === "es") setLanguage("ES");
-    if (event.value === "gr") setLanguage("GR");
+    if (event.value === "en") setLanguage("English");
+    if (event.value === "tr") setLanguage("Turkçe");
+    if (event.value === "bg") setLanguage("български");
+    if (event.value === "it") setLanguage("italiano");
+    if (event.value === "es") setLanguage("Español");
+    if (event.value === "gr") setLanguage("Ελληνικά");
     i18n.changeLanguage(event.value);
 
     // const lng = event.value.toUpperCase();
@@ -32,12 +41,12 @@ const LanguageSelector = (props) => {
   };
 
   const options = [
-    { value: "en", label: "EN" },
-    { value: "tr", label: "TR" },
-    { value: "bg", label: "BG" },
-    { value: "it", label: "IT" },
-    { value: "es", label: "ES" },
-    { value: "gr", label: "GR" },
+    { value: "en", label: "English" },
+    { value: "tr", label: "Turkçe" },
+    { value: "bg", label: "български" },
+    { value: "it", label: "italiano" },
+    { value: "es", label: "Español" },
+    { value: "gr", label: "Ελληνικά" },
   ];
 
   return (
