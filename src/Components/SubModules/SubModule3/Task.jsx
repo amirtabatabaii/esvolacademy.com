@@ -19,10 +19,10 @@ class Task extends Component {
               href={this.props.Link}
               rel='noopener noreferrer'
             >
-              <p
+              <div
                 className={`mt-4 ${this.props.userActiveModule}-video-link-btn`}
               >
-                <div className='m-auto p-2'>
+                <div className=' p-2'>
                   {this.props.type === "site" ? (
                     <TranslateText txt='SubModule4-OpenSite' />
                   ) : null}
@@ -33,7 +33,7 @@ class Task extends Component {
                     <TranslateText txt='SubModule4-watchVideo' />
                   ) : null}
                 </div>
-              </p>
+              </div>
 
               {/* <button
                 className={`mt-4 ${this.props.userActiveModule}-video-link-btn`}
@@ -60,7 +60,7 @@ class Task extends Component {
             <TextField
               id='standard-multiline-static'
               variant='standard'
-              label='Your Answer '
+              label={<TranslateText txt='SubModule3-YourAnswer' />} //'Your Answer'
               required
               multiline
               rows={6}
