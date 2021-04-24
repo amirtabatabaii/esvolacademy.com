@@ -25,6 +25,7 @@ import {
   SetUserInfo,
   SubModule3InteractiveSection,
   SetUserPassed,
+  SelectedLanguage,
 } from "../../Redux/action";
 import { connect } from "react-redux";
 import Footer from "../Footer/Footer";
@@ -35,6 +36,8 @@ import SubModuleNote from "../SubModules/SubModuleNote";
 import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import PreTest from "../SubModules/PreFinalTest/PreTest";
 import FinalTest from "../SubModules/PreFinalTest/FinalTest";
+import { openNotificationWithIcon } from "../AdminSection/Utility/Error";
+import TranslateText from "../Translate/TranslateText";
 
 let userAllAnswers = [];
 let userAllAnswersLanguage = [];
@@ -58,7 +61,7 @@ class ModuleHome extends Component {
       userBlankAnswer: [],
       questionCount: 0,
       questionIndex: 0,
-      selectedLanguage: "En",
+      selectedLanguage: "",
       correctAnswerCount: 0,
       showResult: false,
       takeQuiz: true,
@@ -67,6 +70,7 @@ class ModuleHome extends Component {
       userAllAnswersLanguage: [],
       userScore: 0,
       ExpertIndex: 0,
+      userActiveSubModuleNum: null,
     };
   }
 
@@ -143,21 +147,37 @@ class ModuleHome extends Component {
     // //else console.log("YOU CAN NOT ENTER THIS SUBMODULE !!");
   };
 
-  handleOnClickSubModule = (ActiveSubName) => {
+  handleOnClickSubModule = (
+    ActiveSubName,
+    UserModuleNum,
+    UserTempModuleNum
+  ) => {
     const UserActiveSubNumber = this.props.UserStatus.currentSubModule.substring(
       3
     );
+    const UserStorageActiveSubNumber = localStorage
+      .getItem("UserSubModule")
+      .substring(3);
     const UserSelectedSubNumber = ActiveSubName.substring(3);
+
+    // console.log(
+    //   "UserActiveSubNumber",
+    //   UserActiveSubNumber,
+    //   "UserSelectedSubNumber",
+    //   UserSelectedSubNumber,
+    //   "UserStorageActiveSubNumber",
+    //   UserStorageActiveSubNumber
+    // );
 
     if (this.props.UserInfo.isEasyModeActive) {
       if (
-        (UserSelectedSubNumber === "1" ||
+        ((UserSelectedSubNumber === "1" ||
           UserSelectedSubNumber === "2" ||
-          UserSelectedSubNumber === "6" ||
+          UserSelectedSubNumber === "3" ||
           UserSelectedSubNumber === "7") &&
-        UserSelectedSubNumber < UserActiveSubNumber
+          UserSelectedSubNumber <= UserStorageActiveSubNumber) ||
+        UserTempModuleNum < UserModuleNum
       ) {
-        //console.log("sub 1 2 6 7");
         axios
           .put(
             ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
@@ -187,10 +207,30 @@ class ModuleHome extends Component {
               //openNotificationWithIcon("success", "Update", "Update ok", 3);
             }
           });
-      }
+      } else if (
+        UserSelectedSubNumber === "1" ||
+        UserSelectedSubNumber === "2" ||
+        UserSelectedSubNumber === "3" ||
+        UserSelectedSubNumber === "7"
+      )
+        openNotificationWithIcon(
+          "error",
+          <TranslateText txt='SubModuleSelectError1' />,
+          <TranslateText txt='SubModuleSelectError2' />,
+          5
+        );
+      else
+        openNotificationWithIcon(
+          "error",
+          <TranslateText txt='SubModuleSelectError1Easy' />,
+          <TranslateText txt='SubModuleSelectError2Easy' />,
+          5
+        );
     } else {
-      if (UserSelectedSubNumber <= UserActiveSubNumber) {
-        //console.log(" <= ");
+      if (
+        UserSelectedSubNumber <= UserStorageActiveSubNumber ||
+        UserTempModuleNum < UserModuleNum
+      ) {
         axios
           .put(
             ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
@@ -220,13 +260,18 @@ class ModuleHome extends Component {
               //openNotificationWithIcon("success", "Update", "Update ok", 3);
             }
           });
-      } //else console.log("YOU CAN NOT ENTER THIS SUBMODULE !!");
+      } else
+        openNotificationWithIcon(
+          "error",
+          <TranslateText txt='SubModuleSelectError1' />,
+          <TranslateText txt='SubModuleSelectError2' />,
+          5
+        );
     }
   };
 
   handleClickSubModuleNext = (ActiveSubName) => {
     // this.props.SelectedSubModule("sub" + ActiveSubName.substring(3));
-
     axios
       .put(
         ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
@@ -254,6 +299,18 @@ class ModuleHome extends Component {
         if (res.status === 200) {
           window.location.reload(false);
           //openNotificationWithIcon("success", "Update", "Update ok", 3);
+          localStorage.setItem("firstName", res.data.firstName);
+          localStorage.setItem("lastName", res.data.lastName);
+          // localStorage.setItem("UserModule", res.data.userStatus.currentModule);
+          localStorage.setItem(
+            "UserSubModule",
+            res.data.userStatus.currentSubModule
+          );
+          localStorage.setItem(
+            "UserTempModule",
+            res.data.userStatus.currentModule
+          );
+          // localStorage.setItem("lng", this.props.selectedLanguage);
         }
       });
 
@@ -276,6 +333,16 @@ class ModuleHome extends Component {
 
     this.props.SetEmptyRedux();
 
+    localStorage.setItem(
+      "UserTempModule",
+      "Module" + (parseInt(ActiveModuleName.substring(6)) + 1)
+    );
+    localStorage.setItem(
+      "UserModule",
+      "Module" + (parseInt(ActiveModuleName.substring(6)) + 1)
+    );
+    localStorage.setItem("UserSubModule", ActiveSubName);
+
     // axios
     //   .put(
     //     ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
@@ -285,8 +352,8 @@ class ModuleHome extends Component {
     //         currentSubModule: ActiveSubName,
     //         score: this.props.UserStatus.score,
     //         badgeNo: "0",
-    // isPreTestDone: this.props.UserStatus.isPreTestDone,
-    //           isFinalTestDone: this.props.UserStatus.isFinalTestDone,
+    //         isPreTestDone: this.props.UserStatus.isPreTestDone,
+    //         isFinalTestDone: this.props.UserStatus.isFinalTestDone,
     //       },
     //     },
 
@@ -303,6 +370,18 @@ class ModuleHome extends Component {
     //     if (res.status === 200) {
     //       window.location.reload(false);
     //       //openNotificationWithIcon("success", "Update", "Update ok", 3);
+    //       //openNotificationWithIcon("success", "Update", "Update ok", 3);
+    //       localStorage.setItem("firstName", res.data.firstName);
+    //       localStorage.setItem("lastName", res.data.lastName);
+    //       // localStorage.setItem("UserModule", res.data.userStatus.currentModule);
+    //       localStorage.setItem(
+    //         "UserSubModule",
+    //         res.data.userStatus.currentSubModule
+    //       );
+    //       localStorage.setItem(
+    //         "UserTempModule",
+    //         res.data.userStatus.currentModule
+    //       );
     //     }
     //   });
 
@@ -351,6 +430,8 @@ class ModuleHome extends Component {
   async componentDidMount() {
     window.scrollTo(0, 0);
 
+    this.props.SelectedLanguage(localStorage.getItem("lng"));
+
     await axios
       .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {
         headers: {
@@ -361,6 +442,10 @@ class ModuleHome extends Component {
         if (Response.status === 200) {
           // console.log(Response.data);
           this.props.SetUserInfo(Response.data);
+          // localStorage.setItem("lng", this.props.selectedLanguage);
+
+          // localStorage.setItem("firstName", Response.data.firstName);
+          // localStorage.setItem("lastName", Response.data.lastName);
           // localStorage.setItem(
           //   "UserModule",
           //   Response.data.userStatus.currentModule
@@ -373,9 +458,22 @@ class ModuleHome extends Component {
           //   "UserTempModule",
           //   Response.data.userStatus.currentModule
           // );
+
+          // this.setState(
+          //   {
+          //     userActiveSubModuleNum: Response.data.userStatus.currentSubModule.substring(
+          //       3
+          //     ),
+          //   },
+          //   () => {
+          //     console.log(
+          //       this.state.userActiveSubModuleNum,
+          //       "userActiveSubModuleNum"
+          //     );
+          //   }
+          // );
         }
       });
-
     // localStorage.setItem("UserModule", this.props.UserStatus.currentModule);
     // localStorage.setItem(
     //   "UserSubModule",
@@ -390,9 +488,9 @@ class ModuleHome extends Component {
 
     if (this.props.UserInfo.isEasyModeActive) {
       if (
-        this.props.UserStatus.currentSubModule === "sub3" ||
         this.props.UserStatus.currentSubModule === "sub4" ||
-        this.props.UserStatus.currentSubModule === "sub5"
+        this.props.UserStatus.currentSubModule === "sub5" ||
+        this.props.UserStatus.currentSubModule === "sub6"
       ) {
         axios
           .put(
@@ -400,7 +498,7 @@ class ModuleHome extends Component {
             {
               userStatus: {
                 currentModule: this.props.UserStatus.currentModule,
-                currentSubModule: "sub6",
+                currentSubModule: "sub7",
                 score: this.props.UserStatus.score,
                 badgeNo: "0",
                 isPreTestDone: this.props.UserStatus.isPreTestDone,
@@ -421,6 +519,17 @@ class ModuleHome extends Component {
             if (res.status === 200) {
               window.location.reload(false);
               //openNotificationWithIcon("success", "Update", "Update ok", 3);
+              localStorage.setItem("firstName", res.data.firstName);
+              localStorage.setItem("lastName", res.data.lastName);
+              // localStorage.setItem("UserModule", res.data.userStatus.currentModule);
+              localStorage.setItem(
+                "UserSubModule",
+                res.data.userStatus.currentSubModule
+              );
+              localStorage.setItem(
+                "UserTempModule",
+                res.data.userStatus.currentModule
+              );
             }
           });
 
@@ -488,9 +597,8 @@ class ModuleHome extends Component {
           // console.log(QstArray);
 
           const QstArray2 = QstArray.filter(
-            (qst) =>
-              qst.question.questionDictionaries[0].language ===
-              this.props.selectedLanguage
+            (qst) => qst.question.questionDictionaries
+            // [0].language === this.props.selectedLanguage
             //"Tr"
           );
           // console.log(QstArray2);
@@ -602,9 +710,9 @@ class ModuleHome extends Component {
   async componentDidUpdate(previousProps, previousState) {
     if (this.props.UserInfo.isEasyModeActive) {
       if (
-        this.props.UserStatus.currentSubModule === "sub3" ||
         this.props.UserStatus.currentSubModule === "sub4" ||
-        this.props.UserStatus.currentSubModule === "sub5"
+        this.props.UserStatus.currentSubModule === "sub5" ||
+        this.props.UserStatus.currentSubModule === "sub6"
       ) {
         axios
           .put(
@@ -612,7 +720,7 @@ class ModuleHome extends Component {
             {
               userStatus: {
                 currentModule: this.props.UserStatus.currentModule,
-                currentSubModule: "sub6",
+                currentSubModule: "sub7",
                 score: this.props.UserStatus.score,
                 badgeNo: "0",
                 isPreTestDone: this.props.UserStatus.isPreTestDone,
@@ -633,7 +741,19 @@ class ModuleHome extends Component {
             // console.log("res =====> ", res);
             if (res.status === 200) {
               window.location.reload(false);
+              // localStorage.setItem("lng", this.props.selectedLanguage);
               //openNotificationWithIcon("success", "Update", "Update ok", 3);
+              localStorage.setItem("firstName", res.data.firstName);
+              localStorage.setItem("lastName", res.data.lastName);
+              // localStorage.setItem("UserModule", res.data.userStatus.currentModule);
+              localStorage.setItem(
+                "UserSubModule",
+                res.data.userStatus.currentSubModule
+              );
+              localStorage.setItem(
+                "UserTempModule",
+                res.data.userStatus.currentModule
+              );
             }
           });
 
@@ -705,9 +825,7 @@ class ModuleHome extends Component {
             // console.log(QstArray);
 
             const QstArray2 = QstArray.filter(
-              (qst) =>
-                qst.question.questionDictionaries[0].language ===
-                this.props.selectedLanguage
+              (qst) => (qst) => qst.question.questionDictionaries
               //"Tr"
             );
             // console.log(QstArray2);
@@ -797,7 +915,7 @@ class ModuleHome extends Component {
             }
           )
           .then((Response) => {
-            //console.log(Response.data.userAnswers);
+            //console.log(Response);
             const QstArray = Response.data.userAnswers.filter(
               (qst) => qst.question.type !== "Interactive"
             );
@@ -905,14 +1023,20 @@ class ModuleHome extends Component {
       } else if (incorrectAnswers[k].length === 1) {
         incorrectAnswers2[k].push(
           incorrectAnswers[k][0].questionAnswersDictionaries.filter(
-            (ans) => ans.language === lng
+            (ans) =>
+              ans.language ===
+              localStorage.getItem("lng").replace(/^\w/, (c) => c.toUpperCase())
           )[0].answerText
         );
       } else {
         for (let q = 0; q < incorrectAnswers[k].length; q++) {
           incorrectAnswers2[k].push(
             incorrectAnswers[k][q].questionAnswersDictionaries.filter(
-              (ans) => ans.language === lng
+              (ans) =>
+                ans.language ===
+                localStorage
+                  .getItem("lng")
+                  .replace(/^\w/, (c) => c.toUpperCase())
             )[0].answerText
           );
         }
@@ -924,6 +1048,7 @@ class ModuleHome extends Component {
         (QuizQuestion[k].question.type === "Filling" ||
           QuizQuestion[k].question.type === "Blank")
       ) {
+        localStorage.getItem("lng").replace(/^\w/, (c) => c.toUpperCase());
         for (let q = 0; q < correctAnswers[k].length; q++) {
           correctAnswers2[k].push(
             correctAnswers[k][q].questionAnswersDictionaries.filter(
@@ -932,11 +1057,14 @@ class ModuleHome extends Component {
           );
         }
       } else {
+        localStorage.getItem("lng").replace(/^\w/, (c) => c.toUpperCase());
         // correctAnswers2[k][0] = QuizQuestion[k].answers
         correctAnswers2[k] = QuizQuestion[k].question.answers
           .filter((ans) => ans.isCorrectAnswer === true)[0]
           .questionAnswersDictionaries.filter(
-            (ans) => ans.language === lng
+            (ans) =>
+              ans.language ===
+              localStorage.getItem("lng").replace(/^\w/, (c) => c.toUpperCase())
           )[0].answerText;
       }
     }
@@ -951,7 +1079,9 @@ class ModuleHome extends Component {
           correctAnswers: correctAnswers2[i],
           incorrectAnswers: incorrectAnswers2[i],
           question: QuizQuestion[i].question.questionDictionaries.filter(
-            (qst) => qst.language === lng
+            (qst) =>
+              qst.language ===
+              localStorage.getItem("lng").replace(/^\w/, (c) => c.toUpperCase())
           )[0].questionText,
           questionType: QuizQuestion[i].question.type,
           moduleName: QuizQuestion[i].question.moduleName,
@@ -960,6 +1090,8 @@ class ModuleHome extends Component {
         },
       ];
     }
+
+    //console.log(NewFilter);
 
     this.props.SubModule1QuizFiltered(NewFilter);
     // console.log(NewFilter);
@@ -1401,8 +1533,11 @@ class ModuleHome extends Component {
           subModuleType: List[i].subModuleType,
           taskUrl: List[i].taskUrl,
           urlFormat: List[i].urlFormat,
+          // title: List[i].subLevelTranslations[0].title,
           title: List[i].subLevelTranslations.filter(
-            (ans) => ans.language === lng
+            (ans) =>
+              ans.language ===
+              localStorage.getItem("lng").replace(/^\w/, (c) => c.toUpperCase()) //lng
           )[0].title,
         },
       ];
@@ -1448,11 +1583,9 @@ class ModuleHome extends Component {
           // UserStatus={UserStatus}
         />
 
-        {/* {
-          UserStatus.isPreTestDone === false && (
-            <PreTest UserStatus={UserStatus} UserInfo={UserInfo} />
-          )
-        } */}
+        {UserStatus.isPreTestDone === false && (
+          <PreTest UserStatus={UserStatus} UserInfo={UserInfo} />
+        )}
 
         {
           // (
@@ -1460,119 +1593,129 @@ class ModuleHome extends Component {
           // UserStatus.currentSubModule !== "sub1") ||
           // UserStatus.currentModule !== "Module1") &&
 
-          // UserStatus.isPreTestDone === true && (
-          <Container>
-            <Row className='w-100 pt-5 pb-5'>
-              {/* Module panel */}
-              <Col lg={2} className='d-flex justify-content-end'>
-                <ModuleStagesName
-                  userActiveModule={UserStatus.currentModule}
-                  handleOnClickModule={this.handleOnClickModule}
-                />
-              </Col>
-
-              <Col className='d-lg-none d-md-block d-flex justify-content-start mb-4'>
-                <ModuleStagesNameSmall
-                  userActiveModule={UserStatus.currentModule}
-                  handleOnClickModule={this.handleOnClickModule}
-                />
-              </Col>
-
-              <Col lg={10}>
-                <div className='d-flex justify-content-start'>
-                  {/* SubModule panel */}
-                  <SubModuleBtn
-                    userActiveSubModule={UserStatus.currentSubModule}
+          UserStatus.isPreTestDone === true && (
+            <Container>
+              <Row className='w-100 pt-5 pb-5'>
+                {/* Module panel */}
+                <Col lg={2} className='d-flex justify-content-end'>
+                  <ModuleStagesName
                     userActiveModule={UserStatus.currentModule}
-                    onClick={this.handleOnClickSubModule}
+                    handleOnClickModule={this.handleOnClickModule}
                   />
-                </div>
+                </Col>
 
-                {/* SubModule Note Section */}
-                <SubModuleNote
-                  userActiveSubModule={UserStatus.currentSubModule}
-                  showResult={this.state.showResult}
-                  takeQuiz={this.state.takeQuiz}
-                  compareAnswer={this.state.compareAnswer}
-                  isEasyModeActive={UserInfo.isEasyModeActive}
-                />
+                <Col className='d-lg-none d-md-block d-flex justify-content-start mb-4'>
+                  <ModuleStagesNameSmall
+                    userActiveModule={UserStatus.currentModule}
+                    handleOnClickModule={this.handleOnClickModule}
+                  />
+                </Col>
 
-                {/* SubModule Section */}
-                <SubModule
-                  userActiveModule={UserStatus.currentModule}
-                  userActiveSubModule={UserStatus.currentSubModule}
-                  SubModule1IntroductionVideo={SubModule1IntroductionVideo}
-                  SubModule2CourseVideo={SubModule2CourseVideo}
-                  SubModule6Detail={SubModule6ExpertVideo}
-                  SubModule7QuizQuestionText={
-                    SubModule7QuizQuestionFiltered[this.state.questionIndex]
-                  }
-                  questionIndex={this.state.questionIndex}
-                  questionCount={this.state.questionCount}
-                  userAnswer={this.state.userAnswer}
-                  userFillingAnswer={this.state.userFillingAnswer}
-                  userBlankAnswer={this.state.userBlankAnswer}
-                  userYesNoAnswer={this.state.userYesNoAnswer}
-                  userMultipleChoiceAnswer={this.state.userMultipleChoiceAnswer}
-                  HandleYesNoAnswerChange={this.HandleYesNoAnswerChange}
-                  HandleMultipleChoiceAnswerChange={
-                    this.HandleMultipleChoiceAnswerChange
-                  }
-                  HandleBlankNextQuestion={this.HandleBlankNextQuestion}
-                  showResult={this.state.showResult}
-                  correctAnswerCount={this.state.correctAnswerCount}
-                  randomAnswers={randomAnswers}
-                  AllQuestions={SubModule7QuizQuestionFiltered}
-                  SubModule7QuizQuestion={SubModule7QuizQuestion}
-                  takeQuiz={this.state.takeQuiz}
-                  onClick={this.handleClickSubModuleNext}
-                  ExpertIndex={this.state.ExpertIndex}
-                  handleClickExpertVideo={this.handleClickExpertVideo}
-                  onClickNextModule={this.handleClickModuleNext}
-                  getRandomAnswer={this.getRandomAnswer}
-                  HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
-                  HandleQuestionFillingAnswerChange={
-                    this.HandleQuestionFillingAnswerChange
-                  }
-                  HandleNextQuestion={this.HandleNextQuestion}
-                  HandleFillingNextQuestion={this.HandleFillingNextQuestion}
-                  handleBlankAnswerInputChange={
-                    this.handleBlankAnswerInputChange
-                  }
-                  HandlePrevQuestion={this.HandlePrevQuestion}
-                  HandleQuestionResult={this.HandleQuestionResult}
-                  HandleRetakeQuiz={this.HandleRetakeQuiz}
-                  //
-                  selectedLanguage={selectedLanguage}
-                  userQuizScore={userQuizScore}
-                  QuizScore={QuizScore}
-                  UserQuizAllAnswers={UserQuizAllAnswers}
-                  UserQuizAllAnswersLanguage={UserQuizAllAnswersLanguage}
-                  HandleCompareAnswer={this.HandleCompareAnswer}
-                  CompareAnswer={this.state.compareAnswer}
-                  HandleCompareAnswerNextQuestion={
-                    this.HandleCompareAnswerNextQuestion
-                  }
-                  HandleCompareAnswerPrevQuestion={
-                    this.HandleCompareAnswerPrevQuestion
-                  }
-                  HandleCompareAnswerQuestionResult={
-                    this.HandleCompareAnswerQuestionResult
-                  }
-                  isEasyModeActive={UserInfo.isEasyModeActive}
-                  SubModule4ReadingFiltered={SubModule4ReadingFiltered}
-                  SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
-                  SubModule3Interactive={SubModule3Interactive}
-                  SubModule3InteractiveQuestion={SubModule3InteractiveQuestion}
-                  UserInfo={UserInfo}
-                  UserStatus={UserStatus}
-                  passed={passed}
-                  SetUserPassed={SetUserPassed}
-                />
-              </Col>
-            </Row>
-          </Container>
-          // )
+                <Col lg={10}>
+                  <div className='d-flex justify-content-start'>
+                    {/* SubModule panel */}
+                    <SubModuleBtn
+                      userActiveSubModule={UserStatus.currentSubModule}
+                      userActiveModule={UserStatus.currentModule}
+                      onClick={this.handleOnClickSubModule}
+                      userActiveSubModuleNum={this.state.userActiveSubModuleNum}
+                    />
+                  </div>
+
+                  {/* SubModule Note Section */}
+                  <SubModuleNote
+                    userActiveSubModule={UserStatus.currentSubModule}
+                    showResult={this.state.showResult}
+                    takeQuiz={this.state.takeQuiz}
+                    compareAnswer={this.state.compareAnswer}
+                    isEasyModeActive={UserInfo.isEasyModeActive}
+                  />
+
+                  {/* {UserStatus.currentModule === "Module6" &&
+                    UserInfo.isFinalTestDone === null && (
+                      <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
+                    )} */}
+
+                  {/* SubModule Section */}
+                  <SubModule
+                    userActiveModule={UserStatus.currentModule}
+                    userActiveSubModule={UserStatus.currentSubModule}
+                    SubModule1IntroductionVideo={SubModule1IntroductionVideo}
+                    SubModule2CourseVideo={SubModule2CourseVideo}
+                    SubModule6Detail={SubModule6ExpertVideo}
+                    SubModule7QuizQuestionText={
+                      SubModule7QuizQuestionFiltered[this.state.questionIndex]
+                    }
+                    questionIndex={this.state.questionIndex}
+                    questionCount={this.state.questionCount}
+                    userAnswer={this.state.userAnswer}
+                    userFillingAnswer={this.state.userFillingAnswer}
+                    userBlankAnswer={this.state.userBlankAnswer}
+                    userYesNoAnswer={this.state.userYesNoAnswer}
+                    userMultipleChoiceAnswer={
+                      this.state.userMultipleChoiceAnswer
+                    }
+                    HandleYesNoAnswerChange={this.HandleYesNoAnswerChange}
+                    HandleMultipleChoiceAnswerChange={
+                      this.HandleMultipleChoiceAnswerChange
+                    }
+                    HandleBlankNextQuestion={this.HandleBlankNextQuestion}
+                    showResult={this.state.showResult}
+                    correctAnswerCount={this.state.correctAnswerCount}
+                    randomAnswers={randomAnswers}
+                    AllQuestions={SubModule7QuizQuestionFiltered}
+                    SubModule7QuizQuestion={SubModule7QuizQuestion}
+                    takeQuiz={this.state.takeQuiz}
+                    onClick={this.handleClickSubModuleNext}
+                    ExpertIndex={this.state.ExpertIndex}
+                    handleClickExpertVideo={this.handleClickExpertVideo}
+                    onClickNextModule={this.handleClickModuleNext}
+                    getRandomAnswer={this.getRandomAnswer}
+                    HandleQuestionAnswerChange={this.HandleQuestionAnswerChange}
+                    HandleQuestionFillingAnswerChange={
+                      this.HandleQuestionFillingAnswerChange
+                    }
+                    HandleNextQuestion={this.HandleNextQuestion}
+                    HandleFillingNextQuestion={this.HandleFillingNextQuestion}
+                    handleBlankAnswerInputChange={
+                      this.handleBlankAnswerInputChange
+                    }
+                    HandlePrevQuestion={this.HandlePrevQuestion}
+                    HandleQuestionResult={this.HandleQuestionResult}
+                    HandleRetakeQuiz={this.HandleRetakeQuiz}
+                    //
+                    selectedLanguage={selectedLanguage}
+                    userQuizScore={userQuizScore}
+                    QuizScore={QuizScore}
+                    UserQuizAllAnswers={UserQuizAllAnswers}
+                    UserQuizAllAnswersLanguage={UserQuizAllAnswersLanguage}
+                    HandleCompareAnswer={this.HandleCompareAnswer}
+                    CompareAnswer={this.state.compareAnswer}
+                    HandleCompareAnswerNextQuestion={
+                      this.HandleCompareAnswerNextQuestion
+                    }
+                    HandleCompareAnswerPrevQuestion={
+                      this.HandleCompareAnswerPrevQuestion
+                    }
+                    HandleCompareAnswerQuestionResult={
+                      this.HandleCompareAnswerQuestionResult
+                    }
+                    isEasyModeActive={UserInfo.isEasyModeActive}
+                    SubModule4ReadingFiltered={SubModule4ReadingFiltered}
+                    SubModule5CaseStudyFiltered={SubModule5CaseStudyFiltered}
+                    SubModule3Interactive={SubModule3Interactive}
+                    SubModule3InteractiveQuestion={
+                      SubModule3InteractiveQuestion
+                    }
+                    UserInfo={UserInfo}
+                    UserStatus={UserStatus}
+                    passed={passed}
+                    SetUserPassed={SetUserPassed}
+                  />
+                </Col>
+              </Row>
+            </Container>
+          )
         }
         <Footer userActiveModule={UserStatus.currentModule} />
       </div>
@@ -1631,4 +1774,5 @@ export default connect(mapStateToProps, {
   SetUserInfo,
   SubModule3InteractiveSection,
   SetUserPassed,
+  SelectedLanguage,
 })(withRouter(ModuleHome));
