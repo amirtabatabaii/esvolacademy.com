@@ -17,8 +17,12 @@ class SubModule2 extends Component {
   state = {
     played: 0,
     duration: 0,
-    subtitlesTr: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
     subtitlesEn: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}En.vtt`,
+    subtitlesTr: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
+    subtitlesBg: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Bg.vtt`,
+    subtitlesIt: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}It.vtt`,
+    subtitlesEs: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Es.vtt`,
+    subtitlesGr: `https://esvolacademy.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Gr.vtt`,
   };
 
   async componentDidMount() {
@@ -46,6 +50,7 @@ class SubModule2 extends Component {
     const { played } = this.state;
     const {
       userActiveModule,
+      userActiveSubModule,
       SubModule2Detail,
       onClick,
       isEasyModeActive,
@@ -62,31 +67,35 @@ class SubModule2 extends Component {
                 file: {
                   tracks: [
                     {
-                      // kind: "subtitles",
-                      // src: subtitlesEn,
-                      // srcLang: "En",
-                      // default: selectedLanguage === "En" && true,
-                      // // default: true,
                       kind: "subtitles",
                       src: this.state.subtitlesEn,
-                      // src:
-                      //   "https://kastanjetextile.com/esvolSubtitles/Module3/sub1En.vtt",
-                      srcLang: "En",
-                      //default: selectedLanguage === "En" && true,
-                      //default: true,
+                      srcLang: "English",
+                      default: true,
                     },
                     {
-                      // kind: "subtitles",
-                      // src: subtitlesTr,
-                      // srcLang: "Tr",
-                      // default: selectedLanguage === "Tr" && true,
-                      // //default: true,
                       kind: "subtitles",
                       src: this.state.subtitlesTr,
-                      // src: `https://kastanjetextile.com/esvolSubtitles/${this.props.userActiveModule}/${this.props.userActiveSubModule}Tr.vtt`,
-                      srcLang: "Tr",
-                      //default: selectedLanguage === "Tr" && true,
-                      default: true,
+                      srcLang: "Turkçe",
+                    },
+                    {
+                      kind: "subtitles",
+                      src: this.state.subtitlesGr,
+                      srcLang: "Ελληνικά",
+                    },
+                    {
+                      kind: "subtitles",
+                      src: this.state.subtitlesIt,
+                      srcLang: "italiano",
+                    },
+                    {
+                      kind: "subtitles",
+                      src: this.state.subtitlesEs,
+                      srcLang: "Español",
+                    },
+                    {
+                      kind: "subtitles",
+                      src: this.state.subtitlesBg,
+                      srcLang: "български",
                     },
                   ],
                 },
@@ -112,22 +121,30 @@ class SubModule2 extends Component {
           variant={`${userActiveModule}-bg-color`}
           className='m-3'
         /> */}
-        <Row className='w-100 d-flex justify-content-around'>
-          <SubModuleNextButton
-            disabled={
-              played.toFixed(2) * 100 <= SubModule2Detail.completionRatio
-                ? true
-                : false
-            }
-            className={`${userActiveModule}-next-btn m-3`}
-            condition={isEasyModeActive}
-            isEasyModeActive={!isEasyModeActive}
-            NormalNextSubModule='sub3'
-            SubModule6Name='sub6'
-            txt='SubModule2-Continue'
-            onClick={onClick}
-          />
-        </Row>
+
+        {localStorage.getItem("UserModule").substring(6) <
+          localStorage.getItem("UserTempModule").substring(6) ||
+          (localStorage.getItem("UserModule").substring(6) ===
+            localStorage.getItem("UserTempModule").substring(6) &&
+            userActiveSubModule.substring(3) ===
+              localStorage.getItem("UserSubModule").substring(3) && (
+              <Row className='w-100 d-flex justify-content-around'>
+                <SubModuleNextButton
+                  disabled={
+                    played.toFixed(2) * 100 <= SubModule2Detail.completionRatio
+                      ? true
+                      : false
+                  }
+                  className={`${userActiveModule}-next-btn m-3`}
+                  condition={isEasyModeActive}
+                  isEasyModeActive={!isEasyModeActive}
+                  NormalNextSubModule='sub3'
+                  SubModule6Name='sub3'
+                  txt='SubModule2-Continue'
+                  onClick={onClick}
+                />
+              </Row>
+            ))}
       </div>
     );
   }
