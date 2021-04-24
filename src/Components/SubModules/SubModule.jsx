@@ -103,6 +103,7 @@ class SubModule extends Component {
             SubModule3InteractiveQuestion={SubModule3InteractiveQuestion}
             UserInfo={UserInfo}
             UserStatus={UserStatus}
+            selectedLanguage={selectedLanguage}
           />
         )}
 
