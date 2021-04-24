@@ -14,18 +14,28 @@ import {
 } from "../../Utility/ApiUrl";
 
 let userAns = [];
-const UserModule = localStorage.getItem("UserModule"); //.substring(6);
-const UserTempModule = localStorage.getItem("UserTempModule"); //.substring(6);
+// const UserModule = localStorage.getItem("UserModule").substring(6);
+// const UserTempModule = localStorage.getItem("UserTempModule").substring(6);
 
 class SubModule3 extends Component {
-  // state = {
-  //   UserModule: "",
-  //   UserTempModule: "",
-  // };
+  state = {
+    UserModule: 0,
+    UserTempModule: 0,
+  };
 
-  // componentDidMount() {
+  componentDidMount() {
+    // const currentSub = localStorage.getItem("UserSubModule").substring(3);
+    // const ActiveSub = ActiveSubName.substring(3);
+    // const currentModule = localStorage.getItem("UserModule").substring(6);
+    // const tmpModule = localStorage.getItem("UserTempModule").substring(6);
 
-  //     }
+    const UserModule = localStorage.getItem("UserModule").substring(6);
+    const UserTempModule = localStorage.getItem("UserTempModule").substring(6);
+    this.setState({
+      UserModule: UserModule,
+      UserTempModule: UserTempModule,
+    });
+  }
 
   componentDidUpdate(previousProps, previousState) {
     if (
@@ -54,6 +64,11 @@ class SubModule3 extends Component {
 
   handleSubmit = (ActiveSubName, event) => {
     event.preventDefault();
+
+    const currentSub = localStorage.getItem("UserSubModule").substring(3);
+    const ActiveSub = ActiveSubName.substring(3);
+    const currentModule = localStorage.getItem("UserModule").substring(6);
+    const tmpModule = localStorage.getItem("UserTempModule").substring(6);
 
     if (parseInt(ActiveSubName.substring(3)) - 1 === 3) {
       // console.log(userAns);
@@ -104,6 +119,18 @@ class SubModule3 extends Component {
                 if (res.status === 200) {
                   window.location.reload(false);
                   //openNotificationWithIcon("success", "Update", "Update ok", 3);
+                  localStorage.setItem("firstName", res.data.firstName);
+                  localStorage.setItem("lastName", res.data.lastName);
+                  // localStorage.setItem("UserModule", res.data.userStatus.currentModule);
+                  // if (currentModule >= tmpModule && ActiveSub > currentSub)
+                  localStorage.setItem(
+                    "UserSubModule",
+                    res.data.userStatus.currentSubModule
+                  );
+                  localStorage.setItem(
+                    "UserTempModule",
+                    res.data.userStatus.currentModule
+                  );
                 }
               });
 
@@ -147,65 +174,87 @@ class SubModule3 extends Component {
   render() {
     const {
       userActiveModule,
+      userActiveSubModule,
       isEasyModeActive,
       // SubModuleRatio,
       // onClick,
       SubModule3Interactive,
       // SubModule3NextOnClick,
+      selectedLanguage,
     } = this.props;
+    const { UserModule, UserTempModule } = this.state;
 
     return (
       <div className={`${userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
-          {UserTempModule.substring(6) < UserModule.substring(6) ? (
+          {UserTempModule < UserModule && (
             <div className='text-center'>
               <div className='m-5 task-note-error font-weight-bold'>
                 <TranslateText txt='SubModule3-error' />
               </div>
+            </div>
+          )}
 
-              <button
-                className={`${userActiveModule}-next-btn m-3`}
-                onClick={
+          {UserModule === UserTempModule &&
+            userActiveSubModule.substring(3) <
+              localStorage.getItem("UserSubModule").substring(3) && (
+              <div className='text-center'>
+                <div className='m-5 task-note-error font-weight-bold'>
+                  <TranslateText txt='SubModule3-error' />
+                </div>
+              </div>
+            )}
+
+          {UserTempModule === UserModule &&
+            userActiveSubModule.substring(3) ===
+              localStorage.getItem("UserSubModule").substring(3) && (
+              <Form
+                className='text-center'
+                id='taskForm'
+                // onSubmit={this.handleSubmit}
+                onSubmit={
                   !isEasyModeActive
                     ? !isEasyModeActive
-                      ? (event) => this.handleContinue("sub4", event)
-                      : (event) => this.handleContinue("sub6", event)
-                    : (event) => this.handleContinue("sub4", event)
+                      ? (event) => this.handleSubmit("sub4", event)
+                      : (event) => this.handleSubmit("sub7", event)
+                    : (event) => this.handleSubmit("sub4", event)
                 }
               >
-                <TranslateText txt='SubModule3-Continue' />
-              </button>
-            </div>
-          ) : (
-            <Form
-              className='text-center'
-              id='taskForm'
-              // onSubmit={this.handleSubmit}
-              onSubmit={
-                !isEasyModeActive
-                  ? !isEasyModeActive
-                    ? (event) => this.handleSubmit("sub4", event)
-                    : (event) => this.handleSubmit("sub6", event)
-                  : (event) => this.handleSubmit("sub4", event)
-              }
-            >
-              {SubModule3Interactive.map((inter, index) => (
-                <Task
-                  userActiveModule={userActiveModule}
-                  type={inter.question.interactiveUrlFormat}
-                  Link={inter.question.interactiveUrl}
-                  note={inter.question.questionDictionaries[0].interactiveTitle}
-                  question={
-                    inter.question.questionDictionaries[0].interactiveText
-                  }
-                  onChange={this.handleChange}
-                  SubModule3Interactive={SubModule3Interactive}
-                  index={index}
-                  TextFieldName={inter.id}
-                />
-              ))}
+                {SubModule3Interactive.map((inter, index) => (
+                  <Task
+                    userActiveModule={userActiveModule}
+                    type={inter.question.interactiveUrlFormat}
+                    Link={inter.question.interactiveUrl}
+                    //note={inter.question.questionDictionaries[0].interactiveTitle}
+                    note={
+                      inter.question.questionDictionaries.filter(
+                        (ans) =>
+                          ans.language ===
+                          localStorage
+                            .getItem("lng")
+                            .replace(/^\w/, (c) => c.toUpperCase()) //selectedLanguage
+                      )[0].interactiveTitle
+                    }
+                    // question={
+                    //   inter.question.questionDictionaries[0].interactiveText
+                    // }
+                    question={
+                      inter.question.questionDictionaries.filter(
+                        (ans) =>
+                          ans.language ===
+                          localStorage
+                            .getItem("lng")
+                            .replace(/^\w/, (c) => c.toUpperCase()) //selectedLanguage
+                      )[0].interactiveText
+                    }
+                    onChange={this.handleChange}
+                    SubModule3Interactive={SubModule3Interactive}
+                    index={index}
+                    TextFieldName={inter.id}
+                  />
+                ))}
 
-              {/* <SubModule3NextButton
+                {/* <SubModule3NextButton
               // disabled={played.toFixed(2) * 100 <= SubModuleRatio ? true : false}
               className={`${userActiveModule}-next-btn m-3`}
               condition={!isEasyModeActive}
@@ -215,21 +264,21 @@ class SubModule3 extends Component {
               txt='SubModule3-Continue'
               SubModule3NextOnClick={SubModule3NextOnClick}
             /> */}
-
-              <button
-                className={`${userActiveModule}-next-btn m-3`}
-                // onClick={
-                //   !isEasyModeActive
-                //     ? !isEasyModeActive
-                //       ? () => this.onClick("sub4")
-                //       : () => this.onClick("sub6")
-                //     : () => this.onClick("sub4")
-                // }
-              >
-                <TranslateText txt='SubModule3-Continue' />
-              </button>
-            </Form>
-          )}
+                <button
+                  className={`${userActiveModule}-next-btn m-3`}
+                  type='submit'
+                  // onClick={
+                  //   !isEasyModeActive
+                  //     ? !isEasyModeActive
+                  //       ? () => this.onClick("sub4")
+                  //       : () => this.onClick("sub6")
+                  //     : () => this.onClick("sub4")
+                  // }
+                >
+                  <TranslateText txt='SubModule3-Continue' />
+                </button>
+              </Form>
+            )}
         </Scroll>
       </div>
     );
