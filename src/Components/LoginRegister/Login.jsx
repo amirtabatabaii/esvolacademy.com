@@ -65,6 +65,11 @@ class Login extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    if (localStorage.getItem("lng") === null) localStorage.setItem("lng", "en");
+    else {
+      localStorage.setItem("lng", "");
+      localStorage.setItem("lng", "en");
+    }
   }
 
   handlePassChange = (e) => {
