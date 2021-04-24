@@ -56,18 +56,23 @@ class ModuleNavBar extends Component {
     ) {
       this.props.history.push(url);
     } else {
-      if (NewUserSubModule.substring(3) > OldUserSubModule.substring(3))
-        UserSubModule = NewUserSubModule;
-      else if (NewUserSubModule.substring(3) < OldUserSubModule.substring(3))
-        UserSubModule = OldUserSubModule;
-      else UserSubModule = OldUserSubModule;
+      if (NewUserModule.substring(6) < OldUserTempModule.substring(6)) {
+        if (NewUserSubModule.substring(3) > OldUserSubModule.substring(3))
+          UserSubModule = NewUserSubModule;
+        else if (NewUserSubModule.substring(3) < OldUserSubModule.substring(3))
+          UserSubModule = OldUserSubModule;
+        else UserSubModule = OldUserSubModule;
 
-      if (NewUserModule.substring(6) > OldUserModule.substring(6))
-        UserModule = NewUserModule;
-      else if (NewUserModule.substring(6) < OldUserModule.substring(6))
+        if (NewUserModule.substring(6) > OldUserModule.substring(6))
+          UserModule = NewUserModule;
+        else if (NewUserModule.substring(6) < OldUserModule.substring(6))
+          UserModule = OldUserModule;
+        else UserModule = OldUserModule;
+      } else {
+        UserSubModule = OldUserSubModule;
         UserModule = OldUserModule;
-      else UserModule = OldUserModule;
-      // let UserTempModule = localStorage.getItem("UserTempModule");
+      }
+      ////////// let UserTempModule = localStorage.getItem("UserTempModule");
       let userId = localStorage.getItem("UserID");
 
       axios
