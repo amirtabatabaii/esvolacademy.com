@@ -55,7 +55,9 @@ class AvatarChange extends Component {
         <Row className='w-100 m-auto'>
           <img
             onClick={() => handleImageSelect("1")}
-            className={imageNum === "1" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "1" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             // src='https://kastanjetextile.com/esvolAvatars/esvol1.png'
             src={esvol1}
             alt='esvol1'
@@ -64,7 +66,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("2")}
-            className={imageNum === "2" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "2" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             //src='https://kastanjetextile.com/esvolAvatars/esvol2.png'
             src={esvol2}
             alt='esvol1'
@@ -73,7 +77,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("3")}
-            className={imageNum === "3" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "3" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             // src='https://kastanjetextile.com/esvolAvatars/esvol3.png'
             src={esvol3}
             alt='esvol1'
@@ -82,7 +88,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("4")}
-            className={imageNum === "4" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "4" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             //src='https://kastanjetextile.com/esvolAvatars/esvol4.png'
             src={esvol4}
             alt='esvol1'
@@ -91,7 +99,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("5")}
-            className={imageNum === "5" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "5" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             //src='https://kastanjetextile.com/esvolAvatars/esvol5.png'
             src={esvol5}
             alt='esvol1'
@@ -102,7 +112,9 @@ class AvatarChange extends Component {
         <Row className='w-100'> */}
           <img
             onClick={() => handleImageSelect("6")}
-            className={imageNum === "6" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "6" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             //src='https://kastanjetextile.com/esvolAvatars/esvol6.png'
             src={esvol6}
             alt='esvol1'
@@ -111,7 +123,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("7")}
-            className={imageNum === "7" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "7" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             //src='https://kastanjetextile.com/esvolAvatars/esvol7.png'
             src={esvol7}
             alt='esvol1'
@@ -120,7 +134,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("8")}
-            className={imageNum === "8" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "8" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             // src='https://kastanjetextile.com/esvolAvatars/esvol8.png'
             src={esvol8}
             alt='esvol1'
@@ -129,7 +145,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("9")}
-            className={imageNum === "9" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "9" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             //src='https://kastanjetextile.com/esvolAvatars/esvol9.png'
             src={esvol9}
             alt='esvol1'
@@ -138,7 +156,9 @@ class AvatarChange extends Component {
 
           <img
             onClick={() => handleImageSelect("10")}
-            className={imageNum === "10" ? "m-1 border" : "m-1"}
+            className={
+              imageNum === "10" ? "m-1 border avatar-img" : "m-1 avatar-img"
+            }
             //src='https://kastanjetextile.com/esvolAvatars/esvol10.png'
             src={esvol10}
             alt='esvol1'
