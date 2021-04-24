@@ -139,7 +139,6 @@ class ShowResult extends Component {
                 QuizScore={QuizScore}
                 StarFull={StarFull}
                 Passed={true}
-                onClickNextModule={onClickNextModule}
               />
 
               <button
