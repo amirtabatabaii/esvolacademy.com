@@ -19,7 +19,7 @@ class YesNoQst extends Component {
         </InputLabel>
         <Select
           className='p-2'
-          // className=''
+          required
           labelId={name}
           onChange={handleInputChange}
           name={name}
