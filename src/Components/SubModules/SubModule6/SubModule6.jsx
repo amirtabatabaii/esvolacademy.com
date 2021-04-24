@@ -35,6 +35,7 @@ class SubModule6 extends Component {
     const { played } = this.state;
     const {
       userActiveModule,
+      userActiveSubModule,
       SubModule6Detail,
       onClick,
       handleClickExpertVideo,
@@ -59,44 +60,50 @@ class SubModule6 extends Component {
         </section>
 
         {/* <LinearProgress variant='determinate' value={played * 100} /> */}
+        {localStorage.getItem("UserModule").substring(6) <
+          localStorage.getItem("UserTempModule").substring(6) ||
+          (localStorage.getItem("UserModule").substring(6) ===
+            localStorage.getItem("UserTempModule").substring(6) &&
+            userActiveSubModule.substring(3) ===
+              localStorage.getItem("UserSubModule").substring(3) && (
+              <Row className='w-100 d-flex justify-content-around'>
+                {ExpertIndex === 0 && SubModule6Detail.length === 2 && (
+                  <SubModuleNextButton
+                    disabled={
+                      played.toFixed(2) * 100 <=
+                      SubModule6Detail[ExpertIndex].completionRatio
+                        ? true
+                        : false
+                    }
+                    className={`${userActiveModule}-next-btn m-3`}
+                    condition={!isEasyModeActive}
+                    isEasyModeActive={!isEasyModeActive}
+                    NormalNextSubModule='sub7'
+                    SubModule6Name='sub6'
+                    txt='SubModule6-NextVideo'
+                    onClick={handleClickExpertVideo}
+                  />
+                )}
 
-        <Row className='w-100 d-flex justify-content-around'>
-          {ExpertIndex === 0 && SubModule6Detail.length === 2 && (
-            <SubModuleNextButton
-              disabled={
-                played.toFixed(2) * 100 <=
-                SubModule6Detail[ExpertIndex].completionRatio
-                  ? true
-                  : false
-              }
-              className={`${userActiveModule}-next-btn m-3`}
-              condition={!isEasyModeActive}
-              isEasyModeActive={!isEasyModeActive}
-              NormalNextSubModule='sub7'
-              SubModule6Name='sub6'
-              txt='SubModule6-NextVideo'
-              onClick={handleClickExpertVideo}
-            />
-          )}
-
-          {(ExpertIndex !== 0 || SubModule6Detail.length === 1) && (
-            <SubModuleNextButton
-              disabled={
-                played.toFixed(2) * 100 <=
-                SubModule6Detail[ExpertIndex].completionRatio
-                  ? true
-                  : false
-              }
-              className={`${userActiveModule}-next-btn m-3`}
-              condition={!isEasyModeActive}
-              isEasyModeActive={!isEasyModeActive}
-              NormalNextSubModule='sub7'
-              SubModule6Name='sub6'
-              txt='SubModule6-Continue'
-              onClick={onClick}
-            />
-          )}
-        </Row>
+                {(ExpertIndex !== 0 || SubModule6Detail.length === 1) && (
+                  <SubModuleNextButton
+                    disabled={
+                      played.toFixed(2) * 100 <=
+                      SubModule6Detail[ExpertIndex].completionRatio
+                        ? true
+                        : false
+                    }
+                    className={`${userActiveModule}-next-btn m-3`}
+                    condition={!isEasyModeActive}
+                    isEasyModeActive={!isEasyModeActive}
+                    NormalNextSubModule='sub7'
+                    SubModule6Name='sub6'
+                    txt='SubModule6-Continue'
+                    onClick={onClick}
+                  />
+                )}
+              </Row>
+            ))}
       </div>
     );
   }
