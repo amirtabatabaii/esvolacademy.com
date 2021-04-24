@@ -103,7 +103,7 @@
 }
 
 .save-Btn {
-  width: 140px;
+  width: 180px;
   height: 40px;
   border-radius: 12px;
   background: #f2f3f7;
@@ -123,7 +123,7 @@
 }
 
 .avatar-Btn {
-  width: 280px;
+  /* width: 280px; */
   height: 50px;
   border-radius: 12px;
   background: #f2f3f7;
@@ -151,4 +151,9 @@
   font-size: 22px;
   line-height: 22px;
   word-wrap: break-word;
+}
+
+.avatar-img {
+  height: 70px;
+  width: auto;
 }
