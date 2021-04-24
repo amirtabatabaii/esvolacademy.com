@@ -29,7 +29,7 @@ class PreTest extends Component {
     PreQst7: "",
     PreQst8: "",
     PreQst9: "",
-    btnEnable: true,
+    btnEnable: false,
   };
 
   handleInputChange = (e) => {
@@ -66,6 +66,7 @@ class PreTest extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
     const userPreQst = {
       age: this.state.age,
       gender: this.state.gender,
@@ -84,11 +85,12 @@ class PreTest extends Component {
         PreQst9: this.state.PreQst9,
       },
     };
-    console.log(userPreQst);
+    // console.log(userPreQst);
 
+    // if (this.state.btnEnable) {
     axios
-      .put(
-        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/pretest`,
+      .post(
+        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/pretest/`,
         userPreQst,
         (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
           "UserInfo"
@@ -99,21 +101,40 @@ class PreTest extends Component {
         }
       )
       .then((res) => {
-        console.log("res =====> ", res);
-        // if (res.status === 200) {
-        //   window.scrollTo(0, 0);
-
-        //   openNotificationWithIcon(
-        //     "success",
-        //     <TranslateText txt='PreTestQst-AnsOK' />,
-        //     <TranslateText txt='PreTestQst-AnsOK2' />,
-        //     3
-        //   );
-        //   setTimeout(() => {
-        //     window.location.reload(false);
-        //   }, 1000);
-        // }
+        // console.log("res =====> ", res);
+        if (res.status === 200) {
+          axios
+            .put(
+              ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+              {
+                userStatus: {
+                  currentModule: this.props.UserStatus.currentModule,
+                  currentSubModule: this.props.UserStatus.currentSubModule,
+                  score: this.props.UserStatus.score,
+                  badgeNo: "0",
+                  isPreTestDone: true,
+                  isFinalTestDone: this.props.UserStatus.isFinalTestDone,
+                },
+              },
+              (axios.defaults.headers.common[
+                "Authorization"
+              ] = localStorage.getItem("UserInfo")),
+              (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+                "*"),
+              {
+                "Content-Type": "application/json",
+              }
+            )
+            .then((res) => {
+              // console.log("res =====> ", res);
+              if (res.status === 200) {
+                window.location.reload(false);
+                //openNotificationWithIcon("success", "Update", "Update ok", 3);
+              }
+            });
+        }
       });
+    // }
   };
 
   render() {
@@ -126,7 +147,7 @@ class PreTest extends Component {
           {UserInfo.lastName})
         </h2>
 
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Row className='w-100'>
             <Col lg={2} md={12} sm={12} className='p-2 m-auto text-center'>
               <TextField
@@ -289,7 +310,7 @@ class PreTest extends Component {
             <button
               className='pretest-Btn'
               type='submit'
-              onClick={this.handleSubmit}
+              // onClick={this.handleSubmit}
               // disabled={this.state.btnEnable}
             >
               <TranslateText txt='PreTestQst-Btn' />
