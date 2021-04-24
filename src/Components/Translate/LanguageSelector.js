@@ -12,21 +12,28 @@ import { withRouter } from "react-router-dom";
 const LanguageSelector = (props) => {
   // const [language, setLanguage] = useState("EN");
   const lang = props.selectedLanguage;
-  let languages = "English";
-  if (lang === "en") languages = "English";
-  if (lang === "tr") languages = "Turkçe";
-  if (lang === "bg") languages = "български";
-  if (lang === "it") languages = "italiano";
-  if (lang === "es") languages = "Español";
-  if (lang === "gr") languages = "Ελληνικά";
-  const [language, setLanguage] = useState(
-    // props.selectedLanguage.toUpperCase()
-    languages
-  );
+  let fulLng = "";
+
+  if (lang === "En") fulLng = "English";
+  if (lang === "Tr") fulLng = "Turkçe";
+  if (lang === "Bg") fulLng = "български";
+  if (lang === "It") fulLng = "italiano";
+  if (lang === "Es") fulLng = "Español";
+  if (lang === "Gr") fulLng = "Ελληνικά";
+  if (lang === "en") fulLng = "English";
+  if (lang === "tr") fulLng = "Turkçe";
+  if (lang === "bg") fulLng = "български";
+  if (lang === "it") fulLng = "italiano";
+  if (lang === "es") fulLng = "Español";
+  if (lang === "gr") fulLng = "Ελληνικά";
+
+  if (lang === "") fulLng = "English";
+
+  const [language, setLanguage] = useState(fulLng);
 
   const { i18n } = useTranslation();
 
-  const changeLanguage = (event) => {
+  const changeLanguages = (event) => {
     if (event.value === "en") setLanguage("English");
     if (event.value === "tr") setLanguage("Turkçe");
     if (event.value === "bg") setLanguage("български");
@@ -35,9 +42,12 @@ const LanguageSelector = (props) => {
     if (event.value === "gr") setLanguage("Ελληνικά");
     i18n.changeLanguage(event.value);
 
-    // const lng = event.value.toUpperCase();
+    ////// const lng = event.value.toUpperCase();
     const lng = event.value.replace(/^\w/, (c) => c.toUpperCase());
     props.SelectedLanguage(lng);
+
+    localStorage.setItem("lng", "");
+    localStorage.setItem("lng", event.value);
   };
 
   const options = [
@@ -52,9 +62,22 @@ const LanguageSelector = (props) => {
   return (
     <Dropdown
       className='languageDropdown'
-      value={language}
+      value={
+        language
+        // language === "Turkçe"
+        //   ? "Turkçe"
+        //   : language === "български"
+        //   ? "български"
+        //   : language === "italiano"
+        //   ? "italiano"
+        //   : language === "Español"
+        //   ? "Español"
+        //   : language === "Ελληνικά"
+        //   ? "Ελληνικά"
+        //   : "English"
+      }
       options={options}
-      onChange={changeLanguage}
+      onChange={changeLanguages}
     />
   );
 };
