@@ -26,6 +26,7 @@ import { Switch } from "antd";
 import Settings from "./Settings";
 import { openNotificationWithIcon } from "../AdminSection/Utility/Error";
 import UserAvatarView from "./UserAvatarView";
+import FinalTest from "../SubModules/PreFinalTest/FinalTest";
 
 // const radioStyle = {
 //   display: "block",
@@ -280,7 +281,7 @@ class UserHome extends Component {
       .then((Response) => {
         if (Response.status === 200) {
           // console.log("GET ", Response.data.userStatus);
-
+          // localStorage.setItem("lng", this.props.selectedLanguage);
           localStorage.setItem("firstName", Response.data.firstName);
           localStorage.setItem("lastName", Response.data.lastName);
           localStorage.setItem(
@@ -403,6 +404,7 @@ class UserHome extends Component {
           {/* {UserStatus.currentModule !== "Module1" && UserStatus.score !== "0" && ( */}
           {/* <> */}
           {/* <Container> */}
+
           <p className='messageTxt text-left pt-5 pl-5'>
             <TranslateText txt='User-Hello-Message' />
             {" " + UserInfo.firstName}
@@ -589,6 +591,7 @@ const mapStateToProps = (state) => ({
   EducationWithTasks: state.EducationWithTasks,
   UserInfo: state.UserInfo,
   UserStatus: state.UserStatus,
+  selectedLanguage: state.selectedLanguage,
 });
 
 export default connect(mapStateToProps, {
