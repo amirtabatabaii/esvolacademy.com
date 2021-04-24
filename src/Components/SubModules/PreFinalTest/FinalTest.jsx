@@ -4,6 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import YesNoQst from "./YesNoQst";
 import TranslateText from "../../Translate/TranslateText";
 
+import axios from "axios";
+import { ApiUrlMain2 } from "../../Utility/ApiUrl";
+
 class FinalTest extends Component {
   state = {
     UserId: "",
@@ -27,6 +30,8 @@ class FinalTest extends Component {
     FinalQst18: "",
     FinalQst19: "",
     FinalQst20: "",
+    testJson: null,
+    btnEnable: false,
   };
 
   handleInputChange = (e) => {
@@ -37,9 +42,83 @@ class FinalTest extends Component {
   };
 
   handleSubmit = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
 
-    console.log(this.state);
+    const finalTestQuestionAnswer = {
+      finalTestQuestionAnswer: {
+        FinalQst1: this.state.FinalQst1,
+        FinalQst2: this.state.FinalQst2,
+        FinalQst3: this.state.FinalQst3,
+        FinalQst4: this.state.FinalQst4,
+        FinalQst5: this.state.FinalQst5,
+        FinalQst6: this.state.FinalQst6,
+        FinalQst7: this.state.FinalQst7,
+        FinalQst8: this.state.FinalQst8,
+        FinalQst9: this.state.FinalQst9,
+        FinalQst10: this.state.FinalQst10,
+        FinalQst11: this.state.FinalQst11,
+        FinalQst12: this.state.FinalQst12,
+        FinalQst13: this.state.FinalQst13,
+        FinalQst14: this.state.FinalQst14,
+        FinalQst15: this.state.FinalQst15,
+        FinalQst16: this.state.FinalQst16,
+        FinalQst17: this.state.FinalQst17,
+        FinalQst18: this.state.FinalQst18,
+        FinalQst19: this.state.FinalQst19,
+        FinalQst20: this.state.FinalQst20,
+      },
+    };
+
+    // if (this.state.btnEnable) {
+    axios
+      .post(
+        ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/finaltest/`,
+        finalTestQuestionAnswer,
+        (axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+          "UserInfo"
+        )),
+        (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"),
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((res) => {
+        //console.log("res =====> ", res);
+        if (res.status === 200) {
+          axios
+            .put(
+              ApiUrlMain2 + `/users/${this.props.UserInfo.userId}/status`,
+              {
+                userStatus: {
+                  currentModule: this.props.UserStatus.currentModule,
+                  currentSubModule: this.props.UserStatus.currentSubModule,
+                  score: this.props.UserStatus.score,
+                  badgeNo: "0",
+                  isPreTestDone: this.props.UserStatus.isPreTestDone,
+                  isFinalTestDone: true,
+                },
+              },
+              (axios.defaults.headers.common[
+                "Authorization"
+              ] = localStorage.getItem("UserInfo")),
+              (axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+                "*"),
+              {
+                "Content-Type": "application/json",
+              }
+            )
+            .then((res) => {
+              // console.log("res =====> ", res);
+              if (res.status === 200) {
+                // this.props.history.push("/certificate");
+
+                window.location.reload(false);
+                //openNotificationWithIcon("success", "Update", "Update ok", 3);
+              }
+            });
+        }
+      });
+    // }
   };
 
   render() {
@@ -52,7 +131,9 @@ class FinalTest extends Component {
           {UserInfo.lastName})
         </h2>
 
-        <Form>
+        {/* <pre>{JSON.stringify(this.state.testJson, null, 2)}</pre> */}
+
+        <Form onSubmit={this.handleSubmit}>
           <Row className='w-100'>
             <Col lg={12} md={12} sm={12} className='p-3 m-auto text-center'>
               <YesNoQst
@@ -242,7 +323,8 @@ class FinalTest extends Component {
             <button
               className='pretest-Btn'
               type='submit'
-              onClick={this.handleSubmit}
+              // onClick={this.handleSubmit}
+              // disabled={this.state.btnEnable}
             >
               <TranslateText txt='FinalTestQst-Btn' />
             </button>
