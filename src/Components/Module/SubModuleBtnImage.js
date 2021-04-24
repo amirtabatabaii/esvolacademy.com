@@ -24,7 +24,9 @@ function SubModuleBtnImage(props) {
     >
       <Image
         src={
-          props.userActiveSubModule === props.subName
+          props.userActiveSubModule === props.subName ||
+          props.subNum <= props.userActiveSubModuleNum ||
+          props.UserTempModuleNum < props.UserModuleNum
             ? props.activeImage
             : props.normalImage
         }
@@ -37,7 +39,13 @@ function SubModuleBtnImage(props) {
             : `${props.userActiveModule}-NormalSubStyle`
         }`}
         // onClick={props.EducationWithTasks && (() => props.onClick(props.subName))}
-        onClick={() => props.onClick(props.subName)}
+        onClick={() =>
+          props.onClick(
+            props.subName,
+            props.UserModuleNum,
+            props.UserTempModuleNum
+          )
+        }
       />
     </Tooltip>
   );
