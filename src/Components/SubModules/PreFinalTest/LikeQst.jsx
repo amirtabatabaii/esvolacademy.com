@@ -28,6 +28,7 @@ class YesNoQst extends Component {
           defaultValue={defaultValue}
           max={maxValue}
           size={ratingSize}
+          required
           onChange={handleInputChange}
         />
       </Box>
