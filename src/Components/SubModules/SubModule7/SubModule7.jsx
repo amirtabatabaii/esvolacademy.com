@@ -8,10 +8,19 @@ import CompareAnswers from "./CompareAnswers";
 import Question from "./Question";
 import ShowResult from "./ShowResult";
 
-const UserModule = localStorage.getItem("UserModule"); //.substring(6);
-const UserTempModule = localStorage.getItem("UserTempModule"); //.substring(6);
-
 class SubModule7 extends Component {
+  state = {
+    UserModule: "", //localStorage.getItem("UserModule"); //.substring(6);
+    UserTempModule: "", //localStorage.getItem("UserTempModule"); //.substring(6);
+  };
+
+  componentDidMount() {
+    this.setState({
+      UserModule: localStorage.getItem("UserModule"),
+      UserTempModule: localStorage.getItem("UserTempModule"),
+    });
+  }
+
   handleContinue = (UserTempModule) => {
     const UserActiveNumber = localStorage.getItem("UserModule").substring(6);
     const UserSelectedModuleNumber = localStorage
@@ -100,6 +109,8 @@ class SubModule7 extends Component {
       SetUserPassed,
     } = this.props;
 
+    const { UserModule, UserTempModule } = this.state;
+
     return (
       <div className={`${userActiveModule}-sub-panel mt-4 app`}>
         <Scroll>
@@ -109,7 +120,7 @@ class SubModule7 extends Component {
                 <TranslateText txt='SubModule7-error' />
               </div>
 
-              {UserTempModule !== "Module5" && (
+              {/* {UserTempModule !== "Module5" && (
                 <button
                   className={`${userActiveModule}-next-btn m-3`}
                   onClick={() => this.handleContinue(UserTempModule)}
@@ -125,7 +136,7 @@ class SubModule7 extends Component {
                 >
                   <TranslateText txt='SubModule3-Continue' />
                 </button>
-              )}
+              )} */}
             </div>
           ) : (
             <>
