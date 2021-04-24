@@ -57,6 +57,25 @@ class SubModuleBtn extends Component {
   state = {
     ActiveImage: {},
     NormalImage: {},
+    userActiveSubModuleNum: 0,
+    UserTempModuleNum: 0,
+    UserModuleNum: 0,
+  };
+
+  componentDidMount = () => {
+    let userActiveSubModule = localStorage.getItem("UserSubModule");
+    let UserTempModule = localStorage.getItem("UserTempModule");
+    let UserModule = localStorage.getItem("UserModule");
+    this.setState(
+      {
+        userActiveSubModuleNum: userActiveSubModule.substring(3),
+        UserTempModuleNum: UserTempModule.substring(6),
+        UserModuleNum: UserModule.substring(6),
+      }
+      // () => {
+      //   console.log(this.state);
+      // }
+    );
   };
 
   render() {
@@ -66,6 +85,11 @@ class SubModuleBtn extends Component {
       onClick,
       isEasyModeActive,
     } = this.props;
+    const {
+      userActiveSubModuleNum,
+      UserTempModuleNum,
+      UserModuleNum,
+    } = this.state;
 
     return (
       // <div className={`d-none d-lg-block Sub${userActiveModule}-panel`}>
@@ -77,7 +101,7 @@ class SubModuleBtn extends Component {
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
-                userActiveModule === "Module1"
+                userActiveModule === "Module1" //|| userActiveSubModuleNum >= 1
                   ? Module1sub1
                   : userActiveModule === "Module2"
                   ? Module2sub1
@@ -89,8 +113,12 @@ class SubModuleBtn extends Component {
                   ? Module5sub1
                   : null
               }
+              userActiveSubModuleNum={userActiveSubModuleNum}
+              UserTempModuleNum={UserTempModuleNum}
+              UserModuleNum={UserModuleNum}
               normalImage={NormalSub1}
               subName='sub1'
+              subNum='1'
               onClick={onClick}
             />
           </Col>
@@ -101,7 +129,7 @@ class SubModuleBtn extends Component {
               userActiveSubModule={userActiveSubModule}
               userActiveModule={userActiveModule}
               activeImage={
-                userActiveModule === "Module1"
+                userActiveModule === "Module1" //&& userActiveSubModuleNum >= 2
                   ? Module1sub2
                   : userActiveModule === "Module2"
                   ? Module2sub2
@@ -113,8 +141,12 @@ class SubModuleBtn extends Component {
                   ? Module5sub2
                   : null
               }
+              userActiveSubModuleNum={userActiveSubModuleNum}
+              UserTempModuleNum={UserTempModuleNum}
+              UserModuleNum={UserModuleNum}
               normalImage={NormalSub2}
               subName='sub2'
+              subNum='2'
               onClick={onClick}
             />
           </Col>
@@ -137,8 +169,12 @@ class SubModuleBtn extends Component {
                   ? Module5sub3
                   : null
               }
+              userActiveSubModuleNum={userActiveSubModuleNum}
+              UserTempModuleNum={UserTempModuleNum}
+              UserModuleNum={UserModuleNum}
               normalImage={NormalSub3}
               subName='sub3'
+              subNum='3'
               onClick={onClick}
               isEasyModeActive={isEasyModeActive}
             />
@@ -162,8 +198,12 @@ class SubModuleBtn extends Component {
                   ? Module5sub4
                   : null
               }
+              userActiveSubModuleNum={userActiveSubModuleNum}
+              UserTempModuleNum={UserTempModuleNum}
+              UserModuleNum={UserModuleNum}
               normalImage={NormalSub4}
               subName='sub4'
+              subNum='4'
               onClick={onClick}
             />
           </Col>
@@ -186,8 +226,12 @@ class SubModuleBtn extends Component {
                   ? Module5sub5
                   : null
               }
+              userActiveSubModuleNum={userActiveSubModuleNum}
+              UserTempModuleNum={UserTempModuleNum}
+              UserModuleNum={UserModuleNum}
               normalImage={NormalSub5}
               subName='sub5'
+              subNum='5'
               onClick={onClick}
             />
           </Col>
@@ -210,8 +254,12 @@ class SubModuleBtn extends Component {
                   ? Module5sub6
                   : null
               }
+              userActiveSubModuleNum={userActiveSubModuleNum}
+              UserTempModuleNum={UserTempModuleNum}
+              UserModuleNum={UserModuleNum}
               normalImage={NormalSub6}
               subName='sub6'
+              subNum='6'
               onClick={onClick}
             />
           </Col>
@@ -234,8 +282,12 @@ class SubModuleBtn extends Component {
                   ? Module5sub7
                   : null
               }
+              userActiveSubModuleNum={userActiveSubModuleNum}
+              UserTempModuleNum={UserTempModuleNum}
+              UserModuleNum={UserModuleNum}
               normalImage={NormalSub7}
               subName='sub7'
+              subNum='7'
               onClick={onClick}
             />
           </Col>
