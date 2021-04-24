@@ -14,7 +14,9 @@ import {
 import { PDFViewer } from "@react-pdf/renderer";
 import bgImage from "../../assets/esvol_sertifikalar.png";
 import FinalTest from "../SubModules/PreFinalTest/FinalTest";
-
+import axios from "axios";
+import { ApiUrlMain2 } from "../Utility/ApiUrl";
+import { SetUserInfo } from "../../Redux/action";
 Font.register({
   family: "Oswald",
   src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
@@ -53,6 +55,21 @@ const styles = StyleSheet.create({
 });
 
 class ModuleFinished extends Component {
+  async componentDidMount() {
+    await axios
+      .get(ApiUrlMain2 + `/users/${localStorage.getItem("UserID")}`, {
+        headers: {
+          Authorization: localStorage.getItem("UserInfo"),
+        },
+      })
+      .then((Response) => {
+        if (Response.status === 200) {
+          // console.log(Response.data);
+          this.props.SetUserInfo(Response.data);
+        }
+      });
+  }
+
   render() {
     const { UserInfo, UserStatus } = this.props;
 
@@ -62,37 +79,37 @@ class ModuleFinished extends Component {
           <ModuleNavBar userActiveModule='Module1' />
 
           {UserStatus.currentModule === "Module6" &&
-            UserInfo.isFinalTestDone === false && (
+            UserStatus.isFinalTestDone === null && (
               <FinalTest UserStatus={UserStatus} UserInfo={UserInfo} />
             )}
 
-          {/* {UserStatus.currentModule === "Module6" &&
-            UserInfo.finalTest === "true" && ( */}
-          <PDFViewer style={{ width: "100%", height: 600 }}>
-            <Document
-              title={
-                localStorage.getItem("firstName").toUpperCase() +
-                " " +
-                localStorage.getItem("lastName").toUpperCase() +
-                " ESVOL CERTIFICATE"
-              }
-            >
-              <Page size='A4' orientation='landscape'>
-                <Image src={bgImage} style={styles.pageBackground} />
-                <Text style={styles.header}>
-                  {"Certificate of Completion".toUpperCase()}
-                </Text>
-                <Text style={styles.text}>
-                  This is to certify that{" "}
-                  {localStorage.getItem("firstName").toUpperCase()}{" "}
-                  {localStorage.getItem("lastName").toUpperCase()} has
-                  successfully completed the online course on Social Leadership
-                  and Social Innovation for Sport Volunteers.
-                </Text>
-              </Page>
-            </Document>
-          </PDFViewer>
-          {/* )} */}
+          {UserStatus.currentModule === "Module6" &&
+            UserStatus.isFinalTestDone === true && (
+              <PDFViewer style={{ width: "100%", height: 600 }}>
+                <Document
+                  title={
+                    localStorage.getItem("firstName").toUpperCase() +
+                    " " +
+                    localStorage.getItem("lastName").toUpperCase() +
+                    " ESVOL CERTIFICATE"
+                  }
+                >
+                  <Page size='A4' orientation='landscape'>
+                    <Image src={bgImage} style={styles.pageBackground} />
+                    <Text style={styles.header}>
+                      {"Certificate of Completion".toUpperCase()}
+                    </Text>
+                    <Text style={styles.text}>
+                      This is to certify that{" "}
+                      {localStorage.getItem("firstName").toUpperCase()}{" "}
+                      {localStorage.getItem("lastName").toUpperCase()} has
+                      successfully completed the online course on Social
+                      Leadership and Social Innovation for Sport Volunteers.
+                    </Text>
+                  </Page>
+                </Document>
+              </PDFViewer>
+            )}
           <Footer userActiveModule={"Main"} />
         </div>
       </div>
@@ -105,4 +122,6 @@ const mapStateToProps = (state) => ({
   UserStatus: state.UserStatus,
 });
 
-export default connect(mapStateToProps, {})(withRouter(ModuleFinished));
+export default connect(mapStateToProps, { SetUserInfo })(
+  withRouter(ModuleFinished)
+);
