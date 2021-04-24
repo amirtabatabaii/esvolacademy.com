@@ -166,7 +166,7 @@ button[disabled] {
   font-weight: 600;
   line-height: 33px;
   /*  */
-  width: 150px;
+  /* width: 150px; */
   height: 50px;
   border-radius: 12px;
   border: none !important;
@@ -177,8 +177,8 @@ button[disabled] {
 }
 
 .Module1-video-link-btn {
-  width: 120px;
-  height: 40px;
+  width: 170px;
+  height: 35px;
   border-radius: 12px;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
@@ -261,7 +261,7 @@ button[disabled] {
   font-weight: 600;
   line-height: 33px;
   /*  */
-  width: 150px;
+  /* width: 150px; */
   height: 50px;
   border-radius: 12px;
   border: none !important;
@@ -272,8 +272,8 @@ button[disabled] {
 }
 
 .Module2-video-link-btn {
-  width: 120px;
-  height: 40px;
+  width: 170px;
+  height: 35px;
   border-radius: 12px;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
@@ -356,7 +356,7 @@ button[disabled] {
   font-weight: 600;
   line-height: 33px;
   /*  */
-  width: 150px;
+  /* width: 150px; */
   height: 50px;
   border-radius: 12px;
   border: none !important;
@@ -367,8 +367,8 @@ button[disabled] {
 }
 
 .Module3-video-link-btn {
-  width: 120px;
-  height: 40px;
+  width: 170px;
+  height: 35px;
   border-radius: 12px;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
@@ -451,7 +451,7 @@ button[disabled] {
   font-weight: 600;
   line-height: 33px;
   /*  */
-  width: 150px;
+  /* width: 150px; */
   height: 50px;
   border-radius: 12px;
   border: none !important;
@@ -462,8 +462,8 @@ button[disabled] {
 }
 
 .Module4-video-link-btn {
-  width: 120px;
-  height: 40px;
+  width: 170px;
+  height: 35px;
   border-radius: 12px;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
@@ -546,7 +546,7 @@ button[disabled] {
   font-weight: 600;
   line-height: 33px;
   /*  */
-  width: 150px;
+  /* width: 150px; */
   height: 50px;
   border-radius: 12px;
   border: none !important;
@@ -557,8 +557,8 @@ button[disabled] {
 }
 
 .Module5-video-link-btn {
-  width: 120px;
-  height: 40px;
+  width: 170px;
+  height: 35px;
   border-radius: 12px;
   background: #f2f3f7;
   box-shadow: 5px 3px 15px rgba(192, 197, 216, 0.45), -3px -3px 15px #ffffff,
