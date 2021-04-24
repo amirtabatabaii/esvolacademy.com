@@ -3,8 +3,25 @@ import { Col, Row } from "react-bootstrap";
 import TranslateText from "../Translate/TranslateText";
 
 class ModuleStagesNameSmall extends Component {
+  state = {
+    UserModuleNum: 0,
+  };
+
+  componentDidMount = () => {
+    let UserModule = localStorage.getItem("UserModule");
+    this.setState(
+      {
+        UserModuleNum: UserModule.substring(6),
+      }
+      // () => {
+      //   console.log(this.state);
+      // }
+    );
+  };
+
   render() {
     const { userActiveModule, handleOnClickModule } = this.props;
+    const { UserModuleNum } = this.state;
 
     return (
       <div className={`Sub${userActiveModule}-panel-text`}>
@@ -12,7 +29,7 @@ class ModuleStagesNameSmall extends Component {
           <Col>
             <span
               className={`${
-                userActiveModule === "Module1"
+                userActiveModule === "Module1" || 1 <= UserModuleNum
                   ? "Module-text-active Module1-text-active"
                   : "Module-text"
               }`}
@@ -25,7 +42,7 @@ class ModuleStagesNameSmall extends Component {
           <Col>
             <span
               className={`${
-                userActiveModule === "Module2"
+                userActiveModule === "Module2" || 2 <= UserModuleNum
                   ? "Module-text-active Module2-text-active"
                   : "Module-text"
               }`}
@@ -38,7 +55,7 @@ class ModuleStagesNameSmall extends Component {
           <Col>
             <span
               className={`${
-                userActiveModule === "Module3"
+                userActiveModule === "Module3" || 3 <= UserModuleNum
                   ? "Module-text-active Module3-text-active"
                   : "Module-text"
               }`}
@@ -51,7 +68,7 @@ class ModuleStagesNameSmall extends Component {
           <Col>
             <span
               className={`${
-                userActiveModule === "Module4"
+                userActiveModule === "Module4" || 4 <= UserModuleNum
                   ? "Module-text-active Module4-text-active"
                   : "Module-text"
               }`}
@@ -64,7 +81,7 @@ class ModuleStagesNameSmall extends Component {
           <Col>
             <span
               className={`${
-                userActiveModule === "Module5"
+                userActiveModule === "Module5" || 5 <= UserModuleNum
                   ? "Module-text-active Module5-text-active"
                   : "Module-text"
               }`}
