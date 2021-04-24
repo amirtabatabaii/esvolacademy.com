@@ -1,6 +1,8 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Redirect } from "react-router";
+import { withRouter } from "react-router";
 
 import Home from "./Components/Home/Home";
 import module from "./Components/Module/ModuleHome";
@@ -38,7 +40,14 @@ import Error404Page from "./Components/Utility/Error404Page";
 // localStorage.removeItem("UserInfo");
 // };
 
+import ReactGA from "react-ga";
+
 function App() {
+  useEffect(() => {
+    ReactGA.initialize("G-SQZX258TJS");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <Suspense fallback={null}>
       <Router basename={process.env.PUBLIC_URL}>
