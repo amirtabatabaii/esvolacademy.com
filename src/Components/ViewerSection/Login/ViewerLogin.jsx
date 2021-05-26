@@ -1,103 +1,85 @@
 import React, { Component } from "react";
-// import axios from "axios";
 import { Link } from "react-router-dom";
-// import { notification, message } from "antd";
-// import jwt_decode from "jwt-decode";
+import { notification, message } from "antd";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { ApiUrlMain2 } from "../../Utility/ApiUrl";
 
 import "../Login/ViewerLogin.css";
 import "../../../css/MyAntd.css";
 
-// const key = "updatable";
-
-// const AuthError = (type) => {
-//   notification[type]({
-//     message: "Authentication Error!",
-//     description:
-//       "Your account has not activated Yet by Admin please Contact the company... (Hesabınız Yönetici tarafından aktif olmaya bilir.  lütfen Şirketle iletişime geçin.)",
-//     duration: 10,
-//   });
-// };
+const key = "updatable";
 
 class AdminLogin extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //     this.state = {
-  //       username: "",
-  //       password: "",
-  //       errors: {
-  //         username: null,
-  //         password: null,
-  //       },
-  //       isAuthenticated: "false",
-  //     };
-  //     this.handleSubmit = this.handleSubmit.bind(this);
-  //   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      errors: {
+        username: null,
+        password: null,
+      },
+      isAuthenticated: "false",
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   handleChange = (event) => {
-    // this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
-
-  //   handleSubmit = (event) => {
-  //     event.preventDefault();
-
-  //     var crypto = require("crypto");
-  //     var shasum = crypto
-  //       .createHash("sha1")
-  //       .update(this.state.password)
-  //       .digest("hex");
-
-  //     const hashedPass = shasum;
-
-  //     axios
-  //       .post(ApiLink + "/login", {
-  //         username: this.state.username,
-  //         password: hashedPass,
-  //       })
-  //       .then((res) => {
-  //         //console.log(res);
-
-  //         if (res.data.success === true) {
-  //           //console.log("res.status", res.status);
-
-  //           localStorage.setItem("jwtToken", res.data.result);
-
-  //           const decoded = jwt_decode(res.data.result);
-
-  //           setAuthToken(res.data.result);
-  //           if (decoded.role === "USER") {
-  //             message.loading({ content: "Processing...", key });
-  //             setTimeout(() => {
-  //               message.error({
-  //                 content: "You do not have permission to access this page...",
-  //                 key,
-  //                 duration: 6,
-  //               });
-  //             }, 1000);
-  //           }
-  //           if (decoded.role === "ADMIN") {
-  //             this.props.history.push(`/site/admin-page/main`);
-  //           }
-  //         } else if (res.data.success === false) {
-  //           AuthError("error");
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         message.loading({ content: "Processing...", key });
-  //         setTimeout(() => {
-  //           message.error({
-  //             content: "An Error According. Please try again later.",
-  //             key,
-  //             duration: 6,
-  //           });
-  //         }, 1000);
-  //       });
-  //   };
 
   handleSubmit = (event) => {
-    localStorage.setItem("viewerToken", "Test_Viewer_Token");
-    this.props.history.push(`/site/viewer-page/main`);
-  };
+    event.preventDefault();
 
+    var crypto = require("crypto");
+    var shasum = crypto
+      .createHash("sha1")
+      .update(this.state.password)
+      .digest("hex");
+
+    const hashedPass = shasum;
+
+    axios
+      .post(
+        ApiUrlMain2 + "/users/login",
+        {
+          email: this.state.email,
+          password: hashedPass,
+        },
+        (axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*")
+      )
+      .then((res) => {
+        //console.log(res);
+        if (res.status === 200) {
+          localStorage.setItem("viewerInfo", res.data);
+          const decoded = jwt_decode(res.data);
+          // console.log(decoded.Role);
+          if (decoded.Role === "ADMIN") {
+            this.props.history.push(`/site/viewer-page/main`);
+          } else {
+            message.loading({ content: "Processing...", key });
+            setTimeout(() => {
+              message.error({
+                content: "You do not have permission to access this page...",
+                key,
+                duration: 6,
+              });
+            }, 1000);
+          }
+        }
+      })
+      .catch((error) => {
+        message.loading({ content: "Processing...", key });
+        setTimeout(() => {
+          message.error({
+            content: "An Error Occurred...",
+            key,
+            duration: 6,
+          });
+        }, 1000);
+      });
+  };
   componentDidMount() {
     window.scrollTo(0, 0);
   }
@@ -121,10 +103,10 @@ class AdminLogin extends Component {
                         <label className='sr-only'>Username</label>
                         <input
                           type='text'
-                          name='username'
+                          name='email'
                           className='form-control'
                           placeholder='Username'
-                          //   onChange={this.handleChange}
+                          onChange={this.handleChange}
                           required
                         />
                       </div>
@@ -135,7 +117,7 @@ class AdminLogin extends Component {
                           className='form-control'
                           name='password'
                           placeholder='Password'
-                          //   onChange={this.handleChange}
+                          onChange={this.handleChange}
                           required
                         />
                       </div>
