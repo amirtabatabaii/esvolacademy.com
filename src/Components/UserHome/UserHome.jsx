@@ -282,6 +282,66 @@ class UserHome extends Component {
         if (Response.status === 200) {
           // console.log("GET ", Response.data.userStatus);
           // localStorage.setItem("lng", this.props.selectedLanguage);
+
+          // if (localStorage.getItem("UserModule") !== null) {
+          //   if (
+          //     localStorage.getItem("UserModule").substring(6) >
+          //     Response.data.userStatus.currentModule
+          //   ) {
+          //     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>");
+          //   } else {
+          //     console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+          //     axios
+          //       .put(
+          //         ApiUrlMain2 +
+          //           `/users/${localStorage.getItem("UserID")}/status`,
+          //         {
+          //           userStatus: {
+          //             currentModule: localStorage.getItem("UserModule"),
+          //             currentSubModule: this.props.UserStatus.currentModule,
+          //             score: this.props.UserStatus.score,
+          //             badgeNo: "0",
+          //             isPreTestDone: this.props.UserStatus.isPreTestDone,
+          //             isFinalTestDone: this.props.UserStatus.isFinalTestDone,
+          //           },
+          //         },
+          //         (axios.defaults.headers.common[
+          //           "Authorization"
+          //         ] = localStorage.getItem("UserInfo")),
+          //         (axios.defaults.headers.common[
+          //           "Access-Control-Allow-Origin"
+          //         ] = "*"),
+          //         {
+          //           "Content-Type": "application/json",
+          //         }
+          //       )
+          //       .then((res) => {
+          //         // console.log("res =====> ", res);
+          //         if (res.status === 200) {
+          //           // window.location.reload(false);
+          //           localStorage.setItem("firstName", res.data.firstName);
+          //           localStorage.setItem("lastName", res.data.lastName);
+          //           localStorage.setItem(
+          //             "UserModule",
+          //             res.data.userStatus.currentModule
+          //           );
+          //           localStorage.setItem(
+          //             "UserTempModule",
+          //             res.data.userStatus.currentModule
+          //           );
+          //           localStorage.setItem(
+          //             "UserSubModule",
+          //             res.data.userStatus.currentSubModule
+          //           );
+          //           this.props.SetUserInfo(res.data);
+          //           this.props.UserActiveModuleSubModule(
+          //             res.data.userStatus.currentModule,
+          //             res.data.userStatus.currentSubModule
+          //           );
+          //         }
+          //       });
+          //   }
+          // } else {
           localStorage.setItem("firstName", Response.data.firstName);
           localStorage.setItem("lastName", Response.data.lastName);
           localStorage.setItem(
@@ -289,13 +349,29 @@ class UserHome extends Component {
             Response.data.userStatus.currentModule
           );
           localStorage.setItem(
-            "UserSubModule",
-            Response.data.userStatus.currentSubModule
-          );
-          localStorage.setItem(
             "UserTempModule",
             Response.data.userStatus.currentModule
           );
+          localStorage.setItem(
+            "UserSubModule",
+            Response.data.userStatus.currentSubModule
+          );
+          // }
+          // if (
+          //   Response.data.userStatus.currentSubModule >
+          //   localStorage.getItem("UserTempModule".substring(6))
+          // ) {
+          //   localStorage.setItem(
+          //     "UserSubModule",
+          //     Response.data.userStatus.currentSubModule
+          //   );
+          // } else {
+          //   localStorage.setItem(
+          //     "UserSubModule",
+          //     localStorage.getItem("UserSubModule")
+          //   );
+          // }
+
           this.props.SetUserInfo(Response.data);
           this.props.UserActiveModuleSubModule(
             Response.data.userStatus.currentModule,
