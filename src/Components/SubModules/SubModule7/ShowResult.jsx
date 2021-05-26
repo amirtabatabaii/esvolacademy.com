@@ -29,12 +29,12 @@ class ShowResult extends Component {
       });
 
     // console.log(this.props.UserQuizAllAnswers);
-    for (let i = 0; i < this.props.UserQuizAllAnswers.length; i++) {
-      userAns[i] = {
-        userAnswerId: this.props.UserQuizAllAnswers[i].split("!,!")[0],
-        userAnswer: this.props.UserQuizAllAnswers[i].split("!,!")[1],
-      };
-    }
+    // for (let i = 0; i < this.props.UserQuizAllAnswers.length; i++) {
+    //   userAns[i] = {
+    //     userAnswerId: this.props.UserQuizAllAnswers[i].split("!,!")[0],
+    //     userAnswer: this.props.UserQuizAllAnswers[i].split("!,!")[1],
+    //   };
+    // }
     // console.log(userAns);
   }
 
@@ -42,6 +42,14 @@ class ShowResult extends Component {
     if (
       this.props.userQuizScore >= this.percentageQuizScore(this.props.QuizScore)
     ) {
+      for (let i = 0; i < this.props.UserQuizAllAnswers.length; i++) {
+        userAns[i] = {
+          userAnswerId: this.props.UserQuizAllAnswers[i].split("!,!")[0],
+          userAnswer: this.props.UserQuizAllAnswers[i].split("!,!")[1],
+        };
+      }
+      // console.log(userAns);
+
       axios
         .put(
           ApiUrlMain2 +
@@ -102,10 +110,21 @@ class ShowResult extends Component {
               )
               .then((res) => {
                 // console.log("res =====> ", res);
-                // if (res.status === 200) {
-                //   // window.location.reload(false);
-                //   //openNotificationWithIcon("success", "Update", "Update ok", 3);
-                // }
+                if (res.status === 200) {
+                  localStorage.setItem("firstName", res.data.firstName);
+                  localStorage.setItem("lastName", res.data.lastName);
+                  // localStorage.setItem("UserModule", res.data.userStatus.currentModule);
+                  localStorage.setItem(
+                    "UserSubModule",
+                    res.data.userStatus.currentSubModule
+                  );
+                  localStorage.setItem(
+                    "UserTempModule",
+                    res.data.userStatus.currentModule
+                  );
+                  //   // window.location.reload(false);
+                  //   //openNotificationWithIcon("success", "Update", "Update ok", 3);
+                }
               });
             // window.location.reload(false);
             //openNotificationWithIcon("success", "Update", "Update ok", 3);
