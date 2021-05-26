@@ -33,10 +33,13 @@ class PreTest extends Component {
   };
 
   handleInputChange = (e) => {
-    this.setState({
-      UserId: this.props.UserInfo.userId,
-      [e.target.name]: e.target.value,
-    });
+    this.setState(
+      {
+        UserId: this.props.UserInfo.userId,
+        [e.target.name]: e.target.value,
+      },
+      () => console.log(this.state)
+    );
 
     // if (
     //   this.state.age !== "" &&
@@ -162,7 +165,16 @@ class PreTest extends Component {
             </Col>
 
             <Col lg={4} md={12} sm={12} className='p-2 m-auto text-center'>
-              <FormControl variant='outlined' required className='w-100'>
+              <TextField
+                required
+                className='w-100'
+                type='text'
+                name='gender'
+                onChange={this.handleInputChange}
+                label={<TranslateText txt='PreTestQst-2' />}
+                variant='outlined'
+              />
+              {/* <FormControl variant='outlined' required className='w-100'>
                 <InputLabel id='gender'>
                   {<TranslateText txt='PreTestQst-2' />}
                 </InputLabel>
@@ -179,7 +191,7 @@ class PreTest extends Component {
                     <TranslateText txt='PreTestQst-female' />
                   </MenuItem>
                 </Select>
-              </FormControl>
+              </FormControl> */}
             </Col>
 
             <Col lg={6} md={12} sm={12} className='p-2 m-auto text-center'>
