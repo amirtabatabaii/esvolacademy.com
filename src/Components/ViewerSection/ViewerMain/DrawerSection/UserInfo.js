@@ -5,7 +5,7 @@ import UserAvatar from "../../Utility/UserAvatar";
 
 class DrawerUserInfo extends Component {
   render() {
-    const { onClose, visible } = this.props;
+    const { onClose, visible, FltUserInfoArray } = this.props;
 
     return (
       <Drawer
@@ -27,46 +27,55 @@ class DrawerUserInfo extends Component {
       >
         <Table responsive striped bordered hover>
           <tbody>
+            {/* {console.log(index)} */}
             <tr className='bg-secondary text-white'>
               <th style={{ width: "30%" }}>Title</th>
               <th>Info</th>
             </tr>
             <tr>
               <td>Name</td>
-              <td>-Calka-</td>
+              <td>{FltUserInfoArray.firstName}</td>
             </tr>
             <tr>
               <td>Surname</td>
-              <td>-Oktar-</td>
+              <td>{FltUserInfoArray.lastName}</td>
             </tr>
             <tr>
               <td>Mail</td>
-              <td>-test@test.com-</td>
+              <td>{FltUserInfoArray.email}</td>
             </tr>
             <tr>
               <td>Active Module</td>
-              <td>-Module1-</td>
+              <td>
+                {FltUserInfoArray.userStatus.currentModule === "Module6" ? (
+                  <span style={{ color: "red" }}>Finished Stages</span>
+                ) : (
+                  FltUserInfoArray.userStatus.currentModule
+                )}
+              </td>
             </tr>
             <tr>
               <td>Active SubModule</td>
-              <td>-Introduction Video-</td>
+              <td>
+                {FltUserInfoArray.userStatus.currentModule === "Module6" ? (
+                  <span style={{ color: "red" }}>Finished Stages</span>
+                ) : (
+                  FltUserInfoArray.userStatus.currentSubModule
+                )}
+              </td>
             </tr>
             <tr>
               <td>Score</td>
-              <td>-0-</td>
+              <td>{FltUserInfoArray.userStatus.score}</td>
             </tr>
             <tr>
               <td>Registered Date</td>
-              <td>-2021-02-15-</td>
-            </tr>
-            <tr>
-              <td>Is Easy Mode Active?</td>
-              <td>-true-</td>
+              <td>{FltUserInfoArray.registeredDate}</td>
             </tr>
             <tr>
               <td>Avatar</td>
               <td>
-                <UserAvatar avatarNo='10' />
+                <UserAvatar avatarNo={FltUserInfoArray.avatarNo} />
               </td>
             </tr>
           </tbody>
