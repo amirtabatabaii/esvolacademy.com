@@ -15,6 +15,7 @@ class Home extends Component {
       localStorage.setItem("lng", "");
       localStorage.setItem("lng", "en");
     }
+
     // window.location.reload(false);
 
     // try {
