@@ -8,7 +8,7 @@ class PrivateRouteViewer extends Component {
       <div>
         <Route
           render={({ location }) =>
-            localStorage.getItem("viewerToken") ? (
+            localStorage.getItem("viewerInfo") ? (
               <ViewerMain />
             ) : (
               <Redirect
