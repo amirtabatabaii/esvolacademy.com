@@ -18,6 +18,21 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 class ModuleNavBar extends Component {
+  componentDidMount = () => {
+    // window.onbeforeunload = function (e) {
+    //   if (e) {
+    //     return;
+    //   }
+    //   var dialogText = "Dialog text here";
+    //   e.returnValue = dialogText;
+    //   return dialogText;
+    // };
+    // window.addEventListener("beforeunload", (ev) => {
+    //   ev.preventDefault();
+    //   return "sssssssss";
+    // });
+  };
+
   handleLogoutClick = () => {
     this.handleClick("/login");
     localStorage.removeItem("UserID");
