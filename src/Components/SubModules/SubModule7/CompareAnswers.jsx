@@ -30,8 +30,8 @@ class CompareAnswers extends Component {
 
     for (let i = 0; i < this.props.UserQuizAllAnswers.length; i++) {
       userAllAns[i] = this.props.UserQuizAllAnswers[i].split("!,!")[1];
+      // console.log(userAllAns);
     }
-    // console.log(userAns);
 
     for (let i = 0; i < QuizQuestion.length; i++) {
       incorrectAnswers.push(
@@ -64,19 +64,25 @@ class CompareAnswers extends Component {
       } else if (incorrectAnswers[k].length === 1) {
         incorrectAnswers2[k].push(
           incorrectAnswers[k][0].questionAnswersDictionaries.filter(
-            (ans) => ans.language === AllAnswersLanguage[k]
+            (ans) =>
+              ans.language ===
+              AllAnswersLanguage[k].replace(/^\w/, (c) => c.toUpperCase())
           )[0].answerText
         );
       } else {
+        // console.log("incorrectAnswers", incorrectAnswers);
         for (let q = 0; q < incorrectAnswers[k].length; q++) {
           incorrectAnswers2[k].push(
             incorrectAnswers[k][q].questionAnswersDictionaries.filter(
-              (ans) => ans.language === AllAnswersLanguage[k]
+              (ans) =>
+                ans.language ===
+                AllAnswersLanguage[k].replace(/^\w/, (c) => c.toUpperCase())
             )[0].answerText
           );
         }
       }
-      // console.log(incorrectAnswers2);
+
+      // console.log("incorrectAnswers2", incorrectAnswers2);
 
       // Manage correctAnswers
       if (
@@ -87,7 +93,9 @@ class CompareAnswers extends Component {
         for (let q = 0; q < correctAnswers[k].length; q++) {
           correctAnswers2[k].push(
             correctAnswers[k][q].questionAnswersDictionaries.filter(
-              (ans) => ans.language === AllAnswersLanguage[k]
+              (ans) =>
+                ans.language ===
+                AllAnswersLanguage[k].replace(/^\w/, (c) => c.toUpperCase())
             )[0].answerText
           );
         }
@@ -96,7 +104,9 @@ class CompareAnswers extends Component {
         correctAnswers2[k] = QuizQuestion[k].question.answers
           .filter((ans) => ans.isCorrectAnswer === true)[0]
           .questionAnswersDictionaries.filter(
-            (ans) => ans.language === AllAnswersLanguage[k]
+            (ans) =>
+              ans.language ===
+              AllAnswersLanguage[k].replace(/^\w/, (c) => c.toUpperCase())
           )[0].answerText;
       }
     }
@@ -110,9 +120,11 @@ class CompareAnswers extends Component {
           point: QuizQuestion[i].question.point,
           correctAnswers: correctAnswers2[i],
           incorrectAnswers: incorrectAnswers2[i],
-          question: QuizQuestion[i].question.questionDictionaries.filter(
-            (qst) => qst.language === AllAnswersLanguage[i]
-          )[0].questionText,
+          question:
+            QuizQuestion[i].question.questionDictionaries[i].questionText,
+          // .filter(
+          //   (qst) => qst.language === AllAnswersLanguage[i]
+          // )[0].questionText,
           questionType: QuizQuestion[i].question.type,
           moduleName: QuizQuestion[i].question.moduleName,
           NumberOfBlank: QuizQuestion[i].question.NumberOfBlank,
@@ -120,7 +132,7 @@ class CompareAnswers extends Component {
       ];
     }
 
-    console.log("NewFilter222 ", NewFilter);
+    // console.log("NewFilter222 ", NewFilter);
     this.setState({ ViewFilteredQuestion: NewFilter });
   }
 
