@@ -38,60 +38,129 @@ function NavBar(props) {
 
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav' className='text-center'>
-          <Nav className='ml-auto'>
-            <Nav.Link>
-              <Link to='/' className='Menu-text ml-4 text-decoration-none'>
-                <TranslateText txt='MenuItem-Ludus' />
-              </Link>
-            </Nav.Link>
-
-            {!props.isUserOnline && (
-              <>
+          <Nav className='ml-auto nav'>
+            <ul className='navbar-nav'>
+              <li className='nav-item dropdown'>
+                <Link
+                  className='nav-link dropdown-toggle Menu-text ml-4 text-decoration-none'
+                  to='/'
+                  id='navbarDropdownMenuLink'
+                  data-toggle='dropdown'
+                  aria-haspopup='true'
+                  aria-expanded='false'
+                >
+                  <TranslateText txt='MenuItem-Ludus' />
+                </Link>
+                <ul
+                  className='dropdown-menu'
+                  aria-labelledby='navbarDropdownMenuLink'
+                >
+                  <li className='dropdown-submenu'>
+                    <Link className='dropdown-item' to='/our-story'>
+                      <TranslateText txt='MenuItem-Ludus1' />
+                    </Link>
+                  </li>
+                  <li className='dropdown-submenu'>
+                    <Link className='dropdown-item' to='/intellectual-outputs'>
+                      <TranslateText txt='MenuItem-Ludus2' />
+                    </Link>
+                  </li>
+                  <li className='dropdown-submenu'>
+                    <Link className='dropdown-item' to='/events'>
+                      <TranslateText txt='MenuItem-Ludus3' />
+                    </Link>
+                  </li>
+                  <li className='dropdown-submenu'>
+                    <a
+                      className='dropdown-item'
+                      href='mailto:esvolproject@gmail.com'
+                    >
+                      <TranslateText txt='MenuItem-Ludus4' />
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              {/* <li className='nav-item dropdown'>
                 <Nav.Link>
                   <Link
-                    to='/register'
-                    className='Menu-text ml-4 text-decoration-none'
+                    to='/'
+                    id='navbarDropdownMenuLink'
+                    data-toggle='dropdown'
+                    aria-haspopup='true'
+                    aria-expanded='false'
+                    className='nav-link dropdown-toggle Menu-text ml-4 text-decoration-none'
                   >
-                    <TranslateText txt='MenuItem-Kayit' />
+                    <TranslateText txt='MenuItem-Ludus' />
                   </Link>
-                </Nav.Link>
-                <Nav.Link>
-                  <Link
-                    to='/login'
-                    className=' Menu-text ml-4 text-decoration-none'
+                  <ul
+                    className='dropdown-menu'
+                    aria-labelledby='navbarDropdownMenuLink'
                   >
-                    <TranslateText txt='MenuItem-Giris' />
-                  </Link>
+                    <li className='dropdown-submenu'>
+                      <Link className='dropdown-item' to='/headquarters'>
+                        Genel Müdürlük
+                      </Link>
+                    </li>
+                  </ul>
                 </Nav.Link>
-              </>
-            )}
+              </li>
+               */}
+              {!props.isUserOnline && (
+                <>
+                  <li className='nav-item'>
+                    <Nav.Link>
+                      <Link
+                        to='/register'
+                        className='Menu-text ml-4 text-decoration-none'
+                      >
+                        <TranslateText txt='MenuItem-Kayit' />
+                      </Link>
+                    </Nav.Link>
+                  </li>
+                  <li className='nav-item'>
+                    <Nav.Link>
+                      <Link
+                        to='/login'
+                        className=' Menu-text ml-4 text-decoration-none'
+                      >
+                        <TranslateText txt='MenuItem-Giris' />
+                      </Link>
+                    </Nav.Link>
+                  </li>
+                </>
+              )}
 
-            {props.isUserOnline && (
-              <>
-                <Nav.Link>
-                  <Link
-                    to='/user'
-                    className='Menu-text ml-4 text-decoration-none'
-                  >
-                    <TranslateText txt='MenuItem-Profil' />
-                  </Link>
-                </Nav.Link>
+              {props.isUserOnline && (
+                <>
+                  <li className='nav-item'>
+                    <Nav.Link>
+                      <Link
+                        to='/user'
+                        className='Menu-text ml-4 text-decoration-none'
+                      >
+                        <TranslateText txt='MenuItem-Profil' />
+                      </Link>
+                    </Nav.Link>
+                  </li>
 
-                <Nav.Link>
-                  <Link
-                    //to='/user'
-                    onClick={handleClick}
-                    className='Menu-text ml-4 text-decoration-none'
-                  >
-                    <TranslateText txt='MenuItem-Logout' />
-                  </Link>
-                </Nav.Link>
-              </>
-            )}
+                  <li className='nav-item'>
+                    <Nav.Link>
+                      <Link
+                        //to='/user'
+                        onClick={handleClick}
+                        className='Menu-text ml-4 text-decoration-none'
+                      >
+                        <TranslateText txt='MenuItem-Logout' />
+                      </Link>
+                    </Nav.Link>
+                  </li>
+                </>
+              )}
 
-            <Nav.Link className='ml-4'>
-              <LanguageSelector />
-            </Nav.Link>
+              <Nav.Link className='ml-4'>
+                <LanguageSelector />
+              </Nav.Link>
+            </ul>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

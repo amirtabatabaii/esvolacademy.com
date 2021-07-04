@@ -5,11 +5,12 @@ import { Image, Row, Col } from "react-bootstrap";
 import "./Footer.css";
 import Li from "./Li";
 import SectionTitle from "./SectionTitle";
+import ReportPdf from "../../assets/pdf/IO_3_Impact_Assessment_Report.pdf";
 
 import {
-  faLinkedin,
+  faTwitter,
   faInstagram,
-  faFacebookSquare,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -32,60 +33,100 @@ function Footer(props) {
             <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
               <SectionTitle FooterItemText='Footer-Linkler' />
               <ul className='list-group'>
-                <Li href='/' target='' FooterItemText='Footer-Linkler-1' />
-                <Li href='/' target='' FooterItemText='Footer-Linkler-2' />
-                <Li href='/' target='' FooterItemText='Footer-Linkler-3' />
+                <Li
+                  href='/our-story'
+                  target=''
+                  FooterItemText='Footer-Linkler-1'
+                />
+                <Li
+                  href='mailto:esvolproject@gmail.com'
+                  target=''
+                  FooterItemText='Footer-Linkler-2'
+                />
+                {/* <Li href='/' target='' FooterItemText='Footer-Linkler-3' /> */}
               </ul>
             </Col>
 
             <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
               <SectionTitle FooterItemText='Footer-Tipler' />
               <ul className='list-group'>
-                <Li href='/' target='' FooterItemText='Footer-Tipler-1' />
-                <Li href='/' target='' FooterItemText='Footer-Tipler-2' />
-                <Li href='/' target='' FooterItemText='Footer-Tipler-3' />
+                <Li
+                  href='https://www.instagram.com/esvol_project/'
+                  target='_blank'
+                  FooterItemText='Footer-Tipler-1'
+                />
+                <Li
+                  href='https://trsgd.org/'
+                  target='_blank'
+                  FooterItemText='Footer-Tipler-2'
+                />
+                {/* <Li href='/' target='' FooterItemText='Footer-Tipler-3' /> */}
               </ul>
             </Col>
 
             <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
               <SectionTitle FooterItemText='Footer-Kategoriler' />
               <ul className='list-group'>
-                <Li href='/' target='' FooterItemText='Footer-Kategoriler-1' />
-                <Li href='/' target='' FooterItemText='Footer-Kategoriler-2' />
+                <Li
+                  href='/intellectual-outputs'
+                  target=''
+                  FooterItemText='Footer-Kategoriler-1'
+                />
+                <Li
+                  href={ReportPdf}
+                  target=''
+                  FooterItemText='Footer-Kategoriler-2'
+                />
               </ul>
             </Col>
 
             <Col lg={3} md={6} sm={6} xs={12} className={ColStyle}>
               <SectionTitle FooterItemText='Footer-Iletisim' />
               <ul className='list-group'>
-                <Li href='/' target='' FooterItemText='Footer-Iletisim-1' />
+                <Li
+                  href='mailto:esvolproject@gmail.com'
+                  target=''
+                  FooterItemText='Footer-Iletisim-1'
+                />
                 <Li href='/' target='' FooterItemText='Footer-Iletisim-2' />
-                <Li href='/' target='' FooterItemText='Footer-Iletisim-3' />
+                {/* <Li href='/' target='' FooterItemText='Footer-Iletisim-3' /> */}
               </ul>
               <div className=' text-lg-left text-sm-center text-center'>
-                <FontAwesomeIcon
-                  className='m-2'
-                  icon={faLinkedin}
-                  style={{ color: "#3b3c3c" }}
-                  transform='down-5 grow-15'
-                  fixedWidth
-                />
+                <a
+                  href='https://www.instagram.com/esvol_project/'
+                  target='_blank'
+                >
+                  <FontAwesomeIcon
+                    className='m-2'
+                    icon={faInstagram}
+                    style={{ color: "#3b3c3c" }}
+                    transform='down-5 grow-15'
+                    fixedWidth
+                  />
+                </a>
 
-                <FontAwesomeIcon
-                  className='m-2'
-                  icon={faInstagram}
-                  style={{ color: "#3b3c3c" }}
-                  transform='down-5 grow-15'
-                  fixedWidth
-                />
+                <a href='https://twitter.com/EsvolP' target='_blank'>
+                  <FontAwesomeIcon
+                    className='m-2'
+                    icon={faTwitter}
+                    style={{ color: "#3b3c3c" }}
+                    transform='down-5 grow-15'
+                    fixedWidth
+                  />
+                </a>
 
-                <FontAwesomeIcon
-                  className='m-2'
-                  icon={faFacebookSquare}
-                  style={{ color: "#3b3c3c" }}
-                  transform='down-5 grow-15'
-                  fixedWidth
-                />
+                <a
+                  href='https://www.youtube.com/channel/UCnpmxkakJCIT_n0s92jkIfw'
+                  target='_blank'
+                >
+                  <FontAwesomeIcon
+                    className='m-2'
+                    icon={faYoutube}
+                    style={{ color: "#3b3c3c" }}
+                    transform='down-5 grow-15'
+                    fixedWidth
+                  />
+                </a>
               </div>
             </Col>
           </Col>

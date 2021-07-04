@@ -41,6 +41,9 @@ import Error404Page from "./Components/Utility/Error404Page";
 // };
 
 import ReactGA from "react-ga";
+import OurStory from "./Components/Home/AboutEsvol/OurStory";
+import IntelOutput from "./Components/Home/AboutEsvol/IntelOutput";
+import Events from "./Components/Home/AboutEsvol/Events";
 
 function App() {
   useEffect(() => {
@@ -74,6 +77,27 @@ function App() {
             exact
             path={process.env.PUBLIC_URL + "/login"}
             component={Login}
+          />
+
+          {/* our-story */}
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/our-story"}
+            component={OurStory}
+          />
+
+          {/* IntelOutput */}
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/intellectual-outputs"}
+            component={IntelOutput}
+          />
+
+          {/* Events */}
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/events"}
+            component={Events}
           />
 
           {/* User Certificate */}

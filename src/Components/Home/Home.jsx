@@ -5,6 +5,8 @@ import Section2 from "./Section2";
 import HomeCard from "./HomeCards";
 import HomeNavBar from "./HomeNavBar";
 import Footer from "../Footer/Footer";
+import { Card, Container } from "react-bootstrap";
+import TranslateText from "../Translate/TranslateText";
 
 import "./Home.css";
 
@@ -47,13 +49,51 @@ class Home extends Component {
               <Section1 />
             </div>
 
+            <Container>
+              <div className='pb-5 text-center'>
+                <Card className='m-3 p-3 home-card'>
+                  <Card.Body>
+                    <Card.Text className='note-txt-esvolon'>
+                      <TranslateText txt='Home-Esvolon' />
+                    </Card.Text>
+                    <a
+                      href='https://play.google.com/store/apps/details?id=com.digico.esvolon&hl=en&gl=US'
+                      target='_blank'
+                    >
+                      <button className='button m-3'>
+                        <TranslateText txt='Home-Android' />
+                      </button>
+                    </a>
+
+                    <a
+                      href='https://apps.apple.com/tr/app/esvolon/id1561362040'
+                      target='_blank'
+                    >
+                      <button className='button m-3'>
+                        <TranslateText txt='Home-AppStore' />
+                      </button>
+                    </a>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Container>
+
             <div className='pb-5'>
               <HomeCard />
             </div>
-
             <div className='pb-5 pt-5'>
               <Section2 />
             </div>
+
+            <Container>
+              <Card className='m-3 p-3 home-card'>
+                <Card.Body>
+                  <Card.Text>
+                    <TranslateText txt='Home-Disclaimer' />
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Container>
           </div>
 
           <Footer userActiveModule={"Main"} />
