@@ -49,7 +49,7 @@ export class OurStory extends Component {
                   <TranslateText txt='OurStory-Line7' />
                 </h3>
 
-                <CardGroup>
+                <CardGroup className='mt-5'>
                   <Card>
                     <Card.Img
                       className='w-50 m-auto p-2'
@@ -59,7 +59,7 @@ export class OurStory extends Component {
                     <Card.Body>
                       <Card.Title>
                         <a href='https://trsgd.org/' target='_blank'>
-                          <TranslateText txt='OurStory-Line9' />
+                          <TranslateText txt='OurStory-Line8' />
                         </a>
                       </Card.Title>
                     </Card.Body>
@@ -73,7 +73,7 @@ export class OurStory extends Component {
                     <Card.Body>
                       <Card.Title>
                         <a href='https://en.bulsport.bg/' target='_blank'>
-                          <TranslateText txt='OurStory-Line10' />
+                          <TranslateText txt='OurStory-Line9' />
                         </a>
                       </Card.Title>
                     </Card.Body>
@@ -90,7 +90,7 @@ export class OurStory extends Component {
                           href='https://international.ucam.edu/'
                           target='_blank'
                         >
-                          <TranslateText txt='OurStory-Line11' />
+                          <TranslateText txt='OurStory-Line10' />
                         </a>
                       </Card.Title>
                     </Card.Body>
@@ -109,7 +109,7 @@ export class OurStory extends Component {
                           href='https://eurolocaldevelopment.org/index.php/en/'
                           target='_blank'
                         >
-                          <TranslateText txt='OurStory-Line12' />
+                          <TranslateText txt='OurStory-Line11' />
                         </a>
                       </Card.Title>
                     </Card.Body>
@@ -123,7 +123,7 @@ export class OurStory extends Component {
                     <Card.Body>
                       <Card.Title>
                         <a href='https://cesie.org/en/' target='_blank'>
-                          <TranslateText txt='OurStory-Line13' />
+                          <TranslateText txt='OurStory-Line12' />
                         </a>
                       </Card.Title>
                     </Card.Body>

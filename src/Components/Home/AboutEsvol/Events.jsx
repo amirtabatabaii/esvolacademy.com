@@ -30,8 +30,8 @@ export class Events extends Component {
             }
           />
 
-          <Container>
-            <div className='m-5 p-5 note-txt-esvolon'>
+          <Container className='mt-5 pt-5 mb-5 pb-5 '>
+            <div className='m-2 note-txt-esvolon'>
               <Accordion defaultActiveKey=''>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey='0'>
@@ -40,6 +40,7 @@ export class Events extends Component {
                   <Accordion.Collapse eventKey='0'>
                     <Card.Body className='text-center'>
                       <Image
+                        onClick={() => window.open(E11, "_blank")}
                         fluid
                         src={E11}
                         width={800}
@@ -47,6 +48,7 @@ export class Events extends Component {
                         className='p-2'
                       />
                       <Image
+                        onClick={() => window.open(E12, "_blank")}
                         fluid
                         src={E12}
                         width={800}
@@ -63,6 +65,7 @@ export class Events extends Component {
                   <Accordion.Collapse eventKey='1'>
                     <Card.Body className='text-center'>
                       <Image
+                        onClick={() => window.open(E21, "_blank")}
                         fluid
                         src={E21}
                         width={800}
@@ -70,6 +73,7 @@ export class Events extends Component {
                         className='p-2'
                       />
                       <Image
+                        onClick={() => window.open(E22, "_blank")}
                         fluid
                         src={E22}
                         width={800}
@@ -86,6 +90,7 @@ export class Events extends Component {
                   <Accordion.Collapse eventKey='2'>
                     <Card.Body className='text-center'>
                       <Image
+                        onClick={() => window.open(E31, "_blank")}
                         fluid
                         src={E31}
                         width={800}
@@ -102,6 +107,7 @@ export class Events extends Component {
                   <Accordion.Collapse eventKey='3'>
                     <Card.Body className='text-center'>
                       <Image
+                        onClick={() => window.open(E41, "_blank")}
                         fluid
                         src={E41}
                         width={800}
@@ -118,6 +124,7 @@ export class Events extends Component {
                   <Accordion.Collapse eventKey='4'>
                     <Card.Body className='text-center'>
                       <Image
+                        onClick={() => window.open(E51, "_blank")}
                         fluid
                         src={E51}
                         width={400}
@@ -134,6 +141,7 @@ export class Events extends Component {
                   <Accordion.Collapse eventKey='5'>
                     <Card.Body className='text-center'>
                       <Image
+                        onClick={() => window.open(E61, "_blank")}
                         fluid
                         src={E61}
                         width={800}
@@ -141,6 +149,7 @@ export class Events extends Component {
                         className='p-2'
                       />
                       <Image
+                        onClick={() => window.open(E62, "_blank")}
                         fluid
                         src={E62}
                         width={800}
@@ -148,6 +157,7 @@ export class Events extends Component {
                         className='p-2'
                       />
                       <Image
+                        onClick={() => window.open(E63, "_blank")}
                         fluid
                         src={E63}
                         width={800}
@@ -164,6 +174,7 @@ export class Events extends Component {
                   <Accordion.Collapse eventKey='6'>
                     <Card.Body className='text-center'>
                       <Image
+                        onClick={() => window.open(E71, "_blank")}
                         fluid
                         src={E71}
                         width={800}
@@ -171,6 +182,7 @@ export class Events extends Component {
                         className='p-2'
                       />
                       <Image
+                        onClick={() => window.open(E72, "_blank")}
                         fluid
                         src={E72}
                         width={800}
@@ -178,6 +190,7 @@ export class Events extends Component {
                         className='p-2'
                       />
                       <Image
+                        onClick={() => window.open(E73, "_blank")}
                         fluid
                         src={E73}
                         width={800}
@@ -185,6 +198,7 @@ export class Events extends Component {
                         className='p-2'
                       />
                       <Image
+                        onClick={() => window.open(E74, "_blank")}
                         fluid
                         src={E74}
                         width={800}

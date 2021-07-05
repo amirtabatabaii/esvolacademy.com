@@ -23,8 +23,8 @@ export class IntelOutput extends Component {
             }
           />
 
-          <Container>
-            <div className='m-5 p-5 note-txt-esvolon'>
+          <Container className='mt-5 pt-5 mb-5 pb-5 '>
+            <div className='m-2 note-txt-esvolon'>
               <Accordion defaultActiveKey='0'>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey='0'>
@@ -33,27 +33,27 @@ export class IntelOutput extends Component {
                   <Accordion.Collapse eventKey='0'>
                     <Card.Body>
                       <ul>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a href={Module1}>
                             <TranslateText txt='Module1-text' />
                           </a>
                         </li>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a href={Module2}>
                             <TranslateText txt='Module2-text' />
                           </a>
                         </li>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a href={Module3}>
                             <TranslateText txt='Module3-text' />
                           </a>
                         </li>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a href={Module4}>
                             <TranslateText txt='Module4-text' />
                           </a>
                         </li>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a href={Module5}>
                             <TranslateText txt='Module5-text' />
                           </a>
@@ -69,12 +69,12 @@ export class IntelOutput extends Component {
                   <Accordion.Collapse eventKey='1'>
                     <Card.Body>
                       <ul>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a href={Esvolon}>
                             <TranslateText txt='Guide-Esvolon' />
                           </a>
                         </li>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a
                             href='https://play.google.com/store/apps/details?id=com.digico.esvolon&hl=en&gl=US'
                             target='_blank'
@@ -82,7 +82,7 @@ export class IntelOutput extends Component {
                             <TranslateText txt='Home-Android' />
                           </a>
                         </li>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a
                             href='https://apps.apple.com/tr/app/esvolon/id1561362040'
                             target='_blank'
@@ -101,7 +101,7 @@ export class IntelOutput extends Component {
                   <Accordion.Collapse eventKey='2'>
                     <Card.Body>
                       <ul>
-                        <li className='m-5'>
+                        <li className='m-2'>
                           <a href={IO3Report}>
                             <TranslateText txt='IntelOutputReport' />
                           </a>
