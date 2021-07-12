@@ -1,5 +1,6 @@
 import React from "react";
 import FooterImg from "../../assets/img/esvol_black.png";
+import EuLogo from "../../assets/img/erasmus.png";
 import { Image, Row, Col } from "react-bootstrap";
 
 import "./Footer.css";
@@ -25,8 +26,9 @@ function Footer(props) {
     >
       <div style={{ marginLeft: "3%", marginRight: "3%" }}>
         <Row className='w-100'>
-          <Col lg={2} md={12} sm={12} className='text-center mt-4 p-3'>
+          <Col lg={2} md={12} sm={12} className='text-center mt-2 p-3'>
             <Image src={FooterImg} alt='esvol' fluid width='150' />
+            <Image src={EuLogo} alt='esvol' fluid width='250' className='p-2' />
           </Col>
 
           <Col lg={10} md={12} sm={12} xs={12} className='m-auto'>

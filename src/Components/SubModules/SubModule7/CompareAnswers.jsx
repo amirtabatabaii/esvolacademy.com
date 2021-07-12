@@ -120,11 +120,12 @@ class CompareAnswers extends Component {
           point: QuizQuestion[i].question.point,
           correctAnswers: correctAnswers2[i],
           incorrectAnswers: incorrectAnswers2[i],
-          question:
-            QuizQuestion[i].question.questionDictionaries[i].questionText,
-          // .filter(
-          //   (qst) => qst.language === AllAnswersLanguage[i]
-          // )[0].questionText,
+          question: QuizQuestion[i].question.questionDictionaries //[i].questionText,
+            .filter(
+              (qst) =>
+                qst.language ===
+                AllAnswersLanguage[i].replace(/^\w/, (c) => c.toUpperCase())
+            )[0].questionText,
           questionType: QuizQuestion[i].question.type,
           moduleName: QuizQuestion[i].question.moduleName,
           NumberOfBlank: QuizQuestion[i].question.NumberOfBlank,
@@ -132,7 +133,7 @@ class CompareAnswers extends Component {
       ];
     }
 
-    // console.log("NewFilter222 ", NewFilter);
+    //console.log("NewFilter222 ", NewFilter);
     this.setState({ ViewFilteredQuestion: NewFilter });
   }
 

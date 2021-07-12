@@ -63,6 +63,7 @@ class Task extends Component {
               label={<TranslateText txt='SubModule3-YourAnswer' />} //'Your Answer'
               required
               multiline
+              inputProps={{ maxLength: 250 }}
               rows={6}
               style={{ width: "97%" }}
               name={this.props.index + "," + this.props.TextFieldName}

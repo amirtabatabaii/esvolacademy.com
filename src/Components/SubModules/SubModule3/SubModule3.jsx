@@ -71,7 +71,7 @@ class SubModule3 extends Component {
     const tmpModule = localStorage.getItem("UserTempModule").substring(6);
 
     if (parseInt(ActiveSubName.substring(3)) - 1 === 3) {
-      console.log(userAns);
+      //console.log(userAns);
       axios
         .put(
           ApiUrlMain2 +

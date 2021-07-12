@@ -5,6 +5,7 @@ import LanguageSelector from "../Translate/LanguageSelector";
 import TranslateText from "../Translate/TranslateText";
 
 import EsvolLogo from "../../assets/img/esvol_black.png";
+import EuLogo from "../../assets/img/erasmus.png";
 import { Link } from "react-router-dom";
 
 const handleClick = () => {
@@ -29,9 +30,18 @@ function NavBar(props) {
         <Navbar.Brand href='/'>
           <Image
             src={EsvolLogo}
-            width='150'
+            width='130'
+            fluid
             // height='50'
-            className='d-inline-block align-top'
+            className='d-inline-block align-top  p-2 m-auto'
+            alt='esvol'
+          />
+          <Image
+            src={EuLogo}
+            width='250'
+            fluid
+            // height='50'
+            className='d-inline-block align-top p-2 m-auto'
             alt='esvol'
           />
         </Navbar.Brand>
