@@ -21,6 +21,7 @@ import PrivateRouteViewer from "./Components/ViewerSection/Utility/PrivateRouteV
 import ViewerLogin from "./Components/ViewerSection/Login/ViewerLogin";
 import ViewerMain from "./Components/ViewerSection/ViewerMain/ViewerMain";
 import Error404Page from "./Components/Utility/Error404Page";
+import TestPage from "./Components/ResetPassword/test";
 
 // window.onload = () => {
 //   // Clear localStorage
@@ -44,6 +45,7 @@ import ReactGA from "react-ga";
 import OurStory from "./Components/Home/AboutEsvol/OurStory";
 import IntelOutput from "./Components/Home/AboutEsvol/IntelOutput";
 import Events from "./Components/Home/AboutEsvol/Events";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 
 function App() {
   useEffect(() => {
@@ -156,6 +158,15 @@ function App() {
           <Route exact path={process.env.PUBLIC_URL + "/about-us"}>
             {<Redirect to='/' />}
           </Route>
+
+          {/* //testttttt */}
+          <Route path={process.env.PUBLIC_URL + "/tttt"} component={TestPage} />
+
+          {/* //ResetPass */}
+          <Route
+            path={process.env.PUBLIC_URL + "/updatepassword"}
+            component={ResetPassword}
+          />
 
           <Route
             path={process.env.PUBLIC_URL + "*"}
