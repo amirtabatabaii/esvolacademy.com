@@ -11,6 +11,7 @@ import { ApiUrlMain2 } from "../Utility/ApiUrl";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { openNotificationWithIcon } from "../AdminSection/Utility/Error";
+import ForgotPass from "../ResetPassword/ForgotPass";
 
 class Login extends Component {
   state = { PassError: false, EmailError: false, password: "", email: "" };
@@ -156,6 +157,8 @@ class Login extends Component {
             </div>
           </Form>
         </div>
+
+        <ForgotPass />
 
         <div style={{ marginTop: "200px" }}>
           <Footer userActiveModule={"Main"} />

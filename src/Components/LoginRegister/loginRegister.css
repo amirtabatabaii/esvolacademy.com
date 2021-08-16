@@ -37,6 +37,24 @@
   line-height: 33px;
 }
 
+.forgot-Btn {
+  width: 200px;
+  height: 39px;
+  border-radius: 12px;
+  background: #f2f3f7;
+  border: none !important;
+  outline: none !important;
+  box-shadow: 5px 3px 15px #c0c5d8, -5px -3px 15px #ffffff;
+  /*  */
+  text-shadow: inset 0px -1px 2px #ff9a64,
+    inset 0px 1px rgba(193, 100, 66, 0.58);
+  color: #fc8657;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 33px;
+}
+
 /* ------------------- */
 
 .register-head {

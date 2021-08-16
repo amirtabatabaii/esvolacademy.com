@@ -89,8 +89,6 @@ export class test extends Component {
     axios
       .post(ApiUrlMain2 + `/users/change-password/${this.state.email2}`)
       .then((res) => {
-        console.log(res);
-
         if (res.data.success === true) {
           message.loading({ content: "Processing...", key });
           setTimeout(() => {
@@ -117,20 +115,22 @@ export class test extends Component {
 
   render() {
     return (
-      <div>
-        <Link
-          className='text-decoration-none m-auto'
+      <div className='text-center'>
+        <button
+          className='forgot-Btn'
+          type='submit'
           to='#'
           onClick={this.showModal}
         >
-          Reset Pass
-        </Link>
+          {" "}
+          Forgot Password?{" "}
+        </button>
 
         <Modal
           visible={this.state.visible}
           title='Forgot Password?'
-          //   onOk={this.handleOk}
-          //   onCancel={this.handleCancel}
+          // onOk={this.handleOk}
+          onCancel={this.handleCancel}
           footer={[]}
         >
           <Form
@@ -158,24 +158,17 @@ export class test extends Component {
               </div>
             </Form.Group>
 
-            <Button
-              key='submit'
-              type='primary'
-              style={{ backgroundColor: "#b06347" }}
-              loading={this.state.loading}
-              // onClick={this.handleOk}
-            >
-              Reset Password
-            </Button>
-
-            <Button
-              key='back'
-              style={{ backgroundColor: "#b06347" }}
-              className='m-2'
-              onClick={this.handleCancel}
-            >
-              Back
-            </Button>
+            {!this.state.EmailError2 && this.state.email2 !== "" && (
+              <button
+                key='submit'
+                className='forgot-Btn'
+                type='submit'
+                loading={this.state.loading}
+                //onClick={this.handleOk}
+              >
+                Reset Password
+              </button>
+            )}
           </Form>
         </Modal>
       </div>

@@ -21,7 +21,7 @@ import PrivateRouteViewer from "./Components/ViewerSection/Utility/PrivateRouteV
 import ViewerLogin from "./Components/ViewerSection/Login/ViewerLogin";
 import ViewerMain from "./Components/ViewerSection/ViewerMain/ViewerMain";
 import Error404Page from "./Components/Utility/Error404Page";
-import TestPage from "./Components/ResetPassword/test";
+import ForgotPass from "./Components/ResetPassword/ForgotPass";
 
 // window.onload = () => {
 //   // Clear localStorage
@@ -159,12 +159,9 @@ function App() {
             {<Redirect to='/' />}
           </Route>
 
-          {/* //testttttt */}
-          <Route path={process.env.PUBLIC_URL + "/tttt"} component={TestPage} />
-
-          {/* //ResetPass */}
+          {/* ResetPass */}
           <Route
-            path={process.env.PUBLIC_URL + "/updatepassword"}
+            path={process.env.PUBLIC_URL + "/update-password"}
             component={ResetPassword}
           />
 

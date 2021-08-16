@@ -169,16 +169,10 @@ class ResetPassword extends Component {
                   </div>
                 </Form.Group>
 
-                <div className='m-auto'>
-                  <div className='mb-3'>
-                    <Button
-                      type='submit'
-                      className='LoginRegister-btn'
-                      style={{ backgroundColor: "#b06346" }}
-                    >
-                      Save Password
-                    </Button>
-                  </div>
+                <div className='mt-5'>
+                  <button type='submit' className='forgot-Btn'>
+                    Save Password
+                  </button>
                 </div>
               </Form>
             </Col>
