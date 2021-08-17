@@ -22,6 +22,7 @@ import ViewerLogin from "./Components/ViewerSection/Login/ViewerLogin";
 import ViewerMain from "./Components/ViewerSection/ViewerMain/ViewerMain";
 import Error404Page from "./Components/Utility/Error404Page";
 import ForgotPass from "./Components/ResetPassword/ForgotPass";
+import Verify from "./Components/LoginRegister/Verify";
 
 // window.onload = () => {
 //   // Clear localStorage
@@ -161,9 +162,12 @@ function App() {
 
           {/* ResetPass */}
           <Route
-            path={process.env.PUBLIC_URL + "/update-password"}
+            path={process.env.PUBLIC_URL + "/updatepassword"}
             component={ResetPassword}
           />
+
+          {/* Verify */}
+          <Route path={process.env.PUBLIC_URL + "/verify"} component={Verify} />
 
           <Route
             path={process.env.PUBLIC_URL + "*"}

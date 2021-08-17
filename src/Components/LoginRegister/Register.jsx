@@ -84,7 +84,7 @@ class Register extends Component {
         if (this.state.password === this.state.confirmPassword) {
           let pass = this.state.password;
           // let reg = /^[a-z0-9A-Z]\w{5,30}$/;
-          let reg = /^[a-z0-9A-Z\s\S\w]{5,30}$/;
+          let reg = /^[a-z0-9A-Z\s\S\w]{8,30}$/;
           let test = reg.test(pass);
           if (test) {
             var crypto = require("crypto");

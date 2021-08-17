@@ -7,8 +7,11 @@ import HomeNavBar from "./HomeNavBar";
 import Footer from "../Footer/Footer";
 import { Card, Container } from "react-bootstrap";
 import TranslateText from "../Translate/TranslateText";
+import { Result } from "antd";
 
 import "./Home.css";
+import { Image } from "react-bootstrap";
+import sitee from "../../assets/sitee.png";
 
 class Home extends Component {
   componentDidMount() {
@@ -37,6 +40,14 @@ class Home extends Component {
     return (
       <div className='main-bg-color'>
         <div id='page-wrap' className='App'>
+          {/* <div className='m-5 p-5 text-center'>
+            <Image src={sitee} alt='sitee' fluid />
+            <h5>
+              Sorry, Website is coming soon. We are working on the version of
+              site and will be back shortly.
+            </h5>
+          </div> */}
+
           <HomeNavBar
             isUserOnline={
               localStorage.getItem("UserID") !== null ? true : false
@@ -45,7 +56,6 @@ class Home extends Component {
 
           <div style={{ marginLeft: "5%", marginRight: "5%" }}>
             <div className='pb-5'>
-              {/* style={{ paddingTop: "80px" }}> */}
               <Section1 />
             </div>
 

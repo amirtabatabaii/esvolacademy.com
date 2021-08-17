@@ -27,7 +27,7 @@ const ErrRegister = (type) => {
 const ErrSend = (type) => {
   notification[type]({
     message: "Email Error! ",
-    description: "Not sent try again...",
+    description: "There is no user with this email.",
     duration: 10,
   });
 };
@@ -87,28 +87,16 @@ export class test extends Component {
     event.preventDefault();
 
     axios
-      .post(ApiUrlMain2 + `/users/change-password/${this.state.email2}`)
+      .get(ApiUrlMain2 + `/users/change-password/${this.state.email2}`)
       .then((res) => {
-        if (res.data.success === true) {
-          message.loading({ content: "Processing...", key });
-          setTimeout(() => {
-            message.success({
-              content: "Find your mail!",
-              key,
-              duration: 6,
-            });
-          }, 1000);
+        if (res.status === 200) {
           CheckMail("success");
           document.getElementById("reset-form").reset();
         }
-        if (res.data.success === false) {
-          if (res.data.errors === "Email does not exist") {
-            ErrRegister("error");
-          } else if (res.data.errors === "Not sent try again") {
-            ErrSend("error");
-          } else {
-            Err("error");
-          }
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          ErrSend("error");
         }
       });
   };

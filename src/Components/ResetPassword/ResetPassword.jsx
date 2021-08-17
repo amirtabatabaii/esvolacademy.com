@@ -25,6 +25,16 @@ const openNotificationWithIconErr = (type) => {
   });
 };
 
+const openNotificationWithIconErr2 = (type) => {
+  notification[type]({
+    message: "Password Error!",
+    description: "Your password not changed. Please Try Again!",
+    duration: 20,
+  });
+};
+
+let params = "";
+
 class ResetPassword extends Component {
   constructor(props) {
     super(props);
@@ -39,14 +49,7 @@ class ResetPassword extends Component {
   }
 
   componentDidMount() {
-    const params = queryString.parse(this.props.location.search);
-    localStorage.setItem("ResetPasswordToken", params.token);
-    // setAuthToken(params.token);
-    const decoded = jwt_decode(localStorage.getItem("ResetPasswordToken"));
-    this.setState({ id: decoded.id });
-    // console.log(decoded.id);
-    // console.log(decoded);
-    this.setState({ tokenwithBa: "Bearer " + params.token });
+    params = queryString.parse(this.props.location.search);
   }
 
   async handleSubmit(event) {
@@ -57,7 +60,7 @@ class ResetPassword extends Component {
 
     if (this.state.password === this.state.confirmPassword) {
       let pass = this.state.password;
-      let reg = /^[A-Z0-9a-z]\w{8,15}$/;
+      let reg = /^[a-z0-9A-Z\s\S\w]{8,30}$/;
       let test = reg.test(pass);
       if (test) {
         // alert("pass");
@@ -72,10 +75,10 @@ class ResetPassword extends Component {
 
         await axios
           .put(
-            ApiUrlMain2 + `/users/savepassword/${this.state.id}`,
+            ApiUrlMain2 + `/users/password-change-email-verification`,
             {
-              password: hashedPass,
-              confirmationPassword: hashedPass,
+              token: params.token,
+              newPassword: hashedPass,
             },
             (axios.defaults.headers.common[
               "Authorization"
@@ -87,19 +90,11 @@ class ResetPassword extends Component {
           .then((res) => {
             // console.log("Success res ========>", res);
 
-            if (res.data.success === true) {
+            if (res.status === 200) {
               openNotificationWithIconSucc("success");
               // this.props.history.push("/forget-password");
             } else {
-              this.setState({ SiteError: res.data.errors });
-              message.loading({ content: "Processing...", key });
-              setTimeout(() => {
-                message.error({
-                  content: this.state.SiteError,
-                  key,
-                  duration: 6,
-                });
-              }, 1000);
+              openNotificationWithIconErr2("error");
             }
           });
         this.setState({ PassError: false });
@@ -169,7 +164,7 @@ class ResetPassword extends Component {
                   </div>
                 </Form.Group>
 
-                <div className='mt-5'>
+                <div className=' '>
                   <button type='submit' className='forgot-Btn'>
                     Save Password
                   </button>
