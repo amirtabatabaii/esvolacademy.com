@@ -49,3 +49,18 @@
   background: linear-gradient(180deg, #f2f3f7, #53739b);
   color: white;
 }
+
+.footer-disclaimer {
+  color: #3b3c3c !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 22px !important;
+  font-family: "Open Sans", sans-serif;
+  text-align: center !important;
+}
+
+.footer-disclaimer:hover {
+  font-size: 15px !important;
+  color: #141414 !important;
+  text-decoration: none !important;
+}

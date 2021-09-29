@@ -132,6 +132,13 @@ function Footer(props) {
               </div>
             </Col>
           </Col>
+          <p className='footer-disclaimer'>
+            Disclaimer: The European Commission's support for the production of
+            this publication (MOOC) does not constitute an endorsement of the
+            contents, which reflect the views only of the authors, and the
+            Commission cannot be held responsible for any use which may be made
+            of the information contained therein.
+          </p>
         </Row>
       </div>
     </footer>
